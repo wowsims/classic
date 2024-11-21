@@ -11,36 +11,20 @@ func init() {
 	RegisterDpsRogue()
 }
 
-func TestCombat(t *testing.T) {
+func TestDaggers(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassRogue,
-			Level:      25,
+			Level:      60,
+			Phase:      5,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
-			Talents:     CombatDagger25Talents,
-			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "p1_combat"),
-			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "basic_strike_25"),
+			Talents:     CombatDaggers60Talents,
+			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "combat_daggers_60"),
+			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "combat_daggers_60"),
 			Buffs:       core.FullBuffsPhase1,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultCombatRogue},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassRogue,
-			Level:      40,
-			Race:       proto.Race_RaceHuman,
-			OtherRaces: []proto.Race{proto.Race_RaceOrc},
-
-			Talents:     CombatDagger40Talents,
-			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "p2_daggers"),
-			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "mutilate"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
 			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultCombatRogue},
 
 			ItemFilter:      ItemFilters,
@@ -50,37 +34,21 @@ func TestCombat(t *testing.T) {
 	}))
 }
 
-func TestAssassination(t *testing.T) {
+func TestSwords(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassRogue,
-			Level:      25,
+			Level:      60,
+			Phase:      5,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
-			Talents:     Assassination25Talents,
-			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "p1_daggers"),
-			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "mutilate"),
+			Talents:     CombatSwords60Talents,
+			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "combat_swords_60"),
+			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "combat_swords_60"),
 			Buffs:       core.FullBuffsPhase1,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultAssassinationRogue},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassRogue,
-			Level:      40,
-			Race:       proto.Race_RaceHuman,
-			OtherRaces: []proto.Race{proto.Race_RaceOrc},
-
-			Talents:     Assassination40Talents,
-			GearSet:     core.GetGearSet("../../../ui/rogue/gear_sets", "p2_daggers"),
-			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "mutilate"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultAssassinationRogue},
+			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultCombatRogue},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -89,10 +57,8 @@ func TestAssassination(t *testing.T) {
 	}))
 }
 
-var CombatDagger25Talents = "-025305000001"
-var CombatDagger40Talents = "-0053052020550100201"
-var Assassination25Talents = "0053021--05"
-var Assassination40Talents = "005303103551--05"
+var CombatSwords60Talents = "005323105-0230251020050150231"
+var CombatDaggers60Talents = "005323105-0253051020550100201"
 
 var ItemFilters = core.ItemFilter{
 	ArmorType: proto.ArmorType_ArmorTypeLeather,
@@ -132,21 +98,16 @@ var DefaultCombatRogue = &proto.Player_Rogue{
 var DefaultDeadlyBrewOptions = &proto.RogueOptions{}
 
 var Phase1Consumes = core.ConsumesCombo{
-	Label: "P1-Consumes",
+	Label: "Classic Consumes",
 	Consumes: &proto.Consumes{
-		AgilityElixir: proto.AgilityElixir_ElixirOfLesserAgility,
-		MainHandImbue: proto.WeaponImbue_WildStrikes,
-		OffHandImbue:  proto.WeaponImbue_BlackfathomSharpeningStone,
-		StrengthBuff:  proto.StrengthBuff_ElixirOfOgresStrength,
-	},
-}
-
-var Phase2Consumes = core.ConsumesCombo{
-	Label: "P2-Consumes",
-	Consumes: &proto.Consumes{
-		AgilityElixir: proto.AgilityElixir_ElixirOfAgility,
-		MainHandImbue: proto.WeaponImbue_WildStrikes,
-		OffHandImbue:  proto.WeaponImbue_SolidSharpeningStone,
-		StrengthBuff:  proto.StrengthBuff_ElixirOfOgresStrength,
+		AgilityElixir: proto.AgilityElixir_ElixirOfTheMongoose,
+		AttackPowerBuff: proto.AttackPowerBuff_JujuMight,
+		DefaultConjured: proto.Conjured_ConjuredRogueThistleTea,
+		Flask: proto.Flask_FlaskOfSupremePower,
+		Food: proto.Food_FoodGrilledSquid,
+		MainHandImbue: proto.WeaponImbue_Windfury,
+		OffHandImbue: proto.WeaponImbue_InstantPoison,
+		StrengthBuff: proto.StrengthBuff_JujuPower,
+		ZanzaBuff: proto.ZanzaBuff_GroundScorpokAssay,
 	},
 }

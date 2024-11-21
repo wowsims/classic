@@ -1,0 +1,210 @@
+character_stats_results: {
+ key: "TestDaggers-Phase5-Lvl60-CharacterStats-Default"
+ value: {
+  final_stats: 223.3
+  final_stats: 465.3
+  final_stats: 343.2
+  final_stats: 94.6
+  final_stats: 80.85
+  final_stats: 150
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 39.6
+  final_stats: 4
+  final_stats: 2
+  final_stats: 0
+  final_stats: 0
+  final_stats: 1644.6
+  final_stats: 11
+  final_stats: 28.05285
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 2337.6
+  final_stats: 809.3
+  final_stats: 7
+  final_stats: 5.28
+  final_stats: 0
+  final_stats: 37.3857
+  final_stats: 5.28
+  final_stats: 0
+  final_stats: 4775
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 384
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestDaggers-Phase5-Lvl60-StatWeights-Default"
+ value: {
+  weights: 0.30367
+  weights: 0.51983
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.27607
+  weights: 4.92834
+  weights: 6.98928
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-AllItems-BloodCorruptedLeathers"
+ value: {
+  dps: 701.28929
+  tps: 497.91539
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-AllItems-DarkmantleArmor"
+ value: {
+  dps: 744.06019
+  tps: 528.28273
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Average-Default"
+ value: {
+  dps: 701.70545
+  tps: 498.21087
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 240.64916
+  tps: 170.86091
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 204.22951
+  tps: 145.00295
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 262.0931
+  tps: 186.0861
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 128.37565
+  tps: 91.14671
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 111.07043
+  tps: 78.86001
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Human-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 141.91119
+  tps: 100.75694
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 236.86317
+  tps: 168.17285
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 196.97329
+  tps: 139.85103
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-FullBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 251.5496
+  tps: 178.60021
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 131.51355
+  tps: 93.37462
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 111.6404
+  tps: 79.26468
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-Settings-Orc-combat_daggers_60-No Poisons-combat_daggers_60-NoBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 140.43962
+  tps: 99.71213
+ }
+}
+dps_results: {
+ key: "TestDaggers-Phase5-Lvl60-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 610.21842
+  tps: 433.25508
+ }
+}

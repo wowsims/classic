@@ -1,0 +1,210 @@
+character_stats_results: {
+ key: "TestSwords-Phase5-Lvl60-CharacterStats-Default"
+ value: {
+  final_stats: 223.3
+  final_stats: 465.3
+  final_stats: 343.2
+  final_stats: 94.6
+  final_stats: 80.85
+  final_stats: 150
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 39.6
+  final_stats: 4
+  final_stats: 2
+  final_stats: 0
+  final_stats: 0
+  final_stats: 1644.6
+  final_stats: 11
+  final_stats: 28.05285
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 2337.6
+  final_stats: 809.3
+  final_stats: 7
+  final_stats: 5.28
+  final_stats: 0
+  final_stats: 35.3857
+  final_stats: 7.28
+  final_stats: 0
+  final_stats: 4775
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 27
+  final_stats: 384
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestSwords-Phase5-Lvl60-StatWeights-Default"
+ value: {
+  weights: 0.31972
+  weights: 0.55706
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.29065
+  weights: 6.14493
+  weights: 7.28395
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-AllItems-BloodCorruptedLeathers"
+ value: {
+  dps: 741.76681
+  tps: 526.65444
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-AllItems-DarkmantleArmor"
+ value: {
+  dps: 782.42826
+  tps: 555.52406
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Average-Default"
+ value: {
+  dps: 739.83692
+  tps: 525.28422
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 255.03671
+  tps: 181.07606
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 216.44009
+  tps: 153.67247
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 277.76124
+  tps: 197.21048
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 136.07819
+  tps: 96.61552
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 117.73466
+  tps: 83.59161
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Human-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 150.42586
+  tps: 106.80236
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 251.02319
+  tps: 178.22647
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 208.74866
+  tps: 148.21155
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-FullBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 266.58632
+  tps: 189.27629
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-LongMultiTarget"
+ value: {
+  dps: 139.40437
+  tps: 98.9771
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-LongSingleTarget"
+ value: {
+  dps: 118.33882
+  tps: 84.02056
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-Settings-Orc-combat_swords_60-No Poisons-combat_swords_60-NoBuffs-Classic Consumes-ShortSingleTarget"
+ value: {
+  dps: 148.86599
+  tps: 105.69486
+ }
+}
+dps_results: {
+ key: "TestSwords-Phase5-Lvl60-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 635.5103
+  tps: 451.21232
+ }
+}
