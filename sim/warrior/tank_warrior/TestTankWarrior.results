@@ -1,12 +1,12 @@
 character_stats_results: {
  key: "TestTankWarrior-Phase4-Lvl60-CharacterStats-Default"
  value: {
-  final_stats: 415.8
-  final_stats: 269.5
-  final_stats: 759
-  final_stats: 102.3
-  final_stats: 135.3
-  final_stats: 0
+  final_stats: 346.5
+  final_stats: 378.4
+  final_stats: 441.485
+  final_stats: 148.5
+  final_stats: 203.5
+  final_stats: 12
   final_stats: 0
   final_stats: 0
   final_stats: 0
@@ -14,34 +14,34 @@ character_stats_results: {
   final_stats: 0
   final_stats: 0
   final_stats: 41.25
-  final_stats: 5
-  final_stats: 22
+  final_stats: 0
+  final_stats: 21
   final_stats: 0
   final_stats: 0
-  final_stats: 1895.6
-  final_stats: 6
-  final_stats: 33.475
+  final_stats: 1751
   final_stats: 0
-  final_stats: 0
-  final_stats: 0
+  final_stats: 39.92
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 7581
-  final_stats: 814
-  final_stats: 165
-  final_stats: 16.6
-  final_stats: 158
-  final_stats: 20.075
-  final_stats: 11.6
   final_stats: 0
-  final_stats: 10599
-  final_stats: 32
-  final_stats: 271
+  final_stats: 0
+  final_stats: 0
+  final_stats: 4924.8
+  final_stats: 856
+  final_stats: 10
+  final_stats: 10.4
+  final_stats: 37
+  final_stats: 19.32
+  final_stats: 5.4
+  final_stats: 0
+  final_stats: 7423.85
+  final_stats: 27
+  final_stats: 86
   final_stats: 60
   final_stats: 60
-  final_stats: 65
-  final_stats: 524
+  final_stats: 60
+  final_stats: 384
   final_stats: 0
   final_stats: 0
   final_stats: 0
@@ -50,7 +50,7 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestTankWarrior-Phase4-Lvl60-StatWeights-Default"
  value: {
-  weights: 1.01547
+  weights: 0.3417
   weights: 0
   weights: 0
   weights: 0
@@ -67,7 +67,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 1.175
+  weights: 0.05737
   weights: 0
   weights: 0
   weights: 0
@@ -78,11 +78,9 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 1.53917
+  weights: 0.90168
   weights: 0
-  weights: 0.52803
-  weights: 0
-  weights: 0
+  weights: 0.44848
   weights: 0
   weights: 0
   weights: 0
@@ -94,110 +92,105 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
- }
-}
-dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-AllItems-BattlegearofHeroism"
- value: {
-  dps: 922.6751
-  tps: 1885.5839
+  weights: 0
+  weights: 0
  }
 }
 dps_results: {
  key: "TestTankWarrior-Phase4-Lvl60-Average-Default"
  value: {
-  dps: 1536.9516
-  tps: 3964.69393
+  dps: 590.73761
+  tps: 1325.88118
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-LongMultiTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 445.08433
-  tps: 1263.16714
+  dps: 63.5008
+  tps: 324.09056
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-LongSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 115.23529
-  tps: 380.02153
+  dps: 59.0615
+  tps: 215.56889
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-ShortSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-ShortSingleTarget"
  value: {
-  dps: 171.70318
-  tps: 547.99725
+  dps: 91.35066
+  tps: 332.67215
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-LongMultiTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 144.50986
-  tps: 568.28568
+  dps: 30.5266
+  tps: 231.45092
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-LongSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 49.70933
-  tps: 200.50334
+  dps: 27.80014
+  tps: 125.48994
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-ShortSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Human-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-ShortSingleTarget"
  value: {
-  dps: 70.80419
-  tps: 281.6908
+  dps: 42.11579
+  tps: 189.78435
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-LongMultiTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 460.04462
-  tps: 1290.23871
+  dps: 65.66424
+  tps: 330.25827
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-LongSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 119.20551
-  tps: 389.52976
+  dps: 61.22495
+  tps: 221.7366
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-FullBuffs-P4-Consumes-ShortSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-FullBuffs-P4-Consumes-ShortSingleTarget"
  value: {
-  dps: 179.49649
-  tps: 564.64747
+  dps: 93.06704
+  tps: 337.63858
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-LongMultiTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 144.77341
-  tps: 569.0788
+  dps: 30.58814
+  tps: 231.63073
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-LongSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 49.73817
-  tps: 200.63862
+  dps: 27.86168
+  tps: 125.66975
  }
 }
 dps_results: {
- key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-phase_4_tanky-Arms-phase_4-NoBuffs-P4-Consumes-ShortSingleTarget"
+ key: "TestTankWarrior-Phase4-Lvl60-Settings-Orc-placeholder-Arms-phase_4-NoBuffs-P4-Consumes-ShortSingleTarget"
  value: {
-  dps: 70.55182
-  tps: 281.26874
+  dps: 42.20866
+  tps: 190.05631
  }
 }
 dps_results: {
  key: "TestTankWarrior-Phase4-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 1306.3395
-  tps: 3415.73511
+  dps: 482.13058
+  tps: 1097.99877
  }
 }

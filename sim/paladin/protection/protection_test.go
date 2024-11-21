@@ -21,7 +21,7 @@ func TestProtection(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
 			Talents:     Phase4ProtTalents,
-			GearSet:     core.GetGearSet("../../../ui/protection_paladin/gear_sets", "p4prot"),
+			GearSet:     core.GetGearSet("../../../ui/protection_paladin/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/protection_paladin/apls", "p4prot"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,

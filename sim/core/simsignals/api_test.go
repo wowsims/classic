@@ -18,14 +18,14 @@ func TestAbort(t *testing.T) {
 		Level:     60,
 		Race:      proto.Race_RaceOrc,
 		Class:     proto.Class_ClassWarrior,
-		Equipment: core.GetGearSet("../../../ui/warrior/gear_sets", "phase_4_2h").GearSet,
+		Equipment: core.GetGearSet("../../../ui/tank_warrior/gear_sets", "placeholder").GearSet,
 		Rotation:  &proto.APLRotation{},
 		Consumes:  &proto.Consumes{},
 		Spec: &proto.Player_Warrior{
 			Warrior: &proto.Warrior{
 				Options: &proto.Warrior_Options{
-					StartingRage:    50,
-					Shout:           proto.WarriorShout_WarriorShoutBattle,
+					StartingRage: 50,
+					Shout:        proto.WarriorShout_WarriorShoutBattle,
 				},
 			},
 		},
@@ -175,7 +175,7 @@ func TestAbort(t *testing.T) {
 			BaseSettings: rsr,
 			BulkSettings: &proto.BulkSettings{
 				Combinations:       true,
-				Items:              []*proto.ItemSpec{{Id: 19168}, {Id: 228757}},
+				Items:              []*proto.ItemSpec{{Id: 19168}, {Id: 10761}},
 				IterationsPerCombo: 9999,
 				FastMode:           false,
 			},

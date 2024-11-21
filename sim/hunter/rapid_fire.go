@@ -12,7 +12,6 @@ func (hunter *Hunter) registerRapidFire() {
 		return
 	}
 
-	hasDreadhunter3Pc := hunter.HasSetBonus(ItemSetDreadHuntersChain, 3)
 	hasRapidKilling := hunter.HasRune(proto.HunterRune_RuneHelmRapidKilling)
 
 	actionID := core.ActionID{SpellID: 3045}
@@ -25,18 +24,12 @@ func (hunter *Hunter) registerRapidFire() {
 
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyRangedSpeed(sim, 1.4)
-			if hasDreadhunter3Pc {
-				aura.Unit.MultiplyMeleeSpeed(sim, 1.1)
-			}
 			if hasRapidKilling {
 				aura.Unit.MultiplyMeleeSpeed(sim, 1.4)
 			}
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Unit.MultiplyRangedSpeed(sim, 1/1.4)
-			if hasDreadhunter3Pc {
-				aura.Unit.MultiplyMeleeSpeed(sim, 1/1.1)
-			}
 			if hasRapidKilling {
 				aura.Unit.MultiplyMeleeSpeed(sim, 1/1.4)
 			}

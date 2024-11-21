@@ -150,11 +150,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		// Preset builds that the user can quickly select.
 		builds: [Presets.PresetBuildTanky, Presets.PresetBuildDamage],

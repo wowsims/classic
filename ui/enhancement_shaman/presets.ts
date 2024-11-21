@@ -28,13 +28,7 @@ import Phase2APL from './apls/phase_2.apl.json';
 import Phase3APL from './apls/phase_3.apl.json';
 import Phase4APL from './apls/phase_4.apl.json';
 import Phase5APL from './apls/phase_5.apl.json';
-import Phase1Gear from './gear_sets/phase_1.gear.json';
-import Phase2Gear from './gear_sets/phase_2.gear.json';
-import Phase3Gear from './gear_sets/phase_3.gear.json';
-import Phase4Gear2H from './gear_sets/phase_4_2h.gear.json';
-import Phase4GearDW from './gear_sets/phase_4_dw.gear.json';
-import Phase5Gear2H from './gear_sets/phase_5_2h.gear.json';
-import Phase5GearDW from './gear_sets/phase_5_dw.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -43,23 +37,11 @@ import Phase5GearDW from './gear_sets/phase_5_dw.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearPhase1 = PresetUtils.makePresetGear('Phase 1', Phase1Gear, { customCondition: player => player.getLevel() === 25 });
-export const GearPhase2 = PresetUtils.makePresetGear('Phase 2', Phase2Gear, { customCondition: player => player.getLevel() === 40 });
-export const GearPhase3 = PresetUtils.makePresetGear('Phase 3', Phase3Gear, { customCondition: player => player.getLevel() === 50 });
-export const GearDWPhase4 = PresetUtils.makePresetGear('Phase 4 DW', Phase4GearDW, { customCondition: player => player.getLevel() === 60 });
-export const Gear2HPhase4 = PresetUtils.makePresetGear('Phase 4 2H', Phase4Gear2H, { customCondition: player => player.getLevel() === 60 });
-export const GearDWPhase5 = PresetUtils.makePresetGear('Phase 5 DW', Phase5GearDW, { customCondition: player => player.getLevel() === 60 });
-export const Gear2HPhase5 = PresetUtils.makePresetGear('Phase 5 2H', Phase5Gear2H, { customCondition: player => player.getLevel() === 60 });
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearPresets = {
-	[Phase.Phase1]: [GearPhase1],
-	[Phase.Phase2]: [GearPhase2],
-	[Phase.Phase3]: [GearPhase3],
-	[Phase.Phase4]: [GearDWPhase4, Gear2HPhase4],
-	[Phase.Phase5]: [GearDWPhase5, Gear2HPhase5],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase5][0];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets

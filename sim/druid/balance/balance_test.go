@@ -16,82 +16,13 @@ func TestBalance(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassDruid,
-			Level:      25,
-			Race:       proto.Race_RaceTauren,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase1Talents,
-			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "phase_1"),
-			Rotation:    core.GetAplRotation("../../../ui/balance_druid/apls", "phase_1"),
-			Buffs:       core.FullBuffsPhase1,
-			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptionsAdaptive},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassDruid,
-			Level:      40,
-			Race:       proto.Race_RaceTauren,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase2Talents,
-			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "phase_2"),
-			Rotation:    core.GetAplRotation("../../../ui/balance_druid/apls", "phase_2"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptionsAdaptive},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassDruid,
-			Level:      50,
-			Race:       proto.Race_RaceTauren,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase3Talents,
-			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "phase_3"),
-			Rotation:    core.GetAplRotation("../../../ui/balance_druid/apls", "phase_3"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptionsAdaptive},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassDruid,
-			Phase:      4,
-			Level:      60,
-			Race:       proto.Race_RaceTauren,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase4Talents,
-			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "phase_4"),
-			Rotation:    core.GetAplRotation("../../../ui/balance_druid/apls", "phase_4"),
-			Buffs:       core.FullBuffsPhase4,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Default", SpecOptions: PlayerOptionsAdaptive},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassDruid,
 			Phase:      5,
 			Level:      60,
 			Race:       proto.Race_RaceTauren,
 			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
 
 			Talents:     Phase4Talents,
-			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "phase_5"),
+			GearSet:     core.GetGearSet("../../../ui/balance_druid/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/balance_druid/apls", "phase_5"),
 			Buffs:       core.FullBuffsPhase5,
 			Consumes:    Phase5Consumes,

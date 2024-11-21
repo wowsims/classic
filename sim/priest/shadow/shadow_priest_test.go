@@ -16,85 +16,13 @@ func TestShadow(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassPriest,
-			Level:      25,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase1Talents,
-			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_1"),
-			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "phase_1"),
-			Buffs:       core.FullBuffsPhase1,
-			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassPriest,
-			Level:      40,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase2Talents,
-			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_2"),
-			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "phase_2"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassPriest,
-			Level:      50,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase3Talents,
-			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_3"),
-			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "phase_3"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassPriest,
-			Level:      60,
-			Phase:      4,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
-
-			Talents:     Phase4Talents,
-			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_4"),
-			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "phase_4"),
-			Buffs:       core.FullBuffsPhase4,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassPriest,
 			Level:      60,
 			Phase:      5,
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
 
-			Talents: Phase4Talents,
-			GearSet: core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_5_t1"),
-			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/shadow_priest/gear_sets", "phase_5_t2"),
-			},
+			Talents:     Phase4Talents,
+			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "phase_5"),
 			Buffs:       core.FullBuffsPhase5,
 			Consumes:    Phase4Consumes,

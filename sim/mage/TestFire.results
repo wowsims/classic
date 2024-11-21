@@ -1,208 +1,12 @@
 character_stats_results: {
- key: "TestFire-Phase1-Lvl25-CharacterStats-Default"
- value: {
-  final_stats: 58.3
-  final_stats: 36.3
-  final_stats: 103.4
-  final_stats: 145.2
-  final_stats: 117.7
-  final_stats: 120
-  final_stats: 0
-  final_stats: 54
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 17
-  final_stats: 5
-  final_stats: 22.097
-  final_stats: 0
-  final_stats: 10
-  final_stats: 199.3
-  final_stats: 0
-  final_stats: 5.2
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 2379
-  final_stats: 0
-  final_stats: 0
-  final_stats: 357.6
-  final_stats: 80
-  final_stats: 0
-  final_stats: 5
-  final_stats: 0
-  final_stats: 3.2
-  final_stats: 5
-  final_stats: 0
-  final_stats: 1169
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 15
-  final_stats: 162
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
- }
-}
-character_stats_results: {
- key: "TestFire-Phase2-Lvl40-CharacterStats-Default"
- value: {
-  final_stats: 82.5
-  final_stats: 36.3
-  final_stats: 169.4
-  final_stats: 224.4
-  final_stats: 189.2
-  final_stats: 284
-  final_stats: 0
-  final_stats: 26
-  final_stats: 15
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 36.75
-  final_stats: 2
-  final_stats: 29.39344
-  final_stats: 0
-  final_stats: 0
-  final_stats: 308.5
-  final_stats: 2
-  final_stats: 7.2
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 3939
-  final_stats: 0
-  final_stats: 0
-  final_stats: 487.6
-  final_stats: 220
-  final_stats: 0
-  final_stats: 5
-  final_stats: 0
-  final_stats: 3.2
-  final_stats: 5
-  final_stats: 0
-  final_stats: 2144
-  final_stats: 18
-  final_stats: 40
-  final_stats: 30
-  final_stats: 52
-  final_stats: 43
-  final_stats: 423
-  final_stats: 0
-  final_stats: 14
-  final_stats: 0
- }
-}
-character_stats_results: {
- key: "TestFire-Phase3-Lvl50-CharacterStats-Default"
- value: {
-  final_stats: 119.988
-  final_stats: 135.432
-  final_stats: 275.616
-  final_stats: 318.384
-  final_stats: 234.036
-  final_stats: 238
-  final_stats: 0
-  final_stats: 145
-  final_stats: 22
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 33
-  final_stats: 0
-  final_stats: 41.9179
-  final_stats: 0
-  final_stats: 0
-  final_stats: 441.988
-  final_stats: 0
-  final_stats: 18.2
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 5543.76
-  final_stats: 0
-  final_stats: 0
-  final_stats: 760.864
-  final_stats: 310
-  final_stats: 0
-  final_stats: 5
-  final_stats: 0
-  final_stats: 3.2
-  final_stats: 5
-  final_stats: 0
-  final_stats: 3531.16
-  final_stats: 20
-  final_stats: 55
-  final_stats: 45
-  final_stats: 45
-  final_stats: 45
-  final_stats: 324
-  final_stats: 35
-  final_stats: 85
-  final_stats: 0
- }
-}
-character_stats_results: {
- key: "TestFire-Phase4-Lvl60-CharacterStats-Default"
- value: {
-  final_stats: 169.4
-  final_stats: 176
-  final_stats: 371.91
-  final_stats: 383.9
-  final_stats: 215.6
-  final_stats: 624
-  final_stats: 0
-  final_stats: 93
-  final_stats: 15
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 41.25
-  final_stats: 3
-  final_stats: 49.64952
-  final_stats: 0
-  final_stats: 0
-  final_stats: 989.4
-  final_stats: 3
-  final_stats: 23.2
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 6691.5
-  final_stats: 0
-  final_stats: 0
-  final_stats: 969
-  final_stats: 740
-  final_stats: 0
-  final_stats: 5
-  final_stats: 0
-  final_stats: 3.2
-  final_stats: 5
-  final_stats: 0
-  final_stats: 5209.1
-  final_stats: 27
-  final_stats: 114
-  final_stats: 60
-  final_stats: 60
-  final_stats: 68
-  final_stats: 384
-  final_stats: 0
-  final_stats: 65
-  final_stats: 0
- }
-}
-character_stats_results: {
  key: "TestFire-Phase5-Lvl60-CharacterStats-Default"
  value: {
-  final_stats: 194.81
-  final_stats: 202.4
-  final_stats: 548.44075
-  final_stats: 499.675
-  final_stats: 313.72
-  final_stats: 738
+  final_stats: 189.75
+  final_stats: 197.34
+  final_stats: 292.40475
+  final_stats: 244.145
+  final_stats: 242.88
+  final_stats: 150
   final_stats: 0
   final_stats: 40
   final_stats: 15
@@ -210,20 +14,20 @@ character_stats_results: {
   final_stats: 0
   final_stats: 0
   final_stats: 41.25
-  final_stats: 3
-  final_stats: 42.59454
+  final_stats: 0
+  final_stats: 25.30164
   final_stats: 0
   final_stats: 0
-  final_stats: 1014.81
-  final_stats: 3
-  final_stats: 28.2
+  final_stats: 1009.75
+  final_stats: 0
+  final_stats: 16.2
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 8428.125
+  final_stats: 4595.175
   final_stats: 0
   final_stats: 0
-  final_stats: 1137.8
+  final_stats: 394.68
   final_stats: 740
   final_stats: 0
   final_stats: 5
@@ -231,212 +35,16 @@ character_stats_results: {
   final_stats: 3.2
   final_stats: 5
   final_stats: 0
-  final_stats: 6974.4075
+  final_stats: 4414.0475
   final_stats: 27
-  final_stats: 77
-  final_stats: 90
-  final_stats: 100
+  final_stats: 60
+  final_stats: 60
+  final_stats: 60
   final_stats: 60
   final_stats: 384
-  final_stats: 18
-  final_stats: 65
   final_stats: 0
- }
-}
-stat_weights_results: {
- key: "TestFire-Phase1-Lvl25-StatWeights-Default"
- value: {
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0.29747
-  weights: 0
-  weights: 0.33263
-  weights: 0
-  weights: 0.33263
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0.74414
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
- }
-}
-stat_weights_results: {
- key: "TestFire-Phase2-Lvl40-StatWeights-Default"
- value: {
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 1.02117
-  weights: 0
-  weights: 0.58156
-  weights: 0
-  weights: 0.58156
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 5.69593
-  weights: 5.88578
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
- }
-}
-stat_weights_results: {
- key: "TestFire-Phase3-Lvl50-StatWeights-Default"
- value: {
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0.61519
-  weights: 0
-  weights: 1.33056
-  weights: 0
-  weights: 1.33056
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 11.41832
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
- }
-}
-stat_weights_results: {
- key: "TestFire-Phase4-Lvl60-StatWeights-Default"
- value: {
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 3.88065
-  weights: 0
-  weights: 1.98343
-  weights: 0
-  weights: 1.98343
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 20.73157
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
-  weights: 0
+  final_stats: 35
+  final_stats: 0
  }
 }
 stat_weights_results: {
@@ -445,20 +53,18 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 1.57419
+  weights: 0.69843
   weights: 0
-  weights: 2.39184
+  weights: 0.53538
   weights: 0
-  weights: 2.39184
-  weights: 0
-  weights: 0
+  weights: 0.53538
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 32.94408
   weights: 0
-  weights: 0
+  weights: 6.24672
+  weights: 5.42721
   weights: 0
   weights: 0
   weights: 0
@@ -486,509 +92,105 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Average-Default"
- value: {
-  dps: 114.92709
-  tps: 83.7163
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-LongMultiTarget"
- value: {
-  dps: 392.14506
-  tps: 340.10503
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-LongSingleTarget"
- value: {
-  dps: 129.2112
-  tps: 93.72801
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-ShortSingleTarget"
- value: {
-  dps: 183.18916
-  tps: 135.96619
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-LongMultiTarget"
- value: {
-  dps: 236.59523
-  tps: 231.22015
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-LongSingleTarget"
- value: {
-  dps: 82.61914
-  tps: 61.11357
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Gnome-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-ShortSingleTarget"
- value: {
-  dps: 140.54578
-  tps: 106.11583
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-LongMultiTarget"
- value: {
-  dps: 318.0572
-  tps: 288.24353
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-LongSingleTarget"
- value: {
-  dps: 109.45071
-  tps: 79.89567
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-FullBuffs-P1-Consumes-ShortSingleTarget"
- value: {
-  dps: 182.53787
-  tps: 135.51029
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-LongMultiTarget"
- value: {
-  dps: 215.19477
-  tps: 216.23983
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-LongSingleTarget"
- value: {
-  dps: 77.19564
-  tps: 57.31712
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-Settings-Troll-p1_fire-Fire-p1_fire-NoBuffs-P1-Consumes-ShortSingleTarget"
- value: {
-  dps: 140.98143
-  tps: 106.42078
- }
-}
-dps_results: {
- key: "TestFire-Phase1-Lvl25-SwitchInFrontOfTarget-Default"
- value: {
-  dps: 113.98668
-  tps: 83.07085
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Average-Default"
- value: {
-  dps: 419.88943
-  tps: 305.64481
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-LongMultiTarget"
- value: {
-  dps: 1410.55942
-  tps: 1214.36615
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-LongSingleTarget"
- value: {
-  dps: 414.82314
-  tps: 302.4846
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-ShortSingleTarget"
- value: {
-  dps: 599.36772
-  tps: 439.09457
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-LongMultiTarget"
- value: {
-  dps: 981.91023
-  tps: 828.43367
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-LongSingleTarget"
- value: {
-  dps: 241.32003
-  tps: 176.17417
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Gnome-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-ShortSingleTarget"
- value: {
-  dps: 466.32767
-  tps: 341.65625
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-LongMultiTarget"
- value: {
-  dps: 1353.05077
-  tps: 1168.9636
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-LongSingleTarget"
- value: {
-  dps: 390.1976
-  tps: 284.79266
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-FullBuffs-P2-Consumes-ShortSingleTarget"
- value: {
-  dps: 598.36184
-  tps: 438.28984
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-LongMultiTarget"
- value: {
-  dps: 953.0247
-  tps: 807.29803
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-LongSingleTarget"
- value: {
-  dps: 237.27424
-  tps: 173.31361
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-Settings-Troll-p2_fire-Fire-p2_fire-NoBuffs-P2-Consumes-ShortSingleTarget"
- value: {
-  dps: 447.55973
-  tps: 328.33961
- }
-}
-dps_results: {
- key: "TestFire-Phase2-Lvl40-SwitchInFrontOfTarget-Default"
- value: {
-  dps: 413.1911
-  tps: 300.89637
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Average-Default"
- value: {
-  dps: 1214.37266
-  tps: 868.44914
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-LongMultiTarget"
- value: {
-  dps: 2557.1203
-  tps: 2155.68628
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-LongSingleTarget"
- value: {
-  dps: 1215.96066
-  tps: 869.40375
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-ShortSingleTarget"
- value: {
-  dps: 1252.3521
-  tps: 894.31319
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-LongMultiTarget"
- value: {
-  dps: 1071.4812
-  tps: 1025.34203
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-LongSingleTarget"
- value: {
-  dps: 554.16681
-  tps: 402.05124
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Gnome-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-ShortSingleTarget"
- value: {
-  dps: 742.09537
-  tps: 544.80982
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-LongMultiTarget"
- value: {
-  dps: 2543.95539
-  tps: 2151.91587
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-LongSingleTarget"
- value: {
-  dps: 1210.82141
-  tps: 866.10437
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-FullBuffs-P3-Consumes-ShortSingleTarget"
- value: {
-  dps: 1276.96716
-  tps: 916.9725
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-LongMultiTarget"
- value: {
-  dps: 1050.7044
-  tps: 1009.82508
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-LongSingleTarget"
- value: {
-  dps: 534.57543
-  tps: 388.26579
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-Settings-Troll-p3_fire-Fire-p3_fire-NoBuffs-P3-Consumes-ShortSingleTarget"
- value: {
-  dps: 741.03752
-  tps: 543.98952
- }
-}
-dps_results: {
- key: "TestFire-Phase3-Lvl50-SwitchInFrontOfTarget-Default"
- value: {
-  dps: 1219.44362
-  tps: 872.20824
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-AllItems-Sorcerer'sRegalia"
- value: {
-  dps: 840.48361
-  tps: 803.82597
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Average-Default"
- value: {
-  dps: 3001.06827
-  tps: 1972.1994
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-LongMultiTarget"
- value: {
-  dps: 3049.44649
-  tps: 2551.33966
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-LongSingleTarget"
- value: {
-  dps: 3049.44649
-  tps: 2000.13505
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-ShortSingleTarget"
- value: {
-  dps: 3476.20477
-  tps: 2242.25903
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-LongMultiTarget"
- value: {
-  dps: 833.70959
-  tps: 883.54911
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-LongSingleTarget"
- value: {
-  dps: 833.70959
-  tps: 543.33188
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Gnome-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-ShortSingleTarget"
- value: {
-  dps: 1645.24917
-  tps: 1053.60661
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-LongMultiTarget"
- value: {
-  dps: 3010.72438
-  tps: 2523.30419
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-LongSingleTarget"
- value: {
-  dps: 3010.72438
-  tps: 1978.56779
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-FullBuffs-P4-Consumes-ShortSingleTarget"
- value: {
-  dps: 3594.48987
-  tps: 2326.14064
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-LongMultiTarget"
- value: {
-  dps: 766.805
-  tps: 832.60461
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-LongSingleTarget"
- value: {
-  dps: 766.805
-  tps: 497.28403
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-Settings-Troll-p4_fire-Fire-p4_fire-NoBuffs-P4-Consumes-ShortSingleTarget"
- value: {
-  dps: 1674.73169
-  tps: 1078.63593
- }
-}
-dps_results: {
- key: "TestFire-Phase4-Lvl60-SwitchInFrontOfTarget-Default"
- value: {
-  dps: 3020.37964
-  tps: 1985.52329
- }
-}
-dps_results: {
- key: "TestFire-Phase5-Lvl60-AllItems-Sorcerer'sRegalia"
- value: {
-  dps: 1206.2969
-  tps: 882.52242
+  weights: 0
+  weights: 0
  }
 }
 dps_results: {
  key: "TestFire-Phase5-Lvl60-Average-Default"
  value: {
-  dps: 3702.73784
-  tps: 2134.09335
+  dps: 447.09766
+  tps: 336.89339
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-LongMultiTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-FullBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 16407.93282
-  tps: 9714.39566
+  dps: 469.38612
+  tps: 817.07023
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-LongSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-FullBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 3699.90474
-  tps: 2137.41771
+  dps: 469.38612
+  tps: 352.99528
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-ShortSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-FullBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 4448.55448
-  tps: 2565.57358
+  dps: 534.93262
+  tps: 406.79961
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-LongMultiTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-NoBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 5163.17202
-  tps: 3165.74673
+  dps: 153.53092
+  tps: 386.88161
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-LongSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-NoBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 1008.57945
-  tps: 595.03911
+  dps: 153.53092
+  tps: 121.44214
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Gnome-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-ShortSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Gnome-blank-Fire-p5_fire-NoBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 1966.15283
-  tps: 1150
+  dps: 271.60025
+  tps: 210.66001
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-LongMultiTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-FullBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 15853.19775
-  tps: 9391.6087
+  dps: 449.68048
+  tps: 795.79882
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-LongSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-FullBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 3667.32848
-  tps: 2119.907
+  dps: 449.68048
+  tps: 338.82746
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-FullBuffs-P5-Consumes-ShortSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-FullBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 4444.63571
-  tps: 2569.78667
+  dps: 531.34039
+  tps: 404.22955
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-LongMultiTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-NoBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 5220.12261
-  tps: 3188.56792
+  dps: 149.51397
+  tps: 383.70706
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-LongSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-NoBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 983.97355
-  tps: 579.78841
+  dps: 149.51397
+  tps: 118.61214
  }
 }
 dps_results: {
- key: "TestFire-Phase5-Lvl60-Settings-Troll-p5_fire-Fire-p5_fire-NoBuffs-P5-Consumes-ShortSingleTarget"
+ key: "TestFire-Phase5-Lvl60-Settings-Troll-blank-Fire-p5_fire-NoBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 1970.74534
-  tps: 1152.89052
+  dps: 259.6432
+  tps: 202.15974
  }
 }
 dps_results: {
  key: "TestFire-Phase5-Lvl60-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 3748.08077
-  tps: 2161.39735
+  dps: 449.68048
+  tps: 338.82746
  }
 }

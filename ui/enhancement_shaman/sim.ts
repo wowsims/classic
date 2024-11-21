@@ -145,11 +145,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 			...Presets.APLPresets[Phase.Phase1],
 		],
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 	},
 
@@ -176,10 +172,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 		},

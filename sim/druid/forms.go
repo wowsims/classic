@@ -1,7 +1,6 @@
 package druid
 
 import (
-	"github.com/wowsims/classic/sim/common/sod"
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
@@ -217,7 +216,7 @@ func (druid *Druid) registerCatFormSpell() {
 	furorProcChance := 0.2 * float64(druid.Talents.Furor)
 
 	hasWolfheadBonus := false
-	if head := druid.Equipment.Head(); head != nil && (head.ID == WolfsheadHelm || head.Enchant.EffectID == sod.WolfsheadTrophy) {
+	if head := druid.Equipment.Head(); head != nil && (head.ID == WolfsheadHelm) {
 		hasWolfheadBonus = true
 	}
 

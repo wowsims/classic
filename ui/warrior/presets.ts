@@ -34,20 +34,7 @@ import Phase4APLFury from './apls/phase_4_fury.apl.json';
 import Phase4APLGlad from './apls/phase_4_glad.apl.json';
 import Phase5APL2H from './apls/phase_5_2h.apl.json';
 import Phase5APLDW from './apls/phase_5_dw.apl.json';
-import Phase1Gear from './gear_sets/phase_1.gear.json';
-import Phase1DWGear from './gear_sets/phase_1_dw.gear.json';
-import Phase22HGear from './gear_sets/phase_2_2h.gear.json';
-import Phase2DWGear from './gear_sets/phase_2_dw.gear.json';
-import Phase32HGear from './gear_sets/phase_3_2h.gear.json';
-import Phase3DWGear from './gear_sets/phase_3_dw.gear.json';
-import Phase3GladGear from './gear_sets/phase_3_glad.gear.json';
-import Phase42HGear from './gear_sets/phase_4_2h.gear.json';
-import Phase4DWGear from './gear_sets/phase_4_dw.gear.json';
-import Phase4GladGear from './gear_sets/phase_4_glad.gear.json';
-import Phase52HCoreForgedGear from './gear_sets/phase_5_2h_t1.gear.json';
-import Phase52HDraconicGear from './gear_sets/phase_5_2h_t2.gear.json';
-import Phase5DWCoreForgedGear from './gear_sets/phase_5_dw_t1.gear.json';
-import Phase5DWDraconicGear from './gear_sets/phase_5_dw_t2.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -57,47 +44,11 @@ import Phase5DWDraconicGear from './gear_sets/phase_5_dw_t2.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearArmsPhase1 = PresetUtils.makePresetGear('P1 Arms 2H', Phase1Gear, { customCondition: player => player.getLevel() === 25 });
-export const GearArmsDWPhase1 = PresetUtils.makePresetGear('P1 Arms DW', Phase1DWGear, { customCondition: player => player.getLevel() === 25 });
-export const GearFuryPhase1 = PresetUtils.makePresetGear('P1 DW Fury', Phase1Gear, { customCondition: player => player.getLevel() === 25 });
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearArmsPhase2 = PresetUtils.makePresetGear('P2 2H', Phase22HGear, { customCondition: player => player.getLevel() === 40 });
-export const GearFuryPhase2 = PresetUtils.makePresetGear('P2 DW', Phase2DWGear, { customCondition: player => player.getLevel() === 40 });
+export const GearPresets = {};
 
-export const GearArmsPhase3 = PresetUtils.makePresetGear('P3 2H', Phase32HGear, { customCondition: player => player.getLevel() === 50 });
-export const GearFuryPhase3 = PresetUtils.makePresetGear('P3 DW', Phase3DWGear, { customCondition: player => player.getLevel() === 50 });
-export const GearGladPhase3 = PresetUtils.makePresetGear('P3 Glad', Phase3GladGear, { customCondition: player => player.getLevel() === 50 });
-
-export const Gear2HPhase4 = PresetUtils.makePresetGear('P4 2H', Phase42HGear, { customCondition: player => player.getLevel() === 60 });
-export const GearDWPhase4 = PresetUtils.makePresetGear('P4 DW', Phase4DWGear, { customCondition: player => player.getLevel() === 60 });
-export const GearGladPhase4 = PresetUtils.makePresetGear('P4 Glad', Phase4GladGear, { customCondition: player => player.getLevel() === 60 });
-
-export const Gear2HCoreForgedPhase5 = PresetUtils.makePresetGear('P5 2H Core Forged', Phase52HCoreForgedGear, {
-	customCondition: player => player.getLevel() === 60,
-});
-export const GearDWCoreForgedPhase5 = PresetUtils.makePresetGear('P5 DW Core Forged', Phase5DWCoreForgedGear, {
-	customCondition: player => player.getLevel() === 60,
-});
-export const Gear2HDraconicPhase5 = PresetUtils.makePresetGear('P5 2H Draconic', Phase52HDraconicGear, {
-	customCondition: player => player.getLevel() === 60,
-});
-export const GearDWDraconicPhase5 = PresetUtils.makePresetGear('P5 DW Draconic', Phase5DWDraconicGear, {
-	customCondition: player => player.getLevel() === 60,
-});
-
-export const GearPresets = {
-	[Phase.Phase1]: [GearArmsPhase1, GearFuryPhase1, GearArmsDWPhase1],
-	[Phase.Phase2]: [GearArmsPhase2, GearFuryPhase2],
-	[Phase.Phase3]: [GearArmsPhase3, GearFuryPhase3, GearGladPhase3],
-	[Phase.Phase4]: [Gear2HPhase4, GearDWPhase4, GearGladPhase4],
-	[Phase.Phase5]: [Gear2HCoreForgedPhase5, GearDWCoreForgedPhase5, Gear2HDraconicPhase5, GearDWDraconicPhase5],
-};
-
-export const DefaultGear2H = GearPresets[Phase.Phase5][0];
-export const DefaultGearDW = GearPresets[Phase.Phase5][1];
-// export const DefaultGearGlad = GearPresets[Phase.Phase4][2];
-
-export const DefaultGear = DefaultGear2H;
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -206,8 +157,8 @@ export const DefaultTalentsDW = TalentPresets[Phase.Phase5][1];
 
 export const DefaultTalents = DefaultTalents2H;
 
-export const PresetBuild2H = PresetUtils.makePresetBuild('Two-Handed', { gear: DefaultGear2H, talents: DefaultTalents2H, rotation: DefaultAPLs[60][0] });
-export const PresetBuildDW = PresetUtils.makePresetBuild('Dual-Wield', { gear: DefaultGearDW, talents: DefaultTalentsDW, rotation: DefaultAPLs[60][1] });
+export const PresetBuild2H = PresetUtils.makePresetBuild('Two-Handed', { gear: DefaultGear, talents: DefaultTalents2H, rotation: DefaultAPLs[60][0] });
+export const PresetBuildDW = PresetUtils.makePresetBuild('Dual-Wield', { gear: DefaultGear, talents: DefaultTalentsDW, rotation: DefaultAPLs[60][1] });
 // export const PresetBuildGlad = PresetUtils.makePresetBuild('Glad', { gear: DefaultGearGlad, talents: DefaultTalentsGlad, rotation: DefaultAPLs[60][3] });
 
 ///////////////////////////////////////////////////////////////////////////

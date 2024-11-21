@@ -40,50 +40,17 @@ import NFRuinAPLP3 from './apls/p3/nf.ruin.apl.json';
 import AffAPLP4 from './apls/p4/affliction.apl.json';
 import DestroAPLP4 from './apls/p4/destruction.apl.json';
 // gear
-import DestructionGear from './gear_sets/p1/destruction.gear.json';
-import FireImpGear from './gear_sets/p2/fire.imp.gear.json';
-import FireSuccubusGear from './gear_sets/p2/fire.succubus.gear.json';
-import ShadowGear from './gear_sets/p2/shadow.gear.json';
-import BackdraftGearP3 from './gear_sets/p3/backdraft.gear.json';
-import NFRuinGearP3 from './gear_sets/p3/nf.ruin.gear.json';
-import AffGearP4 from './gear_sets/p4/affliction.gear.json';
-import DestroGearP4 from './gear_sets/p4/destruction.gear.json';
-import AffGearP5 from './gear_sets/p5/affliction.gear.json';
-import DemoGearP5 from './gear_sets/p5/demonology.gear.json';
-import DestroGearP5 from './gear_sets/p5/destruction.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearDestructionPhase1 = PresetUtils.makePresetGear('Destruction', DestructionGear, { customCondition: player => player.getLevel() === 25 });
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const FireImpGearPhase2 = PresetUtils.makePresetGear('P2 Fire Imp', FireImpGear, { customCondition: player => player.getLevel() === 40 });
-export const FireSuccubusGearPhase2 = PresetUtils.makePresetGear('P2 Fire Succubus', FireSuccubusGear, { customCondition: player => player.getLevel() === 40 });
-export const ShadowGearPhase2 = PresetUtils.makePresetGear('P2 Shadow', ShadowGear, { customCondition: player => player.getLevel() === 40 });
+export const GearPresets = {};
 
-export const BackdraftGearPhase3 = PresetUtils.makePresetGear('P3 Backdraft', BackdraftGearP3, { customCondition: player => player.getLevel() === 50 });
-export const NFRuinGearPhase3 = PresetUtils.makePresetGear('P3 NF/Ruin', NFRuinGearP3, { customCondition: player => player.getLevel() === 50 });
-
-export const AffGearPhase4 = PresetUtils.makePresetGear('P4 Aff', AffGearP4, { customCondition: player => player.getLevel() === 60 });
-export const DestroGearPhase4 = PresetUtils.makePresetGear('P4 Destro', DestroGearP4, { customCondition: player => player.getLevel() === 60 });
-
-export const AffGearPhase5 = PresetUtils.makePresetGear('P5 Aff', AffGearP5, { customCondition: player => player.getLevel() === 60 });
-export const DemoGearPhase5 = PresetUtils.makePresetGear('P5 Demo', AffGearP5, { customCondition: player => player.getLevel() === 60 });
-export const DestroGearPhase5 = PresetUtils.makePresetGear('P5 Destro', DestroGearP5, { customCondition: player => player.getLevel() === 60 });
-
-export const GearPresets = {
-	[Phase.Phase1]: [GearDestructionPhase1],
-	[Phase.Phase2]: [FireImpGearPhase2, FireSuccubusGearPhase2, ShadowGearPhase2],
-	[Phase.Phase3]: [NFRuinGearPhase3, BackdraftGearPhase3],
-	[Phase.Phase4]: [AffGearPhase4, DestroGearPhase4],
-	[Phase.Phase5]: [],
-};
-
-export const DefaultGearAff = AffGearPhase4;
-export const DefaultGearDestro = DestroGearPhase4;
-
-export const DefaultGear = DefaultGearDestro;
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -220,9 +187,9 @@ export const DefaultTalentsDestro = TalentPresets[Phase.Phase4][1];
 
 export const DefaultTalents = DefaultTalentsDestro;
 
-export const PresetBuildAff = PresetUtils.makePresetBuild('Aff', { gear: DefaultGearAff, talents: DefaultTalentsAff, rotation: DefaultAPLs[60][0] });
+export const PresetBuildAff = PresetUtils.makePresetBuild('Aff', { gear: DefaultGear, talents: DefaultTalentsAff, rotation: DefaultAPLs[60][0] });
 export const PresetBuildDestro = PresetUtils.makePresetBuild('Destro', {
-	gear: DefaultGearDestro,
+	gear: DefaultGear,
 	talents: DefaultTalentsDestro,
 	rotation: DefaultAPLs[60][2],
 });

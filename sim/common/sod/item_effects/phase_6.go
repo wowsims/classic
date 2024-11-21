@@ -77,7 +77,7 @@ func init() {
 	core.NewItemEffect(ObsidianChampion, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		vanilla.StrengthOfTheChampionAura(character)
-		vanilla.EnrageAura446327(character)
+		//vanilla.EnrageAura446327(character)
 		ObsidianEdgedAura(ObsidianChampion, agent)
 	})
 

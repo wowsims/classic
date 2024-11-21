@@ -193,7 +193,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 		// Preset talents that the user can quickly select.
 		talents: [...Presets.TalentPresets[Phase.Phase5], ...Presets.TalentPresets[Phase.Phase4]],
 		// Preset gear configurations that the user can quickly select.
-		gear: [...Presets.GearPresets[Phase.Phase4], ...Presets.GearPresets[Phase.Phase5]],
+		gear: [Presets.DefaultGear],
 	},
 
 	autoRotation: player => {
@@ -218,7 +218,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecProtectionPaladin, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase5][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {},
 			},

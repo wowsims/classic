@@ -1,47 +1,47 @@
 character_stats_results: {
  key: "TestDemonology-Phase2-Lvl40-CharacterStats-Default"
  value: {
-  final_stats: 93.5
-  final_stats: 39.6
-  final_stats: 209.99
-  final_stats: 221.1
-  final_stats: 173.47
-  final_stats: 416.735
+  final_stats: 99
+  final_stats: 60.5
+  final_stats: 297.275
+  final_stats: 165
+  final_stats: 123.31
+  final_stats: 390.655
   final_stats: 0
-  final_stats: 38
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 0
-  final_stats: 36.75
-  final_stats: 2
-  final_stats: 25.49282
-  final_stats: 0
-  final_stats: 0
-  final_stats: 319.5
-  final_stats: 2
-  final_stats: 18.76408
+  final_stats: 10
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 3959.5
+  final_stats: 119
+  final_stats: 28.75
+  final_stats: 5
+  final_stats: 15.023
   final_stats: 0
   final_stats: 0
-  final_stats: 917.2
+  final_stats: 325
+  final_stats: 0
+  final_stats: 9.2229
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 3118
+  final_stats: 0
+  final_stats: 0
+  final_stats: 946
   final_stats: 220
   final_stats: 0
   final_stats: 5
   final_stats: 0
-  final_stats: 4.76408
+  final_stats: 6.2229
   final_stats: 5
   final_stats: 0
-  final_stats: 2553.9
-  final_stats: 18
-  final_stats: 40
+  final_stats: 3426.75
+  final_stats: 13
+  final_stats: 46
   final_stats: 30
-  final_stats: 52
-  final_stats: 40
-  final_stats: 423
+  final_stats: 30
+  final_stats: 30
+  final_stats: 263
   final_stats: 0
   final_stats: 14
   final_stats: 0
@@ -53,20 +53,18 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.07502
+  weights: 0.00163
   weights: 0
-  weights: 0.5585
-  weights: 0
-  weights: 0
+  weights: 0.06564
   weights: 0
   weights: 0
   weights: 0
   weights: 0
   weights: 0
-  weights: 3.93801
-  weights: 1.9172
   weights: 0
   weights: 0
+  weights: 0
+  weights: 0.1072
   weights: 0
   weights: 0
   weights: 0
@@ -94,68 +92,63 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
- }
-}
-dps_results: {
- key: "TestDemonology-Phase2-Lvl40-AllItems-DeathmistRaiment"
- value: {
-  dps: 59.3953
-  tps: 62.48955
+  weights: 0
+  weights: 0
  }
 }
 dps_results: {
  key: "TestDemonology-Phase2-Lvl40-Average-Default"
  value: {
-  dps: 484.27493
-  tps: 504.23087
+  dps: 58.07694
+  tps: 61.02938
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-FullBuffs-P2-Consumes-LongMultiTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-FullBuffs-P2-Consumes-LongMultiTarget"
  value: {
-  dps: 483.45543
-  tps: 843.6292
+  dps: 57.78387
+  tps: 70.56708
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-FullBuffs-P2-Consumes-LongSingleTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-FullBuffs-P2-Consumes-LongSingleTarget"
  value: {
-  dps: 483.45543
-  tps: 503.6318
+  dps: 57.78387
+  tps: 60.69183
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-FullBuffs-P2-Consumes-ShortSingleTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-FullBuffs-P2-Consumes-ShortSingleTarget"
  value: {
-  dps: 517.82057
-  tps: 538.5217
+  dps: 61.01446
+  tps: 74.47527
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-NoBuffs-P2-Consumes-LongMultiTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-NoBuffs-P2-Consumes-LongMultiTarget"
  value: {
-  dps: 321.12088
-  tps: 715.71815
+  dps: 41.79227
+  tps: 43.38676
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-NoBuffs-P2-Consumes-LongSingleTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-NoBuffs-P2-Consumes-LongSingleTarget"
  value: {
-  dps: 321.12088
-  tps: 342.70951
+  dps: 41.79227
+  tps: 43.38676
  }
 }
 dps_results: {
- key: "TestDemonology-Phase2-Lvl40-Settings-Orc-fire.succubus-Demonology Warlock-demonology-NoBuffs-P2-Consumes-ShortSingleTarget"
+ key: "TestDemonology-Phase2-Lvl40-Settings-Orc-placeholder-Demonology Warlock-demonology-NoBuffs-P2-Consumes-ShortSingleTarget"
  value: {
-  dps: 347.91021
-  tps: 358.72849
+  dps: 43.72992
+  tps: 52.0126
  }
 }
 dps_results: {
  key: "TestDemonology-Phase2-Lvl40-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 483.45543
-  tps: 503.6318
+  dps: 57.78387
+  tps: 60.69183
  }
 }

@@ -16,51 +16,13 @@ func TestDualWieldWarrior(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassWarrior,
-			Level:      40,
-			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceHuman},
-
-			Talents:     P2FuryTalents,
-			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "phase_2_dw"),
-			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_2_fury"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Fury", SpecOptions: PlayerOptionsFury},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassWarrior,
-			Phase:      4,
-			Level:      60,
-			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceHuman},
-
-			Talents:     P4FuryTalents,
-			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "phase_4_dw"),
-			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_4_fury"),
-			Buffs:       core.FullBuffsPhase4,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Fury", SpecOptions: PlayerOptionsFury},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassWarrior,
 			Phase:      5,
 			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 
-			Talents: P4FuryTalents,
-			GearSet: core.GetGearSet("../../../ui/warrior/gear_sets", "phase_5_dw_t1"),
-			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/warrior/gear_sets", "phase_5_dw_t2"),
-			},
+			Talents:     P4FuryTalents,
+			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_5_dw"),
 			Buffs:       core.FullBuffsPhase5,
 			Consumes:    Phase4Consumes,
@@ -77,33 +39,13 @@ func TestTwoHandedWarrior(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassWarrior,
-			Level:      50,
-			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceHuman},
-
-			Talents:     P3ArmsTalents,
-			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "phase_3_2h"),
-			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_3_arms"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Arms", SpecOptions: PlayerOptionsArms},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class:      proto.Class_ClassWarrior,
 			Phase:      5,
 			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 
-			Talents: P4FuryTalents,
-			GearSet: core.GetGearSet("../../../ui/warrior/gear_sets", "phase_5_2h_t1"),
-			OtherGearSets: []core.GearSetCombo{
-				core.GetGearSet("../../../ui/warrior/gear_sets", "phase_5_2h_t2"),
-			},
+			Talents:     P4FuryTalents,
+			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_5_2h"),
 			Buffs:       core.FullBuffsPhase5,
 			Consumes:    Phase4Consumes,

@@ -156,11 +156,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankRogue, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		builds: [Presets.PresetBuildEncounterDefault, Presets.PresetBuildEncounterVael],
 	},
@@ -187,10 +183,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankRogue, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 		},

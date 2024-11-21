@@ -2,35 +2,32 @@ package shaman
 
 import (
 	"slices"
-	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
-	"github.com/wowsims/classic/sim/core/stats"
 )
 
 const (
 	// Keep these ordered by ID
-	TotemOfRage               = 22395
-	TotemOfTheStorm           = 23199
-	TotemOfSustaining         = 23200
-	CarvedDriftwoodIcon       = 209575
-	TotemOfInvigoratingFlame  = 215436
-	TotemOfTormentedAncestry  = 220607
-	TerrestrisTank            = 224279
-	TotemOfThunder            = 228176
-	TotemOfRagingFire         = 228177
-	TotemOfEarthenVitality    = 228178
-	NaturalAlignmentCrystal   = 230273
-	WushoolaysCharmOfSpirits  = 231281
-	TerrestrisEle             = 231890
-	TotemOfRelentlessThunder  = 232392
-	TotemOfTheElements        = 232409
-	TotemOfAstralFlow         = 232416
-	TotemOfConductiveCurrents = 232419
-	TotemOfThunderousStrikes  = 234478
-	TotemOfFlowingMagma       = 234479
-	TotemOfPyroclasticThunder = 234480
+	TotemOfRage       = 22395
+	TotemOfTheStorm   = 23199
+	TotemOfSustaining = 23200
+	// CarvedDriftwoodIcon       = 209575
+	// TotemOfInvigoratingFlame  = 215436
+	// TotemOfTormentedAncestry  = 220607
+	// TerrestrisTank            = 224279
+	// TotemOfThunder            = 228176
+	// TotemOfRagingFire         = 228177
+	// TotemOfEarthenVitality    = 228178
+	// NaturalAlignmentCrystal   = 230273
+	// WushoolaysCharmOfSpirits  = 231281
+	// TerrestrisEle             = 231890
+	// TotemOfRelentlessThunder  = 232392
+	// TotemOfTheElements        = 232409
+	// TotemOfAstralFlow         = 232416
+	// TotemOfConductiveCurrents = 232419
+	// TotemOfThunderousStrikes  = 234478
+	// TotemOfFlowingMagma       = 234479
+	// TotemOfPyroclasticThunder = 234480
 )
 
 func init() {
@@ -38,7 +35,7 @@ func init() {
 
 	// Keep these ordered by name
 
-	core.NewItemEffect(CarvedDriftwoodIcon, func(agent core.Agent) {
+	/* core.NewItemEffect(CarvedDriftwoodIcon, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		character.AddStat(stats.MP5, 2)
 	})
@@ -450,7 +447,7 @@ func init() {
 				shaman.ClearcastingAura.MaxStacks += 1
 			},
 		})
-	})
+	}) */
 
 	// https://www.wowhead.com/classic/item=23199/totem-of-the-storm
 	// Equip: Increases damage done by Chain Lightning and Lightning Bolt by up to 33.
@@ -474,7 +471,7 @@ func init() {
 		})
 	})
 
-	core.NewItemEffect(TotemOfInvigoratingFlame, func(agent core.Agent) {
+	/* core.NewItemEffect(TotemOfInvigoratingFlame, func(agent core.Agent) {
 		shaman := agent.(ShamanAgent).GetShaman()
 
 		shaman.OnSpellRegistered(func(spell *core.Spell) {
@@ -540,7 +537,7 @@ func init() {
 				}
 			},
 		})
-	})
+	}) */
 
 	// Totem of Rage
 	// Equip: Increases damage done by Earth Shock, Flame Shock, and Frost Shock by up to 30.
@@ -557,7 +554,7 @@ func init() {
 
 	// https://www.wowhead.com/classic/item=228176/totem-of-thunder
 	// Equip: The cast time of your Lightning Bolt spell is reduced by -0.1 sec.
-	core.NewItemEffect(TotemOfThunder, func(agent core.Agent) {
+	/* core.NewItemEffect(TotemOfThunder, func(agent core.Agent) {
 		shaman := agent.(ShamanAgent).GetShaman()
 		shaman.OnSpellRegistered(func(spell *core.Spell) {
 			if spell.SpellCode == SpellCode_ShamanLightningBolt {
@@ -720,7 +717,7 @@ func init() {
 			Priority: core.CooldownPriorityDefault,
 			Type:     core.CooldownTypeDPS,
 		})
-	})
+	}) */
 
 	core.AddEffectsToTest = true
 }

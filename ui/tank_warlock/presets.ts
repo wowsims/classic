@@ -40,52 +40,17 @@ import Phase2DestroTankAPL from './apls/p2.destro.tank.apl.json';
 import Phase3TankAPL from './apls/p3.destro.tank.apl.json';
 import Phase4DemoTankAPL from './apls/p4_demo_tank.apl.json';
 import Phase4DestroAffTankAPL from './apls/p4_destro_aff_tank.apl.json';
-import AfflictionGearPhase1 from './gear_sets/p1.affi.tank.gear.json';
-import DestructionGearPhase1 from './gear_sets/p1.destro.tank.gear.json';
-import DemonologyGearPhase2 from './gear_sets/p2.demo.tank.gear.json';
-import DestructionGearPhase2 from './gear_sets/p2.destro.tank.gear.json';
-import TankGearPhase3 from './gear_sets/p3.destro.tank.gear.json';
-import DemoTankGearPhase4 from './gear_sets/p4_demo_tank.gear.json';
-import DestroAffTankGearPhase4 from './gear_sets/p4_destro_aff_tank.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearAfflictionTankPhase1 = PresetUtils.makePresetGear('P1 Aff', AfflictionGearPhase1, {
-	customCondition: player => player.getLevel() === 25,
-});
-export const GearDestructionTankPhase1 = PresetUtils.makePresetGear('P1 Destro', DestructionGearPhase1, {
-	customCondition: player => player.getLevel() === 25,
-});
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearDemonologyTankPhase2 = PresetUtils.makePresetGear('P2 Demo', DemonologyGearPhase2, {
-	customCondition: player => player.getLevel() === 40,
-});
-export const GearDestructionTankPhase2 = PresetUtils.makePresetGear('P2 Destro', DestructionGearPhase2, {
-	customCondition: player => player.getLevel() === 40,
-});
+export const GearPresets = {};
 
-export const GearTankPhase3 = PresetUtils.makePresetGear('P3 Destro', TankGearPhase3, { customCondition: player => player.getLevel() === 50 });
-
-export const GearDemoTankPhase4 = PresetUtils.makePresetGear('P4 Demo', DemoTankGearPhase4, { customCondition: player => player.getLevel() === 60 });
-export const GearDestroAffTankPhase4 = PresetUtils.makePresetGear('P4 Destro/Aff', DestroAffTankGearPhase4, {
-	customCondition: player => player.getLevel() === 60,
-});
-
-export const GearPresets = {
-	[Phase.Phase1]: [GearAfflictionTankPhase1, GearDestructionTankPhase1],
-	[Phase.Phase2]: [GearDemonologyTankPhase2, GearDestructionTankPhase2],
-	[Phase.Phase3]: [GearTankPhase3],
-	[Phase.Phase4]: [GearDemoTankPhase4, GearDestroAffTankPhase4],
-	[Phase.Phase5]: [],
-};
-
-export const DefaultGearAff = GearPresets[Phase.Phase4][1];
-export const DefaultGearDemo = GearPresets[Phase.Phase4][0];
-export const DefaultGearDestro = GearPresets[Phase.Phase4][1];
-
-export const DefaultGear = DefaultGearDestro;
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -196,10 +161,10 @@ export const DefaultTalentsDestro = TalentPresets[Phase.Phase4][2];
 
 export const DefaultTalents = DefaultTalentsDestro;
 
-export const PresetBuildAff = PresetUtils.makePresetBuild('Aff', { gear: DefaultGearAff, talents: DefaultTalentsAff, rotation: DefaultAPLs[60][0] });
-export const PresetBuildDemo = PresetUtils.makePresetBuild('Demo', { gear: DefaultGearDemo, talents: DefaultTalentsDemo, rotation: DefaultAPLs[60][1] });
+export const PresetBuildAff = PresetUtils.makePresetBuild('Aff', { gear: DefaultGear, talents: DefaultTalentsAff, rotation: DefaultAPLs[60][0] });
+export const PresetBuildDemo = PresetUtils.makePresetBuild('Demo', { gear: DefaultGear, talents: DefaultTalentsDemo, rotation: DefaultAPLs[60][1] });
 export const PresetBuildDestro = PresetUtils.makePresetBuild('Destro', {
-	gear: DefaultGearDestro,
+	gear: DefaultGear,
 	talents: DefaultTalentsDestro,
 	rotation: DefaultAPLs[60][2],
 });

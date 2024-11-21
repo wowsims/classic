@@ -25,28 +25,17 @@ import {
 import { SavedTalents } from '../core/proto/ui.js';
 import { TankWarrior_Options as TankWarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
 import Phase4APL from './apls/phase_4.apl.json';
-import Phase4DamageGear from './gear_sets/phase_4_damage.gear.json';
-import Phase4TankyGear from './gear_sets/phase_4_tanky.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearTankyPhase4 = PresetUtils.makePresetGear('P4 Tanky', Phase4TankyGear, { customCondition: player => player.getLevel() === 60 });
-export const GearMaxDPSPhase4 = PresetUtils.makePresetGear('P4 Max DPS', Phase4DamageGear, { customCondition: player => player.getLevel() === 60 });
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearPresets = {
-	[Phase.Phase1]: [],
-	[Phase.Phase2]: [],
-	[Phase.Phase3]: [],
-	[Phase.Phase4]: [GearTankyPhase4, GearMaxDPSPhase4],
-	[Phase.Phase5]: [],
-};
+export const GearPresets = {};
 
-export const DefaultGearTanky = GearPresets[Phase.Phase4][0];
-export const DefaultGearDamage = GearPresets[Phase.Phase4][1];
-
-export const DefaultGear = DefaultGearTanky;
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
@@ -94,8 +83,8 @@ export const TalentPresets = {
 
 export const DefaultTalents = TalentPresets[Phase.Phase4][0];
 
-export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGearTanky, talents: TalentsPhase4Prot, rotation: DefaultAPLs[60] });
-export const PresetBuildDamage = PresetUtils.makePresetBuild('Damage', { gear: DefaultGearDamage, talents: TalentsPhase4Fury, rotation: DefaultAPLs[60] });
+export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGear, talents: TalentsPhase4Prot, rotation: DefaultAPLs[60] });
+export const PresetBuildDamage = PresetUtils.makePresetBuild('Damage', { gear: DefaultGear, talents: TalentsPhase4Fury, rotation: DefaultAPLs[60] });
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options Presets

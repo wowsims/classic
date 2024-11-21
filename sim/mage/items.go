@@ -4,18 +4,17 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
 const (
-	FireRuby                     = 20036
-	StaffOfOrder                 = 229909
-	StaffOfInferno               = 229971
-	StaffOfRime                  = 229972
-	MindQuickeningGem            = 230243
-	HazzarahsCharmOfChilledMagic = 231282
-	JewelOfKajaro                = 231324
+	FireRuby = 20036
+	// StaffOfOrder                 = 229909
+	// StaffOfInferno               = 229971
+	// StaffOfRime                  = 229972
+	// MindQuickeningGem            = 230243
+	// HazzarahsCharmOfChilledMagic = 231282
+	// JewelOfKajaro                = 231324
 )
 
 func init() {
@@ -71,7 +70,7 @@ func init() {
 	// https://www.wowhead.com/classic/item=231282/hazzarahs-charm-of-chilled-magic
 	// Use: Increases the critical hit chance of your Frostbolt and Frozen Orb spells by 5%, and increases the critical hit damage of your Frostbolt and Frozen Orb spells by 50% for 20 sec.
 	// (2 Min Cooldown)
-	core.NewItemEffect(HazzarahsCharmOfChilledMagic, func(agent core.Agent) {
+	/* core.NewItemEffect(HazzarahsCharmOfChilledMagic, func(agent core.Agent) {
 		mage := agent.(MageAgent).GetMage()
 
 		duration := time.Second * 20
@@ -268,7 +267,7 @@ func init() {
 				}
 			},
 		})
-	})
+	}) */
 
 	core.AddEffectsToTest = true
 }

@@ -38,17 +38,6 @@ import SaberDPSAPL60 from './apls/Saber_DPS_60.apl.json';
 import SaberIEAApl50 from './apls/Saber_IEA_50.apl.json';
 import SlaughterCutthroatDPSAPL60 from './apls/Slaughter_Cutthroat_60.apl.json';
 import BlankGear from './gear_sets/blank.gear.json';
-import P1CombatGear from './gear_sets/p1_combat.gear.json';
-import P1Daggers from './gear_sets/p1_daggers.gear.json';
-import P2DaggersGear from './gear_sets/p2_daggers.gear.json';
-import P3MutiGear from './gear_sets/p3_muti.gear.json';
-import P3MutiHatGear from './gear_sets/p3_muti_hat.gear.json';
-import P3SaberGear from './gear_sets/p3_saber.gear.json';
-import P4MutiGear from './gear_sets/p4_muti.gear.json';
-import P4SaberGear from './gear_sets/p4_saber.gear.json';
-import P5BackstabGear from './gear_sets/p5_backstab.gear.json';
-import P5MutilateGear from './gear_sets/p5_mutilate.gear.json';
-import P5SaberGear from './gear_sets/p5_saber.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -59,30 +48,10 @@ import P5SaberGear from './gear_sets/p5_saber.gear.json';
 ///////////////////////////////////////////////////////////////////////////
 
 export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
-export const P1GearDaggers = PresetUtils.makePresetGear('P1 Daggers', P1Daggers, { customCondition: player => player.getLevel() === 25 });
-export const P1GearSaber = PresetUtils.makePresetGear('P1 Saber', P1CombatGear, { customCondition: player => player.getLevel() === 25 });
-export const P2GearDaggers = PresetUtils.makePresetGear('P2 Daggers', P2DaggersGear, { customCondition: player => player.getLevel() === 40 });
-export const P3GearMuti = PresetUtils.makePresetGear('P3 Mutilate', P3MutiGear, { customCondition: player => player.getLevel() === 50 });
-export const P3GearMutiHat = PresetUtils.makePresetGear('P3 Mutilate (HaT)', P3MutiHatGear, { customCondition: player => player.getLevel() === 50 });
-export const P3GearSaber = PresetUtils.makePresetGear('P3 Saber', P3SaberGear, { customCondition: player => player.getLevel() === 50 });
-export const P4GearMuti = PresetUtils.makePresetGear('P4 Mutilate', P4MutiGear, { customCondition: player => player.getLevel() === 60 });
-export const P4GearSaber = PresetUtils.makePresetGear('P4 Saber', P4SaberGear, { customCondition: player => player.getLevel() === 60 });
-export const P5GearBackstab = PresetUtils.makePresetGear('P5 Backstab', P5BackstabGear, { customCondition: player => player.getLevel() === 60 });
-export const P5GearMutilate = PresetUtils.makePresetGear('P5 Mutilate', P5MutilateGear, { customCondition: player => player.getLevel() === 60 });
-export const P5GearSaber = PresetUtils.makePresetGear('P5 Saber', P5SaberGear, { customCondition: player => player.getLevel() === 60 });
 
-export const GearPresets = {
-	[Phase.Phase1]: [P1GearDaggers, P1GearSaber],
-	[Phase.Phase2]: [P2GearDaggers],
-	[Phase.Phase3]: [P3GearMuti, P3GearMutiHat, P3GearSaber],
-	[Phase.Phase4]: [P4GearMuti, P4GearSaber],
-	[Phase.Phase5]: [P5GearBackstab, P5GearMutilate, P5GearSaber],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase5][0];
-export const DefaultGearBackstab = GearPresets[Phase.Phase5][0];
-export const DefaultGearMutilate = GearPresets[Phase.Phase5][1];
-export const DefaultGearSaber = GearPresets[Phase.Phase5][2];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets[]
@@ -293,7 +262,7 @@ export const DefaultTalents = DefaultTalentsAssassin;
 //                                Encounters
 ///////////////////////////////////////////////////////////////////////////
 export const PresetBuildBackstab = PresetUtils.makePresetBuild('Backstab', {
-	gear: DefaultGearBackstab,
+	gear: DefaultGear,
 	talents: P5TalentBackstabAssassination,
 	rotation: DefaultAPLBackstab,
 	encounter: PresetUtils.makePresetEncounter(
@@ -303,7 +272,7 @@ export const PresetBuildBackstab = PresetUtils.makePresetBuild('Backstab', {
 });
 
 export const PresetBuildBackstabIEA = PresetUtils.makePresetBuild('Backstab IEA', {
-	gear: DefaultGearBackstab,
+	gear: DefaultGear,
 	talents: P5TalentBackstabAssassinationIEA,
 	rotation: DefaultAPLBackstab,
 	encounter: PresetUtils.makePresetEncounter(
@@ -313,7 +282,7 @@ export const PresetBuildBackstabIEA = PresetUtils.makePresetBuild('Backstab IEA'
 });
 
 export const PresetBuildMutilate = PresetUtils.makePresetBuild('Mutilate', {
-	gear: DefaultGearMutilate,
+	gear: DefaultGear,
 	talents: DefaultTalentsMutilate,
 	rotation: DefaultAPLMutilate,
 	encounter: PresetUtils.makePresetEncounter(
@@ -323,7 +292,7 @@ export const PresetBuildMutilate = PresetUtils.makePresetBuild('Mutilate', {
 });
 
 export const PresetBuildMutilateIEA = PresetUtils.makePresetBuild('Mutilate IEA', {
-	gear: DefaultGearMutilate,
+	gear: DefaultGear,
 	talents: P5TalentMutilateSaberslashCTTCIEA,
 	rotation: ROTATION_PRESET_MUTILATE_IEA_P5,
 	encounter: PresetUtils.makePresetEncounter(
@@ -333,7 +302,7 @@ export const PresetBuildMutilateIEA = PresetUtils.makePresetBuild('Mutilate IEA'
 });
 
 export const PresetBuildSaberSlash = PresetUtils.makePresetBuild('Saber Slash', {
-	gear: DefaultGearSaber,
+	gear: DefaultGear,
 	talents: DefaultTalentsSaber,
 	rotation: DefaultAPLSaber,
 	encounter: PresetUtils.makePresetEncounter(
@@ -343,7 +312,7 @@ export const PresetBuildSaberSlash = PresetUtils.makePresetBuild('Saber Slash', 
 });
 
 export const PresetBuildSaberSlashIEA = PresetUtils.makePresetBuild('Saber Slash IEA', {
-	gear: DefaultGearSaber,
+	gear: DefaultGear,
 	talents: P5TalentMutilateSaberslashCTTCIEA,
 	rotation: ROTATION_PRESET_SABER_IEA_P5,
 	encounter: PresetUtils.makePresetEncounter(

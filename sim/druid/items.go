@@ -2,45 +2,42 @@ package druid
 
 import (
 	"slices"
-	"time"
 
-	"github.com/wowsims/classic/sim/common/sod"
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
 )
 
 // Totem Item IDs
 const (
-	WolfsheadHelm                    = 8345
-	IdolOfFerocity                   = 22397
-	IdolOfTheMoon                    = 23197
-	IdolOfBrutality                  = 23198
-	IdolMindExpandingMushroom        = 209576
-	Catnip                           = 213407
-	IdolOfWrath                      = 216490
-	BloodBarkCrusher                 = 216499
-	IdolOfTheDream                   = 220606
-	RitualistsHammer                 = 221446
-	Glasir                           = 224281
-	Raelar                           = 224282
-	IdolOfExsanguinationCat          = 228181
-	IdolOfTheSwarm                   = 228180
-	IdolOfExsanguinationBear         = 228182
-	BloodGuardDragonhideGrips        = 227180
-	KnightLieutenantsDragonhideGrips = 227183
-	WushoolaysCharmOfNature          = 231280
-	PristineEnchantedSouthSeasKelp   = 231316
-	IdolOfCelestialFocus             = 232390
-	IdolOfFelineFocus                = 232391
-	IdolOfUrsinPower                 = 234468
-	IdolOfFelineFerocity             = 234469
-	IdolOfSiderealWrath              = 234474
+	WolfsheadHelm   = 8345
+	IdolOfFerocity  = 22397
+	IdolOfTheMoon   = 23197
+	IdolOfBrutality = 23198
+	// IdolMindExpandingMushroom        = 209576
+	// Catnip                           = 213407
+	// IdolOfWrath                      = 216490
+	// BloodBarkCrusher                 = 216499
+	// IdolOfTheDream                   = 220606
+	// RitualistsHammer                 = 221446
+	// Glasir                           = 224281
+	// Raelar                           = 224282
+	// IdolOfExsanguinationCat          = 228181
+	// IdolOfTheSwarm                   = 228180
+	// IdolOfExsanguinationBear         = 228182
+	// BloodGuardDragonhideGrips        = 227180
+	// KnightLieutenantsDragonhideGrips = 227183
+	// WushoolaysCharmOfNature          = 231280
+	// PristineEnchantedSouthSeasKelp   = 231316
+	// IdolOfCelestialFocus             = 232390
+	// IdolOfFelineFocus                = 232391
+	// IdolOfUrsinPower                 = 234468
+	// IdolOfFelineFerocity             = 234469
+	// IdolOfSiderealWrath              = 234474
 )
 
 func init() {
 	core.AddEffectsToTest = false
 
-	core.NewItemEffect(BloodBarkCrusher, func(agent core.Agent) {
+	/* core.NewItemEffect(BloodBarkCrusher, func(agent core.Agent) {
 		druid := agent.(DruidAgent).GetDruid()
 		druid.newBloodbarkCleaveItem(BloodBarkCrusher)
 	})
@@ -168,7 +165,7 @@ func init() {
 				}
 			},
 		}))
-	})
+	}) */
 
 	// https://www.wowhead.com/classic/item=22397/idol-of-ferocity
 	// Equip: Reduces the energy cost of Claw and Rake by 3.
@@ -201,7 +198,7 @@ func init() {
 		// Implemented in maul.go and swipe.go
 	})
 
-	core.NewItemEffect(IdolMindExpandingMushroom, func(agent core.Agent) {
+	/* core.NewItemEffect(IdolMindExpandingMushroom, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		character.AddStat(stats.Spirit, 5)
 	})
@@ -441,20 +438,12 @@ func init() {
 			Priority: core.CooldownPriorityBloodlust,
 			Type:     core.CooldownTypeDPS,
 		})
-	})
+	}) */
 
 	core.AddEffectsToTest = true
 }
 
-// https://www.wowhead.com/classic/item=213407/catnip
-func (druid *Druid) registerCatnipCD() {
-	if druid.Consumes.MiscConsumes == nil || !druid.Consumes.MiscConsumes.Catnip {
-		return
-	}
-	sod.RegisterFiftyPercentHasteBuffCD(&druid.Character, core.ActionID{ItemID: Catnip})
-}
-
-func (druid *Druid) newBloodbarkCleaveItem(itemID int32) {
+/* func (druid *Druid) newBloodbarkCleaveItem(itemID int32) {
 	auraActionID := core.ActionID{SpellID: 436482}
 
 	results := make([]*core.SpellResult, min(3, druid.Env.GetNumTargets()))
@@ -550,3 +539,4 @@ func registerDragonHideGripsAura(druid *Druid) {
 		},
 	})
 }
+*/

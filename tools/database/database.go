@@ -32,7 +32,6 @@ type WowDatabase struct {
 	Items          map[int32]*proto.UIItem
 	RandomSuffixes map[int32]*proto.ItemRandomSuffix
 	Enchants       map[EnchantDBKey]*proto.UIEnchant
-	Runes          map[int32]*proto.UIRune
 
 	Zones    map[int32]*proto.UIZone
 	Npcs     map[int32]*proto.UINPC
@@ -44,12 +43,8 @@ type WowDatabase struct {
 	Encounters []*proto.PresetEncounter
 }
 
-var runeOverrideNames = make(map[string]*proto.UIRune, len(RuneOverrides))
-
 func init() {
-	for _, v := range RuneOverrides {
-		runeOverrideNames[v.Name] = v
-	}
+
 }
 
 func NewWowDatabase() *WowDatabase {
@@ -57,7 +52,6 @@ func NewWowDatabase() *WowDatabase {
 		Items:          make(map[int32]*proto.UIItem),
 		RandomSuffixes: make(map[int32]*proto.ItemRandomSuffix),
 		Enchants:       make(map[EnchantDBKey]*proto.UIEnchant),
-		Runes:          make(map[int32]*proto.UIRune),
 		Zones:          make(map[int32]*proto.UIZone),
 		Npcs:           make(map[int32]*proto.UINPC),
 		Factions:       make(map[int32]*proto.UIFaction),
@@ -72,7 +66,6 @@ func (db *WowDatabase) Clone() *WowDatabase {
 		Items:          maps.Clone(db.Items),
 		RandomSuffixes: maps.Clone(db.RandomSuffixes),
 		Enchants:       maps.Clone(db.Enchants),
-		Runes:          maps.Clone(db.Runes),
 		Zones:          maps.Clone(db.Zones),
 		Npcs:           maps.Clone(db.Npcs),
 		Factions:       maps.Clone(db.Factions),
@@ -124,22 +117,6 @@ func (db *WowDatabase) MergeEnchant(src *proto.UIEnchant) {
 	}
 }
 
-func (db *WowDatabase) MergeRunes(arr []*proto.UIRune) {
-	for _, rune := range arr {
-		db.MergeRune(rune)
-	}
-}
-
-func (db *WowDatabase) MergeRune(src *proto.UIRune) {
-	key := src.Id
-	if dst, ok := db.Runes[key]; ok {
-		// googleproto.Merge concatenates lists, but we want replacement, so do them manually.
-		googleProto.Merge(dst, src)
-	} else {
-		db.Runes[key] = src
-	}
-}
-
 func (db *WowDatabase) MergeZones(arr []*proto.UIZone) {
 	for _, zone := range arr {
 		db.MergeZone(zone)
@@ -176,24 +153,6 @@ func (db *WowDatabase) MergeFaction(src *proto.UIFaction) {
 		googleProto.Merge(dst, src)
 	} else {
 		db.Factions[src.Id] = src
-	}
-}
-
-func (db *WowDatabase) AddRune(id int32, tooltip WowheadItemResponse) {
-	if tooltip.GetName() == "" || tooltip.GetIcon() == "" {
-		return
-	}
-	if runeOverrideNames[tooltip.GetName()] != nil {
-		return
-	}
-
-	db.Runes[id] = &proto.UIRune{
-		Id:             id,
-		Name:           tooltip.GetName(),
-		Icon:           tooltip.GetIcon(),
-		ClassAllowlist: []proto.Class{tooltip.GetRequiredClass()},
-		Type:           tooltip.GetRequiredItemSlot(),
-		RequiresLevel:  int32(tooltip.GetRequiresLevel()),
 	}
 }
 
@@ -277,7 +236,6 @@ func (db *WowDatabase) ToUIProto() *proto.UIDatabase {
 		Items:          mapToSlice(db.Items),
 		RandomSuffixes: mapToSlice(db.RandomSuffixes),
 		Enchants:       enchants,
-		Runes:          mapToSlice(db.Runes),
 		Encounters:     db.Encounters,
 		Zones:          mapToSlice(db.Zones),
 		Npcs:           mapToSlice(db.Npcs),
@@ -348,8 +306,6 @@ func (db *WowDatabase) WriteJson(jsonFilePath string) {
 	tools.WriteProtoArrayToBuffer(uidb.RandomSuffixes, buffer, "randomSuffixes")
 	buffer.WriteString(",\n")
 	tools.WriteProtoArrayToBuffer(uidb.Enchants, buffer, "enchants")
-	buffer.WriteString(",\n")
-	tools.WriteProtoArrayToBuffer(uidb.Runes, buffer, "runes")
 	buffer.WriteString(",\n")
 	tools.WriteProtoArrayToBuffer(uidb.Zones, buffer, "zones")
 	buffer.WriteString(",\n")

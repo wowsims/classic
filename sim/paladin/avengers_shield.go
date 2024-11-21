@@ -19,7 +19,7 @@ func (paladin *Paladin) registerAvengersShield() {
 		return
 	}
 
-	hasLibramOfAvenging := paladin.Ranged().ID == LibramOfAvenging
+	hasLibramOfAvenging := false // paladin.Ranged().ID == LibramOfAvenging
 
 	// Avenger's Shield hits up to 3 targets. It cannot miss or be resisted.
 	numTargets := min(3, int(paladin.Env.GetNumTargets()))

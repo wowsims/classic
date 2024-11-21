@@ -3,40 +3,39 @@ package hunter
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/common/itemhelpers"
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
 const (
-	DevilsaurEye             = 19991
-	DevilsaurTooth           = 19992
-	SignetOfBeasts           = 209823
-	BloodlashBow             = 216516
-	GurubashiPitFightersBow  = 221450
-	BloodChainVices          = 227075
-	KnightChainVices         = 227077
-	BloodChainGrips          = 227081
-	KnightChainGrips         = 227087
-	WhistleOfTheBeast        = 228432
-	ArcaneInfusedGem         = 230237
-	RenatakisCharmOfRavaging = 231288
-	MaelstromsWrath          = 231320
-	ZandalarPredatorsMantle  = 231321
-	ZandalarPredatorsBelt    = 231322
-	ZandalarPredatorsBracers = 231323
-	MarshalChainGrips        = 231560
-	GeneralChainGrips        = 231569
-	GeneralChainVices        = 231575
-	MarshalChainVices        = 231578
-	Kestrel                  = 231754
-	Peregrine                = 231755
-	CloakOfTheUnseenPath     = 233420
-	ScytheOfTheUnseenPath    = 233421
-	SignetOfTheUnseenPath    = 233422
+	DevilsaurEye   = 19991
+	DevilsaurTooth = 19992
+	// SignetOfBeasts           = 209823
+	// BloodlashBow             = 216516
+	// GurubashiPitFightersBow  = 221450
+	// BloodChainVices          = 227075
+	// KnightChainVices         = 227077
+	// BloodChainGrips          = 227081
+	// KnightChainGrips         = 227087
+	// WhistleOfTheBeast        = 228432
+	// ArcaneInfusedGem         = 230237
+	// RenatakisCharmOfRavaging = 231288
+	// MaelstromsWrath          = 231320
+	// ZandalarPredatorsMantle  = 231321
+	// ZandalarPredatorsBelt    = 231322
+	// ZandalarPredatorsBracers = 231323
+	// MarshalChainGrips        = 231560
+	// GeneralChainGrips        = 231569
+	// GeneralChainVices        = 231575
+	// MarshalChainVices        = 231578
+	// Kestrel                  = 231754
+	// Peregrine                = 231755
+	// CloakOfTheUnseenPath     = 233420
+	// ScytheOfTheUnseenPath    = 233421
+	// SignetOfTheUnseenPath    = 233422
 )
 
-func applyRaptorStrikeDamageEffect(agent core.Agent, multiplier float64) {
+/* func applyRaptorStrikeDamageEffect(agent core.Agent, multiplier float64) {
 	hunter := agent.(HunterAgent).GetHunter()
 	hunter.OnSpellRegistered(func(spell *core.Spell) {
 		if spell.SpellCode == SpellCode_HunterRaptorStrikeHit {
@@ -52,7 +51,7 @@ func applyMultiShotDamageEffect(agent core.Agent, multiplier float64) {
 			spell.DamageMultiplier *= multiplier
 		}
 	})
-}
+} */
 
 func init() {
 	core.NewItemEffect(DevilsaurEye, func(agent core.Agent) {
@@ -171,7 +170,7 @@ func init() {
 		})
 	})
 
-	core.NewItemEffect(SignetOfBeasts, func(agent core.Agent) {
+	/* core.NewItemEffect(SignetOfBeasts, func(agent core.Agent) {
 		hunter := agent.(HunterAgent).GetHunter()
 		if hunter.pet != nil {
 			hunter.pet.PseudoStats.DamageDealtMultiplier *= 1.01
@@ -538,10 +537,10 @@ func init() {
 		}
 
 		hunter.pet.PseudoStats.DamageDealtMultiplier *= 1.02
-	})
+	}) */
 }
 
-func (hunter *Hunter) newBloodlashProcItem(bonusStrength float64, spellId int32) {
+/* func (hunter *Hunter) newBloodlashProcItem(bonusStrength float64, spellId int32) {
 	procAura := hunter.NewTemporaryStatsAura("Bloodlash", core.ActionID{SpellID: spellId}, stats.Stats{stats.Strength: bonusStrength}, time.Second*15)
 	ppm := hunter.AutoAttacks.NewPPMManager(1.0, core.ProcMaskMeleeOrRanged)
 	core.MakePermanent(hunter.GetOrRegisterAura(core.Aura{
@@ -552,4 +551,4 @@ func (hunter *Hunter) newBloodlashProcItem(bonusStrength float64, spellId int32)
 			}
 		},
 	}))
-}
+} */

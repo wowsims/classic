@@ -3,7 +3,6 @@ package druid
 import (
 	"time"
 
-	item_sets "github.com/wowsims/classic/sim/common/sod/items_sets"
 	"github.com/wowsims/classic/sim/core"
 )
 
@@ -56,8 +55,6 @@ func (druid *Druid) newStarfireSpellConfig(rank int) core.SpellConfig {
 				CastTime: time.Millisecond*time.Duration(castTime) - time.Millisecond*100*time.Duration(druid.Talents.ImprovedStarfire),
 			},
 		},
-
-		BonusCritRating: core.TernaryFloat64(druid.HasSetBonus(item_sets.ItemSetInsulatedSorcerorLeather, 3), 2, 0) * core.CritRatingPerCritChance,
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,

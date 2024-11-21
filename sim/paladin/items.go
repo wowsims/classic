@@ -3,37 +3,35 @@ package paladin
 import (
 	"time"
 
-	"github.com/wowsims/classic/sim/common/vanilla"
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
 // Libram IDs
 const (
-	SanctifiedOrb                        = 20512
-	LibramOfHope                         = 22401
-	LibramOfFervor                       = 23203
-	LibramDiscardedTenetsOfTheSilverHand = 209574
-	LibramOfBenediction                  = 215435
-	LibramOfDraconicDestruction          = 221457
-	LibramOfTheDevoted                   = 228174
-	LibramOfAvenging                     = 232421
-	Truthbearer2H                        = 229749
-	Truthbearer1H                        = 229806
-	HammerOfTheLightbringer              = 230003
-	ScrollsOfBlindingLight               = 230272
-	GrileksCharmOfValor                  = 231285
-	HerosBrand                           = 231328
-	ZandalarFreethinkersBreastplate      = 231329
-	ZandalarFreethinkersBelt             = 231330
-	LibramOfWrath                        = 232420
+	SanctifiedOrb  = 20512
+	LibramOfHope   = 22401
+	LibramOfFervor = 23203
+	// LibramDiscardedTenetsOfTheSilverHand = 209574
+	// LibramOfBenediction                  = 215435
+	// LibramOfDraconicDestruction          = 221457
+	// LibramOfTheDevoted                   = 228174
+	// LibramOfAvenging                     = 232421
+	// Truthbearer2H                        = 229749
+	// Truthbearer1H                        = 229806
+	// HammerOfTheLightbringer              = 230003
+	// ScrollsOfBlindingLight               = 230272
+	// GrileksCharmOfValor                  = 231285
+	// HerosBrand                           = 231328
+	// ZandalarFreethinkersBreastplate      = 231329
+	// ZandalarFreethinkersBelt             = 231330
+	// LibramOfWrath                        = 232420
 )
 
 func init() {
 	core.NewSimpleStatOffensiveTrinketEffect(SanctifiedOrb, stats.Stats{stats.MeleeCrit: 3 * core.CritRatingPerCritChance, stats.SpellCrit: 3 * core.CritRatingPerCritChance}, time.Second*25, time.Minute*3)
 
-	core.NewItemEffect(LibramDiscardedTenetsOfTheSilverHand, func(agent core.Agent) {
+	/* core.NewItemEffect(LibramDiscardedTenetsOfTheSilverHand, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		if character.CurrentTarget.MobType == proto.MobType_MobTypeDemon || character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
 			character.PseudoStats.MobTypeAttackPower += 15
@@ -256,7 +254,7 @@ func init() {
 				}
 			},
 		}))
-	})
+	}) */
 }
 
 // https://www.wowhead.com/classic/spell=465414/crusaders-zeal

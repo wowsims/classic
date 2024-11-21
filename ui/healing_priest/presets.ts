@@ -21,8 +21,7 @@ import BlankGear from './gear_sets/blank.gear.json';
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
 
-export const DiscDefaultGear = PresetUtils.makePresetGear('Blank', BlankGear, { talentTree: 0 });
-export const HolyDefaultGear = PresetUtils.makePresetGear('Blank', BlankGear, { talentTree: 1 });
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
 export const ROTATION_PRESET_DISC = PresetUtils.makePresetAPLRotation('Disc', DiscApl);
 export const ROTATION_PRESET_HOLY = PresetUtils.makePresetAPLRotation('Holy', HolyApl);

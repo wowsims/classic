@@ -32,13 +32,6 @@ import P3SaberApl from './apls/Saber_DPS_50.apl.json';
 import P3SaberIEAApl from './apls/Saber_IEA_50.apl.json';
 import P4SaberWeaveApl from './apls/Saber_Weave_60.apl.json';
 import BlankGear from './gear_sets/blank.gear.json';
-import P1CombatGear from './gear_sets/p1_combat.gear.json';
-import P1DaggersGear from './gear_sets/p1_daggers.gear.json';
-import P2DaggersGear from './gear_sets/p2_daggers.gear.json';
-import P3DaggersGear from './gear_sets/p3_daggers.gear.json';
-import P3SaberGear from './gear_sets/p3_saber.gear.json';
-import P4SaberGear from './gear_sets/p4_saber.gear.json';
-import P5SaberGear from './gear_sets/p5_saber.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -50,23 +43,10 @@ import P5SaberGear from './gear_sets/p5_saber.gear.json';
 
 // TODO: Add gear sets
 export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
-export const GearDaggersP1 = PresetUtils.makePresetGear('P1 Daggers', P1DaggersGear, { customCondition: player => player.getLevel() == 25 });
-export const GearDaggersP2 = PresetUtils.makePresetGear('P2 Daggers', P2DaggersGear, { customCondition: player => player.getLevel() == 40 });
-export const GearCombatP1 = PresetUtils.makePresetGear('P1 Combat', P1CombatGear, { customCondition: player => player.getLevel() == 25 });
-export const GearDaggersP3 = PresetUtils.makePresetGear('P3 Daggers', P3DaggersGear, { customCondition: player => player.getLevel() == 50 });
-export const GearSaberP3 = PresetUtils.makePresetGear('P3 Saber', P3SaberGear, { customCondition: player => player.getLevel() == 50 });
-export const GearSaberP4 = PresetUtils.makePresetGear('P4 Saber', P4SaberGear, { customCondition: player => player.getLevel() == 60 });
-export const GearSaberP5 = PresetUtils.makePresetGear('P5 Saber', P5SaberGear, { customCondition: player => player.getLevel() == 60 });
 
-export const GearPresets = {
-	[Phase.Phase1]: [GearDaggersP1, GearCombatP1],
-	[Phase.Phase2]: [GearDaggersP2],
-	[Phase.Phase3]: [GearDaggersP3, GearSaberP3],
-	[Phase.Phase4]: [GearSaberP4],
-	[Phase.Phase5]: [GearSaberP5],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase5][0];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets

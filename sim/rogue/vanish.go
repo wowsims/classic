@@ -7,8 +7,6 @@ import (
 )
 
 func (rogue *Rogue) registerVanishSpell() {
-	has4PcT1 := rogue.HasSetBonus(ItemSetNightSlayerBattlearmor, 4)
-
 	rogue.VanishAura = rogue.RegisterAura(core.Aura{
 		Label:    "Vanish",
 		ActionID: core.ActionID{SpellID: 457437},
@@ -37,10 +35,6 @@ func (rogue *Rogue) registerVanishSpell() {
 			},
 		},
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			if has4PcT1 {
-				rogue.VanishAura.Activate(sim)
-				return
-			}
 			// Pause auto attacks
 			rogue.AutoAttacks.CancelAutoSwing(sim)
 			// Apply stealth

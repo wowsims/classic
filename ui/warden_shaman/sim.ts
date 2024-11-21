@@ -182,11 +182,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWardenShaman, {
 			...Presets.APLPresets[Phase.Phase1],
 		],
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 	},
 

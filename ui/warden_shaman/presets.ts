@@ -28,8 +28,7 @@ import { EnhancementShaman_Options as EnhancementShamanOptions, ShamanSyncType }
 import { SavedTalents } from '../core/proto/ui.js';
 import Phase4EleTankAPLJSON from './apls/phase_4_ele_tank.apl.json';
 import Phase4EnhTankAPLJSON from './apls/phase_4_enh_tank.apl.json';
-import Phase4EleTankGearJSON from './gear_sets/phase_4_ele_tank.gear.json';
-import Phase4EnhTankGearJSON from './gear_sets/phase_4_enh_tank.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -39,18 +38,11 @@ import Phase4EnhTankGearJSON from './gear_sets/phase_4_enh_tank.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearEnhTankPhase4 = PresetUtils.makePresetGear('P4 Enh', Phase4EnhTankGearJSON);
-export const GearEleTankPhase4 = PresetUtils.makePresetGear('P4 Ele', Phase4EleTankGearJSON);
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearPresets = {
-	[Phase.Phase1]: [],
-	[Phase.Phase2]: [],
-	[Phase.Phase3]: [],
-	[Phase.Phase4]: [GearEnhTankPhase4, GearEleTankPhase4],
-	[Phase.Phase5]: [],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase4][0];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets

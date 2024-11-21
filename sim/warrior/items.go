@@ -4,16 +4,15 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
 const (
-	DiamondFlask        = 20130
-	Exsanguinar         = 216497
-	SuzerainDefender    = 224280
-	GrileksCharmOFMight = 231286
-	RageOfMugamba       = 231350
+	DiamondFlask = 20130
+	// Exsanguinar         = 216497
+	// SuzerainDefender    = 224280
+	// GrileksCharmOFMight = 231286
+	// RageOfMugamba       = 231350
 )
 
 func init() {
@@ -51,7 +50,7 @@ func init() {
 		})
 	})
 
-	core.NewItemEffect(Exsanguinar, func(agent core.Agent) {
+	/* core.NewItemEffect(Exsanguinar, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		actionId := core.ActionID{SpellID: 436332}
 
@@ -219,7 +218,7 @@ func init() {
 			Type:  core.CooldownTypeDPS,
 			Spell: spell,
 		})
-	})
+	}) */
 
 	core.AddEffectsToTest = true
 }

@@ -1,0 +1,160 @@
+character_stats_results: {
+ key: "TestCombat-Phase2-Lvl40-CharacterStats-Default"
+ value: {
+  final_stats: 80.3
+  final_stats: 119.9
+  final_stats: 156.2
+  final_stats: 59.4
+  final_stats: 80.85
+  final_stats: 42
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 24
+  final_stats: 0
+  final_stats: 7
+  final_stats: 0
+  final_stats: 0
+  final_stats: 598.2
+  final_stats: 5
+  final_stats: 9.66644
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 502.8
+  final_stats: 339.9
+  final_stats: 0
+  final_stats: 5
+  final_stats: 0
+  final_stats: 18.33288
+  final_stats: 5
+  final_stats: 0
+  final_stats: 2085
+  final_stats: 13
+  final_stats: 30
+  final_stats: 30
+  final_stats: 30
+  final_stats: 30
+  final_stats: 263
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestCombat-Phase2-Lvl40-StatWeights-Default"
+ value: {
+  weights: 0.09344
+  weights: 0.12666
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.08495
+  weights: 0.57082
+  weights: 0.54939
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Average-Default"
+ value: {
+  dps: 52.93561
+  tps: 37.58429
+ }
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-LongMultiTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-LongSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-ShortSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-LongMultiTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-LongSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Human-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-ShortSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-LongMultiTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-LongSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-FullBuffs-P2-Consumes-ShortSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-LongMultiTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-LongSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-Settings-Orc-blank-No Poisons-mutilate-NoBuffs-P2-Consumes-ShortSingleTarget"
+ value: {}
+}
+dps_results: {
+ key: "TestCombat-Phase2-Lvl40-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 49.69395
+  tps: 35.28271
+ }
+}

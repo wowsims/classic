@@ -159,11 +159,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		builds: [Presets.PresetBuildRangedMM, Presets.PresetBuildRangedSV, Presets.PresetBuildMeleeBM, Presets.PresetBuildMeleeSV, Presets.PresetBuildWeave],
 	},

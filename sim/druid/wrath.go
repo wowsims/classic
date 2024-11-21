@@ -3,7 +3,6 @@ package druid
 import (
 	"time"
 
-	item_sets "github.com/wowsims/classic/sim/common/sod/items_sets"
 	"github.com/wowsims/classic/sim/core"
 )
 
@@ -60,9 +59,7 @@ func (druid *Druid) newWrathSpellConfig(rank int) core.SpellConfig {
 			},
 		},
 
-		BonusCritRating: core.TernaryFloat64(druid.HasSetBonus(item_sets.ItemSetInsulatedSorcerorLeather, 3), 2, 0) * core.CritRatingPerCritChance,
-
-		DamageMultiplier: 1 + core.Ternary(druid.Ranged().ID == IdolOfWrath, .02, 0),
+		DamageMultiplier: 1, // + core.Ternary(druid.Ranged().ID == IdolOfWrath, .02, 0),
 		ThreatMultiplier: 1,
 		BonusCoefficient: spellCoeff,
 

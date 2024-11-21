@@ -127,11 +127,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		// Preset builds that the user can quickly select.
 		builds: [Presets.PresetBuild2H, Presets.PresetBuildDW],
@@ -170,14 +166,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
-					2: Presets.GearPresets[Phase.Phase2][0].gear,
-					3: Presets.GearPresets[Phase.Phase3][0].gear,
+					1: Presets.DefaultGear.gear,
+					2: Presets.DefaultGear.gear,
+					3: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
-					2: Presets.GearPresets[Phase.Phase2][0].gear,
-					3: Presets.GearPresets[Phase.Phase3][0].gear,
+					1: Presets.DefaultGear.gear,
+					2: Presets.DefaultGear.gear,
+					3: Presets.DefaultGear.gear,
 				},
 			},
 		},
@@ -198,14 +194,14 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][1].gear,
-					2: Presets.GearPresets[Phase.Phase2][1].gear,
-					3: Presets.GearPresets[Phase.Phase3][1].gear,
+					1: Presets.DefaultGear.gear,
+					2: Presets.DefaultGear.gear,
+					3: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][1].gear,
-					2: Presets.GearPresets[Phase.Phase2][1].gear,
-					3: Presets.GearPresets[Phase.Phase3][1].gear,
+					1: Presets.DefaultGear.gear,
+					2: Presets.DefaultGear.gear,
+					3: Presets.DefaultGear.gear,
 				},
 			},
 		},

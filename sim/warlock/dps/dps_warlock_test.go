@@ -16,44 +16,12 @@ func TestAffliction(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class: proto.Class_ClassWarlock,
-			Level: 40,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase2AfflictionTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p2", "shadow"),
-			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p2", "affliction"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Affliction Warlock", SpecOptions: DefaultAfflictionWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
-			Level: 50,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase3NFRuinTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p3", "nf.ruin"),
-			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p3", "nf.ruin"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Affliction Warlock", SpecOptions: DefaultAfflictionWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
 			Phase: 4,
 			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase4AffTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p4", "affliction"),
+			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p4", "affliction"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,
@@ -74,7 +42,7 @@ func TestDemonology(t *testing.T) {
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase2DemonologyTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p2", "fire.succubus"),
+			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p2", "demonology"),
 			Buffs:       core.FullBuffsPhase2,
 			Consumes:    Phase2Consumes,
@@ -91,60 +59,12 @@ func TestDestruction(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class: proto.Class_ClassWarlock,
-			Level: 25,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase1DestructionTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p1", "destruction"),
-			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p1", "destruction"),
-			Buffs:       core.FullBuffsPhase1,
-			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
-			Level: 40,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase2DestructionTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p2", "fire.imp"),
-			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p2", "fire.imp"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
-			Level: 50,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase3BackdraftTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p3", "backdraft"),
-			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p3", "backdraft"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
 			Phase: 4,
 			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase4DestroTalents,
-			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets/p4", "destruction"),
+			GearSet:     core.GetGearSet("../../../ui/warlock/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../../ui/warlock/apls/p4", "destruction"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,

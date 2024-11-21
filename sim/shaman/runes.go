@@ -158,8 +158,6 @@ func (shaman *Shaman) applyShieldMastery() {
 
 	defendersResolveAura := core.DefendersResolveSpellDamage(shaman.GetCharacter())
 
-	has4PEarthfuryResolve := shaman.HasSetBonus(ItemSetEarthfuryResolve, 4)
-
 	shaman.AddStat(stats.Block, 10)
 	shaman.PseudoStats.BlockValueMultiplier = 1.15
 
@@ -182,7 +180,7 @@ func (shaman *Shaman) applyShieldMastery() {
 	core.MakePermanent(shaman.RegisterAura(core.Aura{
 		Label: "Shield Mastery Trigger",
 		OnSpellHitTaken: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-			if result.DidBlock() || (has4PEarthfuryResolve && (result.DidParry() || result.DidDodge())) {
+			if result.DidBlock() {
 				shaman.AddMana(sim, shaman.MaxMana()*procManaReturn, manaMetrics)
 				blockProcAura.Activate(sim)
 				blockProcAura.AddStack(sim)

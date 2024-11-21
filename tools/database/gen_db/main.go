@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"slices"
 	"strconv"
@@ -25,7 +24,6 @@ import (
 // go run ./tools/database/gen_db -outDir=assets -gen=wowhead-spells -maxid=31000
 // go run ./tools/database/gen_db -outDir=assets -gen=wowhead-gearplannerdb
 // go run ./tools/database/gen_db -outDir=assets -gen=wago-db2-items
-// python3 tools/scrape_runes.py assets/db_inputs/wowhead_rune_tooltips.csv
 
 // Lastly run the following to generate db.json (ensure to delete cached versions and/or rebuild for copying of assets during local development)
 // Note: This does not make network requests, only regenerates core db binary and json files from existing inputs
@@ -74,7 +72,6 @@ func main() {
 
 	itemTooltips := database.NewWowheadItemTooltipManager(fmt.Sprintf("%s/wowhead_item_tooltips.csv", inputsDir)).Read()
 	spellTooltips := database.NewWowheadSpellTooltipManager(fmt.Sprintf("%s/wowhead_spell_tooltips.csv", inputsDir)).Read()
-	runeTooltips := database.NewWowheadSpellTooltipManager(fmt.Sprintf("%s/wowhead_rune_tooltips.csv", inputsDir)).Read()
 	wowheadDB := database.ParseWowheadDB(tools.ReadFile(fmt.Sprintf("%s/wowhead_gearplannerdb.txt", inputsDir)))
 	atlaslootDB := database.ReadDatabaseFromJson(tools.ReadFile(fmt.Sprintf("%s/atlasloot_db.json", inputsDir)))
 	wagoItems := database.ParseWagoDB(tools.ReadFile(fmt.Sprintf("%s/wago_db2_items.csv", inputsDir)))
@@ -87,7 +84,7 @@ func main() {
 	// https://www.wowhead.com/classic/item=23206/mark-of-the-champion and https://www.wowhead.com/classic/item=23207/mark-of-the-champion
 	// In this case, we can check the icon to see if they're the same or not.
 	// Ultimately we want to get rid of any item with the same name and icon, but a lower ID than another entry
-	itemNameMap := make(map[string]string, len(wowheadDB.Items))
+	/* itemNameMap := make(map[string]string, len(wowheadDB.Items))
 	for id, item := range wowheadDB.Items {
 		if _, ok := database.ItemDenyList[item.ID]; ok {
 			continue
@@ -104,9 +101,13 @@ func main() {
 		if otherIdInt < idInt {
 			itemNameMap[item.Name] = id
 		}
-	}
+	} */
 	filteredWHDBItems := core.FilterMap(wowheadDB.Items, func(_ string, item database.WowheadItem) bool {
-		id := itemNameMap[item.Name]
+		// Just filter out anything with ID > 100000 for now, that's all SoM or SoD.
+		// If Blizzard adds new items to Classic² this will need to use more refined logic again.
+		return item.ID < 100000
+
+		/* id := itemNameMap[item.Name]
 
 		otherItem := wowheadDB.Items[id]
 
@@ -132,7 +133,7 @@ func main() {
 			return false
 		}
 
-		return true
+		return true */
 	})
 
 	for _, response := range itemTooltips {
@@ -160,15 +161,8 @@ func main() {
 		}
 	}
 
-	for id, rune := range runeTooltips {
-		if !slices.Contains(database.UnimplementedRuneOverrides, id) {
-			db.AddRune(id, rune)
-		}
-	}
-
 	db.MergeItems(database.ItemOverrides)
 	db.MergeEnchants(database.EnchantOverrides)
-	db.MergeRunes(database.RuneOverrides)
 	ApplyGlobalFilters(db)
 	AttachFactionInformation(db, wagoItems)
 	AttachItemSetIDs(db, wagoItems)

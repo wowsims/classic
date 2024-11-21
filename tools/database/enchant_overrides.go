@@ -18,10 +18,6 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 1843, ItemId: 15564, SpellId: 19057, Name: "Rugged Armor Kit", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.BonusArmor: 40}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
 	// Drops in MC
 	{EffectId: 2503, ItemId: 18251, SpellId: 22725, Name: "Core Armor Kit", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Defense: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
-	// SoD Phase 6 Armor Kit
-	{EffectId: 7648, ItemId: 233802, SpellId: 1213829, Name: "Glowing Chitin Armor Kit", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.SpellPower: 10}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
-	{EffectId: 7649, ItemId: 233803, SpellId: 1213519, Name: "Sharpened Chitin Armor Kit", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs, proto.ItemType_ItemTypeHands, proto.ItemType_ItemTypeFeet}, EnchantType: proto.EnchantType_EnchantTypeKit},
-	 
 
 	// Arcanums
 	// Lvl 50 Burning Steppes Quest
@@ -79,17 +75,8 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 7633, ItemId: 231381, SpellId: 468376, Name: "Presence of Valor", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Stamina: 20, stats.Defense: 7, stats.BlockValue: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, ClassAllowlist: []proto.Class{proto.Class_ClassWarrior}, RequiresLevel: 60},
 
 	// Head
-	// SoD Feral Druid Enchant
-	{EffectId: 7124, ItemId: 212568, SpellId: 432190, Name: "Wolfshead Trophy", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ClassAllowlist: []proto.Class{proto.Class_ClassDruid}},
 
 	// Shoulder
-	// SoD Phase 3 Enchants
-	{EffectId: 7328, ItemId: 221321, SpellId: 446451, Name: "Atal'ai Signet of Might", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.AttackPower: 15, stats.RangedAttackPower: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
-	{EffectId: 7325, ItemId: 221322, SpellId: 446459, Name: "Atal'ai Signet of Mojo", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.SpellPower: 9}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
-	{EffectId: 7326, ItemId: 221323, SpellId: 446472, Name: "Atal'ai Signet of Serenity", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 18}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
-	// SoD Phase 4 Enchants
-	{EffectId: 2483, ItemId: 18169, SpellId: 22593, Name: "Flame Mantle of the Dawn", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.FireResistance: 5}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
-	{EffectId: 7563, ItemId: 227819, SpellId: 460963, Name: "Blessed Flame Mantle of the Dawn", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.FireResistance: 25}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
 	// Drop in ZG
 	{EffectId: 2604, ItemId: 20078, SpellId: 24420, Name: "Zandalar Signet of Serenity", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HealingPower: 33}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
 	{EffectId: 2605, ItemId: 20076, SpellId: 24421, Name: "Zandalar Signet of Mojo", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.SpellPower: 18, stats.HealingPower: 18}.ToFloatArray(), Type: proto.ItemType_ItemTypeShoulder},
@@ -114,10 +101,6 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 849, SpellId: 13882, Name: "Enchant Cloak - Lesser Agility", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Agility: 3}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	{EffectId: 1888, SpellId: 20014, Name: "Enchant Cloak - Greater Resistance", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.ArcaneResistance: 5, stats.FireResistance: 5, stats.FrostResistance: 5, stats.NatureResistance: 5, stats.ShadowResistance: 5}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	{EffectId: 1889, SpellId: 20015, Name: "Enchant Cloak - Superior Defense", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.BonusArmor: 70}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
-	// SoD Phase 4 Enchants
-	{EffectId: 7564, ItemId: 227926, SpellId: 461129, Name: "Hydraxian Coronation", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.FireResistance: 30}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
-	{EffectId: 2620, ItemId: 229009, SpellId: 25082, Name: "Enchant Cloak - Greater Nature Resistance", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.NatureResistance: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
-	{EffectId: 2619, ItemId: 229008, SpellId: 25081, Name: "Enchant Cloak - Greater Fire Resistance", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.FireResistance: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	// Drop in AQ
 	{EffectId: 2622, SpellId: 25086, Name: "Enchant Cloak - Dodge", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Dodge: 1 * core.DodgeRatingPerDodgeChance}.ToFloatArray(), Type: proto.ItemType_ItemTypeBack},
 	// Requires Cenarion Circle - Friendly which doesn't seem doable until phase 4
@@ -149,8 +132,6 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 1892, SpellId: 20026, Name: "Enchant Chest - Major Health", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Health: 100}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest},
 	{EffectId: 1893, SpellId: 20028, Name: "Enchant Chest - Major Mana", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Mana: 100}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest},
 	{EffectId: 1891, SpellId: 20025, Name: "Enchant Chest - Greater Stats", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Stamina: 4, stats.Agility: 4, stats.Strength: 4, stats.Intellect: 4, stats.Spirit: 4}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest},
-	//SoD P6 Enchants
-	{EffectId: 7645, SpellId: 1213616, Name: "Enchant Chest - Living Stats", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Stamina: 4, stats.Agility: 4, stats.Strength: 4, stats.Intellect: 4, stats.Spirit: 4, stats.NatureResistance: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeChest},
 
 	// Wrist
 	{EffectId: 66, SpellId: 7457, Name: "Enchant Bracer - Minor Stamina", Quality: proto.ItemQuality_ItemQualityCommon, Stats: stats.Stats{stats.Stamina: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeWrist},
@@ -200,9 +181,6 @@ var EnchantOverrides = []*proto.UIEnchant{
 	{EffectId: 2614, SpellId: 25073, Name: "Enchant Gloves - Shadow Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.ShadowPower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands},
 	{EffectId: 2564, SpellId: 25080, Name: "Enchant Gloves - Superior Agility", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Agility: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands},
 	{EffectId: 2613, SpellId: 25072, Name: "Enchant Gloves - Threat", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands},
-	//SoD P6 Enchants
-	{EffectId: 7646, SpellId: 1213622, Name: "Enchant Gloves - Holy Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.HolyPower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands},
-	{EffectId: 7647, SpellId: 1213626, Name: "Enchant Gloves - Arcane Power", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.ArcanePower: 20}.ToFloatArray(), Type: proto.ItemType_ItemTypeHands},
 
 	// Feet
 	{EffectId: 247, SpellId: 7867, Name: "Enchant Boots - Minor Agility", Quality: proto.ItemQuality_ItemQualityUncommon, Stats: stats.Stats{stats.Agility: 1}.ToFloatArray(), Type: proto.ItemType_ItemTypeFeet},

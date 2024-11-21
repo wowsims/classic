@@ -35,17 +35,7 @@ import APLPP5ExodinJson from './apls/p5ret-exodin-6CF2DR.apl.json';
 import APLPP5TwistingSlowJson from './apls/p5ret-twist-4DR-3.5-3.6.apl.json';
 import APLPP5TwistingSlowerJson from './apls/p5ret-twist-4DR-3.7-4.0.apl.json';
 import APLPP5ShockadinJson from './apls/p5Shockadin.apl.json';
-import Phase1RetGearJson from './gear_sets/p1ret.gear.json';
-import Phase2RetSoCGearJson from './gear_sets/p2retsoc.gear.json';
-import Phase2RetSoMGearJson from './gear_sets/p2retsom.gear.json';
-import Phase3RetSoMGearJson from './gear_sets/p3retsom.gear.json';
-import Phase4RetExodinGearJson from './gear_sets/p4ret-exodin.gear.json';
-import Phase4RetExodin6PcT1GearJson from './gear_sets/p4ret-exodin-6pcT1.gear.json';
-import Phase4RetTwisting6PcT1GearJson from './gear_sets/p4ret-twisting-6pcT1.gear.json';
-import Phase4RetGearJson from './gear_sets/p4rettwist.gear.json';
-import Phase5ExodinGearJson from './gear_sets/p5exodin.gear.json';
-import Phase5ShockadinGearJson from './gear_sets/p5shockadin.gear.json';
-import Phase5TwistingGearJson from './gear_sets/p5twisting.gear.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -55,49 +45,11 @@ import Phase5TwistingGearJson from './gear_sets/p5twisting.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const Phase1RetGear = PresetUtils.makePresetGear('P1', Phase1RetGearJson, {
-	customCondition: player => player.getLevel() == 25,
-});
-export const Phase2RetSoCGear = PresetUtils.makePresetGear('P2 SoC/DS', Phase2RetSoCGearJson, {
-	customCondition: player => player.getLevel() == 40,
-});
-export const Phase2RetSoMGear = PresetUtils.makePresetGear('P2 SoM', Phase2RetSoMGearJson, {
-	customCondition: player => player.getLevel() == 40,
-});
-export const Phase3RetSoMGear = PresetUtils.makePresetGear('P3 SoM', Phase3RetSoMGearJson, {
-	customCondition: player => player.getLevel() == 50,
-});
-export const Phase4RetTwistGear = PresetUtils.makePresetGear('P4 Twist', Phase4RetGearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase4RetTwist6pT1Gear = PresetUtils.makePresetGear('P4 Ret Twist 6pT1', Phase4RetTwisting6PcT1GearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase4RetExodinGear = PresetUtils.makePresetGear('P4 Ret Exodin', Phase4RetExodinGearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase4RetExodin6pT1Gear = PresetUtils.makePresetGear('P4 Ret Exodin 6pT1', Phase4RetExodin6PcT1GearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase5TwistingGear = PresetUtils.makePresetGear('P5 Twisting', Phase5TwistingGearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase5ExodinGear = PresetUtils.makePresetGear('P5 Exodin', Phase5ExodinGearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
-export const Phase5ShockadinGear = PresetUtils.makePresetGear('P5 Shockadin', Phase5ShockadinGearJson, {
-	customCondition: player => player.getLevel() == 60,
-});
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearPresets = {
-	[Phase.Phase1]: [Phase1RetGear],
-	[Phase.Phase2]: [Phase2RetSoCGear, Phase2RetSoMGear],
-	[Phase.Phase3]: [Phase3RetSoMGear],
-	[Phase.Phase4]: [Phase4RetTwistGear, Phase4RetTwist6pT1Gear, Phase4RetExodinGear, Phase4RetExodin6pT1Gear],
-	[Phase.Phase5]: [Phase5TwistingGear, Phase5ExodinGear, Phase5ShockadinGear],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase5][0];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets

@@ -128,11 +128,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			...Presets.TalentPresets[Phase.Phase1],
 		],
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		builds: [Presets.PresetBuildArcane, Presets.PresetBuildFire, Presets.PresetBuildFrost],
 	},
@@ -163,10 +159,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][0].gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 		},
@@ -188,10 +184,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][1].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][1].gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 		},
@@ -213,10 +209,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearPresets[Phase.Phase1][2].gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearPresets[Phase.Phase1][2].gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 		},

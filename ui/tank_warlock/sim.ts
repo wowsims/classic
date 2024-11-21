@@ -169,11 +169,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarlock, {
 
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			...Presets.GearPresets[Phase.Phase4],
-			...Presets.GearPresets[Phase.Phase3],
-			...Presets.GearPresets[Phase.Phase2],
-			...Presets.GearPresets[Phase.Phase1],
+			Presets.DefaultGear,
 		],
 		builds: [Presets.PresetBuildAff, Presets.PresetBuildDemo, Presets.PresetBuildDestro],
 	},
@@ -210,10 +206,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarlock, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearDemonologyTankPhase2.gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearDemonologyTankPhase2.gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,
@@ -235,10 +231,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarlock, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.GearDestructionTankPhase2.gear,
+					1: Presets.DefaultGear.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.GearDestructionTankPhase2.gear,
+					1: Presets.DefaultGear.gear,
 				},
 			},
 			otherDefaults: Presets.OtherDefaults,

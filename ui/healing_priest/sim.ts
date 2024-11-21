@@ -51,7 +51,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHealingPriest, {
 
 	defaults: {
 		// Default equipped gear.
-		gear: Presets.DiscDefaultGear.gear,
+		gear: Presets.GearBlank.gear,
 		// Default EP weights for sorting gear in the gear picker.
 		epWeights: Stats.fromMap({
 			[Stat.StatIntellect]: 2.73,
@@ -107,8 +107,8 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHealingPriest, {
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			Presets.DiscDefaultGear,
-			Presets.HolyDefaultGear,
+			Presets.GearBlank,
+			Presets.GearBlank,
 		],
 	},
 
@@ -139,10 +139,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHealingPriest, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.DiscDefaultGear.gear,
+					1: Presets.GearBlank.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.DiscDefaultGear.gear,
+					1: Presets.GearBlank.gear,
 				},
 			},
 		},
@@ -163,10 +163,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHealingPriest, {
 			defaultGear: {
 				[Faction.Unknown]: {},
 				[Faction.Alliance]: {
-					1: Presets.HolyDefaultGear.gear,
+					1: Presets.GearBlank.gear,
 				},
 				[Faction.Horde]: {
-					1: Presets.HolyDefaultGear.gear,
+					1: Presets.GearBlank.gear,
 				},
 			},
 		},

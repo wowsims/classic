@@ -16,28 +16,12 @@ func TestAffliction(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class: proto.Class_ClassWarlock,
-			Level: 25,
-			Race:  proto.Race_RaceOrc,
-
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p1.affi.tank"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p1.affi.tank"),
-			Talents:     Phase1AfflictionTalents,
-			Buffs:       core.FullBuffsPhase1,
-			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Affliction Warlock", SpecOptions: DefaultAfflictionWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
 			Phase: 4,
 			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase4AffTalents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p4_destro_aff_tank"),
+			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p4_destro_aff_tank"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,
@@ -54,28 +38,12 @@ func TestDemonology(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class: proto.Class_ClassWarlock,
-			Level: 40,
-			Race:  proto.Race_RaceOrc,
-
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p2.demo.tank"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p2.demo.tank"),
-			Talents:     Phase2DemonologyTalents,
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Demonology Warlock", SpecOptions: DefaultDemonologyWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
 			Phase: 4,
 			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase4DemoTalents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p4_demo_tank"),
+			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p4_demo_tank"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,
@@ -92,60 +60,12 @@ func TestDestruction(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class: proto.Class_ClassWarlock,
-			Level: 25,
-			Race:  proto.Race_RaceOrc,
-
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p1.destro.tank"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p1.destro.tank"),
-			Talents:     Phase1DestructionTalents,
-			Buffs:       core.FullBuffsPhase1,
-			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
-			Level: 40,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase2DestructionTalents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p2.destro.tank"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p2.destro.tank"),
-			Buffs:       core.FullBuffsPhase2,
-			Consumes:    Phase2Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
-			Level: 50,
-			Race:  proto.Race_RaceOrc,
-
-			Talents:     Phase3DestructionTalents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p3.destro.tank"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p3.destro.tank"),
-			Buffs:       core.FullBuffsPhase3,
-			Consumes:    Phase3Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Destruction Warlock", SpecOptions: DefaultDestroWarlock},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-		{
-			Class: proto.Class_ClassWarlock,
 			Phase: 4,
 			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     Phase4DestroTalents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "p4_destro_aff_tank"),
+			GearSet:     core.GetGearSet("../../../ui/tank_warlock/gear_sets", "blank"),
 			Rotation:    core.GetAplRotation("../../../ui/tank_warlock/apls", "p4_destro_aff_tank"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,

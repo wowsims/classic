@@ -25,12 +25,11 @@ import {
 	WeaponImbue,
 	ZanzaBuff,
 } from '../core/proto/common.js';
-import { PaladinAura, PaladinSeal, Blessings, PaladinOptions as ProtectionPaladinOptions } from '../core/proto/paladin.js';
+import { Blessings, PaladinAura, PaladinOptions as ProtectionPaladinOptions,PaladinSeal } from '../core/proto/paladin.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import APLP5ProtJson from './apls/p5prot.apl.json';
 import APLP4ProtJson from './apls/p4prot.apl.json';
-import Phase4ProtGearJson from './gear_sets/p4prot.gear.json';
-import Phase5ProtGearJson from './gear_sets/p5prot.gear.json';
+import APLP5ProtJson from './apls/p5prot.apl.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -40,18 +39,11 @@ import Phase5ProtGearJson from './gear_sets/p5prot.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const Phase4ProtGear = PresetUtils.makePresetGear('P4 Prot', Phase4ProtGearJson);
-export const Phase5ProtGear = PresetUtils.makePresetGear('P5 Prot', Phase5ProtGearJson);
+export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
 
-export const GearPresets = {
-	[Phase.Phase1]: [],
-	[Phase.Phase2]: [],
-	[Phase.Phase3]: [],
-	[Phase.Phase4]: [Phase4ProtGear, Phase5ProtGear],
-	[Phase.Phase5]: [Phase4ProtGear, Phase5ProtGear],
-};
+export const GearPresets = {};
 
-export const DefaultGear = GearPresets[Phase.Phase5][0];
+export const DefaultGear = GearBlank;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets

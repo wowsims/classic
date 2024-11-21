@@ -22,7 +22,7 @@ func TestTankWarrior(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 
 			Talents:     P4Talents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warrior/gear_sets", "phase_4_tanky"),
+			GearSet:     core.GetGearSet("../../../ui/tank_warrior/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../../ui/tank_warrior/apls", "phase_4"),
 			Buffs:       core.FullBuffsPhase4,
 			Consumes:    Phase4Consumes,
