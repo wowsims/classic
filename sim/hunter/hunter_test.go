@@ -22,11 +22,11 @@ func TestBM(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
 
 			Talents:     Phase1Talents,
-			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "pre-raid-bis"),
+			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "pre-bis"),
 			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "basic-apl"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: Phase1PlayerOptions},
+			SpecOptions: core.SpecOptionsCombo{Label: "BM", SpecOptions: Phase1PlayerOptions},
 
 			OtherRotations: []core.RotationCombo{core.GetAplRotation("../../ui/hunter/apls", "basic-apl")},
 
@@ -47,11 +47,11 @@ func TestMM(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
 			Talents:     Phase1Talents,
-			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "placeholder"),
-			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "p4_ranged"),
+			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "pre-bis"),
+			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "basic-apl"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase1PlayerOptions},
+			SpecOptions: core.SpecOptionsCombo{Label: "MM", SpecOptions: Phase1PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -70,11 +70,11 @@ func TestSV(t *testing.T) {
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
 			Talents:     Phase1Talents,
-			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "placeholder"),
-			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "p4_weave"),
+			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "pre-bis"),
+			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "basic-apl"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase1Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase1PlayerOptions},
+			SpecOptions: core.SpecOptionsCombo{Label: "SV", SpecOptions: Phase1PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -83,7 +83,7 @@ func TestSV(t *testing.T) {
 	}))
 }
 
-var Phase1Talents = "-055500005-3305202202303051"
+var Phase1Talents = "50003201504-05251030513051"
 
 var Phase1Consumes = core.ConsumesCombo{
 	Label: "P1-Consumes",

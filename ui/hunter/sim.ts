@@ -159,7 +159,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		gear: [
 			Presets.DefaultGear,
 		],
-		builds: [Presets.PresetBuildRangedMM, Presets.PresetBuildRangedSV, Presets.PresetBuildMeleeBM, Presets.PresetBuildMeleeSV, Presets.PresetBuildWeave],
+		builds: [Presets.PresetBuildBasic],
 	},
 
 	autoRotation: player => {
@@ -172,24 +172,24 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHunter, {
 		if (isMelee) {
 			switch (level) {
 				case 25:
-					return Presets.APLMeleeWeavePhase1.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 				case 40:
-					return Presets.APLMeleePhase2.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 				case 50:
-					return Presets.APLMeleeBmPhase3.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 				case 60:
-					return Presets.APLWeavePhase4.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 			}
 		} else {
 			switch (level) {
 				case 25:
-					return Presets.APLMeleeWeavePhase1.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 				case 40:
-					return player.getTalentTree() === 1 ? Presets.APLRangedMmPhase2.rotation.rotation! : Presets.APLRangedBmPhase2.rotation.rotation!;
+					return player.getTalentTree() === 1 ? Presets.APLBasic.rotation.rotation! : Presets.APLBasic.rotation.rotation!;
 				case 50:
-					return Presets.APLRangedMmPhase3.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 				case 60:
-					return Presets.APLRangedPhase4.rotation.rotation!;
+					return Presets.APLBasic.rotation.rotation!;
 			}
 		}
 

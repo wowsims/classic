@@ -31,19 +31,8 @@ import {
 	Hunter_Options_QuiverBonus,
 } from '../core/proto/hunter.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import MeleeWeaveP1 from './apls/p1_weave.apl.json';
-import MeleeP2 from './apls/p2_melee.apl.json';
-import RangedBmP2 from './apls/p2_ranged_bm.apl.json';
-import RangedMmP2 from './apls/p2_ranged_mm.apl.json';
-import MeleeBmP3 from './apls/p3_melee_bm.apl.json';
-import RangedMmP3 from './apls/p3_ranged_mm.apl.json';
-import RangedP4 from './apls/p4_ranged.apl.json';
-import WeaveP4 from './apls/p4_weave.apl.json';
-import Phase5AplMeleeBm from './apls/p5_melee_bm.apl.json';
-import Phase5AplMeleeSv from './apls/p5_melee_sv.apl.json';
-import Phase5AplRanged from './apls/p5_ranged.apl.json';
-import Phase5AplWeave from './apls/p5_weave.apl.json';
-import BlankGear from './gear_sets/blank.gear.json';
+import Basic from './apls/basic-apl.json';
+import PreBIS from './gear_sets/pre-bis.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -52,46 +41,27 @@ import BlankGear from './gear_sets/blank.gear.json';
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
+export const GearPreBIS = PresetUtils.makePresetGear('Pre-BiS', PreBIS);
 
 export const GearPresets = {};
 
-export const DefaultGear = GearBlank;
+export const DefaultGear = GearPreBIS;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLMeleeWeavePhase1 = PresetUtils.makePresetAPLRotation('P1 Melee Weave', MeleeWeaveP1, { customCondition: player => player.getLevel() === 25 });
-
-export const APLMeleePhase2 = PresetUtils.makePresetAPLRotation('P2 Melee', MeleeP2, { customCondition: player => player.getLevel() === 40 });
-export const APLRangedBmPhase2 = PresetUtils.makePresetAPLRotation('P2 Ranged BM', RangedBmP2, { customCondition: player => player.getLevel() === 40 });
-export const APLRangedMmPhase2 = PresetUtils.makePresetAPLRotation('P2 Ranged MM', RangedMmP2, { customCondition: player => player.getLevel() === 40 });
-
-export const APLMeleeBmPhase3 = PresetUtils.makePresetAPLRotation('P3 Melee BM', MeleeBmP3, { customCondition: player => player.getLevel() === 50 });
-export const APLRangedMmPhase3 = PresetUtils.makePresetAPLRotation('P3 Ranged MM', RangedMmP3, { customCondition: player => player.getLevel() === 50 });
-
-export const APLWeavePhase4 = PresetUtils.makePresetAPLRotation('P4 Weave', WeaveP4, { customCondition: player => player.getLevel() === 60 });
-export const APLRangedPhase4 = PresetUtils.makePresetAPLRotation('P4 Ranged', RangedP4, { customCondition: player => player.getLevel() === 60 });
-
-export const APLWeavePhase5 = PresetUtils.makePresetAPLRotation('P5 Weave', Phase5AplWeave, { customCondition: player => player.getLevel() === 60 });
-export const APLRanged31Phase5 = PresetUtils.makePresetAPLRotation('P5 Ranged 3-1-1', Phase5AplRanged, { customCondition: player => player.getLevel() === 60 });
-export const APLRanged22Phase5 = PresetUtils.makePresetAPLRotation('P5 Ranged 2-2', RangedP4, { customCondition: player => player.getLevel() === 60 });
-export const APLMeleeBMPhase5 = PresetUtils.makePresetAPLRotation('P5 Melee BM', Phase5AplMeleeBm, { customCondition: player => player.getLevel() === 60 });
-export const APLMeleeSVPhase5 = PresetUtils.makePresetAPLRotation('P5 Melee SV', Phase5AplMeleeSv, { customCondition: player => player.getLevel() === 60 });
+export const APLBasic = PresetUtils.makePresetAPLRotation('Basic APL', Basic, { customCondition: player => player.getLevel() === 60 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLMeleeWeavePhase1],
-	[Phase.Phase2]: [APLRangedBmPhase2, APLRangedMmPhase2, APLMeleePhase2],
-	[Phase.Phase3]: [APLRangedMmPhase3, APLMeleeBmPhase3],
-	[Phase.Phase4]: [], //[APLWeavePhase4, APLRangedPhase4],
-	[Phase.Phase5]: [APLWeavePhase5, APLRanged31Phase5, APLRanged22Phase5, APLMeleeBMPhase5, APLMeleeSVPhase5],
+	[Phase.Phase1]: [APLBasic],
+	[Phase.Phase2]: [APLBasic],
+	[Phase.Phase3]: [APLBasic],
+	[Phase.Phase4]: [APLBasic],
+	[Phase.Phase5]: [APLBasic],
 };
 
-export const DefaultAPLWeave = APLPresets[Phase.Phase5][0];
-export const DefaultAPLRanged = APLPresets[Phase.Phase5][1];
-export const DefaultAPLMeleeBM = APLPresets[Phase.Phase5][3];
-export const DefaultAPLMeleeSV = APLPresets[Phase.Phase5][4];
+export const DefaultAPLBasic = APLPresets[Phase.Phase5][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -100,103 +70,26 @@ export const DefaultAPLMeleeSV = APLPresets[Phase.Phase5][4];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsBeastMasteryPhase1 = PresetUtils.makePresetTalents('P1 Beast Mastery', SavedTalents.create({ talentsString: '53000200501' }), {
-	customCondition: player => player.getLevel() === 25,
-});
-
-export const TalentsMarksmanPhase1 = PresetUtils.makePresetTalents('P1 Marksmanship', SavedTalents.create({ talentsString: '-050515' }), {
-	customCondition: player => player.getLevel() === 25,
-});
-
-export const TalentsSurvivalPhase1 = PresetUtils.makePresetTalents('P1 Survival', SavedTalents.create({ talentsString: '--33502001101' }), {
-	customCondition: player => player.getLevel() === 25,
-});
-
-export const TalentsBeastMasteryPhase2 = PresetUtils.makePresetTalents('P2 Beast Mastery', SavedTalents.create({ talentsString: '5300021150501251' }), {
-	customCondition: player => player.getLevel() === 40,
-});
-
-export const TalentsMarksmanPhase2 = PresetUtils.makePresetTalents('P2 Marksmanship', SavedTalents.create({ talentsString: '-05551001503051' }), {
-	customCondition: player => player.getLevel() === 40,
-});
-
-export const TalentsSurvivalPhase2 = PresetUtils.makePresetTalents('P2 Survival', SavedTalents.create({ talentsString: '--335020051030315' }), {
-	customCondition: player => player.getLevel() === 40,
-});
-
-export const TalentsRangedMMPhase3 = PresetUtils.makePresetTalents('P3 Ranged MM', SavedTalents.create({ talentsString: '5-05051404503051-3' }), {
-	customCondition: player => player.getLevel() === 50,
-});
-export const TalentsMeleeBMPhase3 = PresetUtils.makePresetTalents('P3 Melee BM', SavedTalents.create({ talentsString: '0500321150521251--33002' }), {
-	customCondition: player => player.getLevel() === 50,
-});
-
-export const TalentsWeavePhase4 = PresetUtils.makePresetTalents('60 Weave', SavedTalents.create({ talentsString: '-055500005-3305202202303051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsRangedMMPhase4 = PresetUtils.makePresetTalents('60 Ranged MM', SavedTalents.create({ talentsString: '-05451002503051-33400023023' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsRangedSVPhase4 = PresetUtils.makePresetTalents('60 Ranged SV', SavedTalents.create({ talentsString: '1-054510005-334000250230305' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-
-export const TalentsWeavePhase5 = PresetUtils.makePresetTalents('P5 Weave', SavedTalents.create({ talentsString: '-055500005-3305202202303051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsRangedMMPhase5 = PresetUtils.makePresetTalents('P5 Ranged MM', SavedTalents.create({ talentsString: '5-05451005503051-3320202' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsRangedSVPhase5 = PresetUtils.makePresetTalents('P5 Ranged SV', SavedTalents.create({ talentsString: '1-054510005-334000250230305' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsMeleeBMPhase5 = PresetUtils.makePresetTalents('P5 Melee BM', SavedTalents.create({ talentsString: '5500020050521251-0505-33002' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-export const TalentsMeleeSVPhase5 = PresetUtils.makePresetTalents('P5 Melee SV', SavedTalents.create({ talentsString: '-055500005-3320202412303051' }), {
+export const TalentsBasic = PresetUtils.makePresetTalents('Basic', SavedTalents.create({ talentsString: '50003201504-05251030513051' }), {
 	customCondition: player => player.getLevel() === 60,
 });
 
 export const TalentPresets = {
-	[Phase.Phase1]: [TalentsBeastMasteryPhase1, TalentsMarksmanPhase1, TalentsSurvivalPhase1],
-	[Phase.Phase2]: [TalentsBeastMasteryPhase2, TalentsMarksmanPhase2, TalentsSurvivalPhase2],
-	[Phase.Phase3]: [TalentsRangedMMPhase3, TalentsMeleeBMPhase3],
-	[Phase.Phase4]: [], //[TalentsWeavePhase4, TalentsRangedMMPhase4, TalentsRangedSVPhase4],
-	[Phase.Phase5]: [TalentsWeavePhase5, TalentsRangedMMPhase5, TalentsRangedSVPhase5, TalentsMeleeBMPhase5, TalentsMeleeSVPhase5],
+	[Phase.Phase1]: [TalentsBasic],
+	[Phase.Phase2]: [TalentsBasic],
+	[Phase.Phase3]: [TalentsBasic],
+	[Phase.Phase4]: [TalentsBasic],
+	[Phase.Phase5]: [TalentsBasic],
 };
 
-export const DefaultTalentsWeave = TalentPresets[Phase.Phase5][0];
-export const DefaultTalentsRangedMM = TalentPresets[Phase.Phase5][1];
-export const DefaultTalentsRangedSV = TalentPresets[Phase.Phase5][2];
-export const DefaultTalentsMeleeBM = TalentPresets[Phase.Phase5][3];
-export const DefaultTalentsMeleeSV = TalentPresets[Phase.Phase5][4];
+export const DefaultTalentsBasic = TalentPresets[Phase.Phase5][0];
 
-export const DefaultTalents = DefaultTalentsWeave;
+export const DefaultTalents = DefaultTalentsBasic;
 
-export const PresetBuildWeave = PresetUtils.makePresetBuild('Weave', {
+export const PresetBuildBasic = PresetUtils.makePresetBuild('Basic', {
 	gear: DefaultGear,
-	talents: DefaultTalentsWeave,
-	rotation: DefaultAPLWeave,
-});
-export const PresetBuildRangedMM = PresetUtils.makePresetBuild('Ranged MM', {
-	gear: DefaultGear,
-	talents: DefaultTalentsRangedMM,
-	rotation: DefaultAPLRanged,
-});
-export const PresetBuildRangedSV = PresetUtils.makePresetBuild('Ranged SV', {
-	gear: DefaultGear,
-	talents: DefaultTalentsRangedSV,
-	rotation: DefaultAPLRanged,
-});
-export const PresetBuildMeleeBM = PresetUtils.makePresetBuild('Melee BM', {
-	gear: DefaultGear,
-	talents: DefaultTalentsMeleeBM,
-	rotation: DefaultAPLMeleeBM,
-});
-export const PresetBuildMeleeSV = PresetUtils.makePresetBuild('Melee SV', {
-	gear: DefaultGear,
-	talents: DefaultTalentsMeleeSV,
-	rotation: DefaultAPLMeleeSV,
+	talents: DefaultTalentsBasic,
+	rotation: DefaultAPLBasic,
 });
 
 ///////////////////////////////////////////////////////////////////////////
