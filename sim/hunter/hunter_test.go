@@ -16,18 +16,19 @@ func TestBM(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassHunter,
-			Level:      40,
+			Phase:      5,
+			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
 
-			Talents:     Phase2BMTalents,
-			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "placeholder"),
-			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "p2_melee"),
+			Talents:     Phase1Talents,
+			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "pre-raid-bis"),
+			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "basic-apl"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: Phase2PlayerOptions},
+			Consumes:    Phase1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: Phase1PlayerOptions},
 
-			OtherRotations: []core.RotationCombo{core.GetAplRotation("../../ui/hunter/apls", "p2_ranged_bm")},
+			OtherRotations: []core.RotationCombo{core.GetAplRotation("../../ui/hunter/apls", "basic-apl")},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -40,17 +41,17 @@ func TestMM(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassHunter,
-			Phase:      4,
+			Phase:      5,
 			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
-			Talents:     Phase4RangedMMTalents,
+			Talents:     Phase1Talents,
 			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "p4_ranged"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase4PlayerOptions},
+			Consumes:    Phase1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase1PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -68,12 +69,12 @@ func TestSV(t *testing.T) {
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
-			Talents:     Phase4WeaveTalents,
+			Talents:     Phase1Talents,
 			GearSet:     core.GetGearSet("../../ui/hunter/gear_sets", "placeholder"),
 			Rotation:    core.GetAplRotation("../../ui/hunter/apls", "p4_weave"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase4PlayerOptions},
+			Consumes:    Phase1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "Weave", SpecOptions: Phase1PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -82,20 +83,10 @@ func TestSV(t *testing.T) {
 	}))
 }
 
-var Phase1BMTalents = "53000200501"
-var Phase1MMTalents = "-050515"
-var Phase1SVTalents = "--33502001101"
+var Phase1Talents = "-055500005-3305202202303051"
 
-var Phase2BMTalents = "5300021150501251"
-var Phase2MMTalents = "-05551001503051"
-var Phase2SVTalents = "--335020051030315"
-
-var Phase4WeaveTalents = "-055500005-3305202202303051"
-var Phase4RangedMMTalents = "-05451002503051-33400023023"
-var Phase4RangedSVTalents = "1-054510005-334000250230305"
-
-var Phase4Consumes = core.ConsumesCombo{
-	Label: "P4-Consumes",
+var Phase1Consumes = core.ConsumesCombo{
+	Label: "P1-Consumes",
 	Consumes: &proto.Consumes{
 		AgilityElixir:     proto.AgilityElixir_ElixirOfTheMongoose,
 		AttackPowerBuff:   proto.AttackPowerBuff_JujuMight,
@@ -117,29 +108,6 @@ var Phase1PlayerOptions = &proto.Player_Hunter{
 			PetType:        proto.Hunter_Options_Cat,
 			PetUptime:      1,
 			PetAttackSpeed: 2.0,
-		},
-	},
-}
-
-var Phase2PlayerOptions = &proto.Player_Hunter{
-	Hunter: &proto.Hunter{
-		Options: &proto.Hunter_Options{
-			Ammo:           proto.Hunter_Options_JaggedArrow,
-			PetType:        proto.Hunter_Options_Cat,
-			PetUptime:      1,
-			PetAttackSpeed: 2.0,
-		},
-	},
-}
-
-var Phase4PlayerOptions = &proto.Player_Hunter{
-	Hunter: &proto.Hunter{
-		Options: &proto.Hunter_Options{
-			Ammo:                 proto.Hunter_Options_JaggedArrow,
-			PetType:              proto.Hunter_Options_PetNone,
-			PetUptime:            1,
-			PetAttackSpeed:       2.0,
-			SniperTrainingUptime: 1.0,
 		},
 	},
 }
