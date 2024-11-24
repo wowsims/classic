@@ -1,0 +1,196 @@
+character_stats_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-CharacterStats-Default"
+ value: {
+  final_stats: 462.3
+  final_stats: 318.55
+  final_stats: 526.355
+  final_stats: 102.35
+  final_stats: 177.1
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 41.25
+  final_stats: 0
+  final_stats: 21
+  final_stats: 0
+  final_stats: 0
+  final_stats: 1794.6
+  final_stats: 0
+  final_stats: 37.9275
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 4843.1
+  final_stats: 620
+  final_stats: 0
+  final_stats: 5
+  final_stats: 0
+  final_stats: 15.9275
+  final_stats: 5
+  final_stats: 0
+  final_stats: 7072.55
+  final_stats: 35
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 384
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-StatWeights-Default"
+ value: {
+  weights: 0.49761
+  weights: 0.26243
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: -0.09142
+  weights: 0
+  weights: 3.0773
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Average-Default"
+ value: {
+  dps: 252.15479
+  tps: 220.34291
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 33.99834
+  tps: 119.61369
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 30.8644
+  tps: 31.88411
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 78.32938
+  tps: 73.13359
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 15.19081
+  tps: 104.56766
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 12.89581
+  tps: 17.50924
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Human-p0.bis-DPS-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 32.9784
+  tps: 36.85281
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 36.5712
+  tps: 121.67198
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 33.43726
+  tps: 33.9424
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 83.96505
+  tps: 77.64213
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 16.24178
+  tps: 105.40844
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 13.94678
+  tps: 18.35001
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-DPS-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 35.86584
+  tps: 39.16276
+ }
+}
+dps_results: {
+ key: "TestP1DPSWarrior-Phase1-Lvl60-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 200.34625
+  tps: 176.81359
+ }
+}

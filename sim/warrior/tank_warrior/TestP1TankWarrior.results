@@ -1,0 +1,196 @@
+character_stats_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-CharacterStats-Default"
+ value: {
+  final_stats: 462.3
+  final_stats: 318.55
+  final_stats: 526.355
+  final_stats: 102.35
+  final_stats: 177.1
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 41.25
+  final_stats: 0
+  final_stats: 21
+  final_stats: 0
+  final_stats: 0
+  final_stats: 1794.6
+  final_stats: 0
+  final_stats: 33.9275
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 4843.1
+  final_stats: 620
+  final_stats: 10
+  final_stats: 10.4
+  final_stats: 0
+  final_stats: 16.3275
+  final_stats: 5.4
+  final_stats: 0
+  final_stats: 8272.55
+  final_stats: 35
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 384
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-StatWeights-Default"
+ value: {
+  weights: 0.4118
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.34766
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Average-Default"
+ value: {
+  dps: 197.59846
+  tps: 322.92702
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 26.25922
+  tps: 151.69927
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 23.01814
+  tps: 44.96815
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 33.13206
+  tps: 64.84212
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 11.63948
+  tps: 129.84277
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 9.27833
+  tps: 24.42714
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Human-p0.bis-Protection-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 11.78536
+  tps: 32.92882
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 28.19751
+  tps: 149.59702
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 24.95643
+  tps: 47.6159
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 36.01982
+  tps: 67.90932
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 12.34613
+  tps: 125.89922
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 9.98498
+  tps: 25.23359
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-Settings-Orc-p0.bis-Protection-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 12.82153
+  tps: 33.22788
+ }
+}
+dps_results: {
+ key: "TestP1TankWarrior-Phase1-Lvl60-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 166.45011
+  tps: 274.27352
+ }
+}

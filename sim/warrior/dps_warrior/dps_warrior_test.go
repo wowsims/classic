@@ -12,21 +12,21 @@ func init() {
 	RegisterDpsWarrior()
 }
 
-func TestDualWieldWarrior(t *testing.T) {
+func TestP1DPSWarrior(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassWarrior,
-			Phase:      5,
+			Phase:      1,
 			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 
-			Talents:     P4FuryTalents,
-			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_5_dw"),
+			Talents:     P1Talents,
+			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "p0.bis"),
+			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "p1"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Fury", SpecOptions: PlayerOptionsFury},
+			Consumes:    P1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "DPS", SpecOptions: PlayerOptionsFury},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -35,36 +35,10 @@ func TestDualWieldWarrior(t *testing.T) {
 	}))
 }
 
-func TestTwoHandedWarrior(t *testing.T) {
-	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
-		{
-			Class:      proto.Class_ClassWarrior,
-			Phase:      5,
-			Level:      60,
-			Race:       proto.Race_RaceOrc,
-			OtherRaces: []proto.Race{proto.Race_RaceHuman},
+var P1Talents = "20305020302-05050005525010051"
 
-			Talents:     P4FuryTalents,
-			GearSet:     core.GetGearSet("../../../ui/warrior/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../../ui/warrior/apls", "phase_5_2h"),
-			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Arms", SpecOptions: PlayerOptionsArms},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatAttackPower,
-			StatsToWeigh:    Stats,
-		},
-	}))
-}
-
-var P2ArmsTalents = "303050213525100001"
-var P2FuryTalents = "-05050005405010051"
-var P3ArmsTalents = "303050213520105001-0505"
-var P4FuryTalents = "20305020302-05050005525010051"
-
-var Phase4Consumes = core.ConsumesCombo{
-	Label: "P4-Consumes",
+var P1Consumes = core.ConsumesCombo{
+	Label: "P1-Consumes",
 	Consumes: &proto.Consumes{
 		AgilityElixir:     proto.AgilityElixir_ElixirOfTheMongoose,
 		AttackPowerBuff:   proto.AttackPowerBuff_JujuMight,

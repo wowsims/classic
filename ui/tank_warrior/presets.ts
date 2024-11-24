@@ -23,38 +23,35 @@ import {
 } from '../core/proto/common.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import { TankWarrior_Options as TankWarriorOptions, WarriorShout, WarriorStance } from '../core/proto/warrior.js';
-import Phase4APL from './apls/phase_4.apl.json';
-import BlankGear from './gear_sets/blank.gear.json';
+import P1APL from './apls/p1.apl.json';
+import P0BISGear from './gear_sets/p0.bis.gear.json';
+import P1BISGear from './gear_sets/p1.bis.gear.json';
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Gear Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
+export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
+export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
 
-export const GearPresets = {};
+export const GearPresets = {
+	[Phase.Phase1]: [GearP0BIS, GearP1BIS],
+};
 
-export const DefaultGear = GearBlank;
+export const DefaultGear = GearP0BIS;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLPhase4 = PresetUtils.makePresetAPLRotation('P4 Prot/Fury', Phase4APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1Prot = PresetUtils.makePresetAPLRotation('Protection', P1APL, { customCondition: player => player.getLevel() === 60 });
 
 export const APLPresets = {
-	[Phase.Phase1]: [],
-	[Phase.Phase2]: [],
-	[Phase.Phase3]: [],
-	[Phase.Phase4]: [APLPhase4],
-	[Phase.Phase5]: [],
+	[Phase.Phase1]: [APLP1Prot],
 };
 
 export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	25: APLPresets[Phase.Phase1][0],
-	40: APLPresets[Phase.Phase2][0],
-	50: APLPresets[Phase.Phase3][0],
-	60: APLPresets[Phase.Phase4][0],
+	60: APLPresets[Phase.Phase1][0],
 };
 
 ///////////////////////////////////////////////////////////////////////////
@@ -64,26 +61,17 @@ export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsPhase4Prot = PresetUtils.makePresetTalents('60 Prot', SavedTalents.create({ talentsString: '20304300302-03-55200110530201051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
-
-export const TalentsPhase4Fury = PresetUtils.makePresetTalents('60 Fury', SavedTalents.create({ talentsString: '33302300302-05050005505010051' }), {
+export const TalentsP1Prot = PresetUtils.makePresetTalents('Protection', SavedTalents.create({ talentsString: '20304300302-03-55200110530201051' }), {
 	customCondition: player => player.getLevel() === 60,
 });
 
 export const TalentPresets = {
-	[Phase.Phase1]: [],
-	[Phase.Phase2]: [],
-	[Phase.Phase3]: [],
-	[Phase.Phase4]: [TalentsPhase4Prot, TalentsPhase4Fury],
-	[Phase.Phase5]: [],
+	[Phase.Phase1]: [TalentsP1Prot],
 };
 
-export const DefaultTalents = TalentPresets[Phase.Phase4][0];
+export const DefaultTalents = TalentPresets[Phase.Phase1][0];
 
-export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGear, talents: TalentsPhase4Prot, rotation: DefaultAPLs[60] });
-export const PresetBuildDamage = PresetUtils.makePresetBuild('Damage', { gear: DefaultGear, talents: TalentsPhase4Fury, rotation: DefaultAPLs[60] });
+export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGear, talents: TalentsP1Prot, rotation: DefaultAPLs[60] });
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options Presets

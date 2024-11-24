@@ -18,7 +18,7 @@ func TestAbort(t *testing.T) {
 		Level:     60,
 		Race:      proto.Race_RaceOrc,
 		Class:     proto.Class_ClassWarrior,
-		Equipment: core.GetGearSet("../../../ui/tank_warrior/gear_sets", "placeholder").GearSet,
+		Equipment: core.GetGearSet("../../../ui/tank_warrior/gear_sets", "p0.bis").GearSet,
 		Rotation:  &proto.APLRotation{},
 		Consumes:  &proto.Consumes{},
 		Spec: &proto.Player_Warrior{

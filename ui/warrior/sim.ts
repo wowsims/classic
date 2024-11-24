@@ -111,79 +111,39 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 	presets: {
 		// Preset talents that the user can quickly select.
 		talents: [
-			...Presets.TalentPresets[Phase.Phase5],
-			...Presets.TalentPresets[Phase.Phase4],
-			...Presets.TalentPresets[Phase.Phase3],
-			...Presets.TalentPresets[Phase.Phase2],
 			...Presets.TalentPresets[Phase.Phase1],
 		],
 		// Preset rotations that the user can quickly select.
 		rotations: [
-			...Presets.APLPresets[Phase.Phase5],
-			...Presets.APLPresets[Phase.Phase4],
-			...Presets.APLPresets[Phase.Phase3],
-			...Presets.APLPresets[Phase.Phase2],
 			...Presets.APLPresets[Phase.Phase1],
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			Presets.DefaultGear,
+			...Presets.GearPresets[Phase.Phase1],
 		],
 		// Preset builds that the user can quickly select.
-		builds: [Presets.PresetBuild2H, Presets.PresetBuildDW],
+		builds: [],
 	},
 
 	autoRotation: player => {
 		const level = player.getLevel();
 		const talentTree = player.getTalentTree();
 
-		if (level < 60) {
-			return Presets.DefaultAPLs[level][talentTree].rotation.rotation!;
-		}
-
 		if (player.getEquippedItem(ItemSlot.ItemSlotMainHand)?._item.handType === HandType.HandTypeTwoHand) {
-			return Presets.DefaultAPLs[level][0].rotation.rotation!;
+			return Presets.DefaultAPLs[0].rotation.rotation!;
 		}
 
-		return Presets.DefaultAPLs[level][1].rotation.rotation!;
+		return Presets.DefaultAPLs[0].rotation.rotation!;
 	},
 
 	raidSimPresets: [
 		{
 			spec: Spec.SpecWarrior,
-			tooltip: 'Arms Warrior',
-			defaultName: 'Arms',
+			tooltip: 'DPS Warrior',
+			defaultName: 'DPS',
 			iconUrl: getSpecIcon(Class.ClassWarrior, 0),
 
-			talents: Presets.DefaultTalents2H.data,
-			specOptions: Presets.DefaultOptions,
-			consumes: Presets.DefaultConsumes,
-			defaultFactionRaces: {
-				[Faction.Unknown]: Race.RaceUnknown,
-				[Faction.Alliance]: Race.RaceHuman,
-				[Faction.Horde]: Race.RaceOrc,
-			},
-			defaultGear: {
-				[Faction.Unknown]: {},
-				[Faction.Alliance]: {
-					1: Presets.DefaultGear.gear,
-					2: Presets.DefaultGear.gear,
-					3: Presets.DefaultGear.gear,
-				},
-				[Faction.Horde]: {
-					1: Presets.DefaultGear.gear,
-					2: Presets.DefaultGear.gear,
-					3: Presets.DefaultGear.gear,
-				},
-			},
-		},
-		{
-			spec: Spec.SpecWarrior,
-			tooltip: 'Fury Warrior',
-			defaultName: 'Fury',
-			iconUrl: getSpecIcon(Class.ClassWarrior, 1),
-
-			talents: Presets.DefaultTalentsDW.data,
+			talents: Presets.DefaultTalents.data,
 			specOptions: Presets.DefaultOptions,
 			consumes: Presets.DefaultConsumes,
 			defaultFactionRaces: {

@@ -12,21 +12,21 @@ func init() {
 	RegisterTankWarrior()
 }
 
-func TestTankWarrior(t *testing.T) {
+func TestP1TankWarrior(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassWarrior,
-			Phase:      4,
+			Phase:      1,
 			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 
-			Talents:     P4Talents,
-			GearSet:     core.GetGearSet("../../../ui/tank_warrior/gear_sets", "placeholder"),
-			Rotation:    core.GetAplRotation("../../../ui/tank_warrior/apls", "phase_4"),
+			Talents:     P1Talents,
+			GearSet:     core.GetGearSet("../../../ui/tank_warrior/gear_sets", "p0.bis"),
+			Rotation:    core.GetAplRotation("../../../ui/tank_warrior/apls", "p1"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Arms", SpecOptions: PlayerOptionsBasic},
+			Consumes:    P1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "Protection", SpecOptions: PlayerOptionsBasic},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -35,7 +35,7 @@ func TestTankWarrior(t *testing.T) {
 	}))
 }
 
-var P4Talents = "20304300302-03-55200110530201051"
+var P1Talents = "20304300302-03-55200110530201051"
 
 var PlayerOptionsBasic = &proto.Player_TankWarrior{
 	TankWarrior: &proto.TankWarrior{
@@ -48,8 +48,8 @@ var warriorOptions = &proto.TankWarrior_Options{
 	StartingRage: 0,
 }
 
-var Phase4Consumes = core.ConsumesCombo{
-	Label: "P4-Consumes",
+var P1Consumes = core.ConsumesCombo{
+	Label: "P1-Consumes",
 	Consumes: &proto.Consumes{
 		AgilityElixir:     proto.AgilityElixir_ElixirOfTheMongoose,
 		AttackPowerBuff:   proto.AttackPowerBuff_JujuMight,
