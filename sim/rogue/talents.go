@@ -8,6 +8,8 @@ import (
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
+//test
+
 func (rogue *Rogue) ApplyTalents() {
 	rogue.applyRuthlessness()
 	rogue.applyMurder()
@@ -391,9 +393,9 @@ func (rogue *Rogue) registerAdrenalineRushCD() {
 	})
 
 	rogue.AdrenalineRush = rogue.RegisterSpell(core.SpellConfig{
-		SpellCode:   SpellCode_RogueAdrenalineRush,
-		ActionID: 	 AdrenalineRushActionID,
-		Cast: 		 core.CastConfig{
+		SpellCode: SpellCode_RogueAdrenalineRush,
+		ActionID:  AdrenalineRushActionID,
+		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
 				GCD: time.Second,
 			},
