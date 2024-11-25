@@ -1,0 +1,196 @@
+character_stats_results: {
+ key: "TestP1Mage-Phase1-Lvl60-CharacterStats-Default"
+ value: {
+  final_stats: 172.5
+  final_stats: 179.4
+  final_stats: 353.1075
+  final_stats: 414
+  final_stats: 311.65
+  final_stats: 173
+  final_stats: 0
+  final_stats: 40
+  final_stats: 15
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 41.25
+  final_stats: 0
+  final_stats: 28.1552
+  final_stats: 0
+  final_stats: 0
+  final_stats: 792.5
+  final_stats: 0
+  final_stats: 16.2
+  final_stats: 0
+  final_stats: 0
+  final_stats: 0
+  final_stats: 7143
+  final_stats: 0
+  final_stats: 0
+  final_stats: 1049.8
+  final_stats: 540
+  final_stats: 0
+  final_stats: 5
+  final_stats: 0
+  final_stats: 3.2
+  final_stats: 5
+  final_stats: 0
+  final_stats: 5021.075
+  final_stats: 35
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 68
+  final_stats: 384
+  final_stats: 0
+  final_stats: 35
+  final_stats: 0
+ }
+}
+stat_weights_results: {
+ key: "TestP1Mage-Phase1-Lvl60-StatWeights-Default"
+ value: {
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.01055
+  weights: 0
+  weights: 0.13055
+  weights: 0
+  weights: 0.13055
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0.64435
+  weights: 0.5321
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+  weights: 0
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Average-Default"
+ value: {
+  dps: 54.83156
+  tps: 62.0652
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 55.33731
+  tps: 167.06291
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 55.33731
+  tps: 60.92359
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 52.21493
+  tps: 57.57093
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 30.66147
+  tps: 212.32815
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 30.66147
+  tps: 39.7448
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Gnome-p0.bis-DPS-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 29.57362
+  tps: 33.03878
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 54.53749
+  tps: 184.74762
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 54.53749
+  tps: 61.048
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 51.44671
+  tps: 58.02596
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ value: {
+  dps: 30.54926
+  tps: 214.44915
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ value: {
+  dps: 30.54926
+  tps: 39.74425
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-Settings-Troll-p0.bis-DPS-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ value: {
+  dps: 29.45515
+  tps: 32.91712
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-Lvl60-SwitchInFrontOfTarget-Default"
+ value: {
+  dps: 54.63154
+  tps: 61.86075
+ }
+}

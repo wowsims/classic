@@ -12,21 +12,21 @@ func init() {
 	RegisterMage()
 }
 
-func TestArcane(t *testing.T) {
+func TestP1Mage(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassMage,
-			Phase:      5,
+			Phase:      1,
 			Level:      60,
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceGnome},
 
-			Talents:     Phase5TalentsArcane,
-			GearSet:     core.GetGearSet("../../ui/mage/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../ui/mage/apls", "p5_spellfrost"),
+			Talents:     P1Talents,
+			GearSet:     core.GetGearSet("../../ui/mage/gear_sets", "p0.bis"),
+			Rotation:    core.GetAplRotation("../../ui/mage/apls", "p1"),
 			Buffs:       core.FullBuffs,
-			Consumes:    Phase5Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Arcane", SpecOptions: PlayerOptionsArcane},
+			Consumes:    P1Consumes,
+			SpecOptions: core.SpecOptionsCombo{Label: "DPS", SpecOptions: PlayerOptions},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatSpellPower,
@@ -35,79 +35,9 @@ func TestArcane(t *testing.T) {
 	}))
 }
 
-func TestFire(t *testing.T) {
-	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
-		{
-			Class:      proto.Class_ClassMage,
-			Phase:      5,
-			Level:      60,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceGnome},
+var P1Talents = "-0550320003021-2035020310035105"
 
-			Talents:     Phase5TalentsFire,
-			GearSet:     core.GetGearSet("../../ui/mage/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../ui/mage/apls", "p5_fire"),
-			Buffs:       core.FullBuffs,
-			Consumes:    Phase5Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Fire", SpecOptions: PlayerOptionsFire},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-	}))
-}
-
-func TestFrost(t *testing.T) {
-	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
-		{
-			Class:      proto.Class_ClassMage,
-			Phase:      5,
-			Level:      60,
-			Race:       proto.Race_RaceTroll,
-			OtherRaces: []proto.Race{proto.Race_RaceGnome},
-
-			Talents:     phase5talentsfrost,
-			GearSet:     core.GetGearSet("../../ui/mage/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../ui/mage/apls", "p5_spellfrost"),
-			Buffs:       core.FullBuffs,
-			Consumes:    Phase5Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "Frost", SpecOptions: PlayerOptionsFrost},
-
-			ItemFilter:      ItemFilters,
-			EPReferenceStat: proto.Stat_StatSpellPower,
-			StatsToWeigh:    Stats,
-		},
-	}))
-}
-
-var Phase1TalentsArcane = "22500502"
-var Phase1TalentsFire = "-5050020121"
-
-var Phase2TalentsArcane = "2250050310031531"
-var Phase2TalentsFire = "-5050020123033151"
-var Phase2TalentsFrostfire = Phase2TalentsFire
-
-var Phase3TalentsFire = "-0550020123033151-2035"
-var Phase3TalentsFrost = "-055-20350203100351051"
-
-var Phase4TalentsArcane = "0550050210031531-054-203500001"
-var Phase4TalentsFire = "21-5052300123033151-203500031"
-var Phase4TalentsFrost = "-0550320003021-2035020310035105"
-
-var Phase5TalentsArcane = "2500550010031531--2035020310004"
-var Phase5TalentsFire = "21-5052300123033151-203500031"
-var phase5talentsfrost = "250025001002--05350203100351051"
-
-var PlayerOptionsArcane = &proto.Player_Mage{
-	Mage: &proto.Mage{
-		Options: &proto.Mage_Options{
-			Armor: proto.Mage_Options_MageArmor,
-		},
-	},
-}
-
-var PlayerOptionsFire = &proto.Player_Mage{
+var PlayerOptions = &proto.Player_Mage{
 	Mage: &proto.Mage{
 		Options: &proto.Mage_Options{
 			Armor: proto.Mage_Options_MoltenArmor,
@@ -115,16 +45,8 @@ var PlayerOptionsFire = &proto.Player_Mage{
 	},
 }
 
-var PlayerOptionsFrost = &proto.Player_Mage{
-	Mage: &proto.Mage{
-		Options: &proto.Mage_Options{
-			Armor: proto.Mage_Options_IceArmor,
-		},
-	},
-}
-
-var Phase5Consumes = core.ConsumesCombo{
-	Label: "P5-Consumes",
+var P1Consumes = core.ConsumesCombo{
+	Label: "P1-Consumes",
 	Consumes: &proto.Consumes{
 		DefaultPotion:  proto.Potions_MajorManaPotion,
 		Flask:          proto.Flask_FlaskOfSupremePower,
