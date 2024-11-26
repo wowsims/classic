@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 const PyroblastRanks = 8
@@ -33,7 +32,6 @@ func (mage *Mage) registerPyroblastSpell() {
 }
 
 func (mage *Mage) newPyroblastSpellConfig(rank int) core.SpellConfig {
-	hasHotStreakRune := mage.HasRune(proto.MageRune_RuneHelmHotStreak)
 
 	numTicks := int32(4)
 	tickLength := time.Second * 3
@@ -95,10 +93,6 @@ func (mage *Mage) newPyroblastSpellConfig(rank int) core.SpellConfig {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageLow, baseDamageHigh)
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
-
-			if hasHotStreakRune && mage.HotStreakAura.IsActive() {
-				mage.HotStreakAura.Deactivate(sim)
-			}
 
 			spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 				spell.DealDamage(sim, result)

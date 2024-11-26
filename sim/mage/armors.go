@@ -2,7 +2,6 @@ package mage
 
 import (
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
@@ -90,34 +89,6 @@ func (mage *Mage) applyMageArmor() {
 				mage.AddResistances(-1 * spellRes)
 			} else {
 				mage.AddResistancesDynamic(sim, -1*spellRes)
-			}
-		},
-	}))
-}
-
-func (mage *Mage) applyMoltenArmor() {
-	if !mage.HasRune(proto.MageRune_RuneBracersMoltenArmor) {
-		return
-	}
-
-	crit := 5.0 * core.SpellCritRatingPerCritChance
-
-	mage.MoltenArmorAura = core.MakePermanent(mage.RegisterAura(core.Aura{
-		Label:      "Molten Armor",
-		ActionID:   core.ActionID{SpellID: int32(proto.MageRune_RuneBracersMoltenArmor)},
-		BuildPhase: core.CharacterBuildPhaseBuffs,
-		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			if aura.Unit.Env.MeasuringStats && aura.Unit.Env.State != core.Finalized {
-				mage.AddStat(stats.SpellCrit, crit)
-			} else {
-				mage.AddStatDynamic(sim, stats.SpellCrit, crit)
-			}
-		},
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			if aura.Unit.Env.MeasuringStats && aura.Unit.Env.State != core.Finalized {
-				mage.AddStat(stats.SpellCrit, -crit)
-			} else {
-				mage.AddStatDynamic(sim, stats.SpellCrit, -crit)
 			}
 		},
 	}))

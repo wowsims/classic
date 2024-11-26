@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 const ArcaneMissilesRanks = 8
@@ -41,9 +40,6 @@ func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 	numTicks := castTime
 	tickLength := time.Second
 
-	hasArcaneBlastRune := mage.HasRune(proto.MageRune_RuneHandsArcaneBlast)
-	hasMissileBarrageRune := mage.HasRune(proto.MageRune_RuneBeltMissileBarrage)
-
 	tickSpell := mage.getArcaneMissilesTickSpell(rank)
 	mage.ArcaneMissilesTickSpell[rank] = tickSpell
 
@@ -74,13 +70,12 @@ func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 					// TODO: This check is necessary to ensure the final tick occurs before
 					// Arcane Blast stacks are dropped. To fix this, ticks need to reliably
 					// occur before aura expirations.
+
+					//TODO: Test interaction in classic code without aura
 					dot := mage.ArcaneMissiles[rank].Dot(aura.Unit)
 					if dot.TickCount < dot.NumberOfTicks {
 						dot.TickCount++
 						dot.TickOnce(sim)
-					}
-					if hasArcaneBlastRune && mage.ArcaneBlastAura.IsActive() {
-						mage.ArcaneBlastAura.Deactivate(sim)
 					}
 				},
 			},
@@ -93,10 +88,6 @@ func (mage *Mage) getArcaneMissilesSpellConfig(rank int) core.SpellConfig {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			spell.Dot(target).Apply(sim)
-
-			if hasMissileBarrageRune && mage.MissileBarrageAura.IsActive() {
-				mage.MissileBarrageAura.Deactivate(sim)
-			}
 		},
 		ExpectedTickDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, _ bool) *core.SpellResult {
 			return tickSpell.CalcDamage(sim, target, baseTickDamage, spell.OutcomeExpectedMagicHitAndCrit)

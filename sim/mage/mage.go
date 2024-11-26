@@ -14,25 +14,15 @@ const (
 
 const (
 	SpellCode_MageNone int32 = iota
-	SpellCode_MageArcaneBarrage
-	SpellCode_MageArcaneBlast
 	SpellCode_MageArcaneExplosion
 	SpellCode_MageArcaneMissiles
 	SpellCode_MageArcaneMissilesTick
-	SpellCode_MageArcaneSurge
-	SpellCode_MageBalefireBolt
 	SpellCode_MageBlastWave
 	SpellCode_MageFireball
 	SpellCode_MageFireBlast
 	SpellCode_MageFrostbolt
-	SpellCode_MageFrostfireBolt
-	SpellCode_MageFrozenOrb
 	SpellCode_MageIgnite
-	SpellCode_MageLivingBomb
-	SpellCode_MageLivingBombExplosion
-	SpellCode_MageLivingFlame
 	SpellCode_MageScorch
-	SpellCode_MageSpellfrostBolt
 )
 
 var TalentTreeSizes = [3]int{16, 16, 17}
@@ -61,59 +51,30 @@ type Mage struct {
 	Options *proto.Mage_Options
 
 	activeBarrier *core.Aura
-	frozenOrbPets []*FrozenOrb
 
-	ArcaneBarrage           *core.Spell
-	ArcaneBlast             *core.Spell
 	ArcaneExplosion         []*core.Spell
 	ArcaneMissiles          []*core.Spell
 	ArcaneMissilesTickSpell []*core.Spell
-	ArcaneSurge             *core.Spell
-	BalefireBolt            *core.Spell
 	BlastWave               []*core.Spell
 	Blizzard                []*core.Spell
-	DeepFreeze              *core.Spell
 	Fireball                []*core.Spell
 	FireBlast               []*core.Spell
 	Flamestrike             []*core.Spell
 	Frostbolt               []*core.Spell
-	FrostfireBolt           *core.Spell
-	FrozenOrb               *core.Spell
 	IceBarrier              []*core.Spell
-	IceLance                *core.Spell
 	Ignite                  *core.Spell
-	LivingBomb              *core.Spell
-	LivingFlame             *core.Spell
 	ManaGem                 []*core.Spell
 	PresenceOfMind          *core.Spell
 	Pyroblast               []*core.Spell
 	Scorch                  []*core.Spell
-	SpellfrostBolt          *core.Spell
 
-	IcyVeins *core.Spell
-
-	ArcaneBlastAura     *core.Aura
-	ArcanePotencyAura   *core.Aura
 	ArcanePowerAura     *core.Aura
 	ClearcastingAura    *core.Aura
 	CombustionAura      *core.Aura
-	FingersOfFrostAura  *core.Aura
-	HotStreakAura       *core.Aura
 	IceArmorAura        *core.Aura
 	IceBarrierAuras     []*core.Aura
 	ImprovedScorchAuras core.AuraArray
 	MageArmorAura       *core.Aura
-	MissileBarrageAura  *core.Aura
-	MoltenArmorAura     *core.Aura
-
-	ArcaneBlastMissileBarrageChance float64
-	BonusFireballDoTAmount          float64
-	FingersOfFrostProcChance        float64
-
-	// Variables for telling the mage to try to maintain the Fireball DoT with T2 Fire 6pc
-	ArcaneBlastDamageMultiplier float64
-	FireballMissileActive       bool // Whether Fireball has been cast but has not hit to avoid chain-casting
-	MaintainFireballDoT         bool
 }
 
 // Agent is a generic way to access underlying mage on any of the agents.
@@ -154,10 +115,6 @@ func (mage *Mage) Initialize() {
 }
 
 func (mage *Mage) Reset(sim *core.Simulation) {
-	mage.BonusFireballDoTAmount = 0
-	for _, orb := range mage.frozenOrbPets {
-		orb.TickCount = 0
-	}
 }
 
 func NewMage(character *core.Character, options *proto.Player) *Mage {
@@ -175,26 +132,11 @@ func NewMage(character *core.Character, options *proto.Player) *Mage {
 	mage.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
 	mage.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[mage.Class][int(mage.Level)]*core.SpellCritRatingPerCritChance)
 
-	switch mage.Consumes.MageScroll {
-	case proto.MageScroll_MageScrollArcaneRecovery:
-		mage.AddStat(stats.MP5, 8)
-	case proto.MageScroll_MageScrollArcaneAccuracy:
-		mage.AddStat(stats.SpellHit, core.SpellHitRatingPerHitChance)
-	case proto.MageScroll_MageScrollArcanePower:
-		mage.AddStat(stats.SpellCrit, core.SpellCritRatingPerCritChance)
-	case proto.MageScroll_MageScrollFireProtection:
-		mage.AddStat(stats.FireResistance, 20)
-	case proto.MageScroll_MageScrollFrostProtection:
-		mage.AddStat(stats.FrostResistance, 20)
-	}
-
 	switch mage.Options.Armor {
 	case proto.Mage_Options_IceArmor:
 		mage.applyFrostIceArmor()
 	case proto.Mage_Options_MageArmor:
 		mage.applyMageArmor()
-	case proto.Mage_Options_MoltenArmor:
-		mage.applyMoltenArmor()
 	}
 
 	// Set mana regen to 12.5 + Spirit/4 each 2s tick
@@ -202,19 +144,7 @@ func NewMage(character *core.Character, options *proto.Player) *Mage {
 		return 6.25 + mage.GetStat(stats.Spirit)/8
 	}
 
-	if mage.HasRune(proto.MageRune_RuneCloakFrozenOrb) {
-		mage.frozenOrbPets = mage.NewFrozenOrbPets()
-	}
-
 	guardians.ConstructGuardians(&mage.Character)
 
 	return mage
-}
-
-func (mage *Mage) HasRune(rune proto.MageRune) bool {
-	return false // mage.HasRuneById(int32(rune))
-}
-
-func (mage *Mage) baseRuneAbilityDamage() float64 {
-	return 13.828124 + 0.018012*float64(mage.Level) + 0.044141*float64(mage.Level*mage.Level)
 }

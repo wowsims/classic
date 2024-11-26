@@ -29,13 +29,10 @@ func (mage *Mage) applyIgnite() {
 				mage.procIgnite(sim, result)
 			}
 		},
-		// TODO: Classic verify mechanics match for rune based Living Bomb
+		// TODO: Classic verify mechanics match for rune based Living Bomb - I believe this can be removed in classic?
 		OnPeriodicDamageDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 			if !spell.ProcMask.Matches(core.ProcMaskSpellDamage) {
 				return
-			}
-			if mage.LivingBomb != nil && result.DidCrit() {
-				mage.procIgnite(sim, result)
 			}
 		},
 	})

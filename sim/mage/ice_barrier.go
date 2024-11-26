@@ -40,10 +40,10 @@ func (mage *Mage) newIceBarrierSpellConfig(rank int, cdTimer *core.Timer) core.S
 		Label:    fmt.Sprintf("Ice Barrier (Rank %d)", rank),
 		Duration: time.Minute,
 		OnGain: func(aura *core.Aura, sim *core.Simulation) {
-			// Dummy
+			// Dummy, needs shield implementation
 		},
 		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			// Dummy
+			// Dummy, needs shield implementation
 		},
 	})
 

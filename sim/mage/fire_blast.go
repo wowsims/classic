@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 const FireBlastRanks = 7
@@ -29,7 +28,6 @@ func (mage *Mage) registerFireBlastSpell() {
 }
 
 func (mage *Mage) newFireBlastSpellConfig(rank int, cdTimer *core.Timer) core.SpellConfig {
-	hasOverheatRune := mage.HasRune(proto.MageRune_RuneCloakOverheat)
 
 	spellId := FireBlastSpellId[rank]
 	baseDamageLow := FireBlastBaseDamage[rank][0]
@@ -40,11 +38,6 @@ func (mage *Mage) newFireBlastSpellConfig(rank int, cdTimer *core.Timer) core.Sp
 
 	cooldown := time.Second * 8
 	flags := SpellFlagMage | core.SpellFlagAPL
-	if hasOverheatRune {
-		cooldown = time.Second * 15
-		flags |= core.SpellFlagCastTimeNoGCD | core.SpellFlagCastWhileCasting
-	}
-	gcd := core.TernaryDuration(hasOverheatRune, 0, core.GCDDefault)
 
 	return core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellId},
@@ -62,7 +55,7 @@ func (mage *Mage) newFireBlastSpellConfig(rank int, cdTimer *core.Timer) core.Sp
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
-				GCD: gcd,
+				GCD: core.GCDDefault,
 			},
 			CD: core.Cooldown{
 				Timer:    cdTimer,
@@ -70,15 +63,15 @@ func (mage *Mage) newFireBlastSpellConfig(rank int, cdTimer *core.Timer) core.Sp
 			},
 		},
 
-		BonusCritRating: core.TernaryFloat64(hasOverheatRune, 100, 2*float64(mage.Talents.Incinerate)) * core.SpellCritRatingPerCritChance,
+		BonusCritRating: 2 * float64(mage.Talents.Incinerate) * core.SpellCritRatingPerCritChance,
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 1,
 		BonusCoefficient: spellCoeff,
 
 		ExpectedInitialDamage: func(sim *core.Simulation, target *core.Unit, spell *core.Spell, _ bool) *core.SpellResult {
-			baseDamageCacl := (baseDamageLow + baseDamageHigh) / 2
-			return spell.CalcDamage(sim, target, baseDamageCacl, spell.OutcomeExpectedMagicHitAndCrit)
+			baseDamageCalc := (baseDamageLow + baseDamageHigh) / 2
+			return spell.CalcDamage(sim, target, baseDamageCalc, spell.OutcomeExpectedMagicHitAndCrit)
 		},
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			baseDamage := sim.Roll(baseDamageLow, baseDamageHigh)
