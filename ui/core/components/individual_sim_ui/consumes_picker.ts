@@ -51,7 +51,7 @@ export class ConsumesPicker extends Component {
 			buildIconInput(potionsElem, this.simUI.player, conjuredOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter, this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
+		TypedEvent.onAny([this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -71,7 +71,7 @@ export class ConsumesPicker extends Component {
 
 		const pickers = [buildIconInput(flasksElem, this.simUI.player, flasksOptions)];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter, this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
+		TypedEvent.onAny([this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -95,7 +95,7 @@ export class ConsumesPicker extends Component {
 
 		const pickers = [buildIconInput(imbuesElem, this.simUI.player, mhImbueOptions), buildIconInput(imbuesElem, this.simUI.player, ohImbueOptions)];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter, this.simUI.player.gearChangeEmitter]).on(() => this.updateRow(row, pickers));
+		TypedEvent.onAny([this.simUI.player.gearChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -120,7 +120,6 @@ export class ConsumesPicker extends Component {
 			buildIconInput(foodsElem, this.simUI.player, alcoholOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -157,7 +156,6 @@ export class ConsumesPicker extends Component {
 			buildIconInput(physicalConsumesElem, this.simUI.player, strBuffOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -182,7 +180,6 @@ export class ConsumesPicker extends Component {
 			buildIconInput(defensiveConsumesElem, this.simUI.player, armorBuffOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -224,7 +221,6 @@ export class ConsumesPicker extends Component {
 			buildIconInput(spellsCnsumesElem, this.simUI.player, mp5BuffOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -255,7 +251,6 @@ export class ConsumesPicker extends Component {
 			ConsumablesInputs.makeMiscDefensiveConsumesInput(miscConsumesElem, this.simUI.player, this.simUI, miscDefensiveConsumesOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -279,7 +274,7 @@ export class ConsumesPicker extends Component {
 			buildIconInput(engiConsumesElem, this.simUI.player, explosiveOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter, this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
+		TypedEvent.onAny([this.simUI.player.professionChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 
@@ -304,7 +299,6 @@ export class ConsumesPicker extends Component {
 			// ConsumablesInputs.makeMiscPetConsumesInput(petConsumesElem, this.simUI.player, this.simUI, miscPetConsumesOptions),
 		];
 
-		TypedEvent.onAny([this.simUI.player.levelChangeEmitter]).on(() => this.updateRow(row, pickers));
 		this.updateRow(row, pickers);
 	}
 

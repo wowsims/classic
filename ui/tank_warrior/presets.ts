@@ -44,15 +44,13 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1Prot = PresetUtils.makePresetAPLRotation('Protection', P1APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1Prot = PresetUtils.makePresetAPLRotation('Protection', P1APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLP1Prot],
 };
 
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	60: APLPresets[Phase.Phase1][0],
-};
+export const DefaultAPL = APLPresets[Phase.Phase1][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -61,9 +59,7 @@ export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1Prot = PresetUtils.makePresetTalents('Protection', SavedTalents.create({ talentsString: '20304300302-03-55200110530201051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsP1Prot = PresetUtils.makePresetTalents('Protection', SavedTalents.create({ talentsString: '20304300302-03-55200110530201051' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1Prot],
@@ -71,7 +67,7 @@ export const TalentPresets = {
 
 export const DefaultTalents = TalentPresets[Phase.Phase1][0];
 
-export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGear, talents: TalentsP1Prot, rotation: DefaultAPLs[60] });
+export const PresetBuildTanky = PresetUtils.makePresetBuild('Tanky', { gear: DefaultGear, talents: TalentsP1Prot, rotation: DefaultAPL });
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options Presets

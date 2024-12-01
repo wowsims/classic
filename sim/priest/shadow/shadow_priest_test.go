@@ -16,7 +16,6 @@ func TestP1Shadow(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassPriest,
-			Level:      60,
 			Phase:      1,
 			Race:       proto.Race_RaceUndead,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},

@@ -68,7 +68,7 @@ export class TalentsTab extends SimTab {
 					player.setTalentsString(eventID, newTalents.talentsString);
 				});
 			},
-			changeEmitters: [this.simUI.player.talentsChangeEmitter, this.simUI.player.levelChangeEmitter],
+			changeEmitters: [this.simUI.player.talentsChangeEmitter],
 			equals: (a: SavedTalents, b: SavedTalents) => SavedTalents.equals(a, b),
 			toJson: (a: SavedTalents) => SavedTalents.toJson(a),
 			fromJson: (obj: any) => SavedTalents.fromJson(obj),

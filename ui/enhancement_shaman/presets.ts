@@ -46,11 +46,11 @@ export const DefaultGear = GearBlank;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLPhase1 = PresetUtils.makePresetAPLRotation('Phase 1', Phase1APL, { customCondition: player => player.getLevel() === 25 });
-export const APLPhase2 = PresetUtils.makePresetAPLRotation('Phase 2', Phase2APL, { customCondition: player => player.getLevel() === 40 });
-export const APLPhase3 = PresetUtils.makePresetAPLRotation('Phase 3', Phase3APL, { customCondition: player => player.getLevel() === 50 });
-export const APLPhase4 = PresetUtils.makePresetAPLRotation('Phase 4', Phase4APL, { customCondition: player => player.getLevel() === 60 });
-export const APLPhase5 = PresetUtils.makePresetAPLRotation('Phase 5', Phase5APL, { customCondition: player => player.getLevel() === 60 });
+export const APLPhase1 = PresetUtils.makePresetAPLRotation('Phase 1', Phase1APL);
+export const APLPhase2 = PresetUtils.makePresetAPLRotation('Phase 2', Phase2APL);
+export const APLPhase3 = PresetUtils.makePresetAPLRotation('Phase 3', Phase3APL);
+export const APLPhase4 = PresetUtils.makePresetAPLRotation('Phase 4', Phase4APL);
+export const APLPhase5 = PresetUtils.makePresetAPLRotation('Phase 5', Phase5APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLPhase1],
@@ -60,29 +60,16 @@ export const APLPresets = {
 	[Phase.Phase5]: [APLPhase5],
 };
 
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	25: APLPresets[Phase.Phase1][0],
-	40: APLPresets[Phase.Phase2][0],
-	50: APLPresets[Phase.Phase3][0],
-	60: APLPresets[Phase.Phase5][0],
-};
+export const DefaultAPL = APLPresets[Phase.Phase5][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const TalentsPhase1 = PresetUtils.makePresetTalents('Level 25', SavedTalents.create({ talentsString: '-5005202101' }), {
-	customCondition: player => player.getLevel() === 25,
-});
-export const TalentsPhase2 = PresetUtils.makePresetTalents('Level 40', SavedTalents.create({ talentsString: '-5005202105023051' }), {
-	customCondition: player => player.getLevel() === 40,
-});
-export const TalentsPhase3 = PresetUtils.makePresetTalents('Level 50', SavedTalents.create({ talentsString: '05003-5005132105023051' }), {
-	customCondition: player => player.getLevel() === 50,
-});
-export const TalentsPhase4 = PresetUtils.makePresetTalents('Level 60', SavedTalents.create({ talentsString: '25003105003-5005032105023051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsPhase1 = PresetUtils.makePresetTalents('Level 25', SavedTalents.create({ talentsString: '-5005202101' }));
+export const TalentsPhase2 = PresetUtils.makePresetTalents('Level 40', SavedTalents.create({ talentsString: '-5005202105023051' }));
+export const TalentsPhase3 = PresetUtils.makePresetTalents('Level 50', SavedTalents.create({ talentsString: '05003-5005132105023051' }));
+export const TalentsPhase4 = PresetUtils.makePresetTalents('Level 60', SavedTalents.create({ talentsString: '25003105003-5005032105023051' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsPhase1],

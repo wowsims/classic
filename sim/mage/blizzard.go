@@ -40,7 +40,7 @@ func (mage *Mage) newBlizzardSpellConfig(rank int) core.SpellConfig {
 	var improvedBlizzardProcApplication *core.Spell
 	if mage.Talents.ImprovedBlizzard > 0 {
 		impId := []int32{0, 11185, 12487, 12488}[mage.Talents.ImprovedBlizzard]
-		auras := mage.NewEnemyAuraArray(func(unit *core.Unit, playerLevel int32) *core.Aura {
+		auras := mage.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 			return unit.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: impId},
 				Label:    "Improved Blizzard",

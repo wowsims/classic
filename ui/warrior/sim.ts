@@ -126,7 +126,6 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarrior, {
 	},
 
 	autoRotation: player => {
-		const level = player.getLevel();
 		const talentTree = player.getTalentTree();
 
 		if (player.getEquippedItem(ItemSlot.ItemSlotMainHand)?._item.handType === HandType.HandTypeTwoHand) {

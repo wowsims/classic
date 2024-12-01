@@ -102,18 +102,6 @@ export class CharacterStats extends Component {
 		this.player = player;
 		this.modifyDisplayStats = modifyDisplayStats;
 
-		const playerLevelRef = ref<HTMLSpanElement>();
-		this.player.levelChangeEmitter.on(() => (playerLevelRef.value!.textContent = `Level ${player.getLevel()}`));
-
-		this.rootElem.appendChild(
-			<label className="character-stats-label">
-				<span>Stats</span>
-				<span ref={playerLevelRef} className="ms-auto">
-					Level {player.getLevel()}
-				</span>
-			</label>,
-		);
-
 		const table = <table className="character-stats-table"></table>;
 		this.rootElem.appendChild(table);
 
@@ -448,7 +436,7 @@ export class CharacterStats extends Component {
 				// It's just like crit and hit in SoD.
 				displayStr = `${rawValue}%`;
 			} else if (stat === Stat.StatDefense) {
-				displayStr = `${(player.getLevel() * 5 + Math.floor(rawValue / Mechanics.DEFENSE_RATING_PER_DEFENSE)).toFixed(0)}`;
+				displayStr = `${(Mechanics.MAX_CHARACTER_LEVEL * 5 + Math.floor(rawValue / Mechanics.DEFENSE_RATING_PER_DEFENSE)).toFixed(0)}`;
 			} else if (stat === Stat.StatBlock) {
 				displayStr = `${(rawValue / Mechanics.BLOCK_RATING_PER_BLOCK_CHANCE).toFixed(2)}%`;
 			} else if (stat === Stat.StatDodge) {

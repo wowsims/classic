@@ -48,8 +48,8 @@ func (druid *Druid) NewT2Treants() *T2Treants {
 	treants.AddStat(stats.AttackPower, -20)
 
 	// Warrior crit scaling
-	treants.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior][int(treants.Level)]*core.CritRatingPerCritChance)
-	treants.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior][int(treants.Level)]*core.SpellCritRatingPerCritChance)
+	treants.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
+	treants.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
 
 	treants.EnableAutoAttacks(treants, core.AutoAttackOptions{
 		MainHand: core.Weapon{

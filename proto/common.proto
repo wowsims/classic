@@ -726,7 +726,6 @@ message Debuffs {
 
 	// Misc Debuffs
 	bool gift_of_arthas = 9;
-	bool curse_of_vulnerability = 21;
 	bool crystal_yield = 20;
 }
 
@@ -841,7 +840,6 @@ message SimDatabase {
 // NextIndex: 20
 message SimItem {
 	int32 id = 1;
-	int32 requires_level = 16;
 	repeated Class class_allowlist = 17;
 	string name = 2;
 

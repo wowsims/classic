@@ -164,8 +164,8 @@ func (hunter *Hunter) NewHunterPet() *HunterPet {
 	hp.AddStatDependency(stats.Strength, stats.AttackPower, 2)
 
 	// Warrior crit scaling
-	hp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior][int(hp.Level)]*core.CritRatingPerCritChance)
-	hp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior][int(hp.Level)]*core.SpellCritRatingPerCritChance)
+	hp.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[proto.Class_ClassWarrior]*core.CritRatingPerCritChance)
+	hp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
 
 	core.ApplyPetConsumeEffects(&hp.Character, hunter.Consumes)
 
@@ -312,7 +312,7 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		Damage: 1.10,
 
 		CustomRotation: func(sim *core.Simulation, hp *HunterPet, tryCast func(*core.Spell) bool) {
-			if hp.specialAbility.CD.IsReady(sim) && hp.CurrentFocusPerSecond() > hp.focusDump.Cost.BaseCost / 1.6  {
+			if hp.specialAbility.CD.IsReady(sim) && hp.CurrentFocusPerSecond() > hp.focusDump.Cost.BaseCost/1.6 {
 				if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
 					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
 				}
@@ -339,7 +339,7 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		MobType: proto.MobType_MobTypeBeast,
 
 		SpecialAbility: Bite,
-		FocusDump: Screech,
+		FocusDump:      Screech,
 
 		Health: 1.00,
 		Armor:  1.00,
@@ -395,7 +395,7 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 		MobType: proto.MobType_MobTypeBeast,
 
 		//SpecialAbility: Screech,
-		FocusDump:      Claw,
+		FocusDump: Claw,
 
 		Health: 1.00,
 		Armor:  1.00,
@@ -476,8 +476,8 @@ var PetConfigs = map[proto.Hunter_Options_PetType]PetConfig{
 
 		CustomRotation: func(sim *core.Simulation, hp *HunterPet, tryCast func(*core.Spell) bool) {
 			target := hp.CurrentTarget
-			
-			if (hp.specialAbility.Dot(target).GetStacks() < hp.specialAbility.Dot(target).MaxStacks || hp.specialAbility.Dot(target).RemainingDuration(sim) < time.Second * 3) && hp.CurrentFocus() < 90 {
+
+			if (hp.specialAbility.Dot(target).GetStacks() < hp.specialAbility.Dot(target).MaxStacks || hp.specialAbility.Dot(target).RemainingDuration(sim) < time.Second*3) && hp.CurrentFocus() < 90 {
 				if !tryCast(hp.specialAbility) && hp.GCD.IsReady(sim) {
 					hp.WaitUntil(sim, sim.CurrentTime+time.Millisecond*500)
 				}

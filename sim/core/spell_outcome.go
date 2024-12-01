@@ -647,10 +647,6 @@ func (spell *Spell) outcomeEnemyMeleeWhite(sim *Simulation, result *SpellResult,
 	}
 }
 
-func (spell *Spell) fixedCritCheck(sim *Simulation, critChance float64) bool {
-	return sim.RandomFloat("Fixed Crit Roll") < critChance
-}
-
 func (result *SpellResult) applyAttackTableMiss(spell *Spell, attackTable *AttackTable, roll float64, chance *float64, countHits bool) bool {
 	missChance := attackTable.BaseMissChance - spell.PhysicalHitChance(attackTable)
 	if spell.Unit.AutoAttacks.IsDualWielding && !spell.Unit.PseudoStats.DisableDWMissPenalty {

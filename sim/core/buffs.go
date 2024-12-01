@@ -50,467 +50,102 @@ const (
 	ScrollOfProtection
 )
 
-var LevelToBuffRank = map[BuffName]map[int32]int32{
-	BattleShout: {
-		25: 3,
-		40: 4,
-		50: 5,
-		60: TernaryInt32(IncludeAQ, 7, 6),
-	},
-	GraceOfAir: {
-		50: 1,
-		60: TernaryInt32(IncludeAQ, 3, 2),
-	},
-	StrengthOfEarth: {
-		25: 2,
-		40: 3,
-		50: 3,
-		60: TernaryInt32(IncludeAQ, 5, 4),
-	},
-	Windfury: {
-		40: 1,
-		50: 2,
-		60: 3,
-	},
-}
-
 // Stats from buffs pre-tristate buffs
-var BuffSpellByLevel = map[BuffName]map[int32]stats.Stats{
+var BuffSpellValues = map[BuffName]stats.Stats{
 	ArcaneIntellect: {
-		25: stats.Stats{
-			stats.Intellect: 7, // rank 2
-		},
-		40: stats.Stats{
-			stats.Intellect: 15,
-		},
-		50: stats.Stats{
-			stats.Intellect: 22,
-		},
-		60: stats.Stats{
-			stats.Intellect: 31,
-		},
+		stats.Intellect: 31,
 	},
 	DivineSpirit: {
-		25: stats.Stats{
-			stats.Spirit: 0,
-		},
-		40: stats.Stats{
-			stats.Spirit: 23,
-		},
-		50: stats.Stats{
-			stats.Spirit: 33,
-		},
-		60: stats.Stats{
-			stats.Spirit: 40,
-		},
+		stats.Spirit: 40,
 	},
 	AspectOfTheWild: {
-		25: stats.Stats{
-			stats.NatureResistance: 0,
-		},
-		40: stats.Stats{
-			stats.NatureResistance: 0,
-		},
-		50: stats.Stats{
-			stats.NatureResistance: 45,
-		},
-		60: stats.Stats{
-			stats.NatureResistance: 60,
-		},
+		stats.NatureResistance: 60,
 	},
 	BattleShout: {
-		25: stats.Stats{
-			stats.AttackPower: 57,
-		},
-		40: stats.Stats{
-			stats.AttackPower: 93,
-		},
-		50: stats.Stats{
-			stats.AttackPower: 138,
-		},
-		60: stats.Stats{
-			stats.AttackPower: TernaryFloat64(IncludeAQ, 232, 193),
-		},
+		stats.AttackPower: TernaryFloat64(IncludeAQ, 232, 193),
 	},
 	BlessingOfMight: {
-		25: stats.Stats{
-			stats.AttackPower: 55,
-		},
-		40: stats.Stats{
-			stats.AttackPower: 85,
-		},
-		50: stats.Stats{
-			stats.AttackPower: 115,
-		},
-		60: stats.Stats{
-			stats.AttackPower: TernaryFloat64(IncludeAQ, 185, 155),
-		},
+		stats.AttackPower: TernaryFloat64(IncludeAQ, 185, 155),
 	},
 	BlessingOfWisdom: {
-		25: stats.Stats{
-			stats.MP5: 15,
-		},
-		40: stats.Stats{
-			stats.MP5: 20,
-		},
-		50: stats.Stats{
-			stats.MP5: 25,
-		},
-		60: stats.Stats{
-			stats.MP5: TernaryFloat64(IncludeAQ, 33, 30),
-		},
+		stats.MP5: TernaryFloat64(IncludeAQ, 33, 30),
 	},
 	HornOfLordaeron: {
-		25: stats.Stats{
-			stats.Strength: 17,
-			stats.Agility:  17,
-		},
-		40: stats.Stats{
-			stats.Strength: 26,
-			stats.Agility:  26,
-		},
-		50: stats.Stats{
-			stats.Strength: 45,
-			stats.Agility:  45,
-		},
-		60: stats.Stats{
-			stats.Strength: TernaryFloat64(IncludeAQ, 89, 70.15),
-			stats.Agility:  TernaryFloat64(IncludeAQ, 89, 70.15),
-		},
+		stats.Strength: TernaryFloat64(IncludeAQ, 89, 70.15),
+		stats.Agility:  TernaryFloat64(IncludeAQ, 89, 70.15),
 	},
 	BloodPact: {
-		25: stats.Stats{
-			stats.Stamina: 9,
-		},
-		40: stats.Stats{
-			stats.Stamina: 30,
-		},
-		50: stats.Stats{
-			stats.Stamina: 38,
-		},
-		60: stats.Stats{
-			stats.Stamina: 42,
-		},
+		stats.Stamina: 42,
 	},
 	CommandingShout: {
-		25: stats.Stats{
-			stats.Stamina: 18,
-		},
-		40: stats.Stats{
-			stats.Stamina: 28,
-		},
-		50: stats.Stats{
-			stats.Stamina: 35,
-		},
-		60: stats.Stats{
-			stats.Stamina: 42,
-		},
+		stats.Stamina: 42,
 	},
 	DevotionAura: {
-		25: stats.Stats{
-			stats.BonusArmor: 275,
-		},
-		40: stats.Stats{
-			stats.BonusArmor: 505,
-		},
-		50: stats.Stats{
-			stats.BonusArmor: 620,
-		},
-		60: stats.Stats{
-			stats.BonusArmor: 735,
-		},
+		stats.BonusArmor: 735,
 	},
 	GraceOfAir: {
-		25: stats.Stats{
-			stats.Agility: 0,
-		},
-		40: stats.Stats{
-			stats.Agility: 0,
-		},
-		50: stats.Stats{
-			stats.Agility: 43,
-		},
-		60: stats.Stats{
-			stats.Agility: TernaryFloat64(IncludeAQ, 77, 67),
-		},
+		stats.Agility: TernaryFloat64(IncludeAQ, 77, 67),
 	},
 	FireResistanceAura: {
-		25: stats.Stats{
-			stats.FireResistance: 0,
-		},
-		40: stats.Stats{
-			stats.FireResistance: 30,
-		},
-		50: stats.Stats{
-			stats.FireResistance: 30,
-		},
-		60: stats.Stats{
-			stats.FireResistance: 60,
-		},
+		stats.FireResistance: 60,
 	},
 	FireResistanceTotem: {
-		25: stats.Stats{
-			stats.FireResistance: 0,
-		},
-		40: stats.Stats{
-			stats.FireResistance: 30,
-		},
-		50: stats.Stats{
-			stats.FireResistance: 45,
-		},
-		60: stats.Stats{
-			stats.FireResistance: 60,
-		},
+		stats.FireResistance: 60,
 	},
 	FrostResistanceAura: {
-		25: stats.Stats{
-			stats.FrostResistance: 0,
-		},
-		40: stats.Stats{
-			stats.FrostResistance: 30,
-		},
-		50: stats.Stats{
-			stats.FrostResistance: 45,
-		},
-		60: stats.Stats{
-			stats.FrostResistance: 60,
-		},
+		stats.FrostResistance: 60,
 	},
 	FrostResistanceTotem: {
-		25: stats.Stats{
-			stats.FrostResistance: 30,
-		},
-		40: stats.Stats{
-			stats.FrostResistance: 45,
-		},
-		50: stats.Stats{
-			stats.FrostResistance: 45,
-		},
-		60: stats.Stats{
-			stats.FrostResistance: 60,
-		},
+		stats.FrostResistance: 60,
 	},
 	ManaSpring: {
-		25: stats.Stats{
-			stats.MP5: 0,
-		},
-		40: stats.Stats{
-			stats.MP5: 15,
-		},
-		50: stats.Stats{
-			stats.MP5: 20,
-		},
-		60: stats.Stats{
-			stats.MP5: 25,
-		},
+		stats.MP5: 25,
 	},
 	MarkOfTheWild: {
-		25: stats.Stats{
-			stats.BonusArmor:       105,
-			stats.Stamina:          4,
-			stats.Agility:          4,
-			stats.Strength:         4,
-			stats.Intellect:        4,
-			stats.Spirit:           4,
-			stats.ArcaneResistance: 0,
-			stats.ShadowResistance: 0,
-			stats.NatureResistance: 0,
-			stats.FireResistance:   0,
-			stats.FrostResistance:  0,
-		},
-		40: stats.Stats{
-			stats.BonusArmor:       195,
-			stats.Stamina:          8,
-			stats.Agility:          8,
-			stats.Strength:         8,
-			stats.Intellect:        8,
-			stats.Spirit:           8,
-			stats.ArcaneResistance: 10,
-			stats.ShadowResistance: 10,
-			stats.NatureResistance: 10,
-			stats.FireResistance:   10,
-			stats.FrostResistance:  10,
-		},
-		50: stats.Stats{
-			stats.BonusArmor:       240,
-			stats.Stamina:          10,
-			stats.Agility:          10,
-			stats.Strength:         10,
-			stats.Intellect:        10,
-			stats.Spirit:           10,
-			stats.ArcaneResistance: 15,
-			stats.ShadowResistance: 15,
-			stats.NatureResistance: 15,
-			stats.FireResistance:   15,
-			stats.FrostResistance:  15,
-		},
-		60: stats.Stats{
-			stats.BonusArmor:       285,
-			stats.Stamina:          12,
-			stats.Agility:          12,
-			stats.Strength:         12,
-			stats.Intellect:        12,
-			stats.Spirit:           12,
-			stats.ArcaneResistance: 20,
-			stats.ShadowResistance: 20,
-			stats.NatureResistance: 20,
-			stats.FireResistance:   20,
-			stats.FrostResistance:  20,
-		},
+		stats.BonusArmor:       285,
+		stats.Stamina:          12,
+		stats.Agility:          12,
+		stats.Strength:         12,
+		stats.Intellect:        12,
+		stats.Spirit:           12,
+		stats.ArcaneResistance: 20,
+		stats.ShadowResistance: 20,
+		stats.NatureResistance: 20,
+		stats.FireResistance:   20,
+		stats.FrostResistance:  20,
 	},
 	NatureResistanceTotem: {
-		25: stats.Stats{
-			stats.NatureResistance: 0,
-		},
-		40: stats.Stats{
-			stats.NatureResistance: 30,
-		},
-		50: stats.Stats{
-			stats.NatureResistance: 45,
-		},
-		60: stats.Stats{
-			stats.NatureResistance: 60,
-		},
+		stats.NatureResistance: 60,
 	},
 	PowerWordFortitude: {
-		25: stats.Stats{
-			stats.Stamina: 20,
-		},
-		40: stats.Stats{
-			stats.Stamina: 32,
-		},
-		50: stats.Stats{
-			stats.Stamina: 43,
-		},
-		60: stats.Stats{
-			stats.Stamina: 54,
-		},
+		stats.Stamina: 54,
 	},
 	ShadowProtection: {
-		25: stats.Stats{
-			stats.ShadowResistance: 0,
-		},
-		40: stats.Stats{
-			stats.ShadowResistance: 30,
-		},
-		50: stats.Stats{
-			stats.ShadowResistance: 45,
-		},
-		60: stats.Stats{
-			stats.ShadowResistance: 60,
-		},
+		stats.ShadowResistance: 60,
 	},
 	ShadowResistanceAura: {
-		25: stats.Stats{
-			stats.ShadowResistance: 0,
-		},
-		40: stats.Stats{
-			stats.ShadowResistance: 45,
-		},
-		50: stats.Stats{
-			stats.ShadowResistance: 45,
-		},
-		60: stats.Stats{
-			stats.ShadowResistance: 60,
-		},
+		stats.ShadowResistance: 60,
 	},
 	StrengthOfEarth: {
-		25: stats.Stats{
-			stats.Strength: 20,
-		},
-		40: stats.Stats{
-			stats.Strength: 36,
-		},
-		50: stats.Stats{
-			stats.Strength: 36,
-		},
-		60: stats.Stats{
-			stats.Strength: TernaryFloat64(IncludeAQ, 77, 61),
-		},
+		stats.Strength: TernaryFloat64(IncludeAQ, 77, 61),
 	},
 	ScrollOfAgility: {
-		25: stats.Stats{
-			stats.Agility: 9,
-		},
-		40: stats.Stats{
-			stats.Agility: 13,
-		},
-		50: stats.Stats{
-			stats.Agility: 17,
-		},
-		60: stats.Stats{
-			stats.Agility: 17,
-		},
+		stats.Agility: 17,
 	},
 	ScrollOfIntellect: {
-		25: stats.Stats{
-			stats.Intellect: 8,
-		},
-		40: stats.Stats{
-			stats.Intellect: 12,
-		},
-		50: stats.Stats{
-			stats.Intellect: 16,
-		},
-		60: stats.Stats{
-			stats.Intellect: 16,
-		},
+		stats.Intellect: 16,
 	},
 	ScrollOfSpirit: {
-		25: stats.Stats{
-			stats.Spirit: 7,
-		},
-		40: stats.Stats{
-			stats.Spirit: 11,
-		},
-		50: stats.Stats{
-			stats.Spirit: 15,
-		},
-		60: stats.Stats{
-			stats.Spirit: 15,
-		},
+		stats.Spirit: 15,
 	},
 	ScrollOfStamina: {
-		25: stats.Stats{
-			stats.Stamina: 8,
-		},
-		40: stats.Stats{
-			stats.Stamina: 12,
-		},
-		50: stats.Stats{
-			stats.Stamina: 16,
-		},
-		60: stats.Stats{
-			stats.Stamina: 16,
-		},
+		stats.Stamina: 16,
 	},
 	ScrollOfStrength: {
-		25: stats.Stats{
-			stats.Strength: 9,
-		},
-		40: stats.Stats{
-			stats.Strength: 13,
-		},
-		50: stats.Stats{
-			stats.Strength: 13,
-		},
-		60: stats.Stats{
-			stats.Strength: 17,
-		},
+		stats.Strength: 17,
 	},
 	ScrollOfProtection: {
-		25: stats.Stats{
-			stats.BonusArmor: 120,
-		},
-		40: stats.Stats{
-			stats.BonusArmor: 180,
-		},
-		50: stats.Stats{
-			stats.BonusArmor: 240,
-		},
-		60: stats.Stats{
-			stats.BonusArmor: 240,
-		},
+		stats.BonusArmor: 240,
 	},
 }
 
@@ -597,19 +232,18 @@ func makeExclusiveBuff(aura *Aura, config BuffConfig) {
 // Applies buffs that affect individual players.
 func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto.RaidBuffs, partyBuffs *proto.PartyBuffs, individualBuffs *proto.IndividualBuffs) {
 	character := agent.GetCharacter()
-	level := character.Level
 	isAlliance := playerFaction == proto.Faction_Alliance
 	isHorde := playerFaction == proto.Faction_Horde
 	bonusResist := float64(0)
 
 	if raidBuffs.ArcaneBrilliance {
-		character.AddStats(BuffSpellByLevel[ArcaneIntellect][level])
+		character.AddStats(BuffSpellValues[ArcaneIntellect])
 	} else if raidBuffs.ScrollOfIntellect {
-		character.AddStats(BuffSpellByLevel[ScrollOfIntellect][level])
+		character.AddStats(BuffSpellValues[ScrollOfIntellect])
 	}
 
 	if raidBuffs.GiftOfTheWild > 0 {
-		updateStats := BuffSpellByLevel[MarkOfTheWild][level]
+		updateStats := BuffSpellValues[MarkOfTheWild]
 		if raidBuffs.GiftOfTheWild == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.35).Floor()
 		}
@@ -618,31 +252,31 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	}
 
 	if raidBuffs.NatureResistanceTotem {
-		updateStats := BuffSpellByLevel[NatureResistanceTotem][level]
+		updateStats := BuffSpellValues[NatureResistanceTotem]
 		updateStats[stats.NatureResistance] = updateStats[stats.NatureResistance] - bonusResist
 		character.AddStats(updateStats)
 	} else if raidBuffs.AspectOfTheWild {
-		updateStats := BuffSpellByLevel[AspectOfTheWild][level]
+		updateStats := BuffSpellValues[AspectOfTheWild]
 		updateStats[stats.NatureResistance] = updateStats[stats.NatureResistance] - bonusResist
 		character.AddStats(updateStats)
 	}
 
 	if raidBuffs.FireResistanceAura {
-		updateStats := BuffSpellByLevel[FireResistanceAura][level]
+		updateStats := BuffSpellValues[FireResistanceAura]
 		updateStats[stats.FireResistance] = updateStats[stats.FireResistance] - bonusResist
 		character.AddStats(updateStats)
 	} else if raidBuffs.FireResistanceTotem {
-		updateStats := BuffSpellByLevel[FireResistanceTotem][level]
+		updateStats := BuffSpellValues[FireResistanceTotem]
 		updateStats[stats.FireResistance] = updateStats[stats.FireResistance] - bonusResist
 		character.AddStats(updateStats)
 	}
 
 	if raidBuffs.FrostResistanceAura {
-		updateStats := BuffSpellByLevel[FrostResistanceAura][level]
+		updateStats := BuffSpellValues[FrostResistanceAura]
 		updateStats[stats.FrostResistance] = updateStats[stats.FrostResistance] - bonusResist
 		character.AddStats(updateStats)
 	} else if raidBuffs.FrostResistanceTotem {
-		updateStats := BuffSpellByLevel[FrostResistanceTotem][level]
+		updateStats := BuffSpellValues[FrostResistanceTotem]
 		updateStats[stats.FrostResistance] = updateStats[stats.FrostResistance] - bonusResist
 		character.AddStats(updateStats)
 	}
@@ -666,17 +300,17 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	}
 
 	if raidBuffs.PowerWordFortitude > 0 {
-		updateStats := BuffSpellByLevel[PowerWordFortitude][level]
+		updateStats := BuffSpellValues[PowerWordFortitude]
 		if raidBuffs.PowerWordFortitude == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.3).Floor()
 		}
 		character.AddStats(updateStats)
 	} else if raidBuffs.ScrollOfStamina {
-		character.AddStats(BuffSpellByLevel[ScrollOfStamina][level])
+		character.AddStats(BuffSpellValues[ScrollOfStamina])
 	}
 
 	if raidBuffs.BloodPact > 0 {
-		updateStats := BuffSpellByLevel[BloodPact][level]
+		updateStats := BuffSpellValues[BloodPact]
 		if raidBuffs.BloodPact == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.3).Floor()
 		}
@@ -684,19 +318,19 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	}
 
 	if raidBuffs.ShadowResistanceAura {
-		updateStats := BuffSpellByLevel[ShadowResistanceAura][level]
+		updateStats := BuffSpellValues[ShadowResistanceAura]
 		updateStats[stats.ShadowResistance] = updateStats[stats.ShadowResistance] - bonusResist
 		character.AddStats(updateStats)
 	} else if raidBuffs.ShadowProtection {
-		updateStats := BuffSpellByLevel[ShadowProtection][level]
+		updateStats := BuffSpellValues[ShadowProtection]
 		updateStats[stats.ShadowResistance] = updateStats[stats.ShadowResistance] - bonusResist
 		character.AddStats(updateStats)
 	}
 
 	if raidBuffs.DivineSpirit {
-		character.AddStats(BuffSpellByLevel[DivineSpirit][level])
+		character.AddStats(BuffSpellValues[DivineSpirit])
 	} else if raidBuffs.ScrollOfSpirit {
-		character.AddStats(BuffSpellByLevel[ScrollOfSpirit][level])
+		character.AddStats(BuffSpellValues[ScrollOfSpirit])
 	}
 
 	if individualBuffs.BlessingOfKings && isAlliance {
@@ -731,27 +365,27 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	}
 
 	if individualBuffs.BlessingOfMight != proto.TristateEffect_TristateEffectMissing && isAlliance {
-		MakePermanent(BlessingOfMightAura(&character.Unit, GetTristateValueInt32(individualBuffs.BlessingOfMight, 0, 5), level))
+		MakePermanent(BlessingOfMightAura(&character.Unit, GetTristateValueInt32(individualBuffs.BlessingOfMight, 0, 5)))
 	}
 
 	if raidBuffs.StrengthOfEarthTotem != proto.TristateEffect_TristateEffectMissing && isHorde {
 		multiplier := GetTristateValueFloat(raidBuffs.StrengthOfEarthTotem, 1, 1.15)
-		MakePermanent(StrengthOfEarthTotemAura(&character.Unit, level, multiplier))
+		MakePermanent(StrengthOfEarthTotemAura(&character.Unit, multiplier))
 	}
 
 	if raidBuffs.GraceOfAirTotem > 0 && isHorde {
 		multiplier := GetTristateValueFloat(raidBuffs.GraceOfAirTotem, 1, 1.15)
-		MakePermanent(GraceOfAirTotemAura(&character.Unit, level, multiplier))
+		MakePermanent(GraceOfAirTotemAura(&character.Unit, multiplier))
 	}
 
 	if individualBuffs.BlessingOfWisdom > 0 && isAlliance {
-		updateStats := BuffSpellByLevel[BlessingOfWisdom][level]
+		updateStats := BuffSpellValues[BlessingOfWisdom]
 		if individualBuffs.BlessingOfWisdom == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.2)
 		}
 		character.AddStats(updateStats)
 	} else if raidBuffs.ManaSpringTotem > 0 && isHorde {
-		updateStats := BuffSpellByLevel[ManaSpring][level]
+		updateStats := BuffSpellValues[ManaSpring]
 		if raidBuffs.ManaSpringTotem == proto.TristateEffect_TristateEffectImproved {
 			updateStats = updateStats.Multiply(1.25)
 		}
@@ -919,20 +553,12 @@ func ApplyInspiration(character *Character, uptime float64) {
 }
 
 func DevotionAuraAura(unit *Unit, points int32) *Aura {
-	level := unit.Level
-	spellID := map[int32]int32{
-		25: 643,
-		40: 1032,
-		50: 10292,
-		60: 10293,
-	}[level]
-
-	updateStats := BuffSpellByLevel[DevotionAura][level]
+	updateStats := BuffSpellValues[DevotionAura]
 	updateStats = updateStats.Multiply(1 + .125*float64(points))
 
 	return unit.RegisterAura(Aura{
 		Label:    "Devotion Aura",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 10293},
 		Duration: NeverExpires,
 		OnGain: func(aura *Aura, sim *Simulation) {
 			aura.Unit.AddStatsDynamic(sim, updateStats)
@@ -944,25 +570,13 @@ func DevotionAuraAura(unit *Unit, points int32) *Aura {
 }
 
 func StoneskinTotemAura(unit *Unit, points int32) *Aura {
-	level := unit.Level
-	spellID := map[int32]int32{
-		25: 8155,
-		40: 10406,
-		50: 10407,
-		60: 10408,
-	}[level]
-	meleeDamageReduction := map[int32]float64{
-		25: -11,
-		40: -16,
-		50: -22,
-		60: -30,
-	}[level]
+	meleeDamageReduction := -30.0
 	meleeDamageReduction *= 1 + .1*float64(points)
 	meleeDamageReduction = math.Floor(meleeDamageReduction)
 
 	return unit.GetOrRegisterAura(Aura{
 		Label:    "Stoneskin",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 10408},
 		Duration: NeverExpires,
 		OnReset: func(aura *Aura, sim *Simulation) {
 			aura.Activate(sim)
@@ -977,22 +591,9 @@ func StoneskinTotemAura(unit *Unit, points int32) *Aura {
 }
 
 func RetributionAura(character *Character, points int32) *Aura {
-	level := character.Level
-	spellID := map[int32]int32{
-		25: 7294,
-		40: 10299,
-		50: 10300,
-		60: 10301,
-	}[level]
+	baseDamage := 20.0
 
-	baseDamage := map[int32]int32{
-		25: 5,
-		40: 12,
-		50: 16,
-		60: 20,
-	}[level]
-
-	actionID := ActionID{SpellID: spellID}
+	actionID := ActionID{SpellID: 10301}
 
 	damage := float64(baseDamage) * (1 + 0.25*float64(points))
 
@@ -1026,22 +627,9 @@ func RetributionAura(character *Character, points int32) *Aura {
 }
 
 func ThornsAura(character *Character, points int32) *Aura {
-	level := character.Level
-	spellID := map[int32]int32{
-		25: 1075,
-		40: 8914,
-		50: 9756,
-		60: 9910,
-	}[level]
+	baseDamage := 18.0
 
-	baseDamage := map[int32]int32{
-		25: 9,
-		40: 12,
-		50: 15,
-		60: 18,
-	}[level]
-
-	actionID := ActionID{SpellID: spellID}
+	actionID := ActionID{SpellID: 9910}
 	damage := float64(baseDamage) * (1 + 0.25*float64(points))
 
 	procSpell := character.RegisterSpell(SpellConfig{
@@ -1069,31 +657,10 @@ func ThornsAura(character *Character, points int32) *Aura {
 	}))
 }
 
-// func BlessingOfSanctuaryAura(character *Character, level int32) {
-// 	if character.Level < 30 {
-// 		return
-// 	}
-
-// 	spellID := map[int32]int32{
-// 		40: 20912,
-// 		50: 20913,
-// 		60: 20914,
-// 	}[level]
-
-// 	physReduction := map[int32]int32{
-// 		40: 14,
-// 		50: 19,
-// 		60: 24,
-// 	}[level]
-
-// 	blockDamage := map[int32]int32{
-// 		40: 21,
-// 		50: 28,
-// 		60: 35,
-// 	}
-
-// 	actionID := ActionID{SpellID: spellID}
-
+// func BlessingOfSanctuaryAura(character *Character) {
+// 	physReduction := 24.0
+// 	blockDamage := 35
+// 	actionID := ActionID{SpellID: 20914}
 // 	character.RegisterAura(Aura{
 // 		Label:    "Blessing of Sanctuary",
 // 		ActionID: actionID,
@@ -1702,12 +1269,7 @@ func ManaTideTotemAura(character *Character, actionTag int32) *Aura {
 		}
 	}
 
-	manaPerTick := map[int32]float64{
-		25: 0,
-		40: 170, // Rank 1
-		50: 230, // Rank 2
-		60: 290, // Rank 3
-	}[character.Level]
+	manaPerTick := 290.0
 
 	return character.GetOrRegisterAura(Aura{
 		Label:    "ManaTideTotem-" + actionID.String(),
@@ -1756,7 +1318,7 @@ const ReplenishmentAuraDuration = time.Second * 15
 // 	return unit.ReplenishmentAura
 // }
 
-func spellPowerBonusEffect(aura *Aura, spellPowerBonus float64) *ExclusiveEffect {
+/* func spellPowerBonusEffect(aura *Aura, spellPowerBonus float64) *ExclusiveEffect {
 	return aura.NewExclusiveEffect("SpellPowerBonus", false, ExclusiveEffect{
 		Priority: spellPowerBonus,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
@@ -1770,13 +1332,13 @@ func spellPowerBonusEffect(aura *Aura, spellPowerBonus float64) *ExclusiveEffect
 			})
 		},
 	})
-}
+} */
 
-func StrengthOfEarthTotemAura(unit *Unit, level int32, multiplier float64) *Aura {
-	rank := LevelToBuffRank[StrengthOfEarth][level]
+func StrengthOfEarthTotemAura(unit *Unit, multiplier float64) *Aura {
+	rank := TernaryInt32(IncludeAQ, 5, 4)
 	spellID := []int32{0, 8075, 8160, 8161, 10442, 25361}[rank]
 	duration := time.Minute * 2
-	updateStats := BuffSpellByLevel[StrengthOfEarth][level].Multiply(multiplier).Floor()
+	updateStats := BuffSpellValues[StrengthOfEarth].Multiply(multiplier).Floor()
 
 	aura := unit.GetOrRegisterAura(Aura{
 		Label:      "Strength of Earth Totem",
@@ -1801,11 +1363,11 @@ func StrengthOfEarthTotemAura(unit *Unit, level int32, multiplier float64) *Aura
 	return aura
 }
 
-func GraceOfAirTotemAura(unit *Unit, level int32, multiplier float64) *Aura {
-	rank := LevelToBuffRank[GraceOfAir][level]
+func GraceOfAirTotemAura(unit *Unit, multiplier float64) *Aura {
+	rank := TernaryInt32(IncludeAQ, 3, 2)
 	spellID := []int32{0, 8835, 10627, 25359}[rank]
 	duration := time.Minute * 2
-	updateStats := BuffSpellByLevel[GraceOfAir][level].Multiply(multiplier).Floor()
+	updateStats := BuffSpellValues[GraceOfAir].Multiply(multiplier).Floor()
 
 	aura := unit.GetOrRegisterAura(Aura{
 		Label:      "Grace of Air Totem",
@@ -1837,7 +1399,7 @@ var BattleShoutBaseAP = [BattleShoutRanks + 1]float64{0, 20, 40, 57, 93, 138, 19
 var BattleShoutLevel = [BattleShoutRanks + 1]int{0, 1, 12, 22, 32, 42, 52, 60}
 
 func BattleShoutAura(unit *Unit, impBattleShout int32, boomingVoicePts int32) *Aura {
-	rank := LevelToBuffRank[BattleShout][unit.Level]
+	rank := TernaryInt32(IncludeAQ, 7, 6)
 	spellId := BattleShoutSpellId[rank]
 	baseAP := BattleShoutBaseAP[rank]
 
@@ -1860,25 +1422,11 @@ func BattleShoutAura(unit *Unit, impBattleShout int32, boomingVoicePts int32) *A
 }
 
 func TrueshotAura(unit *Unit) *Aura {
-	if unit.Level < 40 {
-		return nil
-	}
-
-	level := unit.Level
-	spellID := map[int32]int32{
-		40: 19506,
-		50: 20905,
-		60: 20906,
-	}[level]
-	rangedAP := map[int32]float64{
-		40: 100,
-		50: 150,
-		60: 200,
-	}[level]
+	rangedAP := 200.0
 
 	aura := MakePermanent(unit.RegisterAura(Aura{
 		Label:    "Trueshot Aura",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 20906},
 	}))
 
 	makeExclusiveBuff(aura, BuffConfig{
@@ -1891,15 +1439,10 @@ func TrueshotAura(unit *Unit) *Aura {
 	return aura
 }
 
-func BlessingOfMightAura(unit *Unit, impBomPts int32, level int32) *Aura {
-	spellID := map[int32]int32{
-		25: 19835,
-		40: 19836,
-		50: 19837,
-		60: TernaryInt32(IncludeAQ, 25291, 19838),
-	}[level]
+func BlessingOfMightAura(unit *Unit, impBomPts int32) *Aura {
+	spellID := TernaryInt32(IncludeAQ, 25291, 19838)
 
-	bonusAP := math.Floor(BuffSpellByLevel[BlessingOfMight][level][stats.AttackPower] * (1 + 0.04*float64(impBomPts)))
+	bonusAP := math.Floor(BuffSpellValues[BlessingOfMight][stats.AttackPower] * (1 + 0.04*float64(impBomPts)))
 
 	aura := MakePermanent(unit.GetOrRegisterAura(Aura{
 		Label:      "Blessing of Might",
@@ -2058,12 +1601,7 @@ func GetWindfuryAP(aura *Aura, rank int32) float64 {
 }
 
 func ApplyWindfury(character *Character) *Aura {
-	level := character.Level
-	if level < 32 {
-		return nil
-	}
-
-	rank := LevelToBuffRank[Windfury][level]
+	rank := int32(3)
 	spellId := WindfuryBuffSpellId[rank]
 	buffActionID := ActionID{SpellID: spellId}
 

@@ -61,12 +61,12 @@ export function makePhaseSelector(parent: HTMLElement, sim: Sim): EnumPicker<Sim
 		id: 'phase-selector',
 		extraCssClasses: ['phase-selector'],
 		values: [
-			{ name: 'Phase 5', value: 5, level: 60 },
-			{ name: 'Phase 4', value: 4, level: 60 },
-			{ name: 'Phase 3', value: 3, level: 50 },
-			{ name: 'Phase 2', value: 2, level: 40 },
-			{ name: 'Phase 1', value: 1, level: 25 },
-		].filter(p => p.value <= CURRENT_PHASE && p.level <= (sim.raid.getPlayer(0)?.getLevel() ?? CURRENT_LEVEL_CAP)),
+			{ name: 'Phase 5', value: 5 },
+			{ name: 'Phase 4', value: 4 },
+			{ name: 'Phase 3', value: 3 },
+			{ name: 'Phase 2', value: 2 },
+			{ name: 'Phase 1', value: 1 },
+		],
 		changedEvent: (sim: Sim) => sim.phaseChangeEmitter,
 		getValue: (sim: Sim) => sim.getPhase(),
 		setValue: (eventID: EventID, sim: Sim, newValue: number) => {

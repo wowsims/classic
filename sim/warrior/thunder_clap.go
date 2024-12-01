@@ -35,7 +35,7 @@ func (warrior *Warrior) registerThunderClapSpell() {
 		stanceMask = AnyStance
 	}
 
-	warrior.ThunderClapAuras = warrior.NewEnemyAuraArray(func(target *core.Unit, Level int32) *core.Aura {
+	warrior.ThunderClapAuras = warrior.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return core.ThunderClapAura(target, info.spellID, info.duration, attackSpeedReduction)
 	})
 

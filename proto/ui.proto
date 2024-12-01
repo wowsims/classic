@@ -54,7 +54,6 @@ message UIItem {
 	WeaponType weapon_type = 6;
 	HandType hand_type = 7;
 	RangedWeaponType ranged_weapon_type = 8;
-	int32 requires_level = 9;
 
 	repeated double stats = 10;
 	repeated int32 random_suffix_options = 27;
@@ -176,7 +175,6 @@ message UIEnchant {
 	// Classes that are allowed to use the enchant. Empty indicates no special class restrictions.
 	repeated Class class_allowlist = 11;
 	Profession required_profession = 12;
-	int32 requires_level = 14;
 }
 
 message IconData {
@@ -184,8 +182,7 @@ message IconData {
 	string name = 2;
 	string icon = 3;
 	int32 rank = 4;
-	int32 requires_level = 5;
-	bool has_buff = 6;
+	bool has_buff = 5;
 }
 
 enum SourceFilterOption {
@@ -318,7 +315,6 @@ message SavedSettings {
 	IndividualBuffs player_buffs = 4;
 	Consumes consumes = 5;
 	Race race = 6;
-	int32 level = 7;
 	repeated Profession professions = 10;
 	bool enable_item_swap = 18;
 	ItemSwap item_swap = 17;

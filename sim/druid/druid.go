@@ -147,7 +147,7 @@ func (druid *Druid) GetCharacter() *core.Character {
 
 func (druid *Druid) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 	if (raidBuffs.GiftOfTheWild == proto.TristateEffect_TristateEffectRegular) && (druid.Talents.ImprovedMarkOfTheWild > 0) {
-		druid.AddStats(core.BuffSpellByLevel[core.MarkOfTheWild][druid.Level].Multiply(0.07 * float64(druid.Talents.ImprovedMarkOfTheWild)))
+		druid.AddStats(core.BuffSpellValues[core.MarkOfTheWild].Multiply(0.07 * float64(druid.Talents.ImprovedMarkOfTheWild)))
 	}
 
 	// TODO: These should really be aura attached to the actual forms
@@ -261,9 +261,9 @@ func New(character *core.Character, form DruidForm, selfBuffs SelfBuffs, talents
 	druid.EnableManaBar()
 
 	druid.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
-	druid.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[character.Class][int(druid.Level)]*core.CritRatingPerCritChance)
-	druid.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiAtLevel[character.Class][int(druid.Level)]*core.DodgeRatingPerDodgeChance)
-	druid.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[character.Class][int(druid.Level)]*core.SpellCritRatingPerCritChance)
+	druid.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[character.Class]*core.CritRatingPerCritChance)
+	druid.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiAtLevel[character.Class]*core.DodgeRatingPerDodgeChance)
+	druid.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[character.Class]*core.SpellCritRatingPerCritChance)
 	druid.AddStatDependency(stats.BonusArmor, stats.Armor, 1)
 
 	// Druids get extra melee haste

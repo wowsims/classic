@@ -45,23 +45,19 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1Balance = PresetUtils.makePresetAPLRotation('Balance', P1APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1Balance = PresetUtils.makePresetAPLRotation('Balance', P1APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLP1Balance],
 };
 
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	60: APLPresets[Phase.Phase1][0],
-};
+export const DefaultAPL = APLPresets[Phase.Phase1][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const TalentsP1Balance = PresetUtils.makePresetTalents('Balance', SavedTalents.create({ talentsString: '5000550012551251--5005031' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsP1Balance = PresetUtils.makePresetTalents('Balance', SavedTalents.create({ talentsString: '5000550012551251--5005031' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1Balance],

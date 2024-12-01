@@ -147,7 +147,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	},
 
 	autoRotation: player => {
-		return Presets.DefaultAPLs[player.getLevel()].rotation.rotation!;
+		return Presets.DefaultAPL.rotation.rotation!;
 	},
 
 	// simpleRotation: (player: Player<Spec.SpecFeralDruid>, simple: DruidRotation, cooldowns: Cooldowns): APLRotation => {

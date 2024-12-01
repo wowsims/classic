@@ -19,7 +19,7 @@ func (priest *Priest) registerVampiricEmbraceSpell() {
 	healthMetrics := priest.NewHealthMetrics(actionID)
 	healthReturnedMultuplier := 0.05 + 0.05*float64(priest.Talents.ImprovedVampiricEmbrace)
 
-	priest.VampiricEmbraceAuras = priest.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
+	priest.VampiricEmbraceAuras = priest.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return target.GetOrRegisterAura(core.Aura{
 			ActionID: actionID,
 			Label:    "Vampiric Embrace (Health) - " + target.Label,

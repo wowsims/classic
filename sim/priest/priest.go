@@ -110,7 +110,7 @@ func New(character *core.Character, talents string) *Priest {
 	priest.EnableManaBar()
 
 	priest.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
-	priest.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[priest.Class][int(priest.Level)]*core.SpellCritRatingPerCritChance)
+	priest.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[priest.Class]*core.SpellCritRatingPerCritChance)
 
 	// Set mana regen to 12.5 + Spirit/4 each 2s tick
 	priest.SpiritManaRegenPerSecond = func() float64 {

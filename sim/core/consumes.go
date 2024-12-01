@@ -416,7 +416,7 @@ func applyDefensiveBuffConsumes(character *Character, consumes *proto.Consumes) 
 				stats.BonusArmor: 50,
 			})
 		case proto.ArmorElixir_ScrollOfProtection:
-			character.AddStats(BuffSpellByLevel[ScrollOfProtection][character.Level])
+			character.AddStats(BuffSpellValues[ScrollOfProtection])
 		}
 	}
 
@@ -473,7 +473,7 @@ func applyPhysicalBuffConsumes(character *Character, consumes *proto.Consumes) {
 				stats.Agility: 8,
 			})
 		case proto.AgilityElixir_ScrollOfAgility:
-			character.AddStats(BuffSpellByLevel[ScrollOfAgility][character.Level])
+			character.AddStats(BuffSpellValues[ScrollOfAgility])
 		}
 	}
 
@@ -492,7 +492,7 @@ func applyPhysicalBuffConsumes(character *Character, consumes *proto.Consumes) {
 				stats.Strength: 8,
 			})
 		case proto.StrengthBuff_ScrollOfStrength:
-			character.AddStats(BuffSpellByLevel[ScrollOfStrength][character.Level])
+			character.AddStats(BuffSpellValues[ScrollOfStrength])
 		}
 	}
 }
@@ -828,81 +828,6 @@ func (character *Character) newThoriumGrenadeSpell(sharedTimer *Timer) *Spell {
 }
 func (character *Character) newGoblinLandMineSpell(sharedTimer *Timer) *Spell {
 	return character.GetOrRegisterSpell(character.newBasicExplosiveSpellConfig(sharedTimer, GoblinLandMineActionID, SpellSchoolFire, 394, 506, Cooldown{}, 0, 0))
-}
-
-// Creates a spell object for the common explosive case.
-func (character *Character) newRadiationBombSpellConfig(sharedTimer *Timer, actionID ActionID, minDamage float64, maxDamage float64, dotDamage float64, cooldown Cooldown) SpellConfig {
-	return SpellConfig{
-		ActionID:    actionID,
-		SpellSchool: SpellSchoolFire,
-		DefenseType: DefenseTypeMagic,
-		ProcMask:    ProcMaskEmpty,
-		Flags:       SpellFlagCastTimeNoGCD,
-
-		Cast: CastConfig{
-			DefaultCast: Cast{
-				CastTime: time.Second,
-			},
-			IgnoreHaste: true,
-			CD:          cooldown,
-			SharedCD: Cooldown{
-				Timer:    sharedTimer,
-				Duration: time.Minute,
-			},
-		},
-
-		// Explosives always have 1% resist chance, so just give them hit cap.
-		BonusHitRating: 100 * SpellHitRatingPerHitChance,
-
-		DamageMultiplier: 1,
-		ThreatMultiplier: 1,
-
-		// TODO: This should use another spell (443813) as the DoT
-		// Also doesn't apply to bosses or something.
-		Dot: DotConfig{
-			Aura: Aura{
-				Label: actionID.String(),
-			},
-
-			NumberOfTicks: 5,
-			TickLength:    time.Second * 2,
-
-			OnSnapshot: func(sim *Simulation, target *Unit, dot *Dot, isRollover bool) {
-				// Use nature school for dot modifiers
-				dot.Spell.SpellSchool = SpellSchoolNature
-				dot.Spell.SchoolIndex = stats.SchoolIndexNature
-
-				dot.Snapshot(target, dotDamage, isRollover)
-
-				// Revert to fire school
-				dot.Spell.SpellSchool = SpellSchoolFire
-				dot.Spell.SchoolIndex = stats.SchoolIndexFire
-			},
-			OnTick: func(sim *Simulation, target *Unit, dot *Dot) {
-				// Use nature school for dot ticks
-				dot.Spell.SpellSchool = SpellSchoolNature
-				dot.Spell.SchoolIndex = stats.SchoolIndexNature
-
-				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
-
-				// Revert to fire school
-				dot.Spell.SpellSchool = SpellSchoolFire
-				dot.Spell.SchoolIndex = stats.SchoolIndexFire
-			},
-		},
-
-		ApplyEffects: func(sim *Simulation, target *Unit, spell *Spell) {
-			for _, aoeTarget := range sim.Encounter.TargetUnits {
-				baseDamage := sim.Roll(minDamage, maxDamage) * sim.Encounter.AOECapMultiplier()
-
-				result := spell.CalcAndDealDamage(sim, aoeTarget, baseDamage, spell.OutcomeMagicHitAndCrit)
-
-				if result.Landed() {
-					spell.Dot(aoeTarget).Apply(sim)
-				}
-			}
-		},
-	}
 }
 
 ///////////////////////////////////////////////////////////////////////////

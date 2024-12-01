@@ -1,7 +1,6 @@
 import Toast from './components/toast';
 import { getLanguageCode } from './constants/lang.js';
 import * as Mechanics from './constants/mechanics.js';
-import { LEVEL_THRESHOLDS } from './constants/other.js';
 import { simLaunchStatuses } from './launched_sims.js';
 import { MAX_PARTY_SIZE, Party } from './party.js';
 import {
@@ -233,7 +232,6 @@ export class Player<SpecType extends Spec> {
 	private enableItemSwap = false;
 	private itemSwapGear: ItemSwapGear = new ItemSwapGear({});
 	private race: Race;
-	private level: number;
 	private profession1: Profession = 0;
 	private profession2: Profession = 0;
 	aplRotation: APLRotation = APLRotation.create();
@@ -277,7 +275,6 @@ export class Player<SpecType extends Spec> {
 	readonly itemSwapChangeEmitter = new TypedEvent<void>('PlayerItemSwap');
 	readonly professionChangeEmitter = new TypedEvent<void>('PlayerProfession');
 	readonly raceChangeEmitter = new TypedEvent<void>('PlayerRace');
-	readonly levelChangeEmitter = new TypedEvent<void>('PlayerLevel');
 	readonly rotationChangeEmitter = new TypedEvent<void>('PlayerRotation');
 	readonly talentsChangeEmitter = new TypedEvent<void>('PlayerTalents');
 	readonly specOptionsChangeEmitter = new TypedEvent<void>('PlayerSpecOptions');
@@ -301,7 +298,6 @@ export class Player<SpecType extends Spec> {
 
 		this.spec = spec;
 		this.race = specToEligibleRaces[this.spec][0];
-		this.level = LEVEL_THRESHOLDS[simLaunchStatuses[this.spec].phase];
 		this.specTypeFunctions = specTypeFunctions[this.spec] as SpecTypeFunctions<SpecType>;
 		this.specOptions = this.specTypeFunctions.optionsCreate();
 
@@ -331,7 +327,6 @@ export class Player<SpecType extends Spec> {
 				this.itemSwapChangeEmitter,
 				this.professionChangeEmitter,
 				this.raceChangeEmitter,
-				this.levelChangeEmitter,
 				this.rotationChangeEmitter,
 				this.talentsChangeEmitter,
 				this.specOptionsChangeEmitter,
@@ -547,15 +542,6 @@ export class Player<SpecType extends Spec> {
 		if (newRace != this.race) {
 			this.race = newRace;
 			this.raceChangeEmitter.emit(eventID);
-		}
-	}
-	getLevel(): number {
-		return this.level;
-	}
-	setLevel(eventID: EventID, newLevel: number) {
-		if (newLevel != this.level) {
-			this.level = newLevel;
-			this.levelChangeEmitter.emit(eventID);
 		}
 	}
 
@@ -1331,7 +1317,6 @@ export class Player<SpecType extends Spec> {
 			PlayerProto.mergePartial(player, {
 				name: this.getName(),
 				race: this.getRace(),
-				level: this.getLevel(),
 				profession1: this.getProfession1(),
 				profession2: this.getProfession2(),
 				reactionTimeMs: this.getReactionTime(),
@@ -1388,7 +1373,6 @@ export class Player<SpecType extends Spec> {
 			if (loadCategory(SimSettingCategories.Miscellaneous)) {
 				this.setSpecOptions(eventID, this.specTypeFunctions.optionsFromPlayer(proto));
 				this.setName(eventID, proto.name);
-				this.setLevel(eventID, proto.level);
 				this.setRace(eventID, proto.race);
 				this.setProfession1(eventID, proto.profession1);
 				this.setProfession2(eventID, proto.profession2);
@@ -1440,21 +1424,5 @@ export class Player<SpecType extends Spec> {
 				}),
 			);
 		});
-	}
-
-	// Filter a matrix of spell IDs, min and max levels for a matching spell ID
-	getMatchingSpellActionId(src: ActionIdConfig[]): ActionId | null {
-		const match = src.find(config => (!config.minLevel || config.minLevel <= this.getLevel()) && (!config.maxLevel || config.maxLevel >= this.getLevel()));
-
-		if (match) return ActionId.fromSpellId(match.id);
-		return null;
-	}
-
-	// Filter a matrix of item IDs, min and max levels for a matching item ID
-	getMatchingItemActionId(src: ActionIdConfig[]): ActionId | null {
-		const match = src.find(config => (!config.minLevel || config.minLevel <= this.getLevel()) && (!config.maxLevel || config.maxLevel >= this.getLevel()));
-
-		if (match) return ActionId.fromItemId(match.id);
-		return null;
 	}
 }

@@ -26,11 +26,6 @@ var (
 		Slot:  proto.ItemSlot_ItemSlotOffHand,
 		Index: 1,
 	}
-	starshardEdge2 = &itemWithSlot{
-		Item:  &proto.ItemSpec{Id: itemStarshardEdge},
-		Slot:  proto.ItemSlot_ItemSlotMainHand,
-		Index: 2,
-	}
 	pillarOfFortitude = &itemWithSlot{
 		Item:  &proto.ItemSpec{Id: itemPillarOfFortitude},
 		Slot:  proto.ItemSlot_ItemSlotMainHand,

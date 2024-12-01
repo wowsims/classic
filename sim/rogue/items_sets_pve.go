@@ -35,10 +35,10 @@ var ItemSetNightslayerArmor = core.NewItemSet(core.ItemSet{
 		8: func(agent core.Agent) {
 			c := agent.GetCharacter()
 			healthMetrics := c.NewHealthMetrics(core.ActionID{SpellID: 23582})
-			
+
 			core.MakePermanent(c.RegisterAura(core.Aura{
-				Label:     "Clean Escape",
-				OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell)  {
+				Label: "Clean Escape",
+				OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
 					if spell.SpellCode == SpellCode_RogueVanish {
 						c.GainHealth(sim, 500, healthMetrics)
 					}
@@ -47,7 +47,6 @@ var ItemSetNightslayerArmor = core.NewItemSet(core.ItemSet{
 		},
 	},
 })
-
 
 ///////////////////////////////////////////////////////////////////////////
 //                            Phase 2 Item Sets - Dire Maul
@@ -77,7 +76,7 @@ var ItemSetBloodfangArmor = core.NewItemSet(core.ItemSet{
 		// Gives the Rogue a chance to inflict 283 to 317 damage on the target and heal the Rogue for 50 health every 1 sec. for 6 sec. on a melee hit.
 		8: func(agent core.Agent) {
 			c := agent.GetCharacter()
-			
+
 			bloodfangHeal := c.GetOrRegisterSpell(core.SpellConfig{
 				ActionID:    core.ActionID{SpellID: 23580},
 				SpellSchool: core.SpellSchoolPhysical,
@@ -98,7 +97,7 @@ var ItemSetBloodfangArmor = core.NewItemSet(core.ItemSet{
 					},
 				},
 				ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-						spell.Hot(&c.Unit).Apply(sim)
+					spell.Hot(&c.Unit).Apply(sim)
 				},
 			})
 
@@ -108,12 +107,12 @@ var ItemSetBloodfangArmor = core.NewItemSet(core.ItemSet{
 				DefenseType: core.DefenseTypeMelee,
 				ProcMask:    core.ProcMaskEmpty,
 				Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
-	
+
 				DamageMultiplier: 1,
 				ThreatMultiplier: 1,
-	
+
 				ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-					spell.CalcAndDealDamage(sim, target, sim.Roll(283,317), spell.OutcomeMagicCrit)
+					spell.CalcAndDealDamage(sim, target, sim.Roll(283, 317), spell.OutcomeMagicCrit)
 				},
 			})
 
@@ -151,10 +150,10 @@ var ItemSetMadcapsOutfit = core.NewItemSet(core.ItemSet{
 		// Decrease the energy cost of Eviscerate and Rupture by 5.
 		5: func(agent core.Agent) {
 			c := agent.(RogueAgent).GetRogue()
-			
+
 			core.MakePermanent(c.RegisterAura(core.Aura{
-				Label:     "Improved Eviscerate and Rupture",
-				OnInit: func(aura *core.Aura, sim *core.Simulation)  {
+				Label: "Improved Eviscerate and Rupture",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
 					c.Eviscerate.Cost.FlatModifier -= 5
 					c.Rupture.Cost.FlatModifier -= 5
 				},
@@ -222,7 +221,9 @@ var ItemSetDeathdealersEmbrace = core.NewItemSet(core.ItemSet{
 			c.RegisterAura(core.Aura{
 				Label: "Deathdealer Evasion Bonus",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
-					c.Evasion.CD.Duration -= time.Second * 60
+					if c.Evasion != nil {
+						c.Evasion.CD.Duration -= time.Second * 60
+					}
 				},
 			})
 		},
@@ -261,7 +262,7 @@ var ItemSetBonescytheArmor = core.NewItemSet(core.ItemSet{
 				ProcMask: core.ProcMaskMelee,
 				PPM:      1,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-					c.GainHealth(sim, sim.Roll(90,110), healthMetrics)
+					c.GainHealth(sim, sim.Roll(90, 110), healthMetrics)
 				},
 			})
 		},
@@ -328,7 +329,7 @@ var ItemSetBonescytheArmor = core.NewItemSet(core.ItemSet{
 					}
 				},
 			})
-			
+
 			c.OnComboPointsSpent(func(sim *core.Simulation, spell *core.Spell, comboPoints int32) {
 				if spell.SpellCode == SpellCode_RogueEviscerate {
 					// Proc rate from Simonize Era sheet

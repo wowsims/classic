@@ -47,15 +47,13 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1Feral = PresetUtils.makePresetAPLRotation('Feral', P1APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1Feral = PresetUtils.makePresetAPLRotation('Feral', P1APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLP1Feral],
 };
 
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	60: APLPresets[Phase.Phase1][0],
-};
+export const DefaultAPL = APLPresets[Phase.Phase1][0];
 
 export const DefaultRotation = FeralDruidRotation.create({
 	maintainFaerieFire: false,
@@ -72,9 +70,7 @@ export const SIMPLE_ROTATION_DEFAULT = PresetUtils.makePresetSimpleRotation('Sim
 //                                 Talent Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const TalentsP1Feral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '500005301-5500020323202151-15' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsP1Feral = PresetUtils.makePresetTalents('Feral', SavedTalents.create({ talentsString: '500005301-5500020323202151-15' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1Feral],

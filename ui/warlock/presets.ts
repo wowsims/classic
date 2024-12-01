@@ -55,9 +55,7 @@ export const DefaultGear = GearPreBis;
 ///////////////////////////////////////////////////////////////////////////
 
 // P1
-export const RotationSB = PresetUtils.makePresetAPLRotation('Destruction', BasicRotation, {
-	customCondition: player => player.getLevel() == 60,
-});
+export const RotationSB = PresetUtils.makePresetAPLRotation('Destruction', BasicRotation);
 
 export const APLPresets = [RotationSB];
 
@@ -73,13 +71,11 @@ export const DefaultAPL = RotationSB;
 export const TalentsSMRuid = {
 	name: 'SM/Ruin',
 	data: SavedTalents.create({ talentsString: '5502203112201105--52500051020001' }),
-	enableWhen: (player: Player<any>) => player.getLevel() === 60,
 };
 
 export const TalentsDSRuin = {
 	name: 'DS/Ruin',
 	data: SavedTalents.create({ talentsString: '25002-2050300152201-52500051020001' }),
-	enableWhen: (player: Player<any>) => player.getLevel() === 60,
 };
 
 export const TalentPresets = [TalentsSMRuid, TalentsDSRuin];

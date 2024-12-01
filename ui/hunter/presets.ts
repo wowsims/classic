@@ -55,7 +55,7 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1 = PresetUtils.makePresetAPLRotation('Marksmanship', P1APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLP1],
@@ -70,9 +70,7 @@ export const DefaultAPL = APLPresets[Phase.Phase1][0];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '-05451002503051-33400023023' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsP1 = PresetUtils.makePresetTalents('Marksmanship', SavedTalents.create({ talentsString: '-05451002503051-33400023023' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1],

@@ -15,7 +15,6 @@ func TestCombatSinisterStrike(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassRogue,
-			Level:      60,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
@@ -24,7 +23,7 @@ func TestCombatSinisterStrike(t *testing.T) {
 			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "combat_sinister_strike"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase1Consumes,
-			Phase: 5,
+			Phase:       5,
 			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultRogue},
 
 			ItemFilter:      ItemFilters,
@@ -38,7 +37,6 @@ func TestCombatDaggers(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
 		{
 			Class:      proto.Class_ClassRogue,
-			Level:      60,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 
@@ -47,7 +45,7 @@ func TestCombatDaggers(t *testing.T) {
 			Rotation:    core.GetAplRotation("../../../ui/rogue/apls", "combat_backstab"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase1Consumes,
-			Phase: 5,
+			Phase:       5,
 			SpecOptions: core.SpecOptionsCombo{Label: "No Poisons", SpecOptions: DefaultRogue},
 
 			ItemFilter:      ItemFilters,
@@ -92,10 +90,10 @@ var Stats = []proto.Stat{
 var Phase1Consumes = core.ConsumesCombo{
 	Label: "P1-Consumes",
 	Consumes: &proto.Consumes{
-		AgilityElixir: proto.AgilityElixir_ElixirOfTheMongoose,
-		MainHandImbue: proto.WeaponImbue_Windfury,
-		OffHandImbue:  proto.WeaponImbue_InstantPoison,
-		StrengthBuff:  proto.StrengthBuff_JujuPower,
+		AgilityElixir:   proto.AgilityElixir_ElixirOfTheMongoose,
+		MainHandImbue:   proto.WeaponImbue_Windfury,
+		OffHandImbue:    proto.WeaponImbue_InstantPoison,
+		StrengthBuff:    proto.StrengthBuff_JujuPower,
 		AttackPowerBuff: proto.AttackPowerBuff_JujuMight,
 	},
 }

@@ -103,7 +103,7 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 		Unit: Unit{
 			Type:        PlayerUnit,
 			Index:       int32(party.Index*5 + partyIndex),
-			Level:       player.GetLevel(),
+			Level:       CharacterMaxLevel,
 			auraTracker: newAuraTracker(),
 			PseudoStats: stats.NewPseudoStats(),
 			Metrics:     NewUnitMetrics(),
@@ -147,7 +147,7 @@ func NewCharacter(party *Party, partyIndex int, player *proto.Player) Character 
 
 	character.createIsbConfig(player)
 
-	character.baseStats = getBaseStatsCombo(character.Race, character.Class, int(character.Level))
+	character.baseStats = getBaseStatsCombo(character.Race, character.Class)
 
 	character.AddStats(character.baseStats)
 	character.addUniversalStatDependencies()

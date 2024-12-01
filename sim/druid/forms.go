@@ -29,36 +29,14 @@ func (druid *Druid) InForm(form DruidForm) bool {
 	return druid.form.Matches(form)
 }
 
-// TODO: don't hardcode numbers
-func (druid *Druid) GetCatWeapon(level int32) core.Weapon {
-	// Level 25 values
-	claws := core.Weapon{
-		BaseDamageMin:        0,
-		BaseDamageMax:        0,
+func (druid *Druid) GetCatWeapon() core.Weapon {
+	return core.Weapon{
+		BaseDamageMin:        43.84,
+		BaseDamageMax:        65.76,
 		SwingSpeed:           1.0,
 		NormalizedSwingSpeed: 1.0,
 		AttackPowerPerDPS:    core.DefaultAttackPowerPerDPS,
 	}
-
-	switch level {
-	case 60:
-		// Avg: 54.8
-		claws.BaseDamageMin = 43.84
-		claws.BaseDamageMax = 65.76
-	case 50:
-		// TODO: Not entirely verified. Value from Balor (Feral mod)
-		// Avg: 46.6
-		claws.BaseDamageMin = 37.28
-		claws.BaseDamageMax = 55.92
-	case 40:
-		claws.BaseDamageMin = 27.80305996
-		claws.BaseDamageMax = 41.70460054
-	default: // 25
-		claws.BaseDamageMin = 16.3866
-		claws.BaseDamageMax = 24.5799
-	}
-
-	return claws
 }
 
 // Func (druid *Druid) GetBearWeapon() core.Weapon {
@@ -124,7 +102,7 @@ func (druid *Druid) registerCatFormSpell() {
 		hotwDep = druid.NewDynamicMultiplyStat(stats.Strength, 1.0+0.04*float64(druid.Talents.HeartOfTheWild))
 	}
 
-	clawWeapon := druid.GetCatWeapon(druid.Level)
+	clawWeapon := druid.GetCatWeapon()
 
 	predBonus := stats.Stats{}
 

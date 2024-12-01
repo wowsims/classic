@@ -212,7 +212,7 @@ func init() {
 	core.NewItemEffect(BlackbladeOfShahram, func(agent core.Agent) {
 		character := agent.GetCharacter()
 
-		curseOfShahramAuras := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+		curseOfShahramAuras := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			aura := target.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 16597},
 				Label:    "Curse of Shahram",
@@ -237,7 +237,7 @@ func init() {
 			},
 		})
 
-		mightOfShahramAuras := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+		mightOfShahramAuras := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return target.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 16600},
 				Label:    "Might of Shahram",
@@ -627,7 +627,7 @@ func init() {
 	core.NewItemEffect(FangOfTheCrystalSpider, func(agent core.Agent) {
 		character := agent.GetCharacter()
 
-		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit, _ int32) *core.Aura {
+		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 			aura := unit.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 17331},
 				Label:    "Fang of the Crystal Spider",
@@ -815,7 +815,7 @@ func init() {
 		character := agent.GetCharacter()
 		procMask := character.GetProcMaskForItem(Frightalon)
 
-		debuffAuraArray := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+		debuffAuraArray := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return target.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 19755},
 				Label:    "Frightalon",
@@ -899,7 +899,7 @@ func init() {
 	// TODO: Proc rate assumed and needs testing
 	core.NewItemEffect(Frostguard, func(agent core.Agent) {
 		character := agent.GetCharacter()
-		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit, _ int32) *core.Aura {
+		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 			aura := unit.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 16927},
 				Label:    "Chilled (Frostguard)",
@@ -986,7 +986,7 @@ func init() {
 	// https://www.wowhead.com/classic/item=17071/gutgore-ripper
 	// Chance on hit: Sends a shadowy bolt at the enemy causing 75 Shadow damage and lowering all stats by 25 for 30 sec.
 	itemhelpers.CreateWeaponProcSpell(GutgoreRipper, "Gutgore Ripper", 1.0, func(character *core.Character) *core.Spell {
-		procAuras := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+		procAuras := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return target.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 461682},
 				Label:    "Gutgore Ripper",
@@ -1027,7 +1027,7 @@ func init() {
 			},
 		})
 	})
-	
+
 	// https://www.wowhead.com/classic/item=5616/gutwrencher
 	itemhelpers.CreateWeaponProcSpell(Gutwrencher, "Gutwrencher", 1.0, func(character *core.Character) *core.Spell {
 		return character.GetOrRegisterSpell(core.SpellConfig{
@@ -1238,7 +1238,7 @@ func init() {
 				character.MultiplyAttackSpeed(sim, 1.0/1.5)
 			},
 		})
-	
+
 		spell := character.RegisterSpell(core.SpellConfig{
 			ActionID: actionID,
 			Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,
@@ -1435,7 +1435,7 @@ func init() {
 			stats.Spirit:    20,
 			stats.Strength:  20,
 		}
-		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit, _ int32) *core.Aura {
+		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 			return unit.GetOrRegisterAura(core.Aura{
 				ActionID: core.ActionID{SpellID: 17196},
 				Label:    "Seeping Willow",
@@ -1708,7 +1708,7 @@ func init() {
 
 	// https://www.wowhead.com/classic/item=9639/the-hand-of-antusul
 	itemhelpers.CreateWeaponProcSpell(TheHandOfAntusul, "The Hand of Antu'sul", 1.0, func(character *core.Character) *core.Spell {
-		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit, _ int32) *core.Aura {
+		debuffAuras := character.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 			aura := unit.GetOrRegisterAura(core.Aura{
 				Label:    "ThunderClap-Antu'sul",
 				ActionID: core.ActionID{SpellID: 13532},
@@ -1822,7 +1822,7 @@ func init() {
 			},
 		})
 
-		debuffAuras := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+		debuffAuras := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return target.GetOrRegisterAura(core.Aura{
 				Label:    "Thunderfury",
 				ActionID: procActionID,
@@ -2794,7 +2794,7 @@ func BlazefuryTriggerAura(character *core.Character, spellID int32, spellSchool 
 
 // Chance on hit: Spell damage taken by target increased by 15% for 5 sec.
 func makeNightfallProc(character *core.Character, itemName string) {
-	procAuras := character.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+	procAuras := character.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return target.GetOrRegisterAura(core.Aura{
 			Label:    fmt.Sprintf("Spell Vulnerability (%s)", itemName),
 			ActionID: core.ActionID{SpellID: 23605},

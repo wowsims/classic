@@ -122,7 +122,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecBalanceDruid, {
 	},
 
 	autoRotation: player => {
-		return Presets.DefaultAPLs[player.getLevel()].rotation.rotation!;
+		return Presets.DefaultAPL.rotation.rotation!;
 	},
 
 	raidSimPresets: [

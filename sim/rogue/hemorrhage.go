@@ -29,7 +29,7 @@ func (rogue *Rogue) registerHemorrhageSpell() {
 	var hemoAuras core.AuraArray
 
 	if numPlayers >= 2 {
-		hemoAuras = rogue.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
+		hemoAuras = rogue.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 			return core.HemorrhageAura(target, rogue.Level)
 		})
 	}

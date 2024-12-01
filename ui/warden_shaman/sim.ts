@@ -187,7 +187,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWardenShaman, {
 	},
 
 	autoRotation: (player): APLRotation => {
-		return Presets.DefaultAPLs[player.getLevel()].rotation.rotation!;
+		return Presets.DefaultAPL.rotation.rotation!;
 	},
 
 	raidSimPresets: [

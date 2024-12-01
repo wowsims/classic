@@ -191,7 +191,7 @@ func (rogue *Rogue) registerDeadlyPoisonSpell() {
 					dot.SnapshotAttackerMultiplier = dot.Spell.AttackerDamageMultiplier(attackTable)
 					dot.SnapshotBaseDamage = 0
 				}
-				
+
 				dot.SnapshotBaseDamage += baseDamageTick
 			},
 
@@ -218,10 +218,10 @@ func (rogue *Rogue) registerWoundPoisonSpell() {
 		},
 	}
 
-	rogue.woundPoisonDebuffAuras = rogue.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
+	rogue.woundPoisonDebuffAuras = rogue.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return target.RegisterAura(woundPoisonDebuffAura)
 	})
-	rogue.WoundPoison =	rogue.makeWoundPoison()
+	rogue.WoundPoison = rogue.makeWoundPoison()
 }
 
 ///////////////////////////////////////////////////////////////////////////

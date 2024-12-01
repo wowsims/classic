@@ -293,7 +293,7 @@ func (druid *Druid) applyDreamstate() {
 		return
 	}
 
-	dreamstateAuras := druid.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+	dreamstateAuras := druid.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return core.DreamstateAura(target)
 	})
 

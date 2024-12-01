@@ -22,7 +22,7 @@ var ItemSetMalevolentProphetsVestments = core.NewItemSet(core.ItemSet{
 		3: func(agent core.Agent) {
 			c := agent.GetCharacter()
 
-			procAuras := c.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+			procAuras := c.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 				return target.GetOrRegisterAura(core.Aura{
 					Label:     "Malelovance Proc",
 					ActionID:  core.ActionID{SpellID: 449920},
@@ -261,9 +261,9 @@ var ItemSetWailingBerserkersPlateArmor = core.NewItemSet(core.ItemSet{
 			c := agent.GetCharacter()
 
 			handler := func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-				c.AutoAttacks.ExtraMHAttackProc(sim , 1, core.ActionID{SpellID: 449970}, spell)
+				c.AutoAttacks.ExtraMHAttackProc(sim, 1, core.ActionID{SpellID: 449970}, spell)
 			}
-			
+
 			core.MakeProcTriggerAura(&c.Unit, core.ProcTrigger{
 				ActionID:          core.ActionID{SpellID: 449970},
 				Name:              "Extra Attack",

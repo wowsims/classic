@@ -17,7 +17,6 @@ func TestP1Feral(t *testing.T) {
 		{
 			Class:      proto.Class_ClassDruid,
 			Phase:      1,
-			Level:      60,
 			Race:       proto.Race_RaceTauren,
 			OtherRaces: []proto.Race{proto.Race_RaceNightElf},
 

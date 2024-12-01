@@ -125,10 +125,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 	},
 
 	autoRotation: player => {
-		const specNumber = player.getTalentTree();
-		const level = player.getLevel();
-
-		return Presets.DefaultAPLs[level].rotation.rotation!;
+		return Presets.DefaultAPL.rotation.rotation!;
 	},
 
 	raidSimPresets: [

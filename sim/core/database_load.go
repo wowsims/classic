@@ -1,6 +1,5 @@
 // Only include this file in the build when we specify the 'with_db' tag.
 // Without the tag, the database will start out completely empty.
-//go:build with_db
 
 package core
 
@@ -22,7 +21,6 @@ func init() {
 	for i, item := range db.Items {
 		simDB.Items[i] = &proto.SimItem{
 			Id:                  item.Id,
-			RequiresLevel:       item.RequiresLevel,
 			ClassAllowlist:      item.ClassAllowlist,
 			Name:                item.Name,
 			Type:                item.Type,

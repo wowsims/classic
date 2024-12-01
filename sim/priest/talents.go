@@ -178,7 +178,7 @@ func (priest *Priest) applyShadowWeaving() {
 		return
 	}
 
-	priest.ShadowWeavingAuras = priest.NewEnemyAuraArray(func(unit *core.Unit, level int32) *core.Aura {
+	priest.ShadowWeavingAuras = priest.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 		return core.ShadowWeavingAura(unit, int(priest.Talents.ShadowWeaving))
 	})
 

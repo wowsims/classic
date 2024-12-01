@@ -59,9 +59,7 @@ export const APLPresets = {
 	[Phase.Phase5]: [APLP4Prot, APLP5Prot],
 };
 
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-	60: APLPresets[Phase.Phase5][0],
-};
+export const DefaultAPL = APLPresets[Phase.Phase5][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent presets

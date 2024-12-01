@@ -398,7 +398,7 @@ func GetAllTalentSpellIds(inputsDir *string) map[string][]int32 {
 }
 
 func CreateTempAgent(r *proto.Raid) core.Agent {
-	encounter := core.MakeSingleTargetEncounter(60, 0.0)
+	encounter := core.MakeSingleTargetEncounter(0.0)
 	env, _, _ := core.NewEnvironment(r, encounter, false)
 	return env.Raid.Parties[0].Players[0]
 }
@@ -414,71 +414,58 @@ func GetAllRotationSpellIds() map[string][]int32 {
 	rotMapping := []RotContainer{
 		{Name: "feral", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassDruid,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_FeralDruid{FeralDruid: &proto.FeralDruid{Options: &proto.FeralDruid_Options{}, Rotation: &proto.FeralDruid_Rotation{}}}), nil, nil, nil)},
 		{Name: "balance", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassDruid,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_BalanceDruid{BalanceDruid: &proto.BalanceDruid{Options: &proto.BalanceDruid_Options{}}}), nil, nil, nil)},
 		// TODO: Druid Tank Sim
 		// {Name: "druid tank", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 		// 	Class:     proto.Class_ClassDruid,
-		// 	Level:     60,
 		// 	Equipment: &proto.EquipmentSpec{},
 		// }, &proto.Player_FeralTankDruid{FeralTankDruid: &proto.FeralTankDruid{Options: &proto.FeralTankDruid_Options{}}}), nil, nil, nil)},
 		{Name: "elemental", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassShaman,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_ElementalShaman{ElementalShaman: &proto.ElementalShaman{Options: &proto.ElementalShaman_Options{}}}), nil, nil, nil)},
 		{Name: "enhance", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassShaman,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_EnhancementShaman{EnhancementShaman: &proto.EnhancementShaman{Options: &proto.EnhancementShaman_Options{}}}), nil, nil, nil)},
 		{Name: "hunter", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassHunter,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_Hunter{Hunter: &proto.Hunter{Options: &proto.Hunter_Options{}}}), nil, nil, nil)},
 		{Name: "mage", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:         proto.Class_ClassMage,
-			Level:         60,
 			Equipment:     &proto.EquipmentSpec{},
 			TalentsString: "2352342212231531-5532323123233121-25221213122351351",
 		}, &proto.Player_Mage{Mage: &proto.Mage{Options: &proto.Mage_Options{}}}), nil, nil, nil)},
 		{Name: "shadow", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassPriest,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_ShadowPriest{ShadowPriest: &proto.ShadowPriest{Options: &proto.ShadowPriest_Options{}}}), nil, nil, nil)},
 		{Name: "rogue", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassRogue,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 			Rotation:  &proto.APLRotation{},
 		}, &proto.Player_Rogue{Rogue: &proto.Rogue{}}), nil, nil, nil)},
 		{Name: "warrior", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassWarrior,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_Warrior{Warrior: &proto.Warrior{Options: &proto.Warrior_Options{}}}), nil, nil, nil)},
 		// TODO: Warrior Tank Sim
 		{Name: "warrior tank", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassWarrior,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_TankWarrior{TankWarrior: &proto.TankWarrior{Options: &proto.TankWarrior_Options{}}}), nil, nil, nil)},
 		{Name: "ret", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassPaladin,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_RetributionPaladin{RetributionPaladin: &proto.RetributionPaladin{Options: &proto.PaladinOptions{}}}), nil, nil, nil)},
 		{Name: "warlock", Raid: core.SinglePlayerRaidProto(core.WithSpec(&proto.Player{
 			Class:     proto.Class_ClassWarlock,
-			Level:     60,
 			Equipment: &proto.EquipmentSpec{},
 		}, &proto.Player_Warlock{Warlock: &proto.Warlock{Options: &proto.WarlockOptions{}}}), nil, nil, nil)},
 	}

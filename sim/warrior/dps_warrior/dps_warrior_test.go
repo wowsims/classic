@@ -17,7 +17,6 @@ func TestP1DPSWarrior(t *testing.T) {
 		{
 			Class:      proto.Class_ClassWarrior,
 			Phase:      1,
-			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceHuman},
 

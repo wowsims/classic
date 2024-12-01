@@ -51,7 +51,7 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 
 	cat.EnableAutoAttacks(cat, core.AutoAttackOptions{
 		// Base paw weapon.
-		MainHand:       cat.GetCatWeapon(cat.Level),
+		MainHand:       cat.GetCatWeapon(),
 		AutoSwingMelee: true,
 	})
 	/*

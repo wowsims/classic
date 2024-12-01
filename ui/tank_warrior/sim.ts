@@ -149,7 +149,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 	},
 
 	autoRotation: player => {
-		return Presets.DefaultAPLs[player.getLevel()].rotation.rotation!;
+		return Presets.DefaultAPL.rotation.rotation!;
 	},
 
 	raidSimPresets: [

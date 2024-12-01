@@ -1,4 +1,3 @@
-import * as Mechanics from './constants/mechanics.js';
 import { UnitMetadataList } from './player.js';
 import { Encounter as EncounterProto, PresetEncounter, PresetTarget, Target as TargetProto } from './proto/common.js';
 import { Sim } from './sim.js';
@@ -37,8 +36,7 @@ export class Encounter {
 		this.targetsMetadata = new UnitMetadataList();
 
 		sim.waitForInit().then(() => {
-			const level = sim.raid.getPlayer(0)?.getLevel() ?? Mechanics.CURRENT_LEVEL_CAP;
-			const presetTarget = Encounter.getPresetTargetForLevel(level, sim);
+			const presetTarget = Encounter.getDefaultTarget(sim);
 
 			this.targets = [presetTarget.target!];
 
@@ -151,8 +149,7 @@ export class Encounter {
 	}
 
 	applyDefaults(eventID: EventID) {
-		const level = this.sim.raid.getPlayer(0)?.getLevel() ?? Mechanics.CURRENT_LEVEL_CAP;
-		const presetTarget = Encounter.getPresetTargetForLevel(level, this.sim);
+		const presetTarget = Encounter.getDefaultTarget(this.sim);
 		this.fromProto(
 			eventID,
 			EncounterProto.create({
@@ -166,9 +163,8 @@ export class Encounter {
 		);
 	}
 
-	static getPresetTargetForLevel(playerLevel: number, sim: Sim): PresetTarget {
+	static getDefaultTarget(sim: Sim): PresetTarget {
 		const presetTargets = sim.db.getAllPresetTargets();
-		const target = presetTargets.find(target => target?.target?.level && target?.target?.level > playerLevel);
-		return target ?? presetTargets[0];
+		return presetTargets[0];
 	}
 }

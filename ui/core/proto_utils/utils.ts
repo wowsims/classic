@@ -1426,11 +1426,6 @@ export function canEquipItem<SpecType extends Spec>(player: Player<SpecType>, it
 		return false;
 	}
 
-	// Most items are filtered by required level but some items slip past, so fall back to +10 ilvl for players under level 60 for now
-	if (item.requiresLevel > player.getLevel() || (item.requiresLevel == 0 && player.getLevel() < 60 && item.ilvl - 10 > player.getLevel())) {
-		return false;
-	}
-
 	if ([ItemType.ItemTypeFinger, ItemType.ItemTypeTrinket].includes(item.type)) {
 		return true;
 	}
@@ -1600,7 +1595,7 @@ export function enchantAppliesToItem(enchant: Enchant, item: Item): boolean {
 }
 
 export function canEquipEnchant(enchant: Enchant, player: Player<any>): boolean {
-	if (player.getLevel() < enchant.requiresLevel || (enchant.classAllowlist.length > 0 && !enchant.classAllowlist.includes(player.getClass()))) {
+	if (enchant.classAllowlist.length > 0 && !enchant.classAllowlist.includes(player.getClass())) {
 		return false;
 	}
 

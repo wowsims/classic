@@ -4,6 +4,7 @@ import { ref } from 'tsx-vanilla';
 import { Component } from '../components/component.js';
 import { CopyButton } from '../components/copy_button.js';
 import { Input, InputConfig } from '../components/input.js';
+import { MAX_TALENT_POINTS } from '../constants/mechanics';
 import { Player } from '../player.js';
 import { Class, Spec } from '../proto/common.js';
 import { ActionId } from '../proto_utils/action_id.js';
@@ -34,7 +35,7 @@ export class TalentsPicker<TalentsProto> extends Input<Player<Spec>, string> {
 		this.numRows = Math.max(...config.trees.map(treeConfig => treeConfig.talents.map(talentConfig => talentConfig.location.rowIdx).flat()).flat()) + 1;
 		this.numCols = Math.max(...config.trees.map(treeConfig => treeConfig.talents.map(talentConfig => talentConfig.location.colIdx).flat()).flat()) + 1;
 
-		const getMaxPoints = () => player.getLevel() - 9;
+		const getMaxPoints = () => MAX_TALENT_POINTS;
 		this.maxPoints = getMaxPoints();
 
 		const getPointsRemaining = (): number => this.maxPoints - player.getTalentTreePoints().reduce((sum, points) => sum + points, 0);
@@ -75,7 +76,7 @@ export class TalentsPicker<TalentsProto> extends Input<Player<Spec>, string> {
 		const carouselPrevBtn = carouselPrevBtnRef.value!;
 		const carouselNextBtn = carouselNextBtnRef.value!;
 
-		TypedEvent.onAny([player.levelChangeEmitter, player.talentsChangeEmitter]).on(() => {
+		TypedEvent.onAny([player.talentsChangeEmitter]).on(() => {
 			this.setMaxPoints(getMaxPoints());
 			pointsRemainingElemRef.value!.textContent = `${getPointsRemaining()}`;
 		});

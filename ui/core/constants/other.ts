@@ -1,4 +1,4 @@
-import { PseudoStat, Stat } from "../proto/common";
+import { Stat } from "../proto/common";
 
 export enum Phase {
 	Phase1 = 1,
@@ -8,17 +8,7 @@ export enum Phase {
 	Phase5,
 }
 
-export const LEVEL_THRESHOLDS: Record<Phase, number> = {
-	[Phase.Phase1]: 25,
-	[Phase.Phase2]: 40,
-	[Phase.Phase3]: 50,
-	[Phase.Phase4]: 60,
-	[Phase.Phase5]: 60,
-};
-
-export const CURRENT_PHASE = Phase.Phase3;
-
-export const LEVEL_BRACKETS = [25, 40, 50, 60];
+export const CURRENT_PHASE = Phase.Phase1;
 
 // Github pages serves our site under the /classic directory
 export const REPO_NAME = 'classic';

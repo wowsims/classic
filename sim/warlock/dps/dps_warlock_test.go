@@ -17,7 +17,6 @@ func TestWarlockSMRuin(t *testing.T) {
 		{
 			Class: proto.Class_ClassWarlock,
 			Phase: 1,
-			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     TalentsSMRuin,
@@ -39,7 +38,6 @@ func TestWarlockDSRuin(t *testing.T) {
 		{
 			Class: proto.Class_ClassWarlock,
 			Phase: 1,
-			Level: 60,
 			Race:  proto.Race_RaceOrc,
 
 			Talents:     TalentsDSRuin,

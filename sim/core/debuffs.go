@@ -16,19 +16,9 @@ const (
 	DemoralizingShout DebuffName = iota
 )
 
-var LevelToDebuffRank = map[DebuffName]map[int32]int32{
-	DemoralizingShout: {
-		25: 2,
-		40: 3,
-		50: 4,
-		60: 5,
-	},
-}
-
 func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, raid *proto.Raid) {
-	level := raid.Parties[0].Players[0].Level
 	if debuffs.JudgementOfWisdom && targetIdx == 0 {
-		jowAura := JudgementOfWisdomAura(target, level)
+		jowAura := JudgementOfWisdomAura(target)
 		if jowAura != nil {
 			MakePermanent(jowAura)
 		}
@@ -36,9 +26,9 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 
 	if targetIdx == 0 {
 		if debuffs.JudgementOfTheCrusader == proto.TristateEffect_TristateEffectRegular {
-			MakePermanent(JudgementOfTheCrusaderAura(nil, target, level, 1, 0))
+			MakePermanent(JudgementOfTheCrusaderAura(nil, target, 1, 0))
 		} else if debuffs.JudgementOfTheCrusader == proto.TristateEffect_TristateEffectImproved {
-			MakePermanent(JudgementOfTheCrusaderAura(nil, target, level, 1.15, 0))
+			MakePermanent(JudgementOfTheCrusaderAura(nil, target, 1.15, 0))
 		}
 	}
 
@@ -63,11 +53,11 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 	}
 
 	if debuffs.CurseOfElements {
-		MakePermanent(CurseOfElementsAura(target, level))
+		MakePermanent(CurseOfElementsAura(target))
 	}
 
 	if debuffs.CurseOfShadow {
-		MakePermanent(CurseOfShadowAura(target, level))
+		MakePermanent(CurseOfShadowAura(target))
 	}
 
 	if debuffs.ImprovedScorch && targetIdx == 0 {
@@ -110,10 +100,6 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 		MakePermanent(GiftOfArthasAura(target))
 	}
 
-	if debuffs.CurseOfVulnerability {
-		MakePermanent(CurseOfVulnerabilityAura(target))
-	}
-
 	/* if debuffs.Mangle {
 		MakePermanent(MangleAura(target, level))
 	} */
@@ -125,7 +111,7 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 	// Major Armor Debuffs
 	if targetIdx == 0 {
 		if debuffs.ExposeArmor != proto.TristateEffect_TristateEffectMissing {
-			aura := ExposeArmorAura(target, TernaryInt32(debuffs.ExposeArmor == proto.TristateEffect_TristateEffectRegular, 0, 2), level)
+			aura := ExposeArmorAura(target, TernaryInt32(debuffs.ExposeArmor == proto.TristateEffect_TristateEffectRegular, 0, 2))
 			SchedulePeriodicDebuffApplication(aura, PeriodicActionOptions{
 				Period:   time.Second * 3,
 				NumTicks: 1,
@@ -137,7 +123,7 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 
 		if debuffs.SunderArmor {
 			// Sunder Armor
-			aura := SunderArmorAura(target, level)
+			aura := SunderArmorAura(target)
 			SchedulePeriodicDebuffApplication(aura, PeriodicActionOptions{
 				Period:          time.Millisecond * 1500,
 				NumTicks:        5,
@@ -154,25 +140,25 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 	}
 
 	if debuffs.CurseOfRecklessness {
-		MakePermanent(CurseOfRecklessnessAura(target, level))
+		MakePermanent(CurseOfRecklessnessAura(target))
 	}
 
 	if debuffs.FaerieFire {
-		MakePermanent(FaerieFireAura(target, level))
+		MakePermanent(FaerieFireAura(target))
 	}
 
 	if debuffs.CurseOfWeakness != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(CurseOfWeaknessAura(target, GetTristateValueInt32(debuffs.CurseOfWeakness, 0, 3), level))
+		MakePermanent(CurseOfWeaknessAura(target, GetTristateValueInt32(debuffs.CurseOfWeakness, 0, 3)))
 	}
 
 	if debuffs.DemoralizingRoar != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(DemoralizingRoarAura(target, GetTristateValueInt32(debuffs.DemoralizingRoar, 0, 5), level))
+		MakePermanent(DemoralizingRoarAura(target, GetTristateValueInt32(debuffs.DemoralizingRoar, 0, 5)))
 	}
 	if debuffs.DemoralizingShout != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(DemoralizingShoutAura(target, 0, GetTristateValueInt32(debuffs.DemoralizingShout, 0, 5), level))
+		MakePermanent(DemoralizingShoutAura(target, 0, GetTristateValueInt32(debuffs.DemoralizingShout, 0, 5)))
 	}
 	if debuffs.HuntersMark != proto.TristateEffect_TristateEffectMissing {
-		MakePermanent(HuntersMarkAura(target, GetTristateValueInt32(debuffs.HuntersMark, 0, 5), level))
+		MakePermanent(HuntersMarkAura(target, GetTristateValueInt32(debuffs.HuntersMark, 0, 5)))
 	}
 
 	// Atk spd reduction
@@ -180,12 +166,12 @@ func applyDebuffEffects(target *Unit, targetIdx int, debuffs *proto.Debuffs, rai
 		MakePermanent(ThunderClapAura(target, 8205, time.Second*22, GetTristateValueInt32(debuffs.ThunderClap, 10, 16)))
 	}
 	if debuffs.Thunderfury {
-		MakePermanent(ThunderfuryASAura(target, level))
+		MakePermanent(ThunderfuryASAura(target))
 	}
 
 	// Miss
 	if debuffs.InsectSwarm && targetIdx == 0 {
-		MakePermanent(InsectSwarmAura(target, level))
+		MakePermanent(InsectSwarmAura(target))
 	}
 	if debuffs.ScorpidSting && targetIdx == 0 {
 		MakePermanent(ScorpidStingAura(target))
@@ -374,24 +360,10 @@ func SchedulePeriodicDebuffApplication(aura *Aura, options PeriodicActionOptions
 const JudgementAuraTag = "Judgement"
 
 // TODO: Classic verify logic
-func JudgementOfWisdomAura(target *Unit, level int32) *Aura {
-	spellID := map[int32]int32{
-		40: 20186,
-		50: 20354,
-		60: 20355,
-	}[level]
-	actionID := ActionID{SpellID: spellID}
+func JudgementOfWisdomAura(target *Unit) *Aura {
+	actionID := ActionID{SpellID: 20355}
 
-	jowMana := 0.0
-	if level < 38 {
-		return nil
-	} else if level < 48 {
-		jowMana = 33.0
-	} else if level < 58 {
-		jowMana = 46.0
-	} else {
-		jowMana = 59.0
-	}
+	jowMana := 59.0
 
 	return target.GetOrRegisterAura(Aura{
 		Label:    "Judgement of Wisdom",
@@ -444,24 +416,9 @@ func JudgementOfLightAura(target *Unit) *Aura {
 	})
 }
 
-func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, level int32, mult float64, extraBonus float64) *Aura {
-	var spellId int32
-	var bonus float64
-
-	switch level {
-	case 25:
-		spellId = 20300
-		bonus = 50
-	case 40:
-		spellId = 20301
-		bonus = 80
-	case 50:
-		spellId = 20302
-		bonus = 110
-	default:
-		spellId = 20303
-		bonus = 140
-	}
+func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, mult float64, extraBonus float64) *Aura {
+	var spellId int32 = 20303
+	var bonus float64 = 140
 
 	bonus *= mult
 	bonus += extraBonus
@@ -489,32 +446,13 @@ func JudgementOfTheCrusaderAura(caster *Unit, target *Unit, level int32, mult fl
 	})
 }
 
-func CurseOfElementsAura(target *Unit, playerLevel int32) *Aura {
-	if playerLevel < 40 {
-		return nil
-	}
-
-	spellID := map[int32]int32{
-		40: 1490,
-		50: 11721,
-		60: 11722,
-	}[playerLevel]
-
-	resistance := map[int32]float64{
-		40: 45,
-		50: 60,
-		60: 75,
-	}[playerLevel]
-
-	dmgMod := map[int32]float64{
-		40: 1.06,
-		50: 1.08,
-		60: 1.10,
-	}[playerLevel]
+func CurseOfElementsAura(target *Unit) *Aura {
+	resistance := 75.0
+	dmgMod := 1.1
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Elements",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 11722},
 		Duration: time.Minute * 5,
 	})
 	spellSchoolDamageEffect(aura, stats.SchoolIndexFire, dmgMod, 0.0, false)
@@ -526,29 +464,13 @@ func CurseOfElementsAura(target *Unit, playerLevel int32) *Aura {
 	return aura
 }
 
-func CurseOfShadowAura(target *Unit, playerLevel int32) *Aura {
-	if playerLevel < 50 {
-		return nil
-	}
-
-	spellID := map[int32]int32{
-		50: 17862,
-		60: 17937,
-	}[playerLevel]
-
-	resistance := map[int32]float64{
-		50: 60,
-		60: 75,
-	}[playerLevel]
-
-	dmgMod := map[int32]float64{
-		50: 1.08,
-		60: 1.10,
-	}[playerLevel]
+func CurseOfShadowAura(target *Unit) *Aura {
+	resistance := 75.0
+	dmgMod := 1.1
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Shadow",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 17937},
 		Duration: time.Minute * 5,
 	})
 	spellSchoolDamageEffect(aura, stats.SchoolIndexArcane, dmgMod, 0.0, false)
@@ -635,25 +557,7 @@ func HemorrhageAura(target *Unit, casterLevel int32) *Aura {
 	})
 }
 
-func CurseOfVulnerabilityAura(target *Unit) *Aura {
-	return target.GetOrRegisterAura(Aura{
-		Label:    "Curse of Vulnerability",
-		ActionID: ActionID{SpellID: 427143},
-		Duration: time.Second * 15,
-		OnGain: func(aura *Aura, sim *Simulation) {
-			for si := stats.SchoolIndexPhysical; si < stats.SchoolLen; si++ {
-				aura.Unit.PseudoStats.SchoolBonusDamageTaken[si] += 2
-			}
-		},
-		OnExpire: func(aura *Aura, sim *Simulation) {
-			for si := stats.SchoolIndexPhysical; si < stats.SchoolLen; si++ {
-				aura.Unit.PseudoStats.SchoolBonusDamageTaken[si] -= 2
-			}
-		},
-	})
-}
-
-func MangleAura(target *Unit, _ int32) *Aura {
+func MangleAura(target *Unit) *Aura {
 	return bleedDamageAura(target, Aura{
 		Label:    "Mangle",
 		ActionID: ActionID{SpellID: 409828},
@@ -723,25 +627,13 @@ func WintersChillAura(target *Unit) *Aura {
 
 var majorArmorReductionEffectCategory = "MajorArmorReduction"
 
-func SunderArmorAura(target *Unit, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 7405,
-		40: 8380,
-		50: 11596,
-		60: 11597,
-	}[playerLevel]
-
-	arpen := map[int32]float64{
-		25: 180,
-		40: 270,
-		50: 360,
-		60: 450,
-	}[playerLevel]
+func SunderArmorAura(target *Unit) *Aura {
+	arpen := 450.0
 
 	var effect *ExclusiveEffect
 	aura := target.GetOrRegisterAura(Aura{
 		Label:     "Sunder Armor",
-		ActionID:  ActionID{SpellID: spellID},
+		ActionID:  ActionID{SpellID: 11597},
 		Duration:  time.Second * 30,
 		MaxStacks: 5,
 		OnStacksChange: func(aura *Aura, sim *Simulation, oldStacks int32, newStacks int32) {
@@ -762,20 +654,9 @@ func SunderArmorAura(target *Unit, playerLevel int32) *Aura {
 	return aura
 }
 
-func ExposeArmorAura(target *Unit, improvedEA int32, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 8647,
-		40: 8650,
-		50: 11197,
-		60: 11198,
-	}[playerLevel]
-
-	arpen := map[int32]float64{
-		25: 400,
-		40: 1050,
-		50: 1375,
-		60: 1700,
-	}[playerLevel]
+func ExposeArmorAura(target *Unit, improvedEA int32) *Aura {
+	spellID := int32(11198)
+	arpen := 1700.0
 
 	arpen *= []float64{1, 1.25, 1.5}[improvedEA]
 
@@ -798,31 +679,13 @@ func ExposeArmorAura(target *Unit, improvedEA int32, playerLevel int32) *Aura {
 	return aura
 }
 
-func CurseOfRecklessnessAura(target *Unit, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 704,
-		40: 7658,
-		50: 7659,
-		60: 11717,
-	}[playerLevel]
-
-	arpen := map[int32]float64{
-		25: 140,
-		40: 290,
-		50: 465,
-		60: 640,
-	}[playerLevel]
-
-	ap := map[int32]float64{
-		25: 20,
-		40: 45,
-		50: 65,
-		60: 90,
-	}[playerLevel]
+func CurseOfRecklessnessAura(target *Unit) *Aura {
+	arpen := float64(640)
+	ap := float64(90)
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Recklessness",
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 11717},
 		Duration: time.Minute * 2,
 		OnGain: func(aura *Aura, sim *Simulation) {
 			aura.Unit.AddStatDynamic(sim, stats.Armor, -arpen)
@@ -838,34 +701,16 @@ func CurseOfRecklessnessAura(target *Unit, playerLevel int32) *Aura {
 
 // Decreases the armor of the target by X for 40 sec.
 // Improved: Your Faerie Fire and Faerie Fire (Feral) also increase the chance for all attacks to hit that target by 1% for 40 sec.
-func FaerieFireAura(target *Unit, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 770,
-		40: 778,
-		50: 9749,
-		60: 9907,
-	}[playerLevel]
-
-	return faerieFireAuraInternal(target, "Faerie Fire", spellID, playerLevel)
+func FaerieFireAura(target *Unit) *Aura {
+	return faerieFireAuraInternal(target, "Faerie Fire", 9907)
 }
 
-func FaerieFireFeralAura(target *Unit, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		40: 17390,
-		50: 17391,
-		60: 17392,
-	}[playerLevel]
-
-	return faerieFireAuraInternal(target, "Faerie Fire (Feral)", spellID, playerLevel)
+func FaerieFireFeralAura(target *Unit) *Aura {
+	return faerieFireAuraInternal(target, "Faerie Fire (Feral)", 17392)
 }
 
-func faerieFireAuraInternal(target *Unit, label string, spellID int32, playerLevel int32) *Aura {
-	arPen := map[int32]float64{
-		25: 175,
-		40: 285,
-		50: 395,
-		60: 505,
-	}[playerLevel]
+func faerieFireAuraInternal(target *Unit, label string, spellID int32) *Aura {
+	arPen := float64(505)
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    label,
@@ -886,27 +731,15 @@ func faerieFireAuraInternal(target *Unit, label string, spellID int32, playerLev
 	return aura
 }
 
-func CurseOfWeaknessAura(target *Unit, points int32, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 6205,
-		40: 7646,
-		50: 11707,
-		60: 11708,
-	}[playerLevel]
-
-	modDmgReduction := map[int32]float64{
-		25: -10,
-		40: -15,
-		50: -22,
-		60: -31,
-	}[playerLevel]
+func CurseOfWeaknessAura(target *Unit, points int32) *Aura {
+	modDmgReduction := -31.0
 
 	modDmgReduction *= []float64{1, 1.06, 1.13, 1.20}[points]
 	modDmgReduction = math.Floor(modDmgReduction)
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Curse of Weakness" + strconv.Itoa(int(points)),
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 11708},
 		Duration: time.Minute * 2,
 		OnGain: func(aura *Aura, sim *Simulation) {
 			aura.Unit.PseudoStats.BonusPhysicalDamage += modDmgReduction
@@ -920,27 +753,15 @@ func CurseOfWeaknessAura(target *Unit, points int32, playerLevel int32) *Aura {
 
 const HuntersMarkAuraTag = "HuntersMark"
 
-func HuntersMarkAura(target *Unit, points int32, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 14323,
-		40: 14324,
-		50: 14324,
-		60: 14325,
-	}[playerLevel]
-
-	bonus := map[int32]float64{
-		25: 45,
-		40: 75,
-		50: 75,
-		60: 110,
-	}[playerLevel]
+func HuntersMarkAura(target *Unit, points int32) *Aura {
+	bonus := 110.0
 
 	bonus *= 1 + 0.03*float64(points)
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "HuntersMark-" + strconv.Itoa(int(bonus)),
 		Tag:      HuntersMarkAuraTag,
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 14325},
 		Duration: time.Minute * 2,
 	})
 
@@ -957,23 +778,12 @@ func HuntersMarkAura(target *Unit, points int32, playerLevel int32) *Aura {
 	return aura
 }
 
-func DemoralizingRoarAura(target *Unit, points int32, playerLevel int32) *Aura {
-	spellID := map[int32]int32{
-		25: 1735,
-		40: 9490,
-		50: 9747,
-		60: 9898,
-	}[playerLevel]
-	baseAPReduction := map[int32]float64{
-		25: 55,
-		40: 73,
-		50: 108,
-		60: 138,
-	}[playerLevel]
+func DemoralizingRoarAura(target *Unit, points int32) *Aura {
+	baseAPReduction := 138.0
 
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "DemoralizingRoar-" + strconv.Itoa(int(points)),
-		ActionID: ActionID{SpellID: spellID},
+		ActionID: ActionID{SpellID: 9898},
 		Duration: time.Second * 30,
 	})
 	apReductionEffect(aura, math.Floor(baseAPReduction*(1+0.08*float64(points))))
@@ -986,8 +796,8 @@ var DemoralizingShoutSpellId = [DemoralizingShoutRanks + 1]int32{0, 1160, 6190, 
 var DemoralizingShoutBaseAP = [DemoralizingShoutRanks + 1]float64{0, 45, 56, 76, 111, 146}
 var DemoralizingShoutLevel = [DemoralizingShoutRanks + 1]int{0, 14, 24, 34, 44, 54}
 
-func DemoralizingShoutAura(target *Unit, boomingVoicePts int32, impDemoShoutPts int32, playerLevel int32) *Aura {
-	rank := LevelToDebuffRank[DemoralizingShout][playerLevel]
+func DemoralizingShoutAura(target *Unit, boomingVoicePts int32, impDemoShoutPts int32) *Aura {
+	rank := int32(5)
 	spellId := DemoralizingShoutSpellId[rank]
 	baseAPReduction := DemoralizingShoutBaseAP[rank]
 
@@ -1032,7 +842,7 @@ func ThunderClapAura(target *Unit, spellID int32, duration time.Duration, atkSpe
 	return aura
 }
 
-func ThunderfuryASAura(target *Unit, _ int32) *Aura {
+func ThunderfuryASAura(target *Unit) *Aura {
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "Thunderfury",
 		ActionID: ActionID{SpellID: 21992},
@@ -1054,7 +864,7 @@ func AtkSpeedReductionEffect(aura *Aura, speedMultiplier float64) *ExclusiveEffe
 	})
 }
 
-func InsectSwarmAura(target *Unit, level int32) *Aura {
+func InsectSwarmAura(target *Unit) *Aura {
 	aura := target.GetOrRegisterAura(Aura{
 		Label:    "InsectSwarmMiss",
 		ActionID: ActionID{SpellID: 24977},

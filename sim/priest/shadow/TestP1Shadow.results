@@ -1,5 +1,5 @@
 character_stats_results: {
- key: "TestP1Shadow-Phase1-Lvl60-CharacterStats-Default"
+ key: "TestP1Shadow-Phase1-CharacterStats-Default"
  value: {
   final_stats: 180.55
   final_stats: 185.15
@@ -48,12 +48,12 @@ character_stats_results: {
  }
 }
 stat_weights_results: {
- key: "TestP1Shadow-Phase1-Lvl60-StatWeights-Default"
+ key: "TestP1Shadow-Phase1-StatWeights-Default"
  value: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.35114
+  weights: 0.35086
   weights: 0
   weights: 0.29454
   weights: 0
@@ -63,8 +63,8 @@ stat_weights_results: {
   weights: 0
   weights: 0.29454
   weights: 0
-  weights: 5.04909
-  weights: 0.47093
+  weights: 5.04465
+  weights: 0.47054
   weights: 0
   weights: 0
   weights: 0
@@ -97,100 +97,100 @@ stat_weights_results: {
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Average-Default"
+ key: "TestP1Shadow-Phase1-Average-Default"
  value: {
-  dps: 492.68793
-  tps: 485.83352
+  dps: 492.24694
+  tps: 485.41017
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 522.09278
-  tps: 762.51802
+  dps: 521.62441
+  tps: 762.06839
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 522.09278
-  tps: 514.27452
+  dps: 521.62441
+  tps: 513.82488
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 661.35453
-  tps: 655.42395
+  dps: 660.76173
+  tps: 654.85487
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
   dps: 256.91503
   tps: 420.15538
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
   dps: 256.91503
   tps: 255.31427
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Dwarf-p0.bis-Basic-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
   dps: 479.19258
   tps: 474.60129
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 494.67047
-  tps: 732.7942
+  dps: 494.22915
+  tps: 732.37054
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 494.67047
-  tps: 487.77918
+  dps: 494.22915
+  tps: 487.35551
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
-  dps: 674.0017
-  tps: 667.54164
+  dps: 673.40454
+  tps: 666.96836
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongMultiTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongMultiTarget"
  value: {
   dps: 254.85011
   tps: 418.17306
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-LongSingleTarget"
  value: {
   dps: 254.85011
   tps: 253.33196
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
+ key: "TestP1Shadow-Phase1-Settings-Undead-p0.bis-Basic-p1-NoBuffs-P1-Consumes-ShortSingleTarget"
  value: {
   dps: 488.25164
   tps: 483.29798
  }
 }
 dps_results: {
- key: "TestP1Shadow-Phase1-Lvl60-SwitchInFrontOfTarget-Default"
+ key: "TestP1Shadow-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 494.67047
-  tps: 487.77918
+  dps: 494.22915
+  tps: 487.35551
  }
 }

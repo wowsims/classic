@@ -45,20 +45,20 @@ type Rogue struct {
 
 	sliceAndDiceDurations [6]time.Duration
 
-	AdrenalineRush      *core.Spell
-	Backstab            *core.Spell
-	BladeFlurry         *core.Spell
-	Feint               *core.Spell
-	Garrote             *core.Spell
-	Ambush              *core.Spell
-	Hemorrhage          *core.Spell
-	GhostlyStrike       *core.Spell
-	SinisterStrike      *core.Spell
-	Shadowstep          *core.Spell
-	Preparation         *core.Spell
-	Premeditation       *core.Spell
-	ColdBlood           *core.Spell
-	Vanish              *core.Spell
+	AdrenalineRush *core.Spell
+	Backstab       *core.Spell
+	BladeFlurry    *core.Spell
+	Feint          *core.Spell
+	Garrote        *core.Spell
+	Ambush         *core.Spell
+	Hemorrhage     *core.Spell
+	GhostlyStrike  *core.Spell
+	SinisterStrike *core.Spell
+	Shadowstep     *core.Spell
+	Preparation    *core.Spell
+	Premeditation  *core.Spell
+	ColdBlood      *core.Spell
+	Vanish         *core.Spell
 
 	Eviscerate   *core.Spell
 	ExposeArmor  *core.Spell
@@ -66,22 +66,22 @@ type Rogue struct {
 	SliceAndDice *core.Spell
 	Finishers    []*core.Spell
 
-	Evasion    *core.Spell
+	Evasion *core.Spell
 
 	DeadlyPoison     *core.Spell
 	deadlyPoisonTick *core.Spell
 	InstantPoison    *core.Spell
 	WoundPoison      *core.Spell
 
-	additivePoisonBonusChance    float64
+	additivePoisonBonusChance float64
 
-	AdrenalineRushAura            *core.Aura
-	BladeFlurryAura               *core.Aura
-	ExposeArmorAuras              core.AuraArray
-	EvasionAura                   *core.Aura
-	SliceAndDiceAura              *core.Aura
-	StealthAura                   *core.Aura
-	VanishAura                    *core.Aura
+	AdrenalineRushAura *core.Aura
+	BladeFlurryAura    *core.Aura
+	ExposeArmorAuras   core.AuraArray
+	EvasionAura        *core.Aura
+	SliceAndDiceAura   *core.Aura
+	StealthAura        *core.Aura
+	VanishAura         *core.Aura
 
 	woundPoisonDebuffAuras core.AuraArray
 }
@@ -167,8 +167,8 @@ func NewRogue(character *core.Character, options *proto.Player, rogueOptions *pr
 	rogue.AddStatDependency(stats.Strength, stats.AttackPower, core.APPerStrength[character.Class])
 	rogue.AddStatDependency(stats.Agility, stats.AttackPower, 1)
 	rogue.AddStatDependency(stats.Agility, stats.RangedAttackPower, 1)
-	rogue.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[character.Class][int(rogue.Level)]*core.CritRatingPerCritChance)
-	rogue.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiAtLevel[character.Class][int(rogue.Level)]*core.DodgeRatingPerDodgeChance)
+	rogue.AddStatDependency(stats.Agility, stats.MeleeCrit, core.CritPerAgiAtLevel[character.Class]*core.CritRatingPerCritChance)
+	rogue.AddStatDependency(stats.Agility, stats.Dodge, core.DodgePerAgiAtLevel[character.Class]*core.DodgeRatingPerDodgeChance)
 	rogue.AddStatDependency(stats.BonusArmor, stats.Armor, 1)
 
 	guardians.ConstructGuardians(&rogue.Character)

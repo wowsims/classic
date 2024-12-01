@@ -45,8 +45,8 @@ func (paladin *Paladin) registerSealOfTheCrusader() {
 			break
 		}
 
-		debuffs := paladin.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
-			return core.JudgementOfTheCrusaderAura(&paladin.Unit, target, level, improvedSotC, libramBonus)
+		debuffs := paladin.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+			return core.JudgementOfTheCrusaderAura(&paladin.Unit, target, improvedSotC, libramBonus)
 		})
 
 		judgeSpell := paladin.RegisterSpell(core.SpellConfig{

@@ -15,7 +15,6 @@ func TestAbort(t *testing.T) {
 
 	player := &proto.Player{
 		Name:      "John",
-		Level:     60,
 		Race:      proto.Race_RaceOrc,
 		Class:     proto.Class_ClassWarrior,
 		Equipment: core.GetGearSet("../../../ui/tank_warrior/gear_sets", "p0.bis").GearSet,
@@ -38,7 +37,7 @@ func TestAbort(t *testing.T) {
 		Encounter: &proto.Encounter{
 			Duration: 300,
 			Targets: []*proto.Target{
-				core.NewDefaultTarget(60),
+				core.NewDefaultTarget(),
 			},
 		},
 		SimOptions: &proto.SimOptions{
@@ -137,7 +136,7 @@ func TestAbort(t *testing.T) {
 			RaidBuffs:  core.FullRaidBuffs,
 			PartyBuffs: core.FullPartyBuffs,
 			Debuffs:    core.FullDebuffs,
-			Encounter:  core.MakeSingleTargetEncounter(60, 0),
+			Encounter:  core.MakeSingleTargetEncounter(0),
 			SimOptions: core.StatWeightsDefaultSimTestOptions,
 			Tanks:      make([]*proto.UnitReference, 0),
 

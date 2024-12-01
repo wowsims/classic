@@ -32,48 +32,6 @@ var AverageDefaultSimTestOptions = &proto.SimOptions{
 const ShortDuration = 60
 const LongDuration = 300
 
-var DefaultTargetProtoLvl25 = &proto.Target{
-	Level: 27,
-	Stats: stats.Stats{
-		stats.Armor:       1104,
-		stats.AttackPower: 320,
-	}.ToFloatArray(),
-	MobType: proto.MobType_MobTypeDemon,
-
-	SwingSpeed:    2,
-	MinBaseDamage: 4192.05,
-	ParryHaste:    true,
-	DamageSpread:  0.3333,
-}
-
-var DefaultTargetProtoLvl40 = &proto.Target{
-	Level: 42,
-	Stats: stats.Stats{
-		stats.Armor:       1104,
-		stats.AttackPower: 320,
-	}.ToFloatArray(),
-	MobType: proto.MobType_MobTypeDemon,
-
-	SwingSpeed:    2,
-	MinBaseDamage: 4192.05,
-	ParryHaste:    true,
-	DamageSpread:  0.3333,
-}
-
-var DefaultTargetProtoLvl50 = &proto.Target{
-	Level: 52,
-	Stats: stats.Stats{
-		stats.Armor:       1104,
-		stats.AttackPower: 320,
-	}.ToFloatArray(),
-	MobType: proto.MobType_MobTypeDemon,
-
-	SwingSpeed:    2,
-	MinBaseDamage: 4192.05,
-	ParryHaste:    true,
-	DamageSpread:  0.3333,
-}
-
 // TODO: Update
 var DefaultTargetProtoLvl60 = &proto.Target{
 	Level: 63,
@@ -151,7 +109,6 @@ var FullDebuffs = &proto.Debuffs{
 	CurseOfElements:        true,
 	CurseOfShadow:          true,
 	CurseOfRecklessness:    true,
-	CurseOfVulnerability:   true,
 	CurseOfWeakness:        proto.TristateEffect_TristateEffectImproved,
 	DemoralizingRoar:       proto.TristateEffect_TristateEffectImproved,
 	DemoralizingShout:      proto.TristateEffect_TristateEffectImproved,
@@ -184,21 +141,12 @@ var FullBuffs = BuffsCombo{
 	Raid:    FullRaidBuffs,
 }
 
-func NewDefaultTarget(playerLevel int32) *proto.Target {
-	switch playerLevel {
-	case 40:
-		return DefaultTargetProtoLvl40
-	case 50:
-		return DefaultTargetProtoLvl50
-	case 60:
-		return DefaultTargetProtoLvl60
-	default:
-		return DefaultTargetProtoLvl25
-	}
+func NewDefaultTarget() *proto.Target {
+	return DefaultTargetProtoLvl60
 }
 
-func MakeDefaultEncounterCombos(playerLevel int32) []EncounterCombo {
-	var DefaultTarget = NewDefaultTarget(playerLevel)
+func MakeDefaultEncounterCombos() []EncounterCombo {
+	var DefaultTarget = NewDefaultTarget()
 
 	multipleTargets := make([]*proto.Target, 20)
 	for i := range multipleTargets {
@@ -243,7 +191,7 @@ func MakeDefaultEncounterCombos(playerLevel int32) []EncounterCombo {
 	}
 }
 
-func MakeSingleTargetEncounter(playerLevel int32, variation float64) *proto.Encounter {
+func MakeSingleTargetEncounter(variation float64) *proto.Encounter {
 	return &proto.Encounter{
 		Duration:             LongDuration,
 		DurationVariation:    variation,
@@ -251,7 +199,7 @@ func MakeSingleTargetEncounter(playerLevel int32, variation float64) *proto.Enco
 		ExecuteProportion_25: 0.25,
 		ExecuteProportion_35: 0.35,
 		Targets: []*proto.Target{
-			NewDefaultTarget(playerLevel),
+			NewDefaultTarget(),
 		},
 	}
 }

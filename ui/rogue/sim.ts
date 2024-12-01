@@ -169,7 +169,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 
 	autoRotation: player => {
 		// Try to find a rotation by hand rune
-		const preset = Presets.DefaultAPLs[player.getLevel()][0];
+		const preset = Presets.DefaultAPLs[0];
 
 		if (preset) return preset.rotation.rotation!;
 

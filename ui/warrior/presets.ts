@@ -48,7 +48,7 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1DPS = PresetUtils.makePresetAPLRotation('DPS', P1APL, { customCondition: player => player.getLevel() === 60 });
+export const APLP1DPS = PresetUtils.makePresetAPLRotation('DPS', P1APL);
 
 export const APLPresets = {
 	[Phase.Phase1]: [APLP1DPS],
@@ -65,9 +65,7 @@ export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1DPS = PresetUtils.makePresetTalents('DPS', SavedTalents.create({ talentsString: '20305020302-05050005525010051' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const TalentsP1DPS = PresetUtils.makePresetTalents('DPS', SavedTalents.create({ talentsString: '20305020302-05050005525010051' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1DPS],

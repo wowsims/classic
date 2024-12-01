@@ -338,7 +338,7 @@ func (mage *Mage) applyImprovedScorch() {
 		return
 	}
 
-	mage.ImprovedScorchAuras = mage.NewEnemyAuraArray(func(unit *core.Unit, level int32) *core.Aura {
+	mage.ImprovedScorchAuras = mage.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 		return core.ImprovedScorchAura(unit)
 	})
 }
@@ -497,7 +497,7 @@ func (mage *Mage) applyWintersChill() {
 
 	procChance := float64(mage.Talents.WintersChill) * 0.2
 
-	wcAuras := mage.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
+	wcAuras := mage.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return core.WintersChillAura(target)
 	})
 	mage.Env.RegisterPreFinalizeEffect(func() {

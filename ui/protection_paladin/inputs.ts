@@ -26,17 +26,11 @@ export const BlessingSelection = InputHelpers.makeSpecOptionsEnumIconInput<Spec.
 	values: [
 		{ value: Blessings.BlessingUnknown, tooltip: 'No Blessing' },
 		{
-			actionId: player =>
-				player.getMatchingSpellActionId([
-					{ id: 20911, minLevel: 1, maxLevel: 39 },
-					{ id: 20912, minLevel: 40, maxLevel: 49 },
-					{ id: 20913, minLevel: 50, maxLevel: 59 },
-					{ id: 20914, minLevel: 60 },
-				]),
+			actionId: () => ActionId.fromSpellId(20914),
 			value: Blessings.BlessingOfSanctuary,
 		},
 	],
-	changeEmitter: (player: Player<Spec.SpecProtectionPaladin>) => TypedEvent.onAny([player.specOptionsChangeEmitter, player.levelChangeEmitter]),
+	changeEmitter: (player: Player<Spec.SpecProtectionPaladin>) => TypedEvent.onAny([player.specOptionsChangeEmitter]),
 });
 
 export const RighteousFuryToggle = InputHelpers.makeSpecOptionsBooleanIconInput<Spec.SpecProtectionPaladin>({
@@ -51,28 +45,11 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 	fieldName: 'primarySeal',
 	values: [
 		{
-			actionId: player =>
-				player.getMatchingSpellActionId([
-					{ id: 20154, maxLevel: 9 },
-					{ id: 20287, minLevel: 10, maxLevel: 17 },
-					{ id: 20288, minLevel: 18, maxLevel: 25 },
-					{ id: 20289, minLevel: 26, maxLevel: 33 },
-					{ id: 20290, minLevel: 34, maxLevel: 41 },
-					{ id: 20291, minLevel: 42, maxLevel: 49 },
-					{ id: 20292, minLevel: 50, maxLevel: 57 },
-					{ id: 20293, minLevel: 58 },
-				]),
+			actionId: () => ActionId.fromSpellId(20293),
 			value: PaladinSeal.Righteousness,
 		},
 		{
-			actionId: player =>
-				player.getMatchingSpellActionId([
-					{ id: 20375, maxLevel: 29 },
-					{ id: 20915, minLevel: 30, maxLevel: 39 },
-					{ id: 20918, minLevel: 40, maxLevel: 49 },
-					{ id: 20919, minLevel: 50, maxLevel: 59 },
-					{ id: 20920, minLevel: 60 },
-				]),
+			actionId: () => ActionId.fromSpellId(20920),
 			value: PaladinSeal.Command,
 			showWhen: (player: Player<Spec.SpecProtectionPaladin>) => player.getTalents().sealOfCommand,
 		},
@@ -82,5 +59,5 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 		},
 	],
 	changeEmitter: (player: Player<Spec.SpecProtectionPaladin>) =>
-		TypedEvent.onAny([player.gearChangeEmitter, player.talentsChangeEmitter, player.specOptionsChangeEmitter, player.levelChangeEmitter]),
+		TypedEvent.onAny([player.gearChangeEmitter, player.talentsChangeEmitter, player.specOptionsChangeEmitter]),
 });

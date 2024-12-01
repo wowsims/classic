@@ -520,7 +520,7 @@ func (warlock *Warlock) applyImprovedShadowBolt() {
 	}
 
 	stackCount := int32(core.ISBNumStacksBase)
-	warlock.ImprovedShadowBoltAuras = warlock.NewEnemyAuraArray(func(unit *core.Unit, level int32) *core.Aura {
+	warlock.ImprovedShadowBoltAuras = warlock.NewEnemyAuraArray(func(unit *core.Unit) *core.Aura {
 		return core.ImprovedShadowBoltAura(unit, warlock.Talents.ImprovedShadowBolt, stackCount)
 	})
 

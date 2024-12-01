@@ -16,7 +16,6 @@ func TestWardenShaman(t *testing.T) {
 		{
 			Class:      proto.Class_ClassShaman,
 			Phase:      4,
-			Level:      60,
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceOrc},
 

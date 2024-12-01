@@ -1,22 +1,18 @@
 import { Phase } from '../core/constants/other.js';
+import * as PresetUtils from '../core/preset_utils.js';
 import {
 	Consumes,
 	Flask,
 	Food,
 	UnitReference
 } from '../core/proto/common.js';
-import { SavedTalents } from '../core/proto/ui.js';
-
 import {
 	FeralTankDruid_Options as DruidOptions,
 	FeralTankDruid_Rotation as DruidRotation,
 } from '../core/proto/druid.js';
-
-import * as PresetUtils from '../core/preset_utils.js';
-
-import BlankGear from './gear_sets/blank.gear.json';
-
+import { SavedTalents } from '../core/proto/ui.js';
 import DefaultApl from './apls/default.apl.json';
+import BlankGear from './gear_sets/blank.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -57,12 +53,6 @@ export const APLPresets = {
   ],
   [Phase.Phase2]: [
   ]
-};
-
-// TODO: Add Phase 2 preset and pull from map
-export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
-  25: APLPresets[Phase.Phase1][0],
-  40: APLPresets[Phase.Phase1][0],
 };
 
 ///////////////////////////////////////////////////////////////////////////

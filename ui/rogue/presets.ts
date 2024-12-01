@@ -64,11 +64,9 @@ export const APLPresets = {
 };
 
 //Need to add main hand equip logic or talent/rotation logic to map to Auto APL
-export const DefaultAPLs: Record<number, Record<number, PresetUtils.PresetRotation>> = {
-	60: {
-		[0]: ROTATION_PRESET_SINISTER_STRIKE,
-		[1]: ROTATION_PRESET_BACKSTAB,
-	},
+export const DefaultAPLs: Record<number, PresetUtils.PresetRotation> = {
+	[0]: ROTATION_PRESET_SINISTER_STRIKE,
+	[1]: ROTATION_PRESET_BACKSTAB,
 };
 
 export const DefaultAPLBackstab = APLPresets[Phase.Phase5][0];
@@ -86,14 +84,9 @@ export const DefaultAPLSinisterStrike = APLPresets[Phase.Phase5][1];
 export const CombatBackstabTalents = PresetUtils.makePresetTalents(
 	'Combat Backstab',
 	SavedTalents.create({ talentsString: '005023104-0233050020550100221-05' }),
-	{
-		customCondition: player => player.getLevel() === 60,
-	},
 );
 
-export const CombatSwordsTalents = PresetUtils.makePresetTalents('Combat Swords', SavedTalents.create({ talentsString: '005323105-0240052020050150231' }), {
-	customCondition: player => player.getLevel() === 60,
-});
+export const CombatSwordsTalents = PresetUtils.makePresetTalents('Combat Swords', SavedTalents.create({ talentsString: '005323105-0240052020050150231' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [CombatSwordsTalents, CombatBackstabTalents],

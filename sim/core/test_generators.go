@@ -108,7 +108,6 @@ type EncounterCombo struct {
 type SettingsCombos struct {
 	Class       proto.Class
 	Races       []proto.Race
-	Level       int32
 	GearSets    []GearSetCombo
 	TalentSets  []TalentsCombo
 	SpecOptions []SpecOptionsCombo
@@ -174,7 +173,6 @@ func (combos *SettingsCombos) GetTest(testIdx int) (string, *proto.ComputeStatsR
 		Raid: SinglePlayerRaidProto(
 			WithSpec(&proto.Player{
 				Race:               race,
-				Level:              combos.Level,
 				Class:              combos.Class,
 				Equipment:          gearSetCombo.GearSet,
 				TalentsString:      talentSetCombo.Talents,
@@ -205,8 +203,6 @@ type ItemFilter struct {
 	// If set to ClassUnknown, any class is fine.
 	Class proto.Class
 
-	Level int32
-
 	ArmorType proto.ArmorType
 
 	// Empty lists allows any value. Otherwise, item must match a value from the list.
@@ -223,9 +219,7 @@ type ItemFilter struct {
 // If equipChecksOnly is true, will only check conditions related to whether
 // the item is equippable.
 func (filter *ItemFilter) Matches(item Item, equipChecksOnly bool) bool {
-	if item.RequiresLevel >= filter.Level {
-		return false
-	} else if !slices.Contains(item.ClassAllowlist, filter.Class) {
+	if !slices.Contains(item.ClassAllowlist, filter.Class) {
 		return false
 	} else if item.Type == proto.ItemType_ItemTypeWeapon {
 		if len(filter.WeaponTypes) > 0 && !slices.Contains(filter.WeaponTypes, item.WeaponType) {
@@ -397,7 +391,6 @@ type CharacterSuiteConfig struct {
 	Class proto.Class
 
 	Race        proto.Race
-	Level       int32
 	Phase       int32
 	GearSet     GearSetCombo
 	SpecOptions SpecOptionsCombo
@@ -427,18 +420,8 @@ type CharacterSuiteConfig struct {
 
 func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGenerator {
 	return MapSlice(configs, func(config CharacterSuiteConfig) TestGenerator {
-		config.Level = max(config.Level, 25)
 		if config.Phase == 0 {
-			switch config.Level {
-			case 25:
-				config.Phase = 1
-			case 40:
-				config.Phase = 2
-			case 50:
-				config.Phase = 3
-			case 60:
-				panic("You must provide a Phase for level 60 tests")
-			}
+			panic("You must provide a Phase for level 60 tests")
 		}
 
 		allRaces := append(config.OtherRaces, config.Race)
@@ -454,7 +437,6 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 		defaultPlayer := WithSpec(
 			&proto.Player{
 				Class:         config.Class,
-				Level:         config.Level,
 				Race:          config.Race,
 				Equipment:     config.GearSet.GearSet,
 				Consumes:      config.Consumes.Consumes,
@@ -478,14 +460,10 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 			defaultRaid.TargetDummies = 1
 		}
 
-		// Ensure we don't generate tests where the agent equips items above its level
-		// This previously caused bugs with effects with a specified minimum level above the agent's level
-		config.ItemFilter.Level = config.Level
-
 		generator := &CombinedTestGenerator{
 			subgenerators: []SubGenerator{
 				{
-					name: makeGeneratorName("CharacterStats", config.Phase, config.Level),
+					name: makeGeneratorName("CharacterStats", config.Phase),
 					generator: &SingleCharacterStatsTestGenerator{
 						Name: "Default",
 						Request: &proto.ComputeStatsRequest{
@@ -494,11 +472,10 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 					},
 				},
 				{
-					name: makeGeneratorName("Settings", config.Phase, config.Level),
+					name: makeGeneratorName("Settings", config.Phase),
 					generator: &SettingsCombos{
 						Class:       config.Class,
 						Races:       allRaces,
-						Level:       config.Level,
 						GearSets:    allGearSets,
 						TalentSets:  allTalentSets,
 						SpecOptions: allSpecOptions,
@@ -517,19 +494,19 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 							},
 						},
 						IsHealer:   config.IsHealer,
-						Encounters: MakeDefaultEncounterCombos(config.Level),
+						Encounters: MakeDefaultEncounterCombos(),
 						SimOptions: DefaultSimTestOptions,
 						Cooldowns:  config.Cooldowns,
 					},
 				},
 				{
-					name: makeGeneratorName("AllItems", config.Phase, config.Level),
+					name: makeGeneratorName("AllItems", config.Phase),
 					generator: &ItemsTestGenerator{
 						Player:     defaultPlayer,
 						RaidBuffs:  config.Buffs.Raid,
 						PartyBuffs: config.Buffs.Party,
 						Debuffs:    config.Buffs.Debuffs,
-						Encounter:  MakeSingleTargetEncounter(config.Level, 0),
+						Encounter:  MakeSingleTargetEncounter(0),
 						SimOptions: DefaultSimTestOptions,
 						ItemFilter: config.ItemFilter,
 						IsHealer:   config.IsHealer,
@@ -542,12 +519,12 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 		newRaid.Parties[0].Players[0].InFrontOfTarget = !newRaid.Parties[0].Players[0].InFrontOfTarget
 
 		generator.subgenerators = append(generator.subgenerators, SubGenerator{
-			name: makeGeneratorName("SwitchInFrontOfTarget", config.Phase, config.Level),
+			name: makeGeneratorName("SwitchInFrontOfTarget", config.Phase),
 			generator: &SingleDpsTestGenerator{
 				Name: "Default",
 				Request: &proto.RaidSimRequest{
 					Raid:       newRaid,
-					Encounter:  MakeSingleTargetEncounter(config.Level, 0),
+					Encounter:  MakeSingleTargetEncounter(0),
 					SimOptions: DefaultSimTestOptions,
 				},
 			},
@@ -559,7 +536,7 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 			testOptionsPtr := &testOptions
 
 			generator.subgenerators = append(generator.subgenerators, SubGenerator{
-				name: makeGeneratorName("StatWeights", config.Phase, config.Level),
+				name: makeGeneratorName("StatWeights", config.Phase),
 				generator: &SingleStatWeightsTestGenerator{
 					Name: "Default",
 					Request: &proto.StatWeightsRequest{
@@ -567,7 +544,7 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 						RaidBuffs:  config.Buffs.Raid,
 						PartyBuffs: config.Buffs.Party,
 						Debuffs:    config.Buffs.Debuffs,
-						Encounter:  MakeSingleTargetEncounter(config.Level, 0),
+						Encounter:  MakeSingleTargetEncounter(0),
 						SimOptions: testOptionsPtr,
 						Tanks:      defaultRaid.Tanks,
 
@@ -581,12 +558,12 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 		// Add this separately, so it's always last, which makes it easy to find in the
 		// displayed test results.
 		generator.subgenerators = append(generator.subgenerators, SubGenerator{
-			name: makeGeneratorName("Average", config.Phase, config.Level),
+			name: makeGeneratorName("Average", config.Phase),
 			generator: &SingleDpsTestGenerator{
 				Name: "Default",
 				Request: &proto.RaidSimRequest{
 					Raid:       defaultRaid,
-					Encounter:  MakeSingleTargetEncounter(config.Level, 5),
+					Encounter:  MakeSingleTargetEncounter(5),
 					SimOptions: AverageDefaultSimTestOptions,
 				},
 			},
@@ -596,6 +573,6 @@ func FullCharacterTestSuiteGenerator(configs []CharacterSuiteConfig) []TestGener
 	})
 }
 
-func makeGeneratorName(base string, phase int32, level int32) string {
-	return fmt.Sprintf("Phase%d-Lvl%d-%s", phase, level, base)
+func makeGeneratorName(base string, phase int32) string {
+	return fmt.Sprintf("Phase%d-%s", phase, base)
 }

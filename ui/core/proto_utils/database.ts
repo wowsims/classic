@@ -256,16 +256,10 @@ export class Database {
 			const response = await fetch(url);
 			const json = await response.json();
 			let rank = 0;
-			let reqLevel = 0;
 
 			if (tooltipPostfix === 'spell') {
 				const rankMatches = Array.from(json['tooltip'].matchAll(RANK_REGEX) as RegExpMatchArray[]);
-				const levelMatches = Array.from(json['tooltip'].matchAll(REQ_LEVEL_SPELLS_REGEX) as RegExpMatchArray[]);
 				rank = rankMatches.length ? parseInt(rankMatches[0][1]) : 0;
-				reqLevel = levelMatches.length ? parseInt(levelMatches[0][1]) : 0;
-			} else if (tooltipPostfix == 'item') {
-				const levelMatches = Array.from(json['tooltip'].matchAll(REQ_LEVEL_ITEMS_REGEX) as RegExpMatchArray[]);
-				reqLevel = levelMatches.length ? parseInt(levelMatches[0][1]) : 0;
 			}
 
 			return IconData.create({
@@ -274,7 +268,6 @@ export class Database {
 				icon: json['icon'],
 				hasBuff: json['buff'] !== '',
 				rank: rank,
-				requiresLevel: reqLevel,
 			});
 		} catch (e) {
 			console.error('Error while fetching url: ' + url + '\n\n' + e);

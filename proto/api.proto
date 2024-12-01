@@ -21,7 +21,6 @@ message Player {
 	string name = 1;
 
 	Race race = 2;
-	int32 level = 3;
 	Class class = 4;
 
 	EquipmentSpec equipment = 5;

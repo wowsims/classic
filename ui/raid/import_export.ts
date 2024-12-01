@@ -476,7 +476,7 @@ export class RaidWCLImporter extends Importer {
 
 		// Build a manual target list if no preset encounter exists.
 		if (encounter.targets.length === 0) {
-			encounter.targets.push(Encounter.getPresetTargetForLevel(Mechanics.CURRENT_LEVEL_CAP, this.simUI.sim).target!);
+			encounter.targets.push(Encounter.getDefaultTarget(this.simUI.sim).target!);
 		}
 
 		return encounter;

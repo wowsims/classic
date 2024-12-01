@@ -17,7 +17,6 @@ func TestP1Mage(t *testing.T) {
 		{
 			Class:      proto.Class_ClassMage,
 			Phase:      1,
-			Level:      60,
 			Race:       proto.Race_RaceTroll,
 			OtherRaces: []proto.Race{proto.Race_RaceGnome},
 

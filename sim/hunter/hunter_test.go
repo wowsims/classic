@@ -17,7 +17,6 @@ func TestP1Hunter(t *testing.T) {
 		{
 			Class:      proto.Class_ClassHunter,
 			Phase:      1,
-			Level:      60,
 			Race:       proto.Race_RaceOrc,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 

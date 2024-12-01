@@ -16,7 +16,6 @@ func TestRetribution(t *testing.T) {
 		{
 			Class:      proto.Class_ClassPaladin,
 			Phase:      5,
-			Level:      60,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
@@ -40,7 +39,6 @@ func TestExodin(t *testing.T) {
 		{
 			Class:      proto.Class_ClassPaladin,
 			Phase:      5,
-			Level:      60,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 
@@ -63,7 +61,6 @@ func TestShockadin(t *testing.T) {
 		{
 			Class:      proto.Class_ClassPaladin,
 			Phase:      5,
-			Level:      60,
 			Race:       proto.Race_RaceHuman,
 			OtherRaces: []proto.Race{proto.Race_RaceDwarf},
 

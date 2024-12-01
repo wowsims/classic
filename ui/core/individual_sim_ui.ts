@@ -15,7 +15,8 @@ import * as InputHelpers from './components/input_helpers';
 import { addRaidSimAction, RaidSimResultsManager } from './components/raid_sim_action';
 import { SavedDataConfig } from './components/saved_data_manager';
 import { addStatWeightsAction } from './components/stat_weights_action';
-import { GLOBAL_DISPLAY_PSEUDO_STATS, GLOBAL_DISPLAY_STATS, GLOBAL_EP_STATS, LEVEL_THRESHOLDS } from './constants/other';
+import { MAX_TALENT_POINTS } from './constants/mechanics';
+import { GLOBAL_DISPLAY_PSEUDO_STATS, GLOBAL_DISPLAY_STATS, GLOBAL_EP_STATS } from './constants/other';
 import * as Tooltips from './constants/tooltips';
 import { simLaunchStatuses } from './launched_sims';
 import { Player, PlayerConfig, registerSpecConfig as registerPlayerConfig } from './player';
@@ -212,16 +213,16 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 			},
 		});
 		this.addWarning({
-			updateOn: TypedEvent.onAny([this.player.talentsChangeEmitter, this.player.levelChangeEmitter]),
+			updateOn: TypedEvent.onAny([this.player.talentsChangeEmitter]),
 			getContent: () => {
 				const talentPoints = getTalentPoints(this.player.getTalentsString());
 
 				if (talentPoints == 0) {
 					// Just return here, so we don't show a warning during page load.
 					return '';
-				} else if (talentPoints < this.player.getLevel() - 9) {
+				} else if (talentPoints < MAX_TALENT_POINTS) {
 					return Tooltips.UNSPECT_TALENT_POINTS_WARNING;
-				} else if (talentPoints > this.player.getLevel() - 9) {
+				} else if (talentPoints > MAX_TALENT_POINTS) {
 					return Tooltips.TOO_MANY_TALENT_POINTS_WARNING;
 				} else {
 					return '';
@@ -407,7 +408,6 @@ export abstract class IndividualSimUI<SpecType extends Spec> extends SimUI {
 			//Special case for Totem of Wrath keeps buff and debuff sync'd
 			this.player.applySharedDefaults(eventID);
 			this.player.setRace(eventID, this.individualConfig.defaults.race ?? specToEligibleRaces[this.player.spec][0]);
-			this.player.setLevel(eventID, LEVEL_THRESHOLDS[simLaunchStatuses[this.player.spec].phase]);
 			this.player.setGear(eventID, this.sim.db.lookupEquipmentSpec(this.individualConfig.defaults.gear));
 			this.player.setItemSwapGear(eventID, new ItemSwapGear({}));
 			this.player.setConsumes(eventID, this.individualConfig.defaults.consumes);

@@ -7,8 +7,8 @@ import (
 )
 
 func (rogue *Rogue) registerExposeArmorSpell() {
-	rogue.ExposeArmorAuras = rogue.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
-		return core.ExposeArmorAura(target, rogue.Talents.ImprovedExposeArmor, rogue.Level)
+	rogue.ExposeArmorAuras = rogue.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+		return core.ExposeArmorAura(target, rogue.Talents.ImprovedExposeArmor)
 	})
 
 	spellID := map[int32]int32{

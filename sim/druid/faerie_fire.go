@@ -8,43 +8,24 @@ import (
 
 func (druid *Druid) registerFaerieFireSpell() {
 	spellCode := SpellCode_DruidFaerieFire
-	actionID := core.ActionID{SpellID: map[int32]int32{
-		25: 770,
-		40: 778,
-		50: 9749,
-		60: 9907,
-	}[druid.Level]}
+	actionID := core.ActionID{SpellID: 9907}
 	manaCostOptions := core.ManaCostOptions{
-		FlatCost: map[int32]float64{
-			25: 55,
-			40: 75,
-			50: 95,
-			60: 115,
-		}[druid.Level],
+		FlatCost: 115,
 	}
 	gcd := core.GCDDefault
 	ignoreHaste := false
 	cd := core.Cooldown{}
-	flatThreatBonus := 2. * map[int32]float64{
-		25: 18,
-		40: 30,
-		50: 42,
-		60: 54,
-	}[druid.Level]
+	flatThreatBonus := 2. * 54
 	flags := core.SpellFlagNone
 	formMask := Humanoid | Moonkin
 
-	druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
-		return core.FaerieFireAura(target, level)
+	druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+		return core.FaerieFireAura(target)
 	})
 
 	if druid.InForm(Cat|Bear) && druid.Talents.FaerieFireFeral {
 		spellCode = SpellCode_DruidFaerieFireFeral
-		actionID = core.ActionID{SpellID: map[int32]int32{
-			40: 17390,
-			50: 17391,
-			60: 17392,
-		}[druid.Level]}
+		actionID = core.ActionID{SpellID: 17392}
 		manaCostOptions = core.ManaCostOptions{}
 		gcd = time.Second
 		ignoreHaste = true
@@ -53,8 +34,8 @@ func (druid *Druid) registerFaerieFireSpell() {
 			Timer:    druid.NewTimer(),
 			Duration: time.Second * 6,
 		}
-		druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit, level int32) *core.Aura {
-			return core.FaerieFireFeralAura(target, level)
+		druid.FaerieFireAuras = druid.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
+			return core.FaerieFireFeralAura(target)
 		})
 	}
 	flags |= core.SpellFlagAPL | core.SpellFlagResetAttackSwing

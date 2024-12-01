@@ -184,7 +184,7 @@ class AdvancedEncounterModal extends BaseModal {
 				encounter.targets = newValue;
 				encounter.targetsChangeEmitter.emit(eventID);
 			},
-			newItem: () => Encounter.getPresetTargetForLevel(simUI.sim.raid.getPlayer(0)?.getLevel() ?? Mechanics.CURRENT_LEVEL_CAP, simUI.sim).target!,
+			newItem: () => Encounter.getDefaultTarget(simUI.sim).target!,
 			copyItem: (oldItem: TargetProto) => TargetProto.clone(oldItem),
 			newItemPicker: (
 				parent: HTMLElement,

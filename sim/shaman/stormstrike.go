@@ -63,7 +63,7 @@ func (shaman *Shaman) newStormstrikeHitSpell(isMH bool) *core.Spell {
 		damageFunc = shaman.OHWeaponDamage
 	}
 
-	stormStrikeAuras := shaman.NewEnemyAuraArray(func(target *core.Unit, _ int32) *core.Aura {
+	stormStrikeAuras := shaman.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
 		return core.StormstrikeAura(target)
 	})
 

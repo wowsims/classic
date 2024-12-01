@@ -1,4 +1,3 @@
-import { LEVEL_BRACKETS } from '../../constants/other';
 import * as Tooltips from '../../constants/tooltips';
 import { Encounter } from '../../encounter';
 import { IndividualSimUI, InputSection } from '../../individual_sim_ui';
@@ -108,20 +107,6 @@ export class SettingsTab extends SimTab {
 			this.simUI.individualConfig.playerIconInputs.map(iconInput => IconInputs.buildIconInput(playerIconGroup, this.simUI.player, iconInput)),
 			true,
 		);
-
-		new EnumPicker(contentBlock.bodyElement, this.simUI.player, {
-			id: 'player-level',
-			label: 'Level',
-			values: LEVEL_BRACKETS.map(level => {
-				return {
-					name: `Level ${level}`,
-					value: level,
-				};
-			}),
-			changedEvent: player => player.levelChangeEmitter,
-			getValue: player => player.getLevel(),
-			setValue: (eventID, player, newValue) => player.setLevel(eventID, newValue),
-		});
 
 		const races = specToEligibleRaces[this.simUI.player.spec];
 		new EnumPicker(contentBlock.bodyElement, this.simUI.player, {
@@ -341,7 +326,6 @@ export class SettingsTab extends SimTab {
 					debuffs: simUI.sim.raid.getDebuffs(),
 					consumes: player.getConsumes(),
 					race: player.getRace(),
-					level: player.getLevel(),
 					professions: player.getProfessions(),
 					enableItemSwap: player.getEnableItemSwap(),
 					itemSwap: player.getItemSwapGear().toProto(),
@@ -354,7 +338,6 @@ export class SettingsTab extends SimTab {
 			},
 			setData: (eventID: EventID, simUI: IndividualSimUI<any>, newSettings: SavedSettings) => {
 				TypedEvent.freezeAllAndDo(() => {
-					simUI.player.setLevel(eventID, newSettings.level);
 					simUI.sim.raid.setBuffs(eventID, newSettings.raidBuffs || RaidBuffs.create());
 					simUI.sim.raid.setDebuffs(eventID, newSettings.debuffs || Debuffs.create());
 					const party = simUI.player.getParty();
