@@ -21,10 +21,15 @@ import {
 import { RogueOptions } from '../core/proto/rogue.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import BackstabAPL from './apls/combat_backstab.apl.json';
+import BackstabSweatyAPL from './apls/combat_backstab_sweaty.apl.json';
 import SinisterStrikeAPL from './apls/combat_sinister_strike.apl.json';
+import SinisterStrikeSweatyAPL from './apls/combat_sinister_strike_sweaty.apl.json';
+import SinisterStrikeIEAAPL from './apls/combat_sinister_strike_iea.apl.json';
 import BlankGear from './gear_sets/blank.gear.json';
 import BackstabGearPreBiS from './gear_sets/combat_backstab_prebis.gear.json';
 import SinisterStrikeGearPreBiS from './gear_sets/combat_sinister_strike_prebis.gear.json';
+import BackstabGearP1BiS from './gear_sets/combat_backstab_p1_bis.gear.json';
+import SinisterStrikeGearP1BiS from './gear_sets/combat_sinister_strike_p1_bis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -35,18 +40,16 @@ import SinisterStrikeGearPreBiS from './gear_sets/combat_sinister_strike_prebis.
 ///////////////////////////////////////////////////////////////////////////
 
 export const GearBlank = PresetUtils.makePresetGear('Blank', BlankGear);
-export const GearDaggersPreBiS = PresetUtils.makePresetGear('Backstab PreBiS', BackstabGearPreBiS);
-export const GearSwordsPreBiS = PresetUtils.makePresetGear('Swords PreBiS', SinisterStrikeGearPreBiS);
+export const GearBackstabPreBiS = PresetUtils.makePresetGear('Backstab Pre-BiS', BackstabGearPreBiS);
+export const GearSinisterStrikePreBiS = PresetUtils.makePresetGear('Sinister Strike Pre-BiS', SinisterStrikeGearPreBiS);
+export const GearBackstabP1BiS = PresetUtils.makePresetGear('Backstab P1 BiS', BackstabGearP1BiS);
+export const GearSinisterStrikeP1BiS = PresetUtils.makePresetGear('Sinister Strike P1 BiS', SinisterStrikeGearP1BiS);
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearDaggersPreBiS, GearSwordsPreBiS],
-	[Phase.Phase2]: [GearDaggersPreBiS, GearSwordsPreBiS],
-	[Phase.Phase3]: [GearDaggersPreBiS, GearSwordsPreBiS],
-	[Phase.Phase4]: [GearDaggersPreBiS, GearSwordsPreBiS],
-	[Phase.Phase5]: [GearDaggersPreBiS, GearSwordsPreBiS],
+	[Phase.Phase1]: [GearBackstabPreBiS, GearSinisterStrikePreBiS, GearBackstabP1BiS, GearSinisterStrikeP1BiS],
 };
 
-export const DefaultGear = GearSwordsPreBiS;
+export const DefaultGear = GearSinisterStrikePreBiS;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets[]
@@ -54,13 +57,12 @@ export const DefaultGear = GearSwordsPreBiS;
 
 export const ROTATION_PRESET_BACKSTAB = PresetUtils.makePresetAPLRotation('Backstab', BackstabAPL, {});
 export const ROTATION_PRESET_SINISTER_STRIKE = PresetUtils.makePresetAPLRotation('Sinister Strike', SinisterStrikeAPL, {});
+export const ROTATION_PRESET_BACKSTAB_SWEATY = PresetUtils.makePresetAPLRotation('Backstab (Sweaty)', BackstabSweatyAPL, {});
+export const ROTATION_PRESET_SINISTER_STRIKE_SWEATY = PresetUtils.makePresetAPLRotation('Sinister Strike (Sweaty)', SinisterStrikeSweatyAPL, {});
+export const ROTATION_PRESET_SINISTER_STRIKE_IEA = PresetUtils.makePresetAPLRotation('Improved Expose Armor (SS)', SinisterStrikeIEAAPL, {});
 
 export const APLPresets = {
-	[Phase.Phase1]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE],
-	[Phase.Phase2]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE],
-	[Phase.Phase3]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE],
-	[Phase.Phase4]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE],
-	[Phase.Phase5]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE],
+	[Phase.Phase1]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE, ROTATION_PRESET_BACKSTAB_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_IEA],
 };
 
 //Need to add main hand equip logic or talent/rotation logic to map to Auto APL
@@ -71,8 +73,9 @@ export const DefaultAPLs: Record<number, Record<number, PresetUtils.PresetRotati
 	},
 };
 
-export const DefaultAPLBackstab = APLPresets[Phase.Phase5][0];
-export const DefaultAPLSinisterStrike = APLPresets[Phase.Phase5][1];
+export const DefaultAPLBackstab = APLPresets[Phase.Phase1][0];
+export const DefaultAPLSinisterStrike = APLPresets[Phase.Phase1][1];
+export const DefaultAPLIEA = APLPresets[Phase.Phase1][4];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Talent Presets
@@ -84,41 +87,52 @@ export const DefaultAPLSinisterStrike = APLPresets[Phase.Phase5][1];
 // Preset name must be unique. Ex: 'Backstab DPS' cannot be used as a name more than once
 
 export const CombatBackstabTalents = PresetUtils.makePresetTalents(
-	'Combat Backstab',
+	'Backstab',
 	SavedTalents.create({ talentsString: '005023104-0233050020550100221-05' }),
 	{
 		customCondition: player => player.getLevel() === 60,
 	},
 );
 
-export const CombatSwordsTalents = PresetUtils.makePresetTalents('Combat Swords', SavedTalents.create({ talentsString: '005323105-0240052020050150231' }), {
+export const CombatSinisterStrikeTalents = PresetUtils.makePresetTalents('Sinister Strike', SavedTalents.create({ talentsString: '005323105-0240052020050150231' }), {
+	customCondition: player => player.getLevel() === 60,
+});
+
+export const CombatSinisterStrikeIEATalents = PresetUtils.makePresetTalents('Improved Expose Armor (SS)', SavedTalents.create({ talentsString: '005323123-0240052020050150231' }), {
 	customCondition: player => player.getLevel() === 60,
 });
 
 export const TalentPresets = {
-	[Phase.Phase1]: [CombatSwordsTalents, CombatBackstabTalents],
-	[Phase.Phase2]: [CombatSwordsTalents, CombatBackstabTalents],
-	[Phase.Phase3]: [CombatSwordsTalents, CombatBackstabTalents],
-	[Phase.Phase4]: [CombatSwordsTalents, CombatBackstabTalents],
-	[Phase.Phase5]: [CombatSwordsTalents, CombatBackstabTalents],
+	[Phase.Phase1]: [CombatBackstabTalents, CombatSinisterStrikeTalents, CombatSinisterStrikeIEATalents],
 };
 
-export const DefaultTalentsAssassin = TalentPresets[Phase.Phase5][0];
-export const DefaultTalentsCombat = TalentPresets[Phase.Phase5][0];
-export const DefaultTalentsSubtlety = TalentPresets[Phase.Phase5][0];
+export const DefaultTalentsAssassin = TalentPresets[Phase.Phase1][0];
+export const DefaultTalentsCombat = TalentPresets[Phase.Phase1][0];
+export const DefaultTalentsSubtlety = TalentPresets[Phase.Phase1][0];
 
-export const DefaultTalentsBackstab = TalentPresets[Phase.Phase5][0];
-export const DefaultTalentsSinisterStrike = TalentPresets[Phase.Phase5][1];
+export const DefaultTalentsBackstab = TalentPresets[Phase.Phase1][0];
+export const DefaultTalentsSinisterStrike = TalentPresets[Phase.Phase1][1];
+export const DefaultTalentsIEA = TalentPresets[Phase.Phase1][2];
 
-export const DefaultTalents = DefaultTalentsAssassin;
+export const DefaultTalents = DefaultTalentsSinisterStrike;
 
 ///////////////////////////////////////////////////////////////////////////
-//                                Encounters
+//                                Build Presets
 ///////////////////////////////////////////////////////////////////////////
 export const PresetBuildBackstab = PresetUtils.makePresetBuild('Backstab', {
-	gear: GearDaggersPreBiS,
+	gear: GearBackstabPreBiS,
 	talents: DefaultTalentsBackstab,
 	rotation: DefaultAPLBackstab,
+});
+export const PresetBuildSinisterStrike = PresetUtils.makePresetBuild('Sinister Strike', {
+	gear: GearSinisterStrikePreBiS,
+	talents: DefaultTalentsSinisterStrike,
+	rotation: DefaultAPLSinisterStrike,
+});
+export const PresetBuildIEA = PresetUtils.makePresetBuild('IEA', {
+	gear: GearSinisterStrikePreBiS,
+	talents: DefaultTalentsIEA,
+	rotation: DefaultAPLIEA,
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -131,7 +145,7 @@ export const DefaultOptions = RogueOptions.create({});
 //                         Consumes/Buffs/Debuffs
 ///////////////////////////////////////////////////////////////////////////
 
-export const P5Consumes = Consumes.create({
+export const P1Consumes = Consumes.create({
 	agilityElixir: AgilityElixir.ElixirOfTheMongoose,
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredRogueThistleTea,
@@ -146,14 +160,10 @@ export const P5Consumes = Consumes.create({
 });
 
 export const DefaultConsumes = {
-	[Phase.Phase1]: P5Consumes,
-	[Phase.Phase2]: P5Consumes,
-	[Phase.Phase3]: P5Consumes,
-	[Phase.Phase4]: P5Consumes,
-	[Phase.Phase5]: P5Consumes,
+	[Phase.Phase1]: P1Consumes,
 };
 
-export const DefaultRaidBuffs = RaidBuffs.create({
+export const P1RaidBuffs = RaidBuffs.create({
 	battleShout: TristateEffect.TristateEffectImproved,
 	fireResistanceAura: true,
 	fireResistanceTotem: true,
@@ -163,7 +173,11 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	leaderOfThePack: true,
 });
 
-export const DefaultIndividualBuffs = IndividualBuffs.create({
+export const DefaultRaidBuffs = {
+	[Phase.Phase1]: P1RaidBuffs,
+};
+
+export const P1IndividualBuffs = IndividualBuffs.create({
 	blessingOfKings: true,
 	blessingOfMight: TristateEffect.TristateEffectImproved,
 	fengusFerocity: true,
@@ -175,14 +189,26 @@ export const DefaultIndividualBuffs = IndividualBuffs.create({
 	warchiefsBlessing: true,
 });
 
-export const DefaultDebuffs = Debuffs.create({
+export const DefaultIndividualBuffs = {
+	[Phase.Phase1]: P1IndividualBuffs,
+};
+
+export const P1DefaultDebuffs = Debuffs.create({
 	curseOfRecklessness: true,
 	faerieFire: true,
 	improvedScorch: true,
 	sunderArmor: true,
 });
 
-export const OtherDefaults = {
+export const DefaultDebuffs = {
+	[Phase.Phase1]: P1DefaultDebuffs,
+};
+
+export const P1OtherDefaults = {
 	profession1: Profession.Engineering,
 	profession2: Profession.Alchemy,
+};
+
+export const OtherDefaults = {
+	[Phase.Phase1]: P1OtherDefaults,
 };
