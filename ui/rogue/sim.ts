@@ -101,17 +101,17 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 		),
 
 		// Default consumes settings.
-		consumes: Presets.DefaultConsumes[Phase.Phase5],
+		consumes: Presets.DefaultConsumes[Phase.Phase1],
 		// Default talents.
 		talents: Presets.DefaultTalents.data,
 		// Default spec-specific settings.
 		specOptions: Presets.DefaultOptions,
-		other: Presets.OtherDefaults,
+		other: Presets.OtherDefaults[Phase.Phase1],
 		// Default raid/party buffs settings.
-		raidBuffs: Presets.DefaultRaidBuffs,
+		raidBuffs: Presets.DefaultRaidBuffs[Phase.Phase1],
 		partyBuffs: PartyBuffs.create({}),
-		individualBuffs: Presets.DefaultIndividualBuffs,
-		debuffs: Presets.DefaultDebuffs,
+		individualBuffs: Presets.DefaultIndividualBuffs[Phase.Phase1],
+		debuffs: Presets.DefaultDebuffs[Phase.Phase1],
 	},
 
 	playerInputs: {
@@ -139,30 +139,20 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 	presets: {
 		// Preset talents that the user can quickly select.
 		talents: [
-			...Presets.TalentPresets[Phase.Phase5],
-			//...Presets.TalentPresets[Phase.Phase4], Removed due to duplication with P5
-			//...Presets.TalentPresets[Phase.Phase3],
-			//...Presets.TalentPresets[Phase.Phase2],
-			//...Presets.TalentPresets[Phase.Phase1],
+			...Presets.TalentPresets[Phase.Phase1],
 		],
 		// Preset rotations that the user can quickly select.
 		rotations: [
-			...Presets.APLPresets[Phase.Phase5],
-			//...Presets.APLPresets[Phase.Phase4], Removed due to duplication with P5
-			//...Presets.APLPresets[Phase.Phase3],
-			//...Presets.APLPresets[Phase.Phase2],
-			//...Presets.APLPresets[Phase.Phase1],
+			...Presets.APLPresets[Phase.Phase1],
 		],
 		// Preset gear configurations that the user can quickly select.
 		gear: [
-			...Presets.GearPresets[Phase.Phase5],
-			//...Presets.GearPresets[Phase.Phase4],
-			//...Presets.GearPresets[Phase.Phase3],
-			//...Presets.GearPresets[Phase.Phase2],
-			//...Presets.GearPresets[Phase.Phase1],
+			...Presets.GearPresets[Phase.Phase1],
 		],
 		builds: [
-			//	Presets.PresetBuildBackstab,
+			Presets.PresetBuildBackstab,
+			Presets.PresetBuildSinisterStrike,
+			Presets.PresetBuildIEA,
 		],
 	},
 
