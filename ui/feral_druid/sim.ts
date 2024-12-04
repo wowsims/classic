@@ -38,9 +38,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		// Spell
 		Stat.StatMP5,
 	],
-	epPseudoStats: [
-		PseudoStat.BonusPhysicalDamage,
-	],
+	epPseudoStats: [PseudoStat.BonusPhysicalDamage],
 	// Reference stat against which to calculate EP. I think all classes use either spell power or attack power.
 	epReferenceStat: Stat.StatAttackPower,
 	// Which stats to display in the Character Stats section, at the bottom of the left-hand sidebar.
@@ -61,9 +59,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 		// Spell
 		Stat.StatMP5,
 	],
-	displayPseudoStats: [
-		PseudoStat.BonusPhysicalDamage,
-	],
+	displayPseudoStats: [PseudoStat.BonusPhysicalDamage],
 
 	defaults: {
 		// Default equipped gear.
@@ -118,6 +114,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
 		inputs: [
+			OtherInputs.UseAQSpellRanks,
 			OtherInputs.ReactionTime,
 			// DruidInputs.AssumeBleedActive,
 			OtherInputs.TankAssignment,
@@ -134,16 +131,10 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecFeralDruid, {
 
 	presets: {
 		// Preset talents that the user can quickly select.
-		talents: [
-			...Presets.TalentPresets[Phase.Phase1],
-		],
-		rotations: [
-			...Presets.APLPresets[Phase.Phase1],
-		],
+		talents: [...Presets.TalentPresets[Phase.Phase1]],
+		rotations: [...Presets.APLPresets[Phase.Phase1]],
 		// Preset gear configurations that the user can quickly select.
-		gear: [
-			...Presets.GearPresets[Phase.Phase1],
-		],
+		gear: [...Presets.GearPresets[Phase.Phase1]],
 	},
 
 	autoRotation: player => {

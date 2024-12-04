@@ -184,6 +184,7 @@ func runSim(rsr *proto.RaidSimRequest, progress chan *proto.ProgressMetrics, ski
 
 func NewSim(rsr *proto.RaidSimRequest, signals simsignals.Signals) *Simulation {
 	env, _, _ := NewEnvironment(rsr.Raid, rsr.Encounter, false)
+	env.UseAQSpellRanks = rsr.SimOptions.UseAqSpellRanks
 	return newSimWithEnv(env, rsr.SimOptions, signals)
 }
 

@@ -11,14 +11,14 @@ func (rogue *Rogue) registerBackstabSpell() {
 		25: 32,
 		40: 60,
 		50: 90,
-		60: core.TernaryFloat64(core.IncludeAQ, 150, 140),
+		60: core.TernaryFloat64(rogue.Env.UseAQSpellRanks, 210, 225),
 	}[rogue.Level]
 
 	spellID := map[int32]int32{
 		25: 2590,
 		40: 8721,
 		50: 11279,
-		60: core.TernaryInt32(core.IncludeAQ, 25300, 11281),
+		60: core.TernaryInt32(rogue.Env.UseAQSpellRanks, 25300, 11281),
 	}[rogue.Level]
 
 	damageMultiplier := 1.5 * []float64{1, 1.04, 1.08, 1.12, 1.16, 1.2}[rogue.Talents.Opportunity]

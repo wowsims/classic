@@ -52,7 +52,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 		Stat.StatMP5,
 	],
 	displayPseudoStats: [],
-	
+
 	defaults: {
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
@@ -105,7 +105,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [OtherInputs.DistanceFromTarget, OtherInputs.TankAssignment],
+		inputs: [OtherInputs.DistanceFromTarget, OtherInputs.TankAssignment, OtherInputs.UseAQSpellRanks],
 	},
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
@@ -113,15 +113,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 	},
 
 	presets: {
-		rotations: [
-			...Presets.APLPresets[Phase.Phase1],
-		],
-		talents: [
-			...Presets.TalentPresets[Phase.Phase1],
-		],
-		gear: [
-			...Presets.GearPresets[Phase.Phase1],
-		],
+		rotations: [...Presets.APLPresets[Phase.Phase1]],
+		talents: [...Presets.TalentPresets[Phase.Phase1]],
+		gear: [...Presets.GearPresets[Phase.Phase1]],
 	},
 
 	autoRotation: player => {

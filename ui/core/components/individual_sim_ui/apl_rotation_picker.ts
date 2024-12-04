@@ -22,7 +22,7 @@ export class APLRotationPicker extends Component {
 			title: 'Prepull Actions',
 			titleTooltip: 'Actions to perform before the pull.',
 			itemLabel: 'Prepull Action',
-			changedEvent: (player: Player<any>) => player.rotationChangeEmitter,
+			changedEvent: (player: Player<any>) => TypedEvent.onAny([player.rotationChangeEmitter, player.sim.useAQSpellsChangeEmitter]),
 			getValue: (player: Player<any>) => player.aplRotation.prepullActions,
 			setValue: (eventID: EventID, player: Player<any>, newValue: Array<APLPrepullAction>) => {
 				player.aplRotation.prepullActions = newValue;
@@ -50,7 +50,7 @@ export class APLRotationPicker extends Component {
 			title: 'Priority List',
 			titleTooltip: 'At each decision point, the simulation will perform the first valid action from this list.',
 			itemLabel: 'Action',
-			changedEvent: (player: Player<any>) => player.rotationChangeEmitter,
+			changedEvent: (player: Player<any>) => TypedEvent.onAny([player.rotationChangeEmitter, player.sim.useAQSpellsChangeEmitter]),
 			getValue: (player: Player<any>) => player.aplRotation.priorityList,
 			setValue: (eventID: EventID, player: Player<any>, newValue: Array<APLListItem>) => {
 				player.aplRotation.priorityList = newValue;

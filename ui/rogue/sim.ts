@@ -129,7 +129,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [OtherInputs.TankAssignment, OtherInputs.InFrontOfTarget],
+		inputs: [OtherInputs.TankAssignment, OtherInputs.InFrontOfTarget, OtherInputs.UseAQSpellRanks],
 	},
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
@@ -138,22 +138,12 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecRogue, {
 
 	presets: {
 		// Preset talents that the user can quickly select.
-		talents: [
-			...Presets.TalentPresets[Phase.Phase1],
-		],
+		talents: [...Presets.TalentPresets[Phase.Phase1]],
 		// Preset rotations that the user can quickly select.
-		rotations: [
-			...Presets.APLPresets[Phase.Phase1],
-		],
+		rotations: [...Presets.APLPresets[Phase.Phase1]],
 		// Preset gear configurations that the user can quickly select.
-		gear: [
-			...Presets.GearPresets[Phase.Phase1],
-		],
-		builds: [
-			Presets.PresetBuildBackstab,
-			Presets.PresetBuildSinisterStrike,
-			Presets.PresetBuildIEA,
-		],
+		gear: [...Presets.GearPresets[Phase.Phase1]],
+		builds: [Presets.PresetBuildBackstab, Presets.PresetBuildSinisterStrike, Presets.PresetBuildIEA],
 	},
 
 	autoRotation: player => {
