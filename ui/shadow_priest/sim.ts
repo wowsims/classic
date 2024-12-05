@@ -50,7 +50,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecShadowPriest, {
 		Stat.StatMP5,
 	],
 	displayPseudoStats: [],
-	
+
 	modifyDisplayStats: (player: Player<Spec.SpecShadowPriest>) => {
 		let stats = new Stats();
 		stats = stats.addPseudoStat(PseudoStat.PseudoStatSchoolHitShadow, player.getTalents().shadowFocus * 2 * Mechanics.SPELL_HIT_RATING_PER_HIT_CHANCE);
@@ -106,7 +106,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecShadowPriest, {
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [OtherInputs.TankAssignment, OtherInputs.ChannelClipDelay, OtherInputs.DistanceFromTarget],
+		inputs: [OtherInputs.TankAssignment, OtherInputs.ChannelClipDelay, OtherInputs.DistanceFromTarget, OtherInputs.UseAQSpellRanks],
 	},
 	encounterPicker: {
 		// Whether to include 'Execute Duration (%)' in the 'Encounter' section of the settings tab.
@@ -114,15 +114,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecShadowPriest, {
 	},
 
 	presets: {
-		talents: [
-			...Presets.TalentPresets[Phase.Phase1],
-		],
-		rotations: [
-			...Presets.APLPresets[Phase.Phase1],
-		],
-		gear: [
-			...Presets.GearPresets[Phase.Phase1],
-		],
+		talents: [...Presets.TalentPresets[Phase.Phase1]],
+		rotations: [...Presets.APLPresets[Phase.Phase1]],
+		gear: [...Presets.GearPresets[Phase.Phase1]],
 	},
 
 	autoRotation: player => {

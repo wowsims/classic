@@ -32,6 +32,7 @@ type Environment struct {
 	// Whether stats are currently being measured. Used to disable some validation
 	// checks which are otherwise helpful.
 	MeasuringStats bool
+	UseAQSpellRanks  bool
 
 	Raid      *Raid
 	Encounter Encounter

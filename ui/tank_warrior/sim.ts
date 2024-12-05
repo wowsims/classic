@@ -65,7 +65,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 		Stat.StatShadowResistance,
 	],
 	displayPseudoStats: [],
-	
+
 	defaults: {
 		// Default equipped gear.
 		gear: Presets.DefaultGear.gear,
@@ -124,6 +124,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 			OtherInputs.BurstWindow,
 			OtherInputs.HpPercentForDefensives,
 			OtherInputs.InspirationUptime,
+			OtherInputs.UseAQSpellRanks,
 		],
 	},
 	encounterPicker: {
@@ -133,17 +134,11 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecTankWarrior, {
 
 	presets: {
 		// Preset talents that the user can quickly select.
-		talents: [
-			...Presets.TalentPresets[Phase.Phase1],
-		],
+		talents: [...Presets.TalentPresets[Phase.Phase1]],
 		// Preset rotations that the user can quickly select.
-		rotations: [
-			...Presets.APLPresets[Phase.Phase1],
-		],
+		rotations: [...Presets.APLPresets[Phase.Phase1]],
 		// Preset gear configurations that the user can quickly select.
-		gear: [
-			...Presets.GearPresets[Phase.Phase1],
-		],
+		gear: [...Presets.GearPresets[Phase.Phase1]],
 		// Preset builds that the user can quickly select.
 		builds: [Presets.PresetBuildTanky],
 	},

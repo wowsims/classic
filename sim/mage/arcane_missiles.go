@@ -20,7 +20,11 @@ func (mage *Mage) registerArcaneMissilesSpell() {
 	mage.ArcaneMissiles = make([]*core.Spell, ArcaneMissilesRanks+1)
 	mage.ArcaneMissilesTickSpell = make([]*core.Spell, ArcaneMissilesRanks+1)
 
-	// TODO AQ <=
+	maxRank := ArcaneMissilesRanks
+	if !mage.Env.UseAQSpellRanks {
+		maxRank -= 1
+	}
+	
 	for rank := 1; rank < ArcaneMissilesRanks; rank++ {
 		config := mage.getArcaneMissilesSpellConfig(rank)
 

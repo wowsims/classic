@@ -37,11 +37,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 		Stat.StatSpellHaste,
 		Stat.StatMP5,
 	],
-	epPseudoStats: [
-		PseudoStat.PseudoStatMainHandDps,
-		PseudoStat.PseudoStatOffHandDps,
-		PseudoStat.PseudoStatMeleeSpeedMultiplier,
-	],
+	epPseudoStats: [PseudoStat.PseudoStatMainHandDps, PseudoStat.PseudoStatOffHandDps, PseudoStat.PseudoStatMeleeSpeedMultiplier],
 	// Reference stat against which to calculate EP. I think all classes use either spell power or attack power.
 	epReferenceStat: Stat.StatAttackPower,
 	// Which stats to display in the Character Stats section, at the bottom of the left-hand sidebar.
@@ -67,7 +63,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 		Stat.StatMP5,
 	],
 	displayPseudoStats: [],
-	
+
 	defaults: {
 		race: Race.RaceTroll,
 		// Default equipped gear.
@@ -118,7 +114,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 	excludeBuffDebuffInputs: [],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [ShamanInputs.SyncTypeInput, OtherInputs.TankAssignment, OtherInputs.InFrontOfTarget],
+		inputs: [OtherInputs.UseAQSpellRanks, ShamanInputs.SyncTypeInput, OtherInputs.TankAssignment, OtherInputs.InFrontOfTarget],
 	},
 	itemSwapConfig: {
 		itemSlots: [ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotOffHand],
@@ -144,9 +140,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecEnhancementShaman, {
 			...Presets.APLPresets[Phase.Phase2],
 			...Presets.APLPresets[Phase.Phase1],
 		],
-		gear: [
-			Presets.DefaultGear,
-		],
+		gear: [Presets.DefaultGear],
 	},
 
 	autoRotation: (player): APLRotation => {
