@@ -4,21 +4,10 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 func (warrior *Warrior) registerWhirlwindSpell() {
-	if warrior.Level < 36 {
-		return
-	}
-
-	hasConsumedByRageRune := warrior.HasRune(proto.WarriorRune_RuneConsumedByRage)
-
-	warrior.WhirlwindMH = warrior.newWhirlwindHitSpell(true)
-	canHitOffhand := hasConsumedByRageRune && warrior.AutoAttacks.IsDualWielding
-	if canHitOffhand {
-		warrior.WhirlwindOH = warrior.newWhirlwindHitSpell(false)
-	}
+	results := make([]*core.SpellResult, min(4, warrior.Env.GetNumTargets()))
 
 	warrior.Whirlwind = warrior.RegisterSpell(BerserkerStance, core.SpellConfig{
 		SpellCode:   SpellCode_WarriorWhirlwind,
@@ -41,34 +30,6 @@ func (warrior *Warrior) registerWhirlwindSpell() {
 				Duration: time.Second * 10,
 			},
 		},
-
-		ApplyEffects: func(sim *core.Simulation, target *core.Unit, _ *core.Spell) {
-			for _, aoeTarget := range sim.Encounter.TargetUnits {
-				warrior.WhirlwindMH.Cast(sim, aoeTarget)
-				if canHitOffhand && warrior.IsEnraged() {
-					warrior.WhirlwindOH.Cast(sim, aoeTarget)
-				}
-			}
-		},
-	})
-}
-
-func (warrior *Warrior) newWhirlwindHitSpell(isMH bool) *WarriorSpell {
-	procMask := core.ProcMaskMeleeSpecial
-	damageFunc := warrior.MHNormalizedWeaponDamage
-	if !isMH {
-		procMask = core.ProcMaskMeleeOHSpecial
-		damageFunc = warrior.OHNormalizedWeaponDamage
-	}
-
-	return warrior.RegisterSpell(AnyStance, core.SpellConfig{
-		SpellCode:   core.Ternary(isMH, SpellCode_WarriorWhirlwindMH, SpellCode_WarriorWhirlwindOH),
-		ActionID:    core.ActionID{SpellID: 1680}.WithTag(int32(core.Ternary(isMH, 1, 2))),
-		SpellSchool: core.SpellSchoolPhysical,
-		DefenseType: core.DefenseTypeMelee,
-		ProcMask:    procMask,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell,
-
 		CritDamageBonus: warrior.impale(),
 
 		DamageMultiplier: 1,
@@ -76,8 +37,15 @@ func (warrior *Warrior) newWhirlwindHitSpell(isMH bool) *WarriorSpell {
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := damageFunc(sim, spell.MeleeAttackPower())
-			spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+			for idx := range results {
+				baseDamage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+				results[idx] = spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
+				target = sim.Environment.NextTargetUnit(target)
+			}
+
+			for _, result := range results {
+				spell.DealDamage(sim, result)
+			}
 		},
 	})
 }

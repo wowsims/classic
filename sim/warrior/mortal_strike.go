@@ -11,17 +11,9 @@ func (warrior *Warrior) registerMortalStrikeSpell(cdTimer *core.Timer) {
 		return
 	}
 
-	bonusDamage := map[int32]float64{
-		40: 85,
-		50: 110,
-		60: 160,
-	}[warrior.Level]
+	bonusDamage := 160.0
 
-	spellID := map[int32]int32{
-		40: 12294,
-		50: 21551,
-		60: 21553,
-	}[warrior.Level]
+	spellID := int32(21553)
 
 	warrior.MortalStrike = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		SpellCode:   SpellCode_WarriorMortalStrike,

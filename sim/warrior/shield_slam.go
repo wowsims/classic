@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/stats"
 )
 
 func (warrior *Warrior) registerShieldSlamSpell() {
@@ -12,24 +11,16 @@ func (warrior *Warrior) registerShieldSlamSpell() {
 		return
 	}
 
-	rank := map[int32]struct {
-		spellID    int32
-		damageLow  float64
-		damageHigh float64
-		threat     float64
-	}{
-		40: {spellID: 23922, damageLow: 225, damageHigh: 235, threat: 178},
-		50: {spellID: 23923, damageLow: 264, damageHigh: 276, threat: 203},
-		60: {spellID: 23925, damageLow: 342, damageHigh: 358, threat: 254},
-	}[warrior.Level]
+	spellID := int32(23925)
+	damageLow := 342.0
+	damageHigh := 358.0
+	threat := 254.0
 
 	apCoef := 0.15
 
-	defendersResolveAura := core.DefendersResolveAttackPower(warrior.GetCharacter())
-
 	warrior.ShieldSlam = warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		SpellCode:   SpellCode_WarriorShieldSlam,
-		ActionID:    core.ActionID{SpellID: rank.spellID},
+		ActionID:    core.ActionID{SpellID: spellID},
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMelee,
 		ProcMask:    core.ProcMaskMeleeMHSpecial, // TODO really?
@@ -56,22 +47,15 @@ func (warrior *Warrior) registerShieldSlamSpell() {
 		CritDamageBonus: warrior.impale(),
 
 		DamageMultiplier: 1,
-		ThreatMultiplier: 2,
-		FlatThreatBonus:  rank.threat * 2,
+		ThreatMultiplier: 1,
+		FlatThreatBonus:  threat * 2,
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			damage := sim.Roll(rank.damageLow, rank.damageHigh) + warrior.BlockValue()*2 + apCoef*spell.MeleeAttackPower()
+			damage := sim.Roll(damageLow, damageHigh) + warrior.BlockValue()*2 + apCoef*spell.MeleeAttackPower()
 			result := spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeSpecialHitAndCrit)
 
-			if result.Landed() {
-				if stacks := int32(warrior.GetStat(stats.Defense)); stacks > 0 {
-					defendersResolveAura.Activate(sim)
-					if defendersResolveAura.GetStacks() != stacks {
-						defendersResolveAura.SetStacks(sim, stacks)
-					}
-				}
-			} else {
+			if !result.Landed() {
 				spell.IssueRefund(sim)
 			}
 		},

@@ -4,15 +4,9 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// Blood Frenzy
-// Rend can now be used in Berserker stance, Rend's damage is increased by 100%,
-// and Rend deals additional damage equal to 3% of your Attack Power each time it deals damage.
-
 func (warrior *Warrior) registerRendSpell() {
-	hasBloodFrenzyRune := warrior.HasRune(proto.WarriorRune_RuneBloodFrenzy)
 
 	rend := map[int32]struct {
 		ticks   int32
@@ -26,9 +20,6 @@ func (warrior *Warrior) registerRendSpell() {
 	}[warrior.Level]
 
 	baseDamage := rend.damage
-	if hasBloodFrenzyRune {
-		baseDamage *= 2
-	}
 
 	damageMultiplier := []float64{1, 1.15, 1.25, 1.35}[warrior.Talents.ImprovedRend]
 
@@ -60,12 +51,7 @@ func (warrior *Warrior) registerRendSpell() {
 			NumberOfTicks: rend.ticks,
 			TickLength:    time.Second * 3,
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				damage := baseDamage
-				if hasBloodFrenzyRune {
-					damage += .03 * dot.Spell.MeleeAttackPower()
-				}
-
-				dot.Snapshot(target, damage, isRollover)
+				dot.Snapshot(target, baseDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
