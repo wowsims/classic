@@ -50,6 +50,7 @@ func (mage *Mage) newFlamestrikeSpellConfig(rank int) core.SpellConfig {
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskSpellDamage,
 		Flags:       SpellFlagMage | core.SpellFlagAPL,
+		SpellCode:   SpellCode_MageFlamestrike,
 
 		RequiredLevel: level,
 		Rank:          rank,

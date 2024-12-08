@@ -20,6 +20,7 @@ const (
 	SpellCode_MageBlastWave
 	SpellCode_MageFireball
 	SpellCode_MageFireBlast
+	SpellCode_MageFlamestrike
 	SpellCode_MageFrostbolt
 	SpellCode_MageIgnite
 	SpellCode_MageScorch
@@ -57,6 +58,8 @@ type Mage struct {
 	ArcaneMissilesTickSpell []*core.Spell
 	BlastWave               []*core.Spell
 	Blizzard                []*core.Spell
+	Counterspell			*core.Spell
+	Evocation				*core.Spell
 	Fireball                []*core.Spell
 	FireBlast               []*core.Spell
 	Flamestrike             []*core.Spell

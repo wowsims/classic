@@ -106,8 +106,8 @@ dps_results: {
 dps_results: {
  key: "TestWarlockSMRuin-Phase1-AllItems-DeathmistRaiment"
  value: {
-  dps: 1080.97179
-  tps: 903.66134
+  dps: 993.7709
+  tps: 821.18879
  }
 }
 dps_results: {
@@ -155,8 +155,8 @@ dps_results: {
 dps_results: {
  key: "TestWarlockSMRuin-Phase1-AllItems-PlagueheartRaiment"
  value: {
-  dps: 1235.01715
-  tps: 1049.06851
+  dps: 1138.48078
+  tps: 955.41236
  }
 }
 dps_results: {

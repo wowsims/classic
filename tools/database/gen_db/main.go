@@ -529,10 +529,10 @@ func GetPhaseData(item *proto.UIItem) int32 {
 		if dropSource != nil {
 			// Zone IDs as defined by WoWHead - does NOT match the in-game Zone ID!
 			// P1 - Molten Core, Ony
-			if slices.Contains([]int32{2717, 2159}, dropSource.ZoneId) {
+			if slices.Contains([]int32{2717, 2159}, dropSource.ZoneId) || dropSource.NpcId == 10184 {
 				return 1
 			}
-
+			
 			// P2 - Dire Maul
 			if dropSource.ZoneId == 2557 {
 				return 2
