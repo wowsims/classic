@@ -18,24 +18,17 @@ const (
 
 	SpellCode_WarriorBloodthirst
 	SpellCode_WarriorDeepWounds
-	SpellCode_WarriorDevastate
 	SpellCode_WarriorExecute
 	SpellCode_WarriorMortalStrike
 	SpellCode_WarriorOverpower
-	SpellCode_WarriorRagingBlow
 	SpellCode_WarriorRend
 	SpellCode_WarriorRevenge
 	SpellCode_WarriorShieldSlam
 	SpellCode_WarriorSlam
-	SpellCode_WarriorSlamMH
-	SpellCode_WarriorSlamOH
 	SpellCode_WarriorStanceBattle
 	SpellCode_WarriorStanceBerserker
-	SpellCode_WarriorStanceGladiator
 	SpellCode_WarriorStanceDefensive
 	SpellCode_WarriorWhirlwind
-	SpellCode_WarriorWhirlwindMH
-	SpellCode_WarriorWhirlwindOH
 )
 
 var TalentTreeSizes = [3]int{18, 17, 17}
@@ -64,19 +57,12 @@ type Warrior struct {
 	revengeProcAura *core.Aura
 	OverpowerAura   *core.Aura
 
-	BloodSurgeAura      *core.Aura
-	RampageAura         *core.Aura
-	SuddenDeathAura     *core.Aura
-	TasteForBloodAura   *core.Aura
 	lastMeleeAutoTarget *core.Unit
 
 	// Enrage Auras
 	BerserkerRageAura      *core.Aura
 	BloodrageAura          *core.Aura
-	ConsumedByRageAura     *core.Aura
 	EnrageAura             *core.Aura
-	FreshMeatEnrageAura    *core.Aura
-	WreckingCrewEnrageAura *core.Aura
 
 	// Reaction time values
 	reactionTime time.Duration
@@ -92,7 +78,6 @@ type Warrior struct {
 	BattleStance    *WarriorSpell
 	DefensiveStance *WarriorSpell
 	BerserkerStance *WarriorSpell
-	GladiatorStance *WarriorSpell
 
 	Bloodrage         *WarriorSpell
 	BerserkerRage     *WarriorSpell
@@ -107,24 +92,16 @@ type Warrior struct {
 	ShieldBlock       *WarriorSpell
 	ShieldSlam        *WarriorSpell
 	Slam              *WarriorSpell
-	SlamMH            *WarriorSpell
-	SlamOH            *WarriorSpell
 	SunderArmor       *WarriorSpell
 	Devastate         *WarriorSpell
 	ThunderClap       *WarriorSpell
 	Whirlwind         *WarriorSpell
-	WhirlwindMH       *WarriorSpell
-	WhirlwindOH       *WarriorSpell
 	DeepWounds        *WarriorSpell
 	ConcussionBlow    *WarriorSpell
-	RagingBlow        *WarriorSpell
 	Hamstring         *WarriorSpell
-	Rampage           *WarriorSpell
-	Shockwave         *WarriorSpell
 
 	HeroicStrike       *WarriorSpell
 	HeroicStrikeQueue  *WarriorSpell
-	QuickStrike        *WarriorSpell
 	Cleave             *WarriorSpell
 	CleaveQueue        *WarriorSpell
 	curQueueAura       *core.Aura
@@ -133,10 +110,8 @@ type Warrior struct {
 	BattleStanceAura    *core.Aura
 	DefensiveStanceAura *core.Aura
 	BerserkerStanceAura *core.Aura
-	GladiatorStanceAura *core.Aura
 
 	defensiveStanceThreatMultiplier float64
-	gladiatorStanceDamageMultiplier float64
 
 	ShieldBlockAura *core.Aura
 
@@ -185,46 +160,6 @@ func (warrior *Warrior) RegisterSpell(stanceMask Stance, config core.SpellConfig
 	}
 
 	return ws
-}
-
-func (warrior *Warrior) newStanceOverrideExclusiveEffect(stance Stance, aura *core.Aura) *core.ExclusiveEffect {
-	return aura.NewExclusiveEffect("stance-override", false, core.ExclusiveEffect{
-		Priority: core.TernaryFloat64(stance == AnyStance, 2, 1),
-		OnGain: func(ee *core.ExclusiveEffect, sim *core.Simulation) {
-			if stance.Matches(BattleStance) {
-				for _, spell := range warrior.BattleStanceSpells {
-					spell.stanceOverride = true
-				}
-			}
-			if stance.Matches(DefensiveStance) {
-				for _, spell := range warrior.DefensiveStanceSpells {
-					spell.stanceOverride = true
-				}
-			}
-			if stance.Matches(BerserkerStance) {
-				for _, spell := range warrior.BerserkerStanceSpells {
-					spell.stanceOverride = true
-				}
-			}
-		},
-		OnExpire: func(ee *core.ExclusiveEffect, sim *core.Simulation) {
-			if stance.Matches(BattleStance) {
-				for _, spell := range warrior.BattleStanceSpells {
-					spell.stanceOverride = false
-				}
-			}
-			if stance.Matches(DefensiveStance) {
-				for _, spell := range warrior.DefensiveStanceSpells {
-					spell.stanceOverride = false
-				}
-			}
-			if stance.Matches(BerserkerStance) {
-				for _, spell := range warrior.BerserkerStanceSpells {
-					spell.stanceOverride = false
-				}
-			}
-		},
-	})
 }
 
 func (warrior *Warrior) Initialize() {
@@ -279,15 +214,8 @@ func (warrior *Warrior) Reset(sim *core.Simulation) {
 	case proto.WarriorStance_WarriorStanceBerserker:
 		warrior.Stance = BerserkerStance
 		warrior.BerserkerStanceAura.Activate(sim)
-	case proto.WarriorStance_WarriorStanceGladiator:
-		warrior.Stance = GladiatorStance
-		warrior.GladiatorStanceAura.Activate(sim)
 	default:
-		// Fallback to checking for Glad Stance rune or checking talent tree
-		if warrior.GladiatorStanceAura != nil {
-			warrior.Stance = GladiatorStance
-			warrior.GladiatorStanceAura.Activate(sim)
-		} else if warrior.PrimaryTalentTree == ArmsTree {
+		if warrior.PrimaryTalentTree == ArmsTree {
 			warrior.Stance = BattleStance
 			warrior.BattleStanceAura.Activate(sim)
 		} else if warrior.PrimaryTalentTree == FuryTree {
@@ -324,19 +252,6 @@ func NewWarrior(character *core.Character, talents string, inputs WarriorInputs)
 // Agent is a generic way to access underlying warrior on any of the agents.
 type WarriorAgent interface {
 	GetWarrior() *Warrior
-}
-
-func (warrior *Warrior) HasRune(rune proto.WarriorRune) bool {
-	return false // warrior.HasRuneById(int32(rune))
-}
-
-func (warrior *Warrior) IsEnraged() bool {
-	return warrior.BloodrageAura.IsActive() ||
-		warrior.BerserkerRageAura.IsActive() ||
-		(warrior.EnrageAura != nil && warrior.EnrageAura.IsActive()) ||
-		(warrior.ConsumedByRageAura != nil && warrior.ConsumedByRageAura.IsActive()) ||
-		(warrior.FreshMeatEnrageAura != nil && warrior.FreshMeatEnrageAura.IsActive()) ||
-		(warrior.WreckingCrewEnrageAura != nil && warrior.WreckingCrewEnrageAura.IsActive())
 }
 
 type WarriorSpell struct {
