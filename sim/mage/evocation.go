@@ -30,7 +30,7 @@ func (mage *Mage) registerEvocationCD() {
 		},
 	})
 
-	evocation := mage.GetOrRegisterSpell(core.SpellConfig{
+	mage.Evocation = mage.GetOrRegisterSpell(core.SpellConfig{
 		ActionID: actionID,
 		Flags:    core.SpellFlagHelpful | core.SpellFlagChanneled | core.SpellFlagAPL,
 
@@ -72,7 +72,7 @@ func (mage *Mage) registerEvocationCD() {
 	})
 
 	mage.AddMajorCooldown(core.MajorCooldown{
-		Spell: evocation,
+		Spell: mage.Evocation,
 		Type:  core.CooldownTypeMana,
 		ShouldActivate: func(sim *core.Simulation, character *core.Character) bool {
 			if character.HasActiveAuraWithTag(core.InnervateAuraTag) || character.HasActiveAuraWithTag(core.ManaTideTotemAuraTag) {

@@ -97,6 +97,13 @@ stat_weights_results: {
  }
 }
 dps_results: {
+ key: "TestP1Shadow-Phase1-AllItems-IronweaveBattlesuit"
+ value: {
+  dps: 426.19902
+  tps: 422.03243
+ }
+}
+dps_results: {
  key: "TestP1Shadow-Phase1-Average-Default"
  value: {
   dps: 492.24694

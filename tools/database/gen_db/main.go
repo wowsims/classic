@@ -538,7 +538,7 @@ func GetPhaseData(item *proto.UIItem) int32 {
 				dropSource.ZoneId = 2159
 				return 1
 			}
-
+			
 			// P2 - Dire Maul
 			if dropSource.ZoneId == 2557 {
 				return 2

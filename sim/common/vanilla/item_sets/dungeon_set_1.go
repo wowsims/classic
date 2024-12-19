@@ -121,7 +121,7 @@ var ItemSetMagistersRegalia = core.NewItemSet(core.ItemSet{
 		},
 		// When struck in combat has a chance of freezing the attacker in place for 3 sec.
 		6: func(agent core.Agent) {
-			//Not implemented due to raid boss immunity
+			// No implementation in sim
 		},
 		// +8 All Resistances.
 		8: func(agent core.Agent) {

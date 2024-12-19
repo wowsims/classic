@@ -324,12 +324,12 @@ export const sourceNames: Map<SourceFilterOption, string> = new Map([
 
 export const raidNames: Map<RaidFilterOption, string> = new Map([
 	[RaidFilterOption.RaidUnknown, 'Unknown'],
-	[RaidFilterOption.RaidMoltenCore, "Molten Core"],
+	[RaidFilterOption.RaidMoltenCore, 'Molten Core'],
 	[RaidFilterOption.RaidOnyxiasLair, "Onyxia's Lair"],
-	[RaidFilterOption.RaidBlackwingLair, "Blackwing Lair"],
+	[RaidFilterOption.RaidBlackwingLair, 'Blackwing Lair'],
 	[RaidFilterOption.RaidZulGurub, "Zul'Gurub"],
-	[RaidFilterOption.RaidRuinsOfAQ, "AQ 20"],
-	[RaidFilterOption.RaidTempleOfAQ, "AQ 40"],
+	[RaidFilterOption.RaidRuinsOfAQ, 'AQ 20'],
+	[RaidFilterOption.RaidTempleOfAQ, 'AQ 40'],
 	[RaidFilterOption.RaidNaxxramas, 'Naxxramas'],
 ]);
 

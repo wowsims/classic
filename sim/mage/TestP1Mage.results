@@ -97,6 +97,83 @@ stat_weights_results: {
  }
 }
 dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-ArcanistRegalia"
+ value: {
+  dps: 97.10096
+  tps: 90.36367
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-Champion'sRegalia"
+ value: {
+  dps: 84.10533
+  tps: 91.33828
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-EnigmaVestments"
+ value: {
+  dps: 107.96625
+  tps: 114.91555
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-FieldMarshal'sRegalia"
+ value: {
+  dps: 106.14672
+  tps: 113.43537
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-FrostfireRegalia"
+ value: {
+  dps: 146.34232
+  tps: 134.14575
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-Illusionist'sAttire"
+ value: {
+  dps: 85.18755
+  tps: 92.46523
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-IronweaveBattlesuit"
+ value: {
+  dps: 65.51091
+  tps: 72.7335
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-LieutenantCommander'sRegalia"
+ value: {
+  dps: 84.10533
+  tps: 91.33828
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-NetherwindRegalia"
+ value: {
+  dps: 107.30217
+  tps: 99.97337
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-Sorcerer'sRegalia"
+ value: {
+  dps: 92.73649
+  tps: 100.01821
+ }
+}
+dps_results: {
+ key: "TestP1Mage-Phase1-AllItems-Warlord'sRegalia"
+ value: {
+  dps: 106.14672
+  tps: 113.43537
+ }
+}
+dps_results: {
  key: "TestP1Mage-Phase1-Average-Default"
  value: {
   dps: 70.94274

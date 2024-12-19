@@ -139,6 +139,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestWarlockSMRuin-Phase1-AllItems-IronweaveBattlesuit"
+ value: {
+  dps: 869.24382
+  tps: 706.68821
+ }
+}
+dps_results: {
  key: "TestWarlockSMRuin-Phase1-AllItems-LieutenantCommander'sDreadgear"
  value: {
   dps: 1014.5368

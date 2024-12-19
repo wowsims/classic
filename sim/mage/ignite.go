@@ -28,17 +28,29 @@ func (mage *Mage) applyIgnite() {
 			}
 			if spell.SpellSchool.Matches(core.SpellSchoolFire) && result.DidCrit() {
 				newIgniteDamage = result.Damage * 0.08 * float64(mage.Talents.Ignite)
-				dot := mage.Ignite.Dot(result.Target)
-				dot.ApplyOrRefresh(sim)
-				if dot.GetStacks() < dot.MaxStacks{
-					dot.AddStack(sim)
-					dot.TakeSnapshot(sim, true)
-				}
+				mage.Ignite.Cast(sim, result.Target)
 			}
 		},
 	})
 
 	mage.Ignite = mage.RegisterSpell(core.SpellConfig{
+		ActionID: core.ActionID{SpellID: 12654},
+		Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagPassiveSpell | SpellFlagMage,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+//			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+	
+			dot := mage.igniteTick.Dot(target)
+			dot.ApplyOrRefresh(sim)
+			if dot.GetStacks() < dot.MaxStacks{
+				dot.AddStack(sim)
+				dot.TakeSnapshot(sim, true)
+}
+			
+		},
+	})
+
+	mage.igniteTick = mage.RegisterSpell(core.SpellConfig{
 		SpellCode:   SpellCode_MageIgnite,
 		ActionID:    core.ActionID{SpellID: 12654},
 		SpellSchool: core.SpellSchoolFire,
