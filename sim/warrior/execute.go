@@ -2,32 +2,13 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 func (warrior *Warrior) registerExecuteSpell() {
-	hasSuddenDeathRune := warrior.HasRune(proto.WarriorRune_RuneSuddenDeath)
 
-	flatDamage := map[int32]float64{
-		25: 125,
-		40: 325,
-		50: 450,
-		60: 600,
-	}[warrior.Level]
-
-	convertedRageDamage := map[int32]float64{
-		25: 3,
-		40: 9,
-		50: 12,
-		60: 15,
-	}[warrior.Level]
-
-	spellID := map[int32]int32{
-		25: 5308,
-		40: 20660,
-		50: 20661,
-		60: 20662,
-	}[warrior.Level]
+	flatDamage := 600.0
+	convertedRageDamage := 15.0
+	spellID := int32(20662)
 
 	var rageMetrics *core.ResourceMetrics
 	warrior.Execute = warrior.RegisterSpell(BattleStance|BerserkerStance, core.SpellConfig{
@@ -48,7 +29,7 @@ func (warrior *Warrior) registerExecuteSpell() {
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-			return sim.IsExecutePhase20() || (hasSuddenDeathRune && warrior.SuddenDeathAura.IsActive())
+			return sim.IsExecutePhase20()
 		},
 
 		CritDamageBonus: warrior.impale(),
