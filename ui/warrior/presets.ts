@@ -106,18 +106,15 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	leaderOfThePack: true,
 	powerWordFortitude: TristateEffect.TristateEffectImproved,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
-	stoneskinTotem: TristateEffect.TristateEffectRegular,
 });
 
 export const DefaultIndividualBuffs = IndividualBuffs.create({
 	blessingOfKings: true,
 	blessingOfMight: TristateEffect.TristateEffectImproved,
 	fengusFerocity: true,
-	moldarsMoxie: true,
 	rallyingCryOfTheDragonslayer: true,
 	saygesFortune: SaygesFortune.SaygesDamage,
 	songflowerSerenade: true,
-	spiritOfZandalar: true,
 	warchiefsBlessing: true,
 });
 

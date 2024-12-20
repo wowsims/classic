@@ -13,18 +13,11 @@ var RevengeBaseDamage = [RevengeRanks + 1][]float64{{0, 0}, {12, 14}, {18, 22}, 
 var RevengeLevel = [RevengeRanks + 1]int{0, 14, 24, 34, 44, 54, 60}
 
 func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
-	rank := []int{
-		25: 2,
-		40: 3,
-		50: 4,
-		60: core.TernaryInt(core.IncludeAQ, 6, 5),
-	}[warrior.Level]
-	actionID := core.ActionID{SpellID: RevengeSpellId[rank]}
-	basedamageLow := RevengeBaseDamage[rank][0]
-	basedamageHigh := RevengeBaseDamage[rank][1]
-	// Added in SoD phase 5
-	apCoeff := 0.15
-	cooldown := time.Second * 5
+	actionID := core.ActionID{SpellID: core.TernaryInt32(core.IncludeAQ, 25288, 11601)}
+	has2pcDreadnaught := warrior.HasSetBonus(ItemSetDreadnaughtsBattlegear, 2)
+	basedamageLow := core.TernaryFloat64(core.IncludeAQ, 81, 64) + core.TernaryFloat64(has2pcDreadnaught, 75, 0) 
+	basedamageHigh := core.TernaryFloat64(core.IncludeAQ, 99, 78) + core.TernaryFloat64(has2pcDreadnaught, 75, 0) 
+	revengeLevel := core.TernaryFloat64(core.IncludeAQ, 60.0, 54.0)
 
 	warrior.revengeProcAura = warrior.RegisterAura(core.Aura{
 		Label:    "Revenge",
@@ -64,7 +57,7 @@ func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
 			IgnoreHaste: true,
 			CD: core.Cooldown{
 				Timer:    cdTimer,
-				Duration: cooldown,
+				Duration: time.Second * 5,
 			},
 		},
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
@@ -75,11 +68,11 @@ func (warrior *Warrior) registerRevengeSpell(cdTimer *core.Timer) {
 
 		DamageMultiplier: 1,
 		ThreatMultiplier: 2.25,
-		FlatThreatBonus:  2.25 * 2 * float64(RevengeLevel[rank]),
+		FlatThreatBonus:  2.25 * 2 * revengeLevel,
 		BonusCoefficient: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := sim.Roll(basedamageLow, basedamageHigh) + apCoeff*spell.MeleeAttackPower()
+			baseDamage := sim.Roll(basedamageLow, basedamageHigh)
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 
 			if !result.Landed() {

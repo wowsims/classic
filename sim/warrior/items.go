@@ -9,10 +9,9 @@ import (
 
 const (
 	DiamondFlask = 20130
-	// Exsanguinar         = 216497
-	// SuzerainDefender    = 224280
-	// GrileksCharmOFMight = 231286
-	// RageOfMugamba       = 231350
+	GrileksCharmOfMight = 19951
+	RageOfMugamba = 19577
+	LifegivingGem = 19341
 )
 
 func init() {
@@ -50,75 +49,11 @@ func init() {
 		})
 	})
 
-	/* core.NewItemEffect(Exsanguinar, func(agent core.Agent) {
-		character := agent.GetCharacter()
-		actionId := core.ActionID{SpellID: 436332}
-
-		spell := character.RegisterSpell(core.SpellConfig{
-			ActionID:    actionId,
-			SpellSchool: core.SpellSchoolPhysical | core.SpellSchoolShadow,
-			ProcMask:    core.ProcMaskSpellDamage,
-			Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,
-
-			Cast: core.CastConfig{
-				CD: core.Cooldown{
-					Timer:    character.NewTimer(),
-					Duration: time.Minute * 3,
-				},
-			},
-
-			DamageMultiplier: 1,
-
-			Dot: core.DotConfig{
-				Aura: core.Aura{
-					Label: "Exsanguination",
-				},
-				TickLength:    2 * time.Second,
-				NumberOfTicks: 15,
-
-				OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-					dot.Snapshot(target, 5, isRollover)
-				},
-
-				OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
-					dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
-				},
-			},
-
-			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				for _, aoeTarget := range sim.Encounter.TargetUnits {
-					// Has no DefenseType, also haven't seen a miss in logs.
-					result := spell.CalcAndDealDamage(sim, aoeTarget, 65, spell.OutcomeAlwaysHit)
-					if result.Landed() {
-						spell.Dot(aoeTarget).Apply(sim)
-					}
-				}
-			},
-		})
-
-		character.AddMajorCooldown(core.MajorCooldown{
-			Spell:    spell,
-			Priority: core.CooldownPriorityLow,
-			Type:     core.CooldownTypeDPS,
-		})
-	})
-
-	core.NewItemEffect(GrileksCharmOFMight, func(agent core.Agent) {
+	core.NewItemEffect(GrileksCharmOfMight, func(agent core.Agent) {
 		warrior := agent.(WarriorAgent).GetWarrior()
-		actionID := core.ActionID{ItemID: GrileksCharmOFMight}
+		actionID := core.ActionID{ItemID: GrileksCharmOfMight}
 		rageMetrics := warrior.NewRageMetrics(actionID)
 
-		aura := warrior.RegisterAura(core.Aura{
-			ActionID: actionID,
-			Label:    "Gri'lek's Guard",
-			Duration: time.Second * 20,
-			OnGain: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.AddStatDynamic(sim, stats.BlockValue, 200)
-			},
-			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.AddStatDynamic(sim, stats.BlockValue, -200)
-			},
-		})
 
 		spell := warrior.Character.RegisterSpell(core.SpellConfig{
 			ActionID:    actionID,
@@ -129,13 +64,12 @@ func init() {
 			Cast: core.CastConfig{
 				CD: core.Cooldown{
 					Timer:    warrior.NewTimer(),
-					Duration: time.Minute * 2,
+					Duration: time.Minute * 3,
 				},
 			},
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				warrior.AddRage(sim, 30, rageMetrics)
-				aura.Activate(sim)
 			},
 		})
 
@@ -147,78 +81,55 @@ func init() {
 
 	core.NewItemEffect(RageOfMugamba, func(agent core.Agent) {
 		warrior := agent.(WarriorAgent).GetWarrior()
-		if !warrior.Talents.ShieldSlam {
-			return
-		}
 
 		warrior.RegisterAura(core.Aura{
-			Label: "Reduced Shield Slam Cost (Rage of Mugamba)",
+			Label: "Reduces the cost of your Hamstring ability by 2 rage points.",
 			OnInit: func(aura *core.Aura, sim *core.Simulation) {
-				warrior.ShieldSlam.Cost.FlatModifier -= 5
+				warrior.Hamstring.Cost.FlatModifier -= 2
 			},
 		})
 	})
 
-	core.NewItemEffect(SuzerainDefender, func(agent core.Agent) {
-		character := agent.GetCharacter()
-		actionID := core.ActionID{ItemID: SuzerainDefender}
-
-		// Store a reference in case the unit switches targets since we don't have a great way to do this right now
-		fightingDragonkin := false
-		rageOfSuzerain := character.RegisterAura(core.Aura{
-			ActionID: core.ActionID{SpellID: 469025},
-			Label:    "Rage of the Suzerain",
-			Duration: time.Second * 10,
+	core.NewItemEffect(LifegivingGem, func(agent core.Agent) {
+		warrior := agent.(WarriorAgent).GetWarrior()
+		actionID := core.ActionID{ItemID: LifegivingGem}
+		healthMetrics := warrior.NewHealthMetrics(actionID)
+	
+		var bonusHealth float64
+		lifegivingGemAura := warrior.RegisterAura(core.Aura{
+			Label:    "Gift of Life",
+			ActionID: core.ActionID{SpellID: 23725},
+			Duration: time.Second * 20,
 			OnGain: func(aura *core.Aura, sim *core.Simulation) {
-				if aura.Unit.CurrentTarget.MobType == proto.MobType_MobTypeDragonkin {
-					aura.Unit.PseudoStats.DamageDealtMultiplier *= 1.30
-					fightingDragonkin = true
-				}
+				bonusHealth = warrior.MaxHealth() * 0.15
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: bonusHealth})
+				warrior.GainHealth(sim, bonusHealth, healthMetrics)
 			},
 			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				if fightingDragonkin {
-					aura.Unit.PseudoStats.DamageDealtMultiplier /= 1.30
-					fightingDragonkin = false
-				}
+				warrior.AddStatsDynamic(sim, stats.Stats{stats.Health: -bonusHealth})
 			},
 		})
-
-		defenseOfDragonflights := character.RegisterAura(core.Aura{
+	
+		lifegivingGemSpell := warrior.RegisterSpell(AnyStance, core.SpellConfig{
 			ActionID: actionID,
-			Label:    "Defense of the Dragonflights",
-			Duration: time.Second * 5,
-			OnGain: func(aura *core.Aura, sim *core.Simulation) {
-				aura.Unit.PseudoStats.SchoolDamageTakenMultiplier.MultiplyMagicSchools(0.50)
-				rageOfSuzerain.Activate(sim)
-			},
-			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				aura.Unit.PseudoStats.SchoolDamageTakenMultiplier.MultiplyMagicSchools(2)
-			},
-		})
-
-		spell := character.RegisterSpell(core.SpellConfig{
-			ActionID:    actionID,
-			SpellSchool: core.SpellSchoolPhysical,
-			ProcMask:    core.ProcMaskEmpty,
-			Flags:       core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,
-
+	
 			Cast: core.CastConfig{
 				CD: core.Cooldown{
-					Timer:    character.NewTimer(),
-					Duration: time.Minute * 1,
+					Timer:    warrior.NewTimer(),
+					Duration: time.Minute * 5,
 				},
 			},
-
-			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				defenseOfDragonflights.Activate(sim)
+	
+			ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+				lifegivingGemAura.Activate(sim)
 			},
 		})
-
-		character.AddMajorCooldown(core.MajorCooldown{
-			Type:  core.CooldownTypeDPS,
-			Spell: spell,
+	
+		warrior.AddMajorCooldown(core.MajorCooldown{
+			Spell: lifegivingGemSpell.Spell,
+			Type:  core.CooldownTypeSurvival,
 		})
-	}) */
+	})
 
 	core.AddEffectsToTest = true
 }

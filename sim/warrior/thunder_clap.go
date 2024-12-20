@@ -4,45 +4,24 @@ import (
 	"time"
 
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
-// Thunder Clap now increases the time between attacks by an additional 6%, can be used in any stance, deals 100% increased damage, and deals 50% increased threat.
 func (warrior *Warrior) registerThunderClapSpell() {
-	hasFuriousThunder := warrior.HasRune(proto.WarriorRune_RuneFuriousThunder)
-
-	info := map[int32]struct {
-		spellID    int32
-		baseDamage float64
-		duration   time.Duration
-	}{
-		25: {spellID: 8198, baseDamage: 23, duration: time.Second * 14},
-		40: {spellID: 8205, baseDamage: 55, duration: time.Second * 22},
-		50: {spellID: 11580, baseDamage: 82, duration: time.Second * 26},
-		60: {spellID: 11581, baseDamage: 103, duration: time.Second * 30},
-	}[warrior.Level]
-
-	damageMultiplier := 1.0
-	threatMultiplier := 2.5
-	apCoef := 0.05
-	attackSpeedReduction := int32(10)
+	spellID := int32(11581)
+	baseDamage := 103.0
+	duration := time.Second * 30
+	has5pcConq := warrior.HasSetBonus(ItemSetConquerorsBattleGear, 5)
+	attackSpeedReduction := core.TernaryInt32(has5pcConq, 15, 10)
 	stanceMask := BattleStance
 
-	if hasFuriousThunder {
-		damageMultiplier *= 2
-		threatMultiplier *= 1.5
-		attackSpeedReduction += 6
-		stanceMask = AnyStance
-	}
-
 	warrior.ThunderClapAuras = warrior.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
-		return core.ThunderClapAura(target, info.spellID, info.duration, attackSpeedReduction)
+		return core.ThunderClapAura(target, spellID, duration, attackSpeedReduction)
 	})
 
 	results := make([]*core.SpellResult, min(4, warrior.Env.GetNumTargets()))
 
 	warrior.ThunderClap = warrior.RegisterSpell(stanceMask, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: info.spellID},
+		ActionID:    core.ActionID{SpellID: spellID},
 		SpellSchool: core.SpellSchoolPhysical,
 		DefenseType: core.DefenseTypeMagic,
 		ProcMask:    core.ProcMaskSpellDamage,
@@ -64,12 +43,12 @@ func (warrior *Warrior) registerThunderClapSpell() {
 
 		CritDamageBonus: warrior.impale(),
 
-		DamageMultiplier: damageMultiplier,
-		ThreatMultiplier: threatMultiplier,
+		DamageMultiplier: core.TernaryFloat64(has5pcConq, 1.5, 1),
+		ThreatMultiplier: 2.5,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			for idx := range results {
-				results[idx] = spell.CalcDamage(sim, target, info.baseDamage+apCoef*spell.MeleeAttackPower(), spell.OutcomeMagicHitAndCrit)
+				results[idx] = spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
 				target = sim.Environment.NextTargetUnit(target)
 			}
 

@@ -2,62 +2,17 @@ package warrior
 
 import (
 	"github.com/wowsims/classic/sim/core"
-	"github.com/wowsims/classic/sim/core/proto"
 )
 
 func (warrior *Warrior) registerSunderArmorSpell() *WarriorSpell {
 	warrior.SunderArmorAuras = warrior.NewEnemyAuraArray(core.SunderArmorAura)
 
-	spellID := map[int32]int32{
-		25: 7405,
-		40: 8380,
-		50: 11596,
-		60: 11597,
-	}[warrior.Level]
+	spellID := int32(11597)
 
-	spell_level := map[int32]int32{
-		25: 22,
-		40: 34,
-		50: 46,
-		60: 58,
-	}[warrior.Level]
+	spell_level := 58
 
-	var effectiveStacks int32
 	var canApplySunder bool
 
-	if warrior.HasRune(proto.WarriorRune_RuneDevastate) {
-		warrior.Devastate = warrior.RegisterSpell(DefensiveStance, core.SpellConfig{
-			SpellCode:   SpellCode_WarriorDevastate,
-			ActionID:    core.ActionID{SpellID: int32(proto.WarriorRune_RuneDevastate)},
-			SpellSchool: core.SpellSchoolPhysical,
-			DefenseType: core.DefenseTypeMelee,
-			ProcMask:    core.ProcMaskMeleeMHSpecial, // TODO check whether this can actually proc stuff or not
-			Flags:       core.SpellFlagMeleeMetrics | SpellFlagOffensive,
-
-			CritDamageBonus:  warrior.impale(),
-			DamageMultiplier: 1.5,
-			ThreatMultiplier: 1,
-			BonusCoefficient: 1,
-
-			ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
-				return warrior.PseudoStats.CanBlock
-			},
-
-			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				threatMultiplier := 1.0
-				if warrior.Stance == DefensiveStance {
-					threatMultiplier = 1.50
-				}
-				spell.ThreatMultiplier *= threatMultiplier
-
-				weapon := warrior.AutoAttacks.MH()
-				baseDamage := weapon.CalculateAverageWeaponDamage(spell.MeleeAttackPower()) / weapon.SwingSpeed
-				multiplier := 1 + 0.1*float64(effectiveStacks)
-				spell.CalcAndDealDamage(sim, target, baseDamage*multiplier, spell.OutcomeMeleeSpecialCritOnly)
-				spell.ThreatMultiplier /= threatMultiplier
-			},
-		})
-	}
 
 	return warrior.RegisterSpell(AnyStance, core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID},
@@ -78,16 +33,13 @@ func (warrior *Warrior) registerSunderArmorSpell() *WarriorSpell {
 		ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool {
 			sa := warrior.SunderArmorAuras.Get(target)
 			if sa.IsActive() {
-				effectiveStacks = sa.GetStacks()
 				canApplySunder = true
 			} else if sa.ExclusiveEffects[0].Category.AnyActive() {
-				effectiveStacks = sa.MaxStacks
 				canApplySunder = false
 			} else {
-				effectiveStacks = 0
 				canApplySunder = true
 			}
-			return canApplySunder || warrior.Devastate != nil
+			return canApplySunder
 		},
 
 		ThreatMultiplier: 1,
@@ -101,10 +53,6 @@ func (warrior *Warrior) registerSunderArmorSpell() *WarriorSpell {
 			if !result.Landed() {
 				spell.IssueRefund(sim)
 				return
-			}
-
-			if warrior.Devastate != nil {
-				warrior.Devastate.Cast(sim, target)
 			}
 
 			if canApplySunder {

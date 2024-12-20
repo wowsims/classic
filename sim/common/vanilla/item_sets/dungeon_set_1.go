@@ -342,7 +342,7 @@ var ItemSetBattlegearOfValor = core.NewItemSet(core.ItemSet{
 				ProcMask: core.ProcMaskMelee,
 				PPM:      1,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-					c.GainHealth(sim, sim.Roll(88, 132), healthMetrics)
+					c.GainHealth(sim, sim.Roll(88, 133), healthMetrics)
 				},
 			})
 		},
