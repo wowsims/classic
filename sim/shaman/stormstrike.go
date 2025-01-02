@@ -24,7 +24,7 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 		Flags:       SpellFlagShaman | core.SpellFlagAPL | core.SpellFlagNoOnCastComplete,
 
 		ManaCost: core.ManaCostOptions{
-			BaseCost: .063,
+			BaseCost: .21,
 		},
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -32,7 +32,7 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 			},
 			CD: core.Cooldown{
 				Timer:    shaman.NewTimer(),
-				Duration: time.Second * 6,
+				Duration: time.Second * 20,
 			},
 		},
 
