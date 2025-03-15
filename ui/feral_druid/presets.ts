@@ -26,6 +26,7 @@ import { SavedTalents } from '../core/proto/ui.js';
 import P2APL from './apls/p2.apl.json';
 import P2BISGear from './gear_sets/p2.bis.gear.json';
 import P2PreBISGear from './gear_sets/p2.pre-bis.gear.json';
+import P3BISGear from './gear_sets/p3.bis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -37,9 +38,10 @@ import P2PreBISGear from './gear_sets/p2.pre-bis.gear.json';
 
 export const GearP2BIS = PresetUtils.makePresetGear('P2 BiS', P2BISGear);
 export const GearP2PreBIS = PresetUtils.makePresetGear('P2 Pre-BiS', P2PreBISGear);
+export const GearP3BIS = PresetUtils.makePresetGear('P3 BiS', P3BISGear)
 
 export const GearPresets = {
-	[Phase.Phase2]: [GearP2BIS, GearP2PreBIS],
+	[Phase.Phase2]: [GearP2PreBIS, GearP2BIS, GearP3BIS],
 };
 
 export const DefaultGear = GearP2BIS;
@@ -91,7 +93,7 @@ export const DefaultConsumes = Consumes.create({
 	attackPowerBuff: AttackPowerBuff.JujuMight,
 	defaultConjured: Conjured.ConjuredDemonicRune,
 	defaultPotion: Potions.MajorManaPotion,
-	dragonBreathChili: false,
+	dragonBreathChili: true,
 	flask: Flask.FlaskOfDistilledWisdom,
 	food: Food.FoodGrilledSquid,
 	strengthBuff: StrengthBuff.JujuPower,
@@ -104,10 +106,10 @@ export const DefaultRaidBuffs = RaidBuffs.create({
 	battleShout: TristateEffect.TristateEffectImproved,
 	divineSpirit: true,
 	giftOfTheWild: TristateEffect.TristateEffectImproved,
-	graceOfAirTotem: TristateEffect.TristateEffectImproved,
 	leaderOfThePack: true,
 	manaSpringTotem: TristateEffect.TristateEffectRegular,
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
+	powerWordFortitude: TristateEffect.TristateEffectImproved,
 });
 
 export const DefaultIndividualBuffs = IndividualBuffs.create({
@@ -125,7 +127,7 @@ export const DefaultIndividualBuffs = IndividualBuffs.create({
 export const DefaultDebuffs = Debuffs.create({
 	curseOfRecklessness: true,
 	exposeArmor: TristateEffect.TristateEffectImproved,
-	faerieFire: true,
+	faerieFire: false,
 	sunderArmor: true,
 });
 

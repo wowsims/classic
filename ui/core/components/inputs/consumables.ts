@@ -39,6 +39,7 @@ import { MultiIconPicker, MultiIconPickerConfig, MultiIconPickerItemConfig } fro
 import { DeadlyPoisonWeaponImbue, InstantPoisonWeaponImbue, WoundPoisonWeaponImbue } from './rogue_imbues';
 import { FlametongueWeaponImbue, FrostbrandWeaponImbue, RockbiterWeaponImbue, WindfuryWeaponImbue } from './shaman_imbues';
 import { ActionInputConfig, ItemStatOption, PickerStatOptions, StatOptions } from './stat_options';
+import { FeralDruid } from '../../proto/druid';
 
 export interface ConsumableInputConfig<T> extends ActionInputConfig<T> {
 	value: T;
@@ -806,7 +807,9 @@ export const makeMp5ConsumeInput = makeConsumeInputFactory({ consumesFieldName: 
 export const Windfury: ConsumableInputConfig<WeaponImbue> = {
 	actionId: () => ActionId.fromSpellId(10614),
 	value: WeaponImbue.Windfury,
-	showWhen: player => player.getFaction() === Faction.Horde,
+	showWhen: player => {
+		return (player.getFaction() === Faction.Horde) && !player.isSpec(Spec.SpecFeralDruid)
+	},
 };
 
 // Other Imbues
@@ -852,6 +855,16 @@ export const MinorWizardOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbu
 		},
 	};
 };
+export const BlessedWizardOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> => {
+	return {
+		actionId: () => ActionId.fromItemId(23123),
+		value: WeaponImbue.BlessedWizardOil,
+		showWhen: player => {
+			const weapon = player.getEquippedItem(slot);
+			return !weapon || isWeapon(weapon.item.weaponType);
+		},
+	};
+};
 
 // Mana Oils
 // Original lvl 45 but not obtainable in Phase 3
@@ -887,13 +900,23 @@ export const MinorManaOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue>
 };
 
 // Sharpening Stones
+export const ConsecratedSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> => {
+	return {
+		actionId: () => ActionId.fromItemId(23122),
+		value: WeaponImbue.ConsecratedSharpeningStone,
+		showWhen: player => {
+			const weapon = player.getEquippedItem(slot);
+			return !weapon || isWeapon(weapon.item.weaponType);
+		},
+	};
+};
 export const ElementalSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> => {
 	return {
 		actionId: () => ActionId.fromItemId(18262),
 		value: WeaponImbue.ElementalSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isWeapon(weapon.item.weaponType);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -903,7 +926,7 @@ export const DenseSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.DenseSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isSharpWeaponType(weapon.item.weaponType);
+			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -913,7 +936,7 @@ export const SolidSharpeningStone = (slot: ItemSlot): ConsumableInputConfig<Weap
 		value: WeaponImbue.SolidSharpeningStone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isSharpWeaponType(weapon.item.weaponType);
+			return (!weapon || isSharpWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -925,7 +948,7 @@ export const DenseWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.DenseWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isBluntWeaponType(weapon.item.weaponType);
+			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -935,7 +958,7 @@ export const SolidWeightstone = (slot: ItemSlot): ConsumableInputConfig<WeaponIm
 		value: WeaponImbue.SolidWeightstone,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isBluntWeaponType(weapon.item.weaponType);
+			return (!weapon || isBluntWeaponType(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -947,7 +970,7 @@ export const ShadowOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> =>
 		value: WeaponImbue.ShadowOil,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isWeapon(weapon.item.weaponType);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -957,7 +980,7 @@ export const FrostOil = (slot: ItemSlot): ConsumableInputConfig<WeaponImbue> => 
 		value: WeaponImbue.FrostOil,
 		showWhen: player => {
 			const weapon = player.getEquippedItem(slot);
-			return !weapon || isWeapon(weapon.item.weaponType);
+			return (!weapon || isWeapon(weapon.item.weaponType)) && !player.isSpec(Spec.SpecFeralDruid);
 		},
 	};
 };
@@ -980,11 +1003,13 @@ const CONSUMABLES_IMBUES = (slot: ItemSlot): ConsumableStatOption<WeaponImbue>[]
 	{ config: WizardOil(slot), stats: [Stat.StatSpellPower] },
 	{ config: LesserWizardOil(slot), stats: [Stat.StatSpellPower] },
 	{ config: MinorWizardOil(slot), stats: [Stat.StatSpellPower] },
+	{ config: BlessedWizardOil(slot), stats: [Stat.StatHealingPower, Stat.StatSpellPower] },
 
-	{ config: BrilliantManaOil(slot), stats: [Stat.StatHealingPower, Stat.StatSpellPower] },
-	{ config: LesserManaOil(slot), stats: [Stat.StatHealingPower, Stat.StatSpellPower] },
-	{ config: MinorManaOil(slot), stats: [Stat.StatHealingPower, Stat.StatSpellPower] },
+	{ config: BrilliantManaOil(slot), stats: [Stat.StatMP5, Stat.StatHealingPower] },
+	{ config: LesserManaOil(slot), stats: [Stat.StatMP5] },
+	{ config: MinorManaOil(slot), stats: [Stat.StatMP5] },
 
+	{ config: ConsecratedSharpeningStone(slot), stats: [Stat.StatAttackPower] },
 	{ config: ElementalSharpeningStone(slot), stats: [Stat.StatAttackPower] },
 	{ config: DenseSharpeningStone(slot), stats: [Stat.StatAttackPower] },
 	{ config: SolidSharpeningStone(slot), stats: [Stat.StatAttackPower] },

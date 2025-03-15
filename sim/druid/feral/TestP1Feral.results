@@ -139,6 +139,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestP1Feral-Phase1-AllItems-SymbolsofUnendingLife"
+ value: {
+  dps: 531.73841
+  tps: 377.53427
+ }
+}
+dps_results: {
  key: "TestP1Feral-Phase1-AllItems-Warlord'sSanctuary"
  value: {
   dps: 577.12266

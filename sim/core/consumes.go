@@ -104,6 +104,10 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				stats.SpellPower: 36,
 				stats.SpellCrit:  1 * SpellCritRatingPerCritChance,
 			})
+		case proto.WeaponImbue_BlessedWizardOil:
+			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
+				character.PseudoStats.MobTypeSpellPower += 60
+			}
 
 		// Mana Oils
 		case proto.WeaponImbue_MinorManaOil:
@@ -122,48 +126,67 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 
 		// Sharpening Stones
 		case proto.WeaponImbue_SolidSharpeningStone:
-			weapon := character.AutoAttacks.MH()
-			if !isMh {
-				weapon = character.AutoAttacks.OH()
+			if !character.PseudoStats.FeralCombatEnabled {
+				weapon := character.AutoAttacks.MH()
+				if !isMh {
+					weapon = character.AutoAttacks.OH()
+				}
+				weapon.BaseDamageMin += 6
+				weapon.BaseDamageMax += 6
 			}
-			weapon.BaseDamageMin += 6
-			weapon.BaseDamageMax += 6
 		case proto.WeaponImbue_DenseSharpeningStone:
-			weapon := character.AutoAttacks.MH()
-			if !isMh {
-				weapon = character.AutoAttacks.OH()
+			if !character.PseudoStats.FeralCombatEnabled {
+				weapon := character.AutoAttacks.MH()
+				if !isMh {
+					weapon = character.AutoAttacks.OH()
+				}
+				weapon.BaseDamageMin += 8
+				weapon.BaseDamageMax += 8
 			}
-			weapon.BaseDamageMin += 8
-			weapon.BaseDamageMax += 8
 		case proto.WeaponImbue_ElementalSharpeningStone:
-			character.AddStats(stats.Stats{
-				stats.MeleeCrit: 2 * CritRatingPerCritChance,
-			})
-			character.AddBonusRangedCritRating(-2.0)
+			if !character.PseudoStats.FeralCombatEnabled {
+				character.AddStats(stats.Stats{
+					stats.MeleeCrit: 2 * CritRatingPerCritChance,
+				})
+				character.AddBonusRangedCritRating(-2.0)
+			}
+		case proto.WeaponImbue_ConsecratedSharpeningStone:
+			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
+				character.PseudoStats.MobTypeAttackPower += 100
+			}
 
 		// Weightstones
 		case proto.WeaponImbue_SolidWeightstone:
-			weapon := character.AutoAttacks.MH()
-			if !isMh {
-				weapon = character.AutoAttacks.OH()
+			if !character.PseudoStats.FeralCombatEnabled {
+				weapon := character.AutoAttacks.MH()
+				if !isMh {
+					weapon = character.AutoAttacks.OH()
+				}
+				weapon.BaseDamageMin += 6
+				weapon.BaseDamageMax += 6
 			}
-			weapon.BaseDamageMin += 6
-			weapon.BaseDamageMax += 6
 		case proto.WeaponImbue_DenseWeightstone:
-			weapon := character.AutoAttacks.MH()
-			if !isMh {
-				weapon = character.AutoAttacks.OH()
+			if !character.PseudoStats.FeralCombatEnabled {
+				weapon := character.AutoAttacks.MH()
+				if !isMh {
+					weapon = character.AutoAttacks.OH()
+				}
+				weapon.BaseDamageMin += 8
+				weapon.BaseDamageMax += 8
 			}
-			weapon.BaseDamageMin += 8
-			weapon.BaseDamageMax += 8
-
 		// Windfury
 		case proto.WeaponImbue_Windfury:
-			ApplyWindfury(character)
+			if !character.PseudoStats.FeralCombatEnabled {
+				ApplyWindfury(character)
+			}
 		case proto.WeaponImbue_ShadowOil:
-			registerShadowOil(character, isMh, shadowOilIcd)
+			if !character.PseudoStats.FeralCombatEnabled {
+				registerShadowOil(character, isMh, shadowOilIcd)
+			}
 		case proto.WeaponImbue_FrostOil:
-			registerFrostOil(character, isMh)
+			if !character.PseudoStats.FeralCombatEnabled {
+				registerFrostOil(character, isMh)
+			}
 		}
 	}
 }

@@ -1340,7 +1340,6 @@ export const classToEligibleWeaponTypes: Record<Class, Array<EligibleWeaponType>
 		{ weaponType: WeaponType.WeaponTypeMace, canUseTwoHand: true },
 		{ weaponType: WeaponType.WeaponTypeOffHand },
 		{ weaponType: WeaponType.WeaponTypeStaff, canUseTwoHand: true },
-		{ weaponType: WeaponType.WeaponTypePolearm, canUseTwoHand: true }, // Added to SoD on 2024-07-10
 	],
 	[Class.ClassHunter]: [
 		{ weaponType: WeaponType.WeaponTypeAxe, canUseTwoHand: true },

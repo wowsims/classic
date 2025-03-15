@@ -139,6 +139,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestP1Balance-Phase1-AllItems-SymbolsofUnendingLife"
+ value: {
+  dps: 203.49367
+  tps: 216.16517
+ }
+}
+dps_results: {
  key: "TestP1Balance-Phase1-AllItems-Warlord'sSanctuary"
  value: {
   dps: 190.76465
