@@ -15,6 +15,7 @@ const (
 const (
 	SpellCode_PriestNone int32 = iota
 
+	SpellCode_PriestStarshards
 	SpellCode_PriestDevouringPlague
 	SpellCode_PriestFlashHeal
 	SpellCode_PriestGreaterHeal
@@ -50,6 +51,7 @@ type Priest struct {
 	ShadowWeavingProc *core.Spell
 	ShadowWordPain    []*core.Spell
 	Smite             []*core.Spell
+	Starshards        []*core.Spell
 	VampiricEmbrace   *core.Spell
 
 	InnerFocusAura *core.Aura
@@ -86,7 +88,10 @@ func (priest *Priest) Initialize() {
 	if priest.GetCharacter().Race == proto.Race_RaceUndead {
 		priest.registerDevouringPlagueSpell()
 	}
-	priest.RegisterSmiteSpell()
+	if priest.GetCharacter().Race == proto.Race_RaceNightElf {
+		priest.registerStarshardsSpell()
+	}
+	priest.registerSmiteSpell()
 	priest.registerHolyFire()
 
 	priest.registerPowerInfusionCD()
