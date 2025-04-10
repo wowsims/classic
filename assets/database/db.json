@@ -13372,6 +13372,7 @@
 {"id":463871,"name":"Enchant Shield - Law of Nature","icon":"spell_holy_greaterheal"}
 ],
 "encounters":[
-{"path":"Classic/Level 60","targets":[{"path":"Classic/Level 60","target":{"id":213336,"name":"Level 60","level":63,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,805,0,0,0,0,0,0,0,0,3731,0,0,0,0,0,0,0,127393,0,0,0,0,0,0,0,0,0],"minBaseDamage":3000,"damageSpread":0.3333,"swingSpeed":2,"parryHaste":true}}]}
+{"path":"Classic/Level 60","targets":[{"path":"Classic/Level 60","target":{"id":213336,"name":"Level 60","level":63,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,805,0,0,0,0,0,0,0,0,3731,0,0,0,0,0,0,0,127393,0,0,0,0,0,0,0,0,0],"minBaseDamage":3000,"damageSpread":0.3333,"swingSpeed":2,"parryHaste":true}}]},
+{"path":"Classic/Blackwing Lair Vaelastrasz The Corrupt","targets":[{"path":"Classic/Blackwing Lair Vaelastrasz The Corrupt","target":{"id":13020,"name":"Blackwing Lair Vaelastrasz The Corrupt","level":63,"mobType":3,"stats":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,805,0,0,0,0,0,0,0,0,3731,0,0,0,0,0,0,0,3331000,0,0,0,0,0,0,0,0,0],"minBaseDamage":5200,"damageSpread":0.333,"swingSpeed":4,"parryHaste":true}}]}
 ]
 }
