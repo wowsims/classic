@@ -19,6 +19,7 @@ func init() {
 	core.NewItemEffect(AtieshPriest, func(agent core.Agent) {
 		character := agent.GetCharacter()
 		aura := core.AtieshHealingEffect(&character.Unit)
+		character.ItemSwap.RegisterProc(AtieshPriest, aura)
 	})
 	
 	core.AddEffectsToTest = true
