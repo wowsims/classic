@@ -20,7 +20,7 @@ import {
 } from '../core/proto/common.js';
 import { ShadowPriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import APLShadowUDJSON from './apls/shadow_ud.apl.json';
+import APLShadowUDJSON from './apls/p1.apl.json';
 import APLShadowJSON from './apls/shadow.apl.json';
 import APLDiscJSON from './apls/disc.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
