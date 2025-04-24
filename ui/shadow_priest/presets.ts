@@ -20,7 +20,9 @@ import {
 } from '../core/proto/common.js';
 import { ShadowPriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import P1APL from './apls/p1.apl.json';
+import APLShadowUDJSON from './apls/shadow_ud.apl.json';
+import APLShadowJSON from './apls/shadow.apl.json';
+import APLDiscJSON from './apls/disc.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1Shadow from './gear_sets/p1.shadow.json';
 import P2Shadow from './gear_sets/p2.shadow.json';
@@ -60,10 +62,12 @@ export const DefaultGear = GearP0BIS;
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1Shadow = PresetUtils.makePresetAPLRotation('Shadow', P1APL);
+export const APLShadowUD = PresetUtils.makePresetAPLRotation('Shadow UD', APLShadowUDJSON);
+export const APLShadow = PresetUtils.makePresetAPLRotation('Shadow', APLShadowJSON);
+export const APLDisc = PresetUtils.makePresetAPLRotation('Disc', APLDiscJSON);
 
 export const APLPresets = {
-	[Phase.Phase1]: [APLP1Shadow],
+	[Phase.Phase1]: [APLShadowUD,APLShadow,APLDisc],
 };
 
 export const DefaultAPL = APLPresets[Phase.Phase1][0];
