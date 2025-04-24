@@ -22,7 +22,12 @@ import { ShadowPriest_Options as Options } from '../core/proto/priest.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
-import P1BISGear from './gear_sets/p1.bis.gear.json';
+import P1Shadow from './gear_sets/p1.shadow.json';
+import P2Shadow from './gear_sets/p2.shadow.json';
+import P3Shadow from './gear_sets/p3.shadow.json';
+import P4Shadow from './gear_sets/p4.shadow.json';
+import P5Shadow from './gear_sets/p5.shadow.json';
+import P6Shadow from './gear_sets/p6.shadow.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -33,10 +38,20 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 ///////////////////////////////////////////////////////////////////////////
 
 export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
-export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearP1Shadow = PresetUtils.makePresetGear('P1 Shadow', P1Shadow);
+export const GearP2Shadow = PresetUtils.makePresetGear('P2 Shadow', P2Shadow);
+export const GearP3Shadow = PresetUtils.makePresetGear('P3 Shadow', P3Shadow);
+export const GearP4Shadow = PresetUtils.makePresetGear('P4 Shadow', P4Shadow);
+export const GearP5Shadow = PresetUtils.makePresetGear('P5 Shadow', P5Shadow);
+export const GearP6Shadow = PresetUtils.makePresetGear('P6 Shadow', P6Shadow);
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearP0BIS, GearP1BIS],
+	[Phase.Phase1]: [GearP0BIS, GearP1Shadow],
+	[Phase.Phase2]: [GearP2Shadow],
+	[Phase.Phase3]: [GearP3Shadow],
+	[Phase.Phase4]: [GearP4Shadow],
+	[Phase.Phase5]: [GearP5Shadow],
+	[Phase.Phase6]: [GearP6Shadow],
 };
 
 export const DefaultGear = GearP0BIS;
@@ -60,7 +75,7 @@ export const DefaultAPL = APLPresets[Phase.Phase1][0];
 // Default talents. Uses the wowhead calculator format, make the talents on
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
-export const TalentsP1Shadow = PresetUtils.makePresetTalents('Shadow', SavedTalents.create({ talentsString: '0512301302--5002504103501251' }));
+export const TalentsP1Shadow = PresetUtils.makePresetTalents('Shadow', SavedTalents.create({ talentsString: '50023013--5002524103511251' }));
 
 export const TalentPresets = {
 	[Phase.Phase1]: [TalentsP1Shadow],
