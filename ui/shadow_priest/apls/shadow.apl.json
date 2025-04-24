@@ -2,7 +2,7 @@
   "type": "TypeAPL",
   "prepullActions": [
         {"action":{"castSpell":{"spellId":{"spellId":15473}}},"doAtValue":{"const":{"val":"-5s"}}}
-        {"action":{"castSpell":{"spellId":{"spellId":10947}}},"doAtValue":{"const":{"val":"-1s"}}}
+        {"action":{"castSpell":{"spellId":{"spellId":10947,"rank":9}}},"doAtValue":{"const":{"val":"-1s"}}}
       ],
       "priorityList": [
         {"action":{"autocastOtherCooldowns":{}}},
