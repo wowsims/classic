@@ -1,0 +1,14 @@
+{
+  "type": "TypeAPL",
+  "prepullActions": [
+        {"action":{"castSpell":{"spellId":{"spellId":15473}}},"doAtValue":{"const":{"val":"-5s"}}}
+        {"action":{"castSpell":{"spellId":{"spellId":10947}}},"doAtValue":{"const":{"val":"-1s"}}}
+      ],
+      "priorityList": [
+        {"action":{"autocastOtherCooldowns":{}}},
+        {"action":{"condition":{"and":{"vals":[{"not":{"val":{"dotIsActive":{"spellId":{"spellId":10894,"rank":8}}}}},{"cmp":{"op":"OpGe","lhs":{"remainingTime":{}},"rhs":{"const":{"val":"10"}}}}]}},"castSpell":{"spellId":{"spellId":10894,"rank":8}}}},
+        {"action":{"strictSequence":{"actions":[{"castSpell":{"spellId":{"spellId":14751}}},{"castSpell":{"spellId":{"spellId":10947,"rank":9}}}]}}},
+        {"action":{"castSpell":{"spellId":{"spellId":10947,"rank":9}}}},
+        {"action":{"castSpell":{"spellId":{"spellId":18807,"rank":6}}}}
+      ]
+}
