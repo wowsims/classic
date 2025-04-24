@@ -92,9 +92,10 @@ export const DefaultAPL = APLPresets[Phase.Phase1][0];
 // https://wowhead.com/classic/talent-calc and copy the numbers in the url.
 
 export const TalentsP1Shadow = PresetUtils.makePresetTalents('Shadow', SavedTalents.create({ talentsString: '50023013--5002524103511251' }));
+export const TalentsP1Disc = PresetUtils.makePresetTalents('Discipline', SavedTalents.create({ talentsString: '510230130505151-20505102202' }));
 
 export const TalentPresets = {
-	[Phase.Phase1]: [TalentsP1Shadow],
+	[Phase.Phase1]: [TalentsP1Shadow,TalentsP1Disc],
 };
 
 export const DefaultTalents = TalentPresets[Phase.Phase1][0];
