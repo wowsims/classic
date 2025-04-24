@@ -22,7 +22,7 @@ func TestP1Shadow(t *testing.T) {
 
 			Talents:     P1Talents,
 			GearSet:     core.GetGearSet("../../../ui/shadow_priest/gear_sets", "p0.bis"),
-			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "p1"),
+			Rotation:    core.GetAplRotation("../../../ui/shadow_priest/apls", "shadow"),
 			Buffs:       core.FullBuffs,
 			Consumes:    P1Consumes,
 			SpecOptions: core.SpecOptionsCombo{Label: "Basic", SpecOptions: PlayerOptionsBasic},
@@ -34,7 +34,7 @@ func TestP1Shadow(t *testing.T) {
 	}))
 }
 
-var P1Talents = "0512301302--5002504103501251"
+var P1Talents = "50023013--5002524103511251"
 
 var P1Consumes = core.ConsumesCombo{
 	Label: "P1-Consumes",
