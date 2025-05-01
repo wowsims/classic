@@ -91,7 +91,7 @@ export const TalentPresets = {
 	[Phase.Phase1]: [RetTalents, ShockadinTalents],
 };
 
-export const DefaultTalents = TalentPresets[Phase.Phase5][0];
+export const DefaultTalents = TalentPresets[Phase.Phase1][0];
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 Options
