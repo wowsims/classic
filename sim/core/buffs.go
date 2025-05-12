@@ -1801,3 +1801,26 @@ func ApplySaygesFortunes(character *Character, fortune proto.SaygesFortune) {
 
 	makeExclusiveBuff(aura, config)
 }
+
+///////////////////////////////////////////////////////////////////////////
+//                            Misc Other Buffs
+///////////////////////////////////////////////////////////////////////////
+
+// Equip: Increases healing done by magical spells and effects of all party members within 30 yards by up to 62.
+func AtieshHealingEffect(unit *Unit) *Aura {
+	label := "Atiesh Greatstaff of the Guardian (Healing)"
+
+	if unit.HasAura(label) {
+		return unit.GetAura(label)
+	}
+
+	stats := stats.Stats{
+		stats.HealingPower: 62,
+	}
+
+	return MakePermanent(unit.RegisterAura(Aura{
+		ActionID:   ActionID{SpellID: 28144},
+		Label:      label,
+		BuildPhase: CharacterBuildPhaseBuffs,
+	}).AttachStatsBuff(stats))
+}
