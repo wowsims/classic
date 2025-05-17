@@ -150,6 +150,7 @@ func (shaman *Shaman) newMagmaTotemSpellConfig(rank int) core.SpellConfig {
 	attackInterval := time.Second * 2
 
 	aoeSpell := shaman.RegisterSpell(core.SpellConfig{
+		SpellCode:   SpellCode_ShamanMagmaTotem,
 		ActionID:    core.ActionID{SpellID: MagmaTotemAoeSpellId[rank]},
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,
@@ -253,6 +254,7 @@ func (shaman *Shaman) newFireNovaTotemSpellConfig(rank int) core.SpellConfig {
 	attackInterval := duration
 
 	novaSpell := shaman.RegisterSpell(core.SpellConfig{
+		SpellCode:   SpellCode_ShamanFireNovaTotem,
 		ActionID:    core.ActionID{SpellID: FireNovaTotemAoeSpellId[rank]},
 		SpellSchool: core.SpellSchoolFire,
 		DefenseType: core.DefenseTypeMagic,

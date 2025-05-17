@@ -14,6 +14,7 @@ func (shaman *Shaman) ApplyTalents() {
 	shaman.applyConcussion()
 	shaman.applyElementalFocus()
 	shaman.applyElementalDevastation()
+	shaman.applyImprovedFireTotems()
 	shaman.applyElementalFury()
 	shaman.registerElementalMasteryCD()
 
@@ -187,6 +188,26 @@ func (shaman *Shaman) applyElementalDevastation() {
 				procAura.Activate(sim)
 			}
 		},
+	})
+}
+
+func (shaman *Shaman) applyImprovedFireTotems() {
+	if shaman.Talents.ImprovedFireTotems == 0 {
+		return
+	}
+
+	shaman.OnSpellRegistered(func(spell *core.Spell) {
+		if spell.SpellCode == SpellCode_ShamanFireNovaTotem {
+			for _, dot := range spell.Dots() {
+				if dot == nil {
+					continue
+				}
+
+				dot.TickLength -= time.Second * time.Duration(shaman.Talents.ImprovedFireTotems)
+			}
+		} else if spell.SpellCode == SpellCode_ShamanMagmaTotem {
+			spell.ThreatMultiplier *= 1.0 - (0.25 * float64(shaman.Talents.ImprovedFireTotems))
+		}
 	})
 }
 
