@@ -146,6 +146,7 @@ const (
 	WrathOfCenarius          = 21190
 	EyeOfMoam                = 21473
 	ScarabBrooch             = 21625
+	BadgeOfTheSwarmguard     = 21670
 	KalimdorsRevenge         = 21679
 	DraconicInfusedEmblem    = 22268
 	HeartOfWyrmthalak        = 22321
@@ -3504,6 +3505,69 @@ func init() {
 			Handler: func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
 				buffAura.Activate(sim)
 			},
+		})
+	})
+
+	// https://www.wowhead.com/classic/item=21670/badge-of-the-swarmguard
+	// Use: Chance on melee or ranged attack to grant 200 armor pen stacks up to 6 times.  Lasts 30 sec. (3 Min Cooldown)
+	core.NewItemEffect(BadgeOfTheSwarmguard, func(agent core.Agent) {
+		character := agent.GetCharacter()
+
+		procAura := character.RegisterAura(core.Aura{
+			Label: "Insight of the Qiraji",
+			ActionID: core.ActionID{SpellID: 26481},
+			Duration:  core.NeverExpires,
+			MaxStacks: 6,
+			OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
+				character.AddStatDynamic(sim, stats.ArmorPenetration, 200*float64(newStacks-oldStacks))
+			},
+		})
+
+		ppmm := character.AutoAttacks.NewPPMManager(10.0, core.ProcMaskMeleeOrRanged)
+
+		auraLabel := "Badge of the Swarmguard"
+		actionID := core.ActionID{SpellID: 26480}
+		trinketAura := character.RegisterAura(core.Aura{
+			Label: auraLabel,
+			ActionID: actionID,
+			Duration: time.Second * 30,
+			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
+				procAura.Deactivate(sim)
+			},
+			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+				if !result.Landed() {
+					return
+				}
+				if !spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) {
+					return
+				}
+				if !ppmm.ProcWithWeaponSpecials(sim, spell.ProcMask, auraLabel) {
+					return
+				}
+
+				procAura.Activate(sim)
+				procAura.AddStack(sim)
+			},
+		})
+
+		spell := character.RegisterSpell(core.SpellConfig{
+			ActionID: actionID,
+			Flags:    core.SpellFlagNoOnCastComplete,
+
+			Cast: core.CastConfig{
+				CD: core.Cooldown{
+					Timer:    character.NewTimer(),
+					Duration: time.Minute * 3,
+				},
+			},
+			ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {
+				trinketAura.Activate(sim)
+			},
+		})
+
+		character.AddMajorCooldown(core.MajorCooldown{
+			Spell: spell,
+			Type:  core.CooldownTypeDPS,
 		})
 	})
 
