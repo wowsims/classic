@@ -3523,28 +3523,18 @@ func init() {
 			},
 		})
 
-		ppmm := character.AutoAttacks.NewPPMManager(10.0, core.ProcMaskMeleeOrRanged)
-
 		auraLabel := "Badge of the Swarmguard"
 		actionID := core.ActionID{SpellID: 26480}
-		trinketAura := character.RegisterAura(core.Aura{
-			Label: auraLabel,
+		trinketAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
+			Name: auraLabel,
 			ActionID: actionID,
 			Duration: time.Second * 30,
-			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				procAura.Deactivate(sim)
-			},
-			OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-				if !result.Landed() {
-					return
-				}
-				if !spell.ProcMask.Matches(core.ProcMaskMeleeOrRanged) {
-					return
-				}
-				if !ppmm.ProcWithWeaponSpecials(sim, spell.ProcMask, auraLabel) {
-					return
-				}
-
+			Callback: core.CallbackOnSpellHitDealt,
+			Outcome: core.OutcomeLanded,
+			ProcMask: core.ProcMaskMeleeOrRanged,
+			SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
+			PPM: 10.0,
+			Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 				procAura.Activate(sim)
 				procAura.AddStack(sim)
 			},
@@ -3552,7 +3542,7 @@ func init() {
 
 		spell := character.RegisterSpell(core.SpellConfig{
 			ActionID: actionID,
-			Flags:    core.SpellFlagNoOnCastComplete,
+			Flags:    core.SpellFlagNoOnCastComplete | core.SpellFlagOffensiveEquipment,
 
 			Cast: core.CastConfig{
 				CD: core.Cooldown{
