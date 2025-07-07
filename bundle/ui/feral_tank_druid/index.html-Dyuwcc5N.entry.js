@@ -1,0 +1,1 @@
+import"../../index-CsPe537V.chunk.js";import{S as e,T as n}from"../../detailed_results-CJY9MGga.chunk.js";import{S as s,P as r}from"../../preset_utils-Bx_qPZZK.chunk.js";import{F as t}from"../../sim-nyoih2N4.chunk.js";const a=new s,i=new r(e.SpecFeralTankDruid,a);i.enableHealing(),a.raid.setPlayer(n.nextEventID(),0,i),new t(document.body,i);
