@@ -13,12 +13,12 @@ character_stats_results: {
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 46
+  final_stats: 49.6
   final_stats: 0
   final_stats: 27.56742
   final_stats: 0
   final_stats: 0
-  final_stats: 1584.638
+  final_stats: 1669.638
   final_stats: 0
   final_stats: 28.44509
   final_stats: 0
@@ -51,11 +51,11 @@ stat_weights_results: {
  key: "TestShockadin-Phase5-StatWeights-Default"
  value: {
   weights: 0.28168
-  weights: 0.13461
+  weights: 0.14833
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.47915
+  weights: 0.48361
   weights: 0
   weights: 0
   weights: 0
@@ -63,13 +63,13 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 2.43428
-  weights: 0.37997
+  weights: 2.02814
+  weights: 0.38293
   weights: 0
   weights: 0
-  weights: 0.10122
+  weights: 0.10121
   weights: 0
-  weights: 2.43048
+  weights: 2.55349
   weights: 0
   weights: 0
   weights: 0
@@ -99,85 +99,85 @@ stat_weights_results: {
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-Avenger'sBattlegear"
  value: {
-  dps: 584.26757
-  tps: 626.62516
+  dps: 593.17776
+  tps: 635.5796
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-FieldMarshal'sAegis"
  value: {
-  dps: 571.32779
-  tps: 613.88696
+  dps: 577.97317
+  tps: 620.32585
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-Freethinker'sArmor"
  value: {
-  dps: 471.0435
-  tps: 513.31751
+  dps: 481.15317
+  tps: 523.45668
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-JudgementArmor"
  value: {
-  dps: 588.35511
-  tps: 630.99787
+  dps: 599.19454
+  tps: 641.77338
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-LawbringerArmor"
  value: {
-  dps: 482.22967
-  tps: 524.80852
+  dps: 493.02691
+  tps: 535.56641
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-LieutenantCommander'sRedoubt"
  value: {
-  dps: 544.31168
-  tps: 586.60043
+  dps: 553.96189
+  tps: 596.28998
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-RedemptionArmor"
  value: {
-  dps: 478.46205
-  tps: 521.3654
+  dps: 487.30607
+  tps: 530.25857
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-AllItems-SanctifiedOrb-20512"
  value: {
-  dps: 442.81796
-  tps: 484.81664
+  dps: 452.41975
+  tps: 494.39876
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Average-Default"
  value: {
-  dps: 441.52126
-  tps: 483.46659
+  dps: 451.16907
+  tps: 493.15815
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Dwarf-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 283.25557
-  tps: 499.4024
+  dps: 289.43751
+  tps: 505.781
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Dwarf-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 86.21382
-  tps: 96.93758
+  dps: 88.68912
+  tps: 99.46696
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Dwarf-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 182.258
-  tps: 199.77718
+  dps: 182.51076
+  tps: 200.00536
  }
 }
 dps_results: {
@@ -204,22 +204,22 @@ dps_results: {
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Human-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-LongMultiTarget"
  value: {
-  dps: 285.16762
-  tps: 501.51112
+  dps: 289.17688
+  tps: 506.50371
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Human-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-LongSingleTarget"
  value: {
-  dps: 87.07104
-  tps: 97.83413
+  dps: 88.89921
+  tps: 99.68197
  }
 }
 dps_results: {
  key: "TestShockadin-Phase5-Settings-Human-blank-P5 Seal of Righteousness Shockadin-p5Shockadin-FullBuffs-P5-Consumes-ShortSingleTarget"
  value: {
-  dps: 181.96817
-  tps: 199.48734
+  dps: 183.03576
+  tps: 200.55493
  }
 }
 dps_results: {
@@ -246,7 +246,7 @@ dps_results: {
 dps_results: {
  key: "TestShockadin-Phase5-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 399.1914
-  tps: 438.8989
+  dps: 405.621
+  tps: 445.08759
  }
 }

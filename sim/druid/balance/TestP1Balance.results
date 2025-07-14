@@ -1,8 +1,8 @@
 character_stats_results: {
  key: "TestP1Balance-Phase1-CharacterStats-Default"
  value: {
-  final_stats: 226.55
-  final_stats: 201.25
+  final_stats: 247.25
+  final_stats: 213.9
   final_stats: 386.17
   final_stats: 320.85
   final_stats: 336.95
@@ -18,21 +18,21 @@ character_stats_results: {
   final_stats: 28.1582
   final_stats: 0
   final_stats: 0
-  final_stats: 1140.1
+  final_stats: 1230.5
   final_stats: 0
-  final_stats: 23.9625
+  final_stats: 24.595
   final_stats: 0
   final_stats: 0
   final_stats: 0
   final_stats: 5776.75
   final_stats: 0
   final_stats: 0
-  final_stats: 1964.5
+  final_stats: 1989.8
   final_stats: 466
   final_stats: 0
   final_stats: 5
   final_stats: 0
-  final_stats: 10.9625
+  final_stats: 11.595
   final_stats: 5
   final_stats: 0
   final_stats: 5737.935
@@ -99,85 +99,85 @@ stat_weights_results: {
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-CenarionRaiment"
  value: {
-  dps: 171.3357
-  tps: 183.3257
+  dps: 171.35903
+  tps: 183.34903
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-Champion'sRefuge"
  value: {
-  dps: 188.22273
-  tps: 202.45019
+  dps: 188.24606
+  tps: 202.47352
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-FeralheartRaiment"
  value: {
-  dps: 194.11909
-  tps: 207.23458
+  dps: 194.14242
+  tps: 207.25791
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-FieldMarshal'sSanctuary"
  value: {
-  dps: 190.76465
-  tps: 204.83436
+  dps: 190.78928
+  tps: 204.85899
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-LieutenantCommander'sRefuge"
  value: {
-  dps: 188.22273
-  tps: 202.45019
+  dps: 188.24606
+  tps: 202.47352
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-StormrageRaiment"
  value: {
-  dps: 157.54842
-  tps: 166.49676
+  dps: 157.57175
+  tps: 166.52009
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-SymbolsofUnendingLife"
  value: {
-  dps: 203.49367
-  tps: 216.16517
+  dps: 203.55432
+  tps: 216.22582
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-AllItems-Warlord'sSanctuary"
  value: {
-  dps: 190.76465
-  tps: 204.83436
+  dps: 190.78928
+  tps: 204.85899
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-Average-Default"
  value: {
-  dps: 160.65508
-  tps: 174.13247
+  dps: 160.68162
+  tps: 174.159
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-Settings-NightElf-p0.bis-Default-p1-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
   dps: 157.76801
-  tps: 406.0739
+  tps: 400.51625
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-Settings-NightElf-p0.bis-Default-p1-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
   dps: 157.76801
-  tps: 170.1833
+  tps: 169.90542
  }
 }
 dps_results: {
  key: "TestP1Balance-Phase1-Settings-NightElf-p0.bis-Default-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
   dps: 152.61124
-  tps: 161.21153
+  tps: 161.20188
  }
 }
 dps_results: {
@@ -246,7 +246,7 @@ dps_results: {
 dps_results: {
  key: "TestP1Balance-Phase1-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 158.97674
-  tps: 172.39393
+  dps: 158.99213
+  tps: 172.40933
  }
 }

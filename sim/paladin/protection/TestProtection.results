@@ -13,12 +13,12 @@ character_stats_results: {
   final_stats: 0
   final_stats: 0
   final_stats: 0
-  final_stats: 46
+  final_stats: 49.6
   final_stats: 0
   final_stats: 27.28857
   final_stats: 0
   final_stats: 0
-  final_stats: 1537.58
+  final_stats: 1622.58
   final_stats: 3
   final_stats: 28.44509
   final_stats: 0
@@ -51,7 +51,7 @@ stat_weights_results: {
  key: "TestProtection-Phase4-StatWeights-Default"
  value: {
   weights: 0.26263
-  weights: 0.15014
+  weights: 0.15662
   weights: 0
   weights: 0.00227
   weights: 0
@@ -68,8 +68,8 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0.10381
-  weights: 2.75907
-  weights: 2.40246
+  weights: 2.84604
+  weights: 2.4919
   weights: 0
   weights: 0
   weights: 0
@@ -99,78 +99,78 @@ stat_weights_results: {
 dps_results: {
  key: "TestProtection-Phase4-AllItems-Avenger'sBattlegear"
  value: {
-  dps: 504.51383
-  tps: 927.03163
+  dps: 513.97134
+  tps: 936.26213
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-FieldMarshal'sAegis"
  value: {
-  dps: 488.11116
-  tps: 893.88865
+  dps: 497.25906
+  tps: 902.80481
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-Freethinker'sArmor"
  value: {
-  dps: 403.56067
-  tps: 729.9386
+  dps: 412.51732
+  tps: 738.66308
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-JudgementArmor"
  value: {
-  dps: 500.27722
-  tps: 935.27738
+  dps: 509.05851
+  tps: 943.82704
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-LawbringerArmor"
  value: {
-  dps: 406.02398
-  tps: 731.14242
+  dps: 414.88463
+  tps: 739.77547
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-LieutenantCommander'sRedoubt"
  value: {
-  dps: 471.95768
-  tps: 872.85872
+  dps: 480.81834
+  tps: 881.47553
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-RedemptionArmor"
  value: {
-  dps: 385.5472
-  tps: 708.42256
+  dps: 394.32849
+  tps: 717.01314
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-AllItems-SanctifiedOrb-20512"
  value: {
-  dps: 383.38443
-  tps: 707.71871
+  dps: 392.16572
+  tps: 716.25616
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-Average-Default"
  value: {
-  dps: 383.84697
-  tps: 707.30431
+  dps: 392.65413
+  tps: 715.87402
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-Settings-Dwarf-blank-P4 Prot-p4prot-FullBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 47.7562
-  tps: 139.29654
+  dps: 48.66928
+  tps: 141.78293
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-Settings-Dwarf-blank-P4 Prot-p4prot-FullBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 47.7562
-  tps: 115.84896
+  dps: 48.66928
+  tps: 118.0551
  }
 }
 dps_results: {
@@ -204,15 +204,15 @@ dps_results: {
 dps_results: {
  key: "TestProtection-Phase4-Settings-Human-blank-P4 Prot-p4prot-FullBuffs-P4-Consumes-LongMultiTarget"
  value: {
-  dps: 48.09786
-  tps: 140.21486
+  dps: 48.87083
+  tps: 142.46333
  }
 }
 dps_results: {
  key: "TestProtection-Phase4-Settings-Human-blank-P4 Prot-p4prot-FullBuffs-P4-Consumes-LongSingleTarget"
  value: {
-  dps: 48.09786
-  tps: 116.67386
+  dps: 48.87083
+  tps: 118.54867
  }
 }
 dps_results: {
@@ -246,7 +246,7 @@ dps_results: {
 dps_results: {
  key: "TestProtection-Phase4-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 343.55156
-  tps: 640.54067
+  dps: 351.18508
+  tps: 647.98176
  }
 }

@@ -4,4 +4,4 @@ package core
 
 // Whether to include spell ranks only accessible after the release of Ahn'Qiraj
 // TODO: add phase switch instead of hardcoded const later?
-const IncludeAQ = false
+const IncludeAQ = true

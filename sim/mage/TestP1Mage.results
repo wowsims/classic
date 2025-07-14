@@ -1,8 +1,8 @@
 character_stats_results: {
  key: "TestP1Mage-Phase1-CharacterStats-Default"
  value: {
-  final_stats: 156.4
-  final_stats: 171.35
+  final_stats: 177.1
+  final_stats: 184
   final_stats: 313.4325
   final_stats: 324.3
   final_stats: 241.5
@@ -18,7 +18,7 @@ character_stats_results: {
   final_stats: 30.64824
   final_stats: 0
   final_stats: 0
-  final_stats: 827.4
+  final_stats: 897.1
   final_stats: 0
   final_stats: 16.2
   final_stats: 0
@@ -27,7 +27,7 @@ character_stats_results: {
   final_stats: 5797.5
   final_stats: 0
   final_stats: 0
-  final_stats: 871.7
+  final_stats: 897
   final_stats: 440
   final_stats: 0
   final_stats: 5
@@ -183,22 +183,22 @@ dps_results: {
 dps_results: {
  key: "TestP1Mage-Phase1-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongMultiTarget"
  value: {
-  dps: 517.10316
-  tps: 745.93549
+  dps: 517.10038
+  tps: 745.91422
  }
 }
 dps_results: {
  key: "TestP1Mage-Phase1-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-LongSingleTarget"
  value: {
-  dps: 517.10316
-  tps: 381.17037
+  dps: 517.10038
+  tps: 381.16746
  }
 }
 dps_results: {
  key: "TestP1Mage-Phase1-Settings-Gnome-p0.bis-DPS-p1-FullBuffs-P1-Consumes-ShortSingleTarget"
  value: {
   dps: 517.28846
-  tps: 387.85885
+  tps: 386.93183
  }
 }
 dps_results: {
