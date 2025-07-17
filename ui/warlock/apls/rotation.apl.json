@@ -14,6 +14,6 @@
         {"action":{"condition":{"not":{"val":{"dotIsActive":{"spellId":{"spellId":11713,"rank":6}}}}},"castSpell":{"spellId":{"spellId":11713,"rank":6}}}},
         {"action":{"condition":{"not":{"val":{"dotIsActive":{"spellId":{"spellId":25311,"rank":7}}}}},"castSpell":{"spellId":{"spellId":25311,"rank":7}}}},
         {"action":{"condition":{"not":{"val":{"dotIsActive":{"spellId":{"spellId":25309,"rank":8}}}}},"castSpell":{"spellId":{"spellId":25309,"rank":8}}}},
-        {"action":{"castSpell":{"spellId":{"spellId":11661,"rank":9}}}}
+        {"action":{"castSpell":{"spellId":{"spellId":25307,"rank":9}}}}
     ]
 }

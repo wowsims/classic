@@ -2,6 +2,6 @@
 	"type": "TypeAPL",
 	"priorityList": [
 	  {"action":{"autocastOtherCooldowns":{}}},
-	  {"action":{"castSpell":{"spellId":{"spellId":10181,"rank":10}}}}
+	  {"action":{"castSpell":{"spellId":{"spellId":25304,"rank":10}}}}
 	]
 }

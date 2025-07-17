@@ -1,15 +1,15 @@
 {
   "type": "TypeAPL",
   "prepullActions": [
-    {"action":{"castSpell":{"spellId":{"spellId":14322,"rank":6}}},"doAtValue":{"const":{"val":"-10s"}}},
+    {"action":{"castSpell":{"spellId":{"spellId":25296,"rank":6}}},"doAtValue":{"const":{"val":"-10s"}}},
     {"action":{"castSpell":{"spellId":{"spellId":20904,"rank":6}}},"doAtValue":{"const":{"val":"-3.5s"}}}
   ],
   "priorityList": [
     {"action":{"autocastOtherCooldowns":{}}},
     {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.1"}}}},{"cmp":{"op":"OpLt","lhs":{"spellTimeToReady":{"spellId":{"spellId":20904,"rank":6}}},"rhs":{"const":{"val":"0.5"}}}}]}},"castSpell":{"spellId":{"spellId":3045}}}},
     {"action":{"condition":{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"1s"}}}},"castSpell":{"spellId":{"spellId":20904,"rank":6}}}},
-    {"action":{"condition":{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.5s"}}}},"castSpell":{"spellId":{"spellId":14290,"rank":4}}}},
-    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"dotRemainingTime":{"spellId":{"spellId":13555,"rank":8}}},"rhs":{"const":{"val":"5s"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":20904,"rank":6}}},"rhs":{"const":{"val":"0.5"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":14290,"rank":4}}},"rhs":{"const":{"val":"0.5"}}}}]}},"castSpell":{"spellId":{"spellId":13555,"rank":8}}}},
-    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":20904,"rank":6}}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":14290,"rank":4}}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpGt","lhs":{"currentTime":{}},"rhs":{"const":{"val":"6"}}}}]}},"castSpell":{"spellId":{"itemId":18641}}}}
+    {"action":{"condition":{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"0.5s"}}}},"castSpell":{"spellId":{"spellId":25294,"rank":4}}}},
+    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"dotRemainingTime":{"spellId":{"spellId":25295,"rank":8}}},"rhs":{"const":{"val":"5s"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":20904,"rank":6}}},"rhs":{"const":{"val":"0.5"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":25294,"rank":4}}},"rhs":{"const":{"val":"0.5"}}}}]}},"castSpell":{"spellId":{"spellId":25295,"rank":8}}}},
+    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpGt","lhs":{"autoTimeToNext":{"autoType":"Ranged"}},"rhs":{"const":{"val":"1s"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":20904,"rank":6}}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpGe","lhs":{"spellTimeToReady":{"spellId":{"spellId":25294,"rank":4}}},"rhs":{"const":{"val":"1"}}}},{"cmp":{"op":"OpGt","lhs":{"currentTime":{}},"rhs":{"const":{"val":"6"}}}}]}},"castSpell":{"spellId":{"itemId":18641}}}}
   ]
 }
