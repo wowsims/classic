@@ -178,15 +178,13 @@ func (rogue *Rogue) registerDeadlyPoisonRank4Spell() {
 		25: 9,
 		40: 13,
 		50: 20,
-		60: 27, // (Rank 4)
-		// 60: 34, // (Rank 5)
+		60: 27,
 	}[rogue.Level]
 	spellID := map[int32]int32{
 		25: 2823,
 		40: 2824,
 		50: 11355,
-		60: 11356, // (Rank 4)
-		// 60: 25351, // (Rank 5)
+		60: 11356,
 	}[rogue.Level]
 
 	rogue.deadlyPoisonRank4Tick = rogue.RegisterSpell(core.SpellConfig{
@@ -201,7 +199,7 @@ func (rogue *Rogue) registerDeadlyPoisonRank4Spell() {
 
 		Dot: core.DotConfig{
 			Aura: core.Aura{
-				Label:     "DeadlyPoison",
+				Label:     "DeadlyPoison (Rank 4)",
 				MaxStacks: 5,
 				Duration:  time.Second * 12,
 			},
@@ -233,20 +231,8 @@ func (rogue *Rogue) registerDeadlyPoisonRank4Spell() {
 }
 
 func (rogue *Rogue) registerDeadlyPoisonRank5Spell() {
-	baseDamageTick := map[int32]float64{
-		25: 9,
-		40: 13,
-		50: 20,
-		// 60: 27, // (Rank 4)
-		60: 34, // (Rank 5)
-	}[rogue.Level]
-	spellID := map[int32]int32{
-		25: 2823,
-		40: 2824,
-		50: 11355,
-		// 60: 11356, // (Rank 4)
-		60: 25351, // (Rank 5)
-	}[rogue.Level]
+	baseDamageTick := float64(34)
+	spellID := int32(25351)
 
 	rogue.deadlyPoisonRank5Tick = rogue.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID, Tag: 100},
@@ -260,7 +246,7 @@ func (rogue *Rogue) registerDeadlyPoisonRank5Spell() {
 
 		Dot: core.DotConfig{
 			Aura: core.Aura{
-				Label:     "DeadlyPoison",
+				Label:     "DeadlyPoison (Rank 5)",
 				MaxStacks: 5,
 				Duration:  time.Second * 12,
 			},
