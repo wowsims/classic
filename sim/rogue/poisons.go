@@ -19,7 +19,7 @@ Deadly Poison: 30% proc chance, 5 stacks
 40: 52 damage, 2824 ID, 75 charges
 50: 80 damage, 11355 ID, 90 charges
 60: 108 damage, 11356 ID, 105 charges (Rank 4, Rank 5 is by book)
-60: 136 damage, 25347 ID, 120 charges (Rank 5)
+60: 136 damage, 25351 ID, 120 charges (Rank 5)
 
 Wound Poison: 30% proc chance, 5 stacks
 25: x damage, x ID (none, first rank is level 32)
@@ -186,7 +186,7 @@ func (rogue *Rogue) registerDeadlyPoisonRank4Spell() {
 		40: 2824,
 		50: 11355,
 		60: 11356, // (Rank 4)
-		// 60: 25347, // (Rank 5)
+		// 60: 25351, // (Rank 5)
 	}[rogue.Level]
 
 	rogue.deadlyPoisonRank4Tick = rogue.RegisterSpell(core.SpellConfig{
@@ -245,7 +245,7 @@ func (rogue *Rogue) registerDeadlyPoisonRank5Spell() {
 		40: 2824,
 		50: 11355,
 		// 60: 11356, // (Rank 4)
-		60: 25347, // (Rank 5)
+		60: 25351, // (Rank 5)
 	}[rogue.Level]
 
 	rogue.deadlyPoisonRank5Tick = rogue.RegisterSpell(core.SpellConfig{
