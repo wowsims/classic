@@ -479,7 +479,7 @@ message PetMiscConsumes {
 	bool juju_flurry = 1;
 }
 
-// NextIndex: 25
+// NextIndex: 26
 enum WeaponImbue {
 	// Weapon Oils
 	WeaponImbueUnknown = 0;
@@ -520,7 +520,8 @@ enum WeaponImbue {
 
 	// Rogue imbues
 	InstantPoison = 5;
-	DeadlyPoison = 6;
+	DeadlyPoisonRank4 = 6;
+	DeadlyPoisonRank5 = 25;
 	WoundPoison = 7;
 }
 

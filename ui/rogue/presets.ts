@@ -11,28 +11,28 @@ import {
 	IndividualBuffs,
 	Profession,
 	RaidBuffs,
+	SapperExplosive,
 	SaygesFortune,
 	SpellPowerBuff,
 	StrengthBuff,
 	TristateEffect,
 	WeaponImbue,
 	ZanzaBuff,
-	SapperExplosive,
 } from '../core/proto/common.js';
 import { RogueOptions } from '../core/proto/rogue.js';
 import { SavedTalents } from '../core/proto/ui.js';
 import BackstabAPL from './apls/combat_backstab.apl.json';
 import BackstabSweatyAPL from './apls/combat_backstab_sweaty.apl.json';
 import SinisterStrikeAPL from './apls/combat_sinister_strike.apl.json';
-import SinisterStrikeSweatyAPL from './apls/combat_sinister_strike_sweaty.apl.json';
 import SinisterStrikeIEAAPL from './apls/combat_sinister_strike_iea.apl.json';
+import SinisterStrikeSweatyAPL from './apls/combat_sinister_strike_sweaty.apl.json';
 import BlankGear from './gear_sets/blank.gear.json';
-import BackstabGearPreBiS from './gear_sets/combat_backstab_prebis.gear.json';
-import SinisterStrikeGearPreBiS from './gear_sets/combat_sinister_strike_prebis.gear.json';
 import BackstabGearP1BiS from './gear_sets/combat_backstab_p1_bis.gear.json';
 import BackstabGearP2BiS from './gear_sets/combat_backstab_p2_bis.gear.json';
+import BackstabGearPreBiS from './gear_sets/combat_backstab_prebis.gear.json';
 import SinisterStrikeGearP1BiS from './gear_sets/combat_sinister_strike_p1_bis.gear.json';
 import SinisterStrikeGearP2BiS from './gear_sets/combat_sinister_strike_p2_bis.gear.json';
+import SinisterStrikeGearPreBiS from './gear_sets/combat_sinister_strike_prebis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -68,8 +68,20 @@ export const ROTATION_PRESET_SINISTER_STRIKE_SWEATY = PresetUtils.makePresetAPLR
 export const ROTATION_PRESET_SINISTER_STRIKE_IEA = PresetUtils.makePresetAPLRotation('Improved Expose Armor (SS)', SinisterStrikeIEAAPL, {});
 
 export const APLPresets = {
-	[Phase.Phase1]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE, ROTATION_PRESET_BACKSTAB_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_IEA],
-	[Phase.Phase2]: [ROTATION_PRESET_BACKSTAB, ROTATION_PRESET_SINISTER_STRIKE, ROTATION_PRESET_BACKSTAB_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_SWEATY, ROTATION_PRESET_SINISTER_STRIKE_IEA],
+	[Phase.Phase1]: [
+		ROTATION_PRESET_BACKSTAB,
+		ROTATION_PRESET_SINISTER_STRIKE,
+		ROTATION_PRESET_BACKSTAB_SWEATY,
+		ROTATION_PRESET_SINISTER_STRIKE_SWEATY,
+		ROTATION_PRESET_SINISTER_STRIKE_IEA,
+	],
+	[Phase.Phase2]: [
+		ROTATION_PRESET_BACKSTAB,
+		ROTATION_PRESET_SINISTER_STRIKE,
+		ROTATION_PRESET_BACKSTAB_SWEATY,
+		ROTATION_PRESET_SINISTER_STRIKE_SWEATY,
+		ROTATION_PRESET_SINISTER_STRIKE_IEA,
+	],
 };
 
 //Need to add main hand equip logic or talent/rotation logic to map to Auto APL
@@ -91,12 +103,15 @@ export const DefaultAPLIEA = APLPresets[Phase.Phase2][4];
 
 // Preset name must be unique. Ex: 'Backstab DPS' cannot be used as a name more than once
 
-export const CombatBackstabTalents = PresetUtils.makePresetTalents(
-	'Backstab',
-	SavedTalents.create({ talentsString: '005023104-0233050020550100221-05' }),
+export const CombatBackstabTalents = PresetUtils.makePresetTalents('Backstab', SavedTalents.create({ talentsString: '005023104-0233050020550100221-05' }));
+export const CombatSinisterStrikeTalents = PresetUtils.makePresetTalents(
+	'Sinister Strike',
+	SavedTalents.create({ talentsString: '005323105-0240052020050150231' }),
 );
-export const CombatSinisterStrikeTalents = PresetUtils.makePresetTalents('Sinister Strike', SavedTalents.create({ talentsString: '005323105-0240052020050150231' }));
-export const CombatSinisterStrikeIEATalents = PresetUtils.makePresetTalents('Improved Expose Armor (SS)', SavedTalents.create({ talentsString: '005323123-0240052020050150231' }));
+export const CombatSinisterStrikeIEATalents = PresetUtils.makePresetTalents(
+	'Improved Expose Armor (SS)',
+	SavedTalents.create({ talentsString: '005323123-0240052020050150231' }),
+);
 
 export const TalentPresets = {
 	[Phase.Phase1]: [CombatBackstabTalents, CombatSinisterStrikeTalents, CombatSinisterStrikeIEATalents],
@@ -150,7 +165,7 @@ export const P1Consumes = Consumes.create({
 	flask: Flask.FlaskOfSupremePower,
 	food: Food.FoodGrilledSquid,
 	mainHandImbue: WeaponImbue.InstantPoison,
-	offHandImbue: WeaponImbue.DeadlyPoison,
+	offHandImbue: WeaponImbue.DeadlyPoisonRank4,
 	spellPowerBuff: SpellPowerBuff.GreaterArcaneElixir,
 	strengthBuff: StrengthBuff.JujuPower,
 	zanzaBuff: ZanzaBuff.GroundScorpokAssay,
@@ -169,7 +184,7 @@ export const P1RaidBuffs = RaidBuffs.create({
 	strengthOfEarthTotem: TristateEffect.TristateEffectImproved,
 	graceOfAirTotem: TristateEffect.TristateEffectImproved,
 	leaderOfThePack: true,
-	trueshotAura: true, 
+	trueshotAura: true,
 });
 
 export const DefaultRaidBuffs = {

@@ -9,9 +9,17 @@ export const InstantPoisonWeaponImbue: ConsumableInputConfig<WeaponImbue> = {
 	showWhen: player => player.getClass() == Class.ClassRogue,
 };
 
-export const DeadlyPoisonWeaponImbue: ConsumableInputConfig<WeaponImbue> = {
+export const DeadlyPoisonWeaponRank4Imbue: ConsumableInputConfig<WeaponImbue> = {
 	actionId: () => ActionId.fromItemId(8985),
-	value: WeaponImbue.DeadlyPoison,
+	value: WeaponImbue.DeadlyPoisonRank4,
+	// value: WeaponImbue.DeadlyPoisonRank4,
+	showWhen: player => player.getClass() == Class.ClassRogue,
+};
+
+export const DeadlyPoisonWeaponRank5Imbue: ConsumableInputConfig<WeaponImbue> = {
+	actionId: () => ActionId.fromItemId(20844),
+	value: WeaponImbue.DeadlyPoisonRank5,
+	// value: WeaponImbue.DeadlyPoisonRank5,
 	showWhen: player => player.getClass() == Class.ClassRogue,
 };
 

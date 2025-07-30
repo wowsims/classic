@@ -68,10 +68,12 @@ type Rogue struct {
 
 	Evasion *core.Spell
 
-	DeadlyPoison     *core.Spell
-	deadlyPoisonTick *core.Spell
-	InstantPoison    *core.Spell
-	WoundPoison      *core.Spell
+	DeadlyPoisonRank4     *core.Spell
+	DeadlyPoisonRank5     *core.Spell
+	deadlyPoisonRank4Tick *core.Spell
+	deadlyPoisonRank5Tick *core.Spell
+	InstantPoison         *core.Spell
+	WoundPoison           *core.Spell
 
 	additivePoisonBonusChance float64
 
@@ -120,7 +122,8 @@ func (rogue *Rogue) Initialize() {
 
 	// Poisons
 	rogue.registerInstantPoisonSpell()
-	rogue.registerDeadlyPoisonSpell()
+	rogue.registerDeadlyPoisonRank4Spell()
+	rogue.registerDeadlyPoisonRank5Spell()
 	rogue.registerWoundPoisonSpell()
 
 	// Stealth

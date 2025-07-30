@@ -19,6 +19,7 @@ Deadly Poison: 30% proc chance, 5 stacks
 40: 52 damage, 2824 ID, 75 charges
 50: 80 damage, 11355 ID, 90 charges
 60: 108 damage, 11356 ID, 105 charges (Rank 4, Rank 5 is by book)
+60: 136 damage, 25347 ID, 120 charges (Rank 5)
 
 Wound Poison: 30% proc chance, 5 stacks
 25: x damage, x ID (none, first rank is level 32)
@@ -60,7 +61,8 @@ func (rogue *Rogue) getPoisonDamageMultiplier() float64 {
 ///////////////////////////////////////////////////////////////////////////
 
 func (rogue *Rogue) applyPoisons() {
-	rogue.applyDeadlyPoison()
+	rogue.applyDeadlyPoisonRank4()
+	rogue.applyDeadlyPoisonRank5()
 	rogue.applyInstantPoison()
 	rogue.applyWoundPoison()
 }
@@ -90,15 +92,15 @@ func (rogue *Rogue) applyInstantPoison() {
 	})
 }
 
-// Apply Deadly Poison to weapon and enable procs
-func (rogue *Rogue) applyDeadlyPoison() {
-	procMask := rogue.getImbueProcMask(proto.WeaponImbue_DeadlyPoison)
+// Apply Deadly Poison Rank 4 to weapon and enable procs
+func (rogue *Rogue) applyDeadlyPoisonRank4() {
+	procMask := rogue.getImbueProcMask(proto.WeaponImbue_DeadlyPoisonRank4)
 	if procMask == core.ProcMaskUnknown {
 		return
 	}
 
 	rogue.RegisterAura(core.Aura{
-		Label:    "Deadly Poison",
+		Label:    "Deadly Poison Rank 4",
 		Duration: core.NeverExpires,
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
 			aura.Activate(sim)
@@ -107,8 +109,32 @@ func (rogue *Rogue) applyDeadlyPoison() {
 			if !result.Landed() || !spell.ProcMask.Matches(procMask) {
 				return
 			}
-			if sim.RandomFloat("Deadly Poison") < rogue.GetDeadlyPoisonProcChance() {
-				rogue.DeadlyPoison.Cast(sim, result.Target)
+			if sim.RandomFloat("Deadly Poison Rank 4") < rogue.GetDeadlyPoisonProcChance() {
+				rogue.DeadlyPoisonRank4.Cast(sim, result.Target)
+			}
+		},
+	})
+}
+
+// Apply Deadly Poison Rank 5 to weapon and enable procs
+func (rogue *Rogue) applyDeadlyPoisonRank5() {
+	procMask := rogue.getImbueProcMask(proto.WeaponImbue_DeadlyPoisonRank5)
+	if procMask == core.ProcMaskUnknown {
+		return
+	}
+
+	rogue.RegisterAura(core.Aura{
+		Label:    "Deadly Poison Rank 5",
+		Duration: core.NeverExpires,
+		OnReset: func(aura *core.Aura, sim *core.Simulation) {
+			aura.Activate(sim)
+		},
+		OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+			if !result.Landed() || !spell.ProcMask.Matches(procMask) {
+				return
+			}
+			if sim.RandomFloat("Deadly Poison Rank 5") < rogue.GetDeadlyPoisonProcChance() {
+				rogue.DeadlyPoisonRank5.Cast(sim, result.Target)
 			}
 		},
 	})
@@ -147,21 +173,23 @@ func (rogue *Rogue) registerInstantPoisonSpell() {
 	rogue.InstantPoison = rogue.makeInstantPoison()
 }
 
-func (rogue *Rogue) registerDeadlyPoisonSpell() {
+func (rogue *Rogue) registerDeadlyPoisonRank4Spell() {
 	baseDamageTick := map[int32]float64{
 		25: 9,
 		40: 13,
 		50: 20,
-		60: 27,
+		60: 27, // (Rank 4)
+		// 60: 34, // (Rank 5)
 	}[rogue.Level]
 	spellID := map[int32]int32{
 		25: 2823,
 		40: 2824,
 		50: 11355,
-		60: 11356,
+		60: 11356, // (Rank 4)
+		// 60: 25347, // (Rank 5)
 	}[rogue.Level]
 
-	rogue.deadlyPoisonTick = rogue.RegisterSpell(core.SpellConfig{
+	rogue.deadlyPoisonRank4Tick = rogue.RegisterSpell(core.SpellConfig{
 		ActionID:    core.ActionID{SpellID: spellID, Tag: 100},
 		SpellSchool: core.SpellSchoolNature,
 		DefenseType: core.DefenseTypeMagic,
@@ -201,7 +229,66 @@ func (rogue *Rogue) registerDeadlyPoisonSpell() {
 		},
 	})
 
-	rogue.DeadlyPoison = rogue.makeDeadlyPoison()
+	rogue.DeadlyPoisonRank4 = rogue.makeDeadlyPoisonRank4()
+}
+
+func (rogue *Rogue) registerDeadlyPoisonRank5Spell() {
+	baseDamageTick := map[int32]float64{
+		25: 9,
+		40: 13,
+		50: 20,
+		// 60: 27, // (Rank 4)
+		60: 34, // (Rank 5)
+	}[rogue.Level]
+	spellID := map[int32]int32{
+		25: 2823,
+		40: 2824,
+		50: 11355,
+		// 60: 11356, // (Rank 4)
+		60: 25347, // (Rank 5)
+	}[rogue.Level]
+
+	rogue.deadlyPoisonRank5Tick = rogue.RegisterSpell(core.SpellConfig{
+		ActionID:    core.ActionID{SpellID: spellID, Tag: 100},
+		SpellSchool: core.SpellSchoolNature,
+		DefenseType: core.DefenseTypeMagic,
+		ProcMask:    core.ProcMaskSpellDamageProc,
+		Flags:       core.SpellFlagPoison | core.SpellFlagPassiveSpell | SpellFlagRoguePoison,
+
+		DamageMultiplier: rogue.getPoisonDamageMultiplier(),
+		ThreatMultiplier: 1,
+
+		Dot: core.DotConfig{
+			Aura: core.Aura{
+				Label:     "DeadlyPoison",
+				MaxStacks: 5,
+				Duration:  time.Second * 12,
+			},
+			NumberOfTicks: 4,
+			TickLength:    time.Second * 3,
+
+			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, applyStack bool) {
+				if !applyStack {
+					return
+				}
+
+				// only the first stack snapshots the multiplier
+				if dot.GetStacks() == 1 {
+					attackTable := dot.Spell.Unit.AttackTables[target.UnitIndex][dot.Spell.CastType]
+					dot.SnapshotAttackerMultiplier = dot.Spell.AttackerDamageMultiplier(attackTable, true)
+					dot.SnapshotBaseDamage = 0
+				}
+
+				dot.SnapshotBaseDamage += baseDamageTick
+			},
+
+			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
+				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
+			},
+		},
+	})
+
+	rogue.DeadlyPoisonRank5 = rogue.makeDeadlyPoisonRank5()
 }
 
 func (rogue *Rogue) registerWoundPoisonSpell() {
@@ -268,9 +355,9 @@ func (rogue *Rogue) makeInstantPoison() *core.Spell {
 	})
 }
 
-func (rogue *Rogue) makeDeadlyPoison() *core.Spell {
+func (rogue *Rogue) makeDeadlyPoisonRank4() *core.Spell {
 	return rogue.RegisterSpell(core.SpellConfig{
-		ActionID: core.ActionID{SpellID: rogue.deadlyPoisonTick.SpellID},
+		ActionID: core.ActionID{SpellID: rogue.deadlyPoisonRank4Tick.SpellID},
 		Flags:    core.SpellFlagPoison | core.SpellFlagPassiveSpell | SpellFlagRoguePoison,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
@@ -280,7 +367,31 @@ func (rogue *Rogue) makeDeadlyPoison() *core.Spell {
 				return
 			}
 
-			dot := rogue.deadlyPoisonTick.Dot(target)
+			dot := rogue.deadlyPoisonRank4Tick.Dot(target)
+
+			dot.ApplyOrRefresh(sim)
+			if dot.GetStacks() < dot.MaxStacks {
+				dot.AddStack(sim)
+				// snapshotting only takes place when adding a stack
+				dot.TakeSnapshot(sim, true)
+			}
+		},
+	})
+}
+
+func (rogue *Rogue) makeDeadlyPoisonRank5() *core.Spell {
+	return rogue.RegisterSpell(core.SpellConfig{
+		ActionID: core.ActionID{SpellID: rogue.deadlyPoisonRank5Tick.SpellID},
+		Flags:    core.SpellFlagPoison | core.SpellFlagPassiveSpell | SpellFlagRoguePoison,
+
+		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
+			result := spell.CalcAndDealOutcome(sim, target, spell.OutcomeMagicHit)
+
+			if !result.Landed() {
+				return
+			}
+
+			dot := rogue.deadlyPoisonRank5Tick.Dot(target)
 
 			dot.ApplyOrRefresh(sim)
 			if dot.GetStacks() < dot.MaxStacks {

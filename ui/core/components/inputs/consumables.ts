@@ -37,7 +37,7 @@ import { makeBooleanConsumeInput, makeBooleanMiscConsumeInput, makeBooleanPetMis
 import { IconPicker, IconPickerDirection } from '../icon_picker';
 import * as InputHelpers from '../input_helpers';
 import { MultiIconPicker, MultiIconPickerConfig, MultiIconPickerItemConfig } from '../multi_icon_picker';
-import { DeadlyPoisonWeaponImbue, InstantPoisonWeaponImbue, WoundPoisonWeaponImbue } from './rogue_imbues';
+import { DeadlyPoisonWeaponRank4Imbue, DeadlyPoisonWeaponRank5Imbue, InstantPoisonWeaponImbue, WoundPoisonWeaponImbue } from './rogue_imbues';
 import { FlametongueWeaponImbue, FrostbrandWeaponImbue, RockbiterWeaponImbue, WindfuryWeaponImbue } from './shaman_imbues';
 import { ActionInputConfig, ItemStatOption, PickerStatOptions, StatOptions } from './stat_options';
 
@@ -803,7 +803,7 @@ export const Windfury: ConsumableInputConfig<WeaponImbue> = {
 	actionId: () => ActionId.fromSpellId(10614),
 	value: WeaponImbue.Windfury,
 	showWhen: player => {
-		return (player.getFaction() === Faction.Horde) && !player.isSpec(Spec.SpecFeralDruid)
+		return player.getFaction() === Faction.Horde && !player.isSpec(Spec.SpecFeralDruid);
 	},
 };
 
@@ -989,7 +989,8 @@ const SHAMAN_IMBUES = (slot: ItemSlot): ConsumableStatOption<WeaponImbue>[] => [
 
 const ROGUE_IMBUES: ConsumableStatOption<WeaponImbue>[] = [
 	{ config: InstantPoisonWeaponImbue, stats: [] },
-	{ config: DeadlyPoisonWeaponImbue, stats: [] },
+	{ config: DeadlyPoisonWeaponRank4Imbue, stats: [] },
+	{ config: DeadlyPoisonWeaponRank5Imbue, stats: [] },
 	{ config: WoundPoisonWeaponImbue, stats: [] },
 ];
 
