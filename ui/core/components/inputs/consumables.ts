@@ -503,6 +503,10 @@ export const GizzardGum: ConsumableInputConfig<ZanzaBuff> = {
 	actionId: () => ActionId.fromItemId(8424),
 	value: ZanzaBuff.GizzardGum,
 };
+export const DarnassusGiftCollection: ConsumableInputConfig<ZanzaBuff> = {
+	actionId: () => ActionId.fromItemId(22133),
+	value: ZanzaBuff.DarnassusGiftCollection,
+};
 
 // Zanza Potions
 export const SpiritOfZanza: ConsumableInputConfig<ZanzaBuff> = {
@@ -517,6 +521,7 @@ export const ZANZA_BUFF_CONSUMES_CONFIG: ConsumableStatOption<ZanzaBuff>[] = [
 	{ config: LungJuiceCocktail, stats: [Stat.StatStamina] },
 	{ config: CerebralCortexCompound, stats: [Stat.StatIntellect] },
 	{ config: GizzardGum, stats: [Stat.StatSpirit] },
+	{ config: DarnassusGiftCollection, stats: [Stat.StatAgility] },
 ];
 export const makeZanzaBuffConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'zanzaBuff' });
 

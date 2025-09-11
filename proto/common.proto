@@ -464,6 +464,7 @@ enum ZanzaBuff {
 	CerebralCortexCompound = 6;
 	GizzardGum = 7;
 	LungJuiceCocktail = 8;
+	DarnassusGiftCollection = 9;
 }
 
 message MiscConsumes {

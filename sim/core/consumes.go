@@ -615,6 +615,10 @@ func applyZanzaBuffConsumes(character *Character, consumes *proto.Consumes) {
 		character.AddStats(stats.Stats{
 			stats.Stamina: 25,
 		})
+	case proto.ZanzaBuff_DarnassusGiftCollection:
+		character.AddStats(stats.Stats{
+			stats.Agility: 30,
+		})
 	}
 }
 
