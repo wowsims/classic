@@ -56,7 +56,7 @@ var EnchantOverrides = []*proto.UIEnchant{
 	// Warlock
 	{EffectId: 2589, ItemId: 19788, SpellId: 24165, Name: "Hoodoo Hex", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Stamina: 10, stats.SpellPower: 18}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 4, ClassAllowlist: []proto.Class{proto.Class_ClassWarlock}},
 	// Warrior
-	{EffectId: 2583, ItemId: 19782, SpellId: 24149, Name: "Presence of Might", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Stamina: 20, stats.Defense: 7, stats.BlockValue: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 4, ClassAllowlist: []proto.Class{proto.Class_ClassWarrior}},
+	{EffectId: 2583, ItemId: 19782, SpellId: 24149, Name: "Presence of Might", Quality: proto.ItemQuality_ItemQualityRare, Stats: stats.Stats{stats.Stamina: 10, stats.Defense: 7, stats.BlockValue: 15}.ToFloatArray(), Type: proto.ItemType_ItemTypeHead, ExtraTypes: []proto.ItemType{proto.ItemType_ItemTypeLegs}, EnchantType: proto.EnchantType_EnchantTypeKit, Phase: 4, ClassAllowlist: []proto.Class{proto.Class_ClassWarrior}},
 
 	// Head
 
