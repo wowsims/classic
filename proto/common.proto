@@ -467,6 +467,12 @@ enum ZanzaBuff {
 	DarnassusGiftCollection = 9;
 }
 
+enum HitConsumable {
+	HitConsumableUnknown = 0;
+	FireToastedBun = 1;
+	DarkDesire = 2;
+}
+
 message MiscConsumes {
 	bool bogling_root = 1;
 	bool juju_ember = 2;
@@ -680,6 +686,7 @@ message Consumes {
 	int32 pet_attack_power_consumable = 25;
 	PetMiscConsumes pet_misc_consumes = 27;
 	SapperExplosive sapper_explosive = 28;
+	HitConsumable hit_consumable = 29;
 }
 
 // NextIndex: 26

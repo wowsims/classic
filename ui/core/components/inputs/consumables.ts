@@ -15,6 +15,7 @@ import {
 	Food,
 	FrostPowerBuff,
 	HealthElixir,
+	HitConsumable,
 	ItemSlot,
 	ManaRegenElixir,
 	Potions,
@@ -524,6 +525,21 @@ export const ZANZA_BUFF_CONSUMES_CONFIG: ConsumableStatOption<ZanzaBuff>[] = [
 	{ config: DarnassusGiftCollection, stats: [Stat.StatAgility] },
 ];
 export const makeZanzaBuffConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'zanzaBuff' });
+
+// Hit Consumables
+export const FireToastedBun: ConsumableInputConfig<HitConsumable> = {
+	actionId: () => ActionId.fromItemId(23327),
+	value: HitConsumable.FireToastedBun,
+};
+export const DarkDesire: ConsumableInputConfig<HitConsumable> = {
+	actionId: () => ActionId.fromItemId(22237),
+	value: HitConsumable.DarkDesire,
+};
+export const HIT_CONSUMABLE_CONFIG: ConsumableStatOption<HitConsumable>[] = [
+	{ config: FireToastedBun, stats: [Stat.StatMeleeHit] },
+	{ config: DarkDesire, stats: [Stat.StatMeleeHit] },
+];
+export const makeHitConsumableInput = makeConsumeInputFactory({ consumesFieldName: 'hitConsumable' });
 
 export const JujuFlurry = makeBooleanMiscConsumeInput({
 	actionId: () => ActionId.fromItemId(12450),

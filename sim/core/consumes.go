@@ -24,6 +24,7 @@ func applyConsumeEffects(agent Agent) {
 	applyPhysicalBuffConsumes(character, consumes)
 	applySpellBuffConsumes(character, consumes)
 	applyZanzaBuffConsumes(character, consumes)
+	applyHitConsumableConsumes(character, consumes)
 	applyMiscConsumes(character, consumes.MiscConsumes)
 
 	registerPotionCD(agent, consumes)
@@ -618,6 +619,27 @@ func applyZanzaBuffConsumes(character *Character, consumes *proto.Consumes) {
 	case proto.ZanzaBuff_DarnassusGiftCollection:
 		character.AddStats(stats.Stats{
 			stats.Agility: 30,
+		})
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+//                             Hit Consumables
+///////////////////////////////////////////////////////////////////////////
+
+func applyHitConsumableConsumes(character *Character, consumes *proto.Consumes) {
+	if consumes.HitConsumable == proto.HitConsumable_HitConsumableUnknown {
+		return
+	}
+
+	switch consumes.HitConsumable {
+	case proto.HitConsumable_FireToastedBun:
+		character.AddStats(stats.Stats{
+			stats.MeleeHit: 2 * MeleeHitRatingPerHitChance,
+		})
+	case proto.HitConsumable_DarkDesire:
+		character.AddStats(stats.Stats{
+			stats.MeleeHit: 2 * MeleeHitRatingPerHitChance,
 		})
 	}
 }
