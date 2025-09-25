@@ -381,6 +381,19 @@ var ItemSetUndeadSlayersArmor = core.NewItemSet(core.ItemSet{
 	},
 })
 
+var ItemSetGarbOfTheUndeadSlayer = core.NewItemSet(core.ItemSet{
+	Name: "Garb of the Undead Slayer",
+	Bonuses: map[int32]core.ApplyEffect{
+		// Increases your damage against undead by 2%.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
+				character.PseudoStats.DamageDealtMultiplier *= 1.02
+			}
+		},
+	},
+})
+
 var ItemSetBattlegearOfUndeadSlaying = core.NewItemSet(core.ItemSet{
 	Name: "Battlegear of Undead Slaying",
 	Bonuses: map[int32]core.ApplyEffect{
