@@ -30,6 +30,7 @@ type ProcHandler func(sim *Simulation, spell *Spell, result *SpellResult)
 type ProcTrigger struct {
 	Name              string
 	ActionID          ActionID
+	ActionIDForProc   ActionID
 	Duration          time.Duration
 	Callback          AuraCallback
 	ProcMask          ProcMask
@@ -138,7 +139,8 @@ func ApplyProcTriggerCallback(unit *Unit, aura *Aura, config ProcTrigger) {
 func MakeProcTriggerAura(unit *Unit, config ProcTrigger) *Aura {
 	aura := Aura{
 		Label:           config.Name,
-		ActionIDForProc: config.ActionID,
+		ActionID:        config.ActionID,
+		ActionIDForProc: config.ActionIDForProc,
 		Duration:        config.Duration,
 	}
 	if config.Duration == 0 {
