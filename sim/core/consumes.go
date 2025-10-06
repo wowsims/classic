@@ -106,8 +106,14 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				stats.SpellCrit:  1 * SpellCritRatingPerCritChance,
 			})
 		case proto.WeaponImbue_BlessedWizardOil:
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.MobTypeSpellPower += 60
+			for _, target := range character.Env.Encounter.TargetUnits {
+				if target.MobType != proto.MobType_MobTypeUndead {
+					continue
+				}
+
+				for _, at := range character.AttackTables[target.UnitIndex] {
+					at.BonusSpellDamageTaken += 60
+				}
 			}
 
 		// Mana Oils
@@ -152,8 +158,14 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				character.AddBonusRangedCritRating(-2.0)
 			}
 		case proto.WeaponImbue_ConsecratedSharpeningStone:
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.MobTypeAttackPower += 100
+			for _, target := range character.Env.Encounter.TargetUnits {
+				if target.MobType != proto.MobType_MobTypeUndead {
+					continue
+				}
+
+				for _, at := range character.AttackTables[target.UnitIndex] {
+					at.BonusAttackPowerTaken += 100
+				}
 			}
 
 		// Weightstones

@@ -105,7 +105,7 @@ func (paladin *Paladin) registerSealOfCommand() {
 			BonusCoefficient: 0.29,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower())
+				baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(target))
 				result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 
 				core.StartDelayedAction(sim, core.DelayedActionOptions{

@@ -114,7 +114,7 @@ func (paladin *Paladin) registerSealOfRighteousness() {
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				// effectively scales with coeff x 2, and damage dealt multipliers affect half the damage taken bonus
-				baseDamage := damage*improvedSoR + spell.BonusCoefficient*(spell.GetBonusDamage()+target.GetSchoolBonusDamageTaken(spell))
+				baseDamage := damage*improvedSoR + spell.BonusCoefficient*(spell.GetBonusDamage(target)+target.GetSchoolBonusDamageTaken(spell))
 				spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialCritOnly)
 			},
 		})

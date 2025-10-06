@@ -95,7 +95,7 @@ func (druid *Druid) newFerociousBiteSpellConfig(rank FerociousBiteRankInfo) core
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			comboPoints := float64(druid.ComboPoints())
-			attackPower := spell.MeleeAttackPower()
+			attackPower := spell.MeleeAttackPower(target)
 			excessEnergy := druid.CurrentEnergy()
 
 			baseDamage := rank.dmgBase + rank.dmgRange*sim.RandomFloat("Ferocious Bite") +
