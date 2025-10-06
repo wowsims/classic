@@ -3577,7 +3577,7 @@ func init() {
 		})
 
 		auraLabel := "Badge of the Swarmguard"
-		actionID := core.ActionID{SpellID: 26480}
+		actionID := core.ActionID{ItemID: BadgeOfTheSwarmguard}
 		trinketAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
 			Name:              auraLabel,
 			ActionID:          actionID,
