@@ -123,8 +123,9 @@ export class ConsumesPicker extends Component {
 	private buildPhysicalBuffPickers() {
 		const includeAgi = this.simUI.individualConfig.epStats.includes(Stat.StatAgility);
 		const includeStr = this.simUI.individualConfig.epStats.includes(Stat.StatStrength);
+		const includeHit = this.simUI.individualConfig.epStats.includes(Stat.StatMeleeHit);
 
-		if (!includeAgi && !includeStr) return;
+		if (!includeAgi && !includeStr && !includeHit) return;
 
 		const fragment = document.createElement('fragment');
 		fragment.innerHTML = `
@@ -146,11 +147,16 @@ export class ConsumesPicker extends Component {
 			relevantStatOptions(ConsumablesInputs.STRENGTH_CONSUMES_CONFIG, this.simUI),
 			'Strength',
 		);
+		const hitConsumableOptions = ConsumablesInputs.makeHitConsumableInput(
+			relevantStatOptions(ConsumablesInputs.HIT_CONSUMABLE_CONFIG, this.simUI),
+			'Hit',
+		);
 
 		const pickers = [
 			buildIconInput(physicalConsumesElem, this.simUI.player, apBuffOptions),
 			buildIconInput(physicalConsumesElem, this.simUI.player, agiBuffOptions),
 			buildIconInput(physicalConsumesElem, this.simUI.player, strBuffOptions),
+			buildIconInput(physicalConsumesElem, this.simUI.player, hitConsumableOptions),
 		];
 
 		this.updateRow(row, pickers);
