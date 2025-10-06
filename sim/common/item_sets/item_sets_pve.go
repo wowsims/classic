@@ -361,9 +361,20 @@ var ItemSetRegaliaOfUndeadCleansing = core.NewItemSet(core.ItemSet{
 		// Increases your damage against undead by 2%.
 		3: func(agent core.Agent) {
 			character := agent.GetCharacter()
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.DamageDealtMultiplier *= 1.02
-			}
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
 		},
 	},
 })
@@ -374,18 +385,20 @@ var ItemSetUndeadSlayersArmor = core.NewItemSet(core.ItemSet{
 		// Increases your damage against undead by 2%.
 		3: func(agent core.Agent) {
 			character := agent.GetCharacter()
-
 			delta := 1.02
-			for _, target := range character.Env.Encounter.TargetUnits {
-				if target.MobType != proto.MobType_MobTypeUndead {
-					continue
-				}
 
-				for _, at := range character.AttackTables[target.UnitIndex] {
-					at.DamageDealtMultiplier *= delta
-					at.CritMultiplier *= delta
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
 				}
-			}
+			})
 		},
 	},
 })
@@ -396,9 +409,20 @@ var ItemSetGarbOfTheUndeadSlayer = core.NewItemSet(core.ItemSet{
 		// Increases your damage against undead by 2%.
 		3: func(agent core.Agent) {
 			character := agent.GetCharacter()
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.DamageDealtMultiplier *= 1.02
-			}
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
 		},
 	},
 })
@@ -409,9 +433,20 @@ var ItemSetBattlegearOfUndeadSlaying = core.NewItemSet(core.ItemSet{
 		// Increases your damage against undead by 2%.
 		3: func(agent core.Agent) {
 			character := agent.GetCharacter()
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.DamageDealtMultiplier *= 1.02
-			}
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
 		},
 	},
 })
