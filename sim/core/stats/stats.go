@@ -426,9 +426,6 @@ type PseudoStats struct {
 	IncreasedMissChance  float64 // Insect Swarm and Scorpid Sting
 	DodgeReduction       float64 // Target dodge reduction effects e.g. "reduces its target's chance to Dodge by X%"
 
-	MobTypeAttackPower float64 // Bonus AP against mobs of the current type.
-	MobTypeSpellPower  float64 // Bonus SP against mobs of the current type.
-
 	ThreatMultiplier float64 // Modulates the threat generated. Affected by things like salv.
 
 	DamageDealtMultiplier       float64                   // All damage
@@ -481,9 +478,8 @@ type PseudoStats struct {
 
 	ReducedCritTakenChance float64 // Reduces chance to be crit.
 
-	BonusRangedAttackPowerTaken float64 // Hunters mark
-	BonusMeleeHitRatingTaken    float64 // Formerly Imp FF and SW Radiance;
-	BonusSpellHitRatingTaken    float64 // Imp FF
+	BonusMeleeHitRatingTaken float64 // Formerly Imp FF and SW Radiance;
+	BonusSpellHitRatingTaken float64 // Imp FF
 
 	BonusHealingTaken float64 // Talisman of Troll Divinity
 

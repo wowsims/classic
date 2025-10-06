@@ -17,7 +17,7 @@ func (rogue *Rogue) registerHemorrhageSpell() {
 
 	var hemoAuras core.AuraArray
 	hemoAuras = rogue.NewEnemyAuraArray(func(target *core.Unit) *core.Aura {
-			return core.HemorrhageAura(target)
+		return core.HemorrhageAura(target)
 	})
 
 	rogue.Hemorrhage = rogue.RegisterSpell(core.SpellConfig{
@@ -47,7 +47,7 @@ func (rogue *Rogue) registerHemorrhageSpell() {
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			rogue.BreakStealth(sim)
-			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower())
+			baseDamage := spell.Unit.MHWeaponDamage(sim, spell.MeleeAttackPower(target))
 
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 

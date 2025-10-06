@@ -233,18 +233,27 @@ func init() {
 	// Chance on hit: Increases Attack Power against Undead by 200 for 10 sec.
 	// 1 PPM from Armaments Discord
 	itemhelpers.CreateWeaponProcAura(ArgentAvenger, "Argent Avenger", 1.0, func(character *core.Character) *core.Aura {
+		matchingTargets := core.FilterSlice(
+			character.Env.Encounter.TargetUnits,
+			func(unit *core.Unit) bool { return unit.MobType == proto.MobType_MobTypeUndead },
+		)
+
 		return character.GetOrRegisterAura(core.Aura{
 			ActionID: core.ActionID{SpellID: 17352},
 			Label:    "Argent Avenger",
 			Duration: time.Second * 10,
 			OnGain: func(aura *core.Aura, sim *core.Simulation) {
-				if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-					character.PseudoStats.MobTypeAttackPower += 200
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken += 200
+					}
 				}
 			},
 			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-					character.PseudoStats.MobTypeAttackPower -= 200
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken -= 200
+					}
 				}
 			},
 		})
@@ -893,13 +902,8 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=10696/enchanted-azsharite-felbane-sword
-	core.NewItemEffect(EnchantedAzshariteSword, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeElemental {
-			character.PseudoStats.MobTypeAttackPower += 33
-		}
-	})
+	// Equip: +33 Attack Power when fighting Demons.
+	core.NewMobTypeAttackPowerEffect(EnchantedAzshariteSword, []proto.MobType{proto.MobType_MobTypeDemon}, 33)
 
 	// https://www.wowhead.com/classic/item=18202/eskhandars-left-claw
 	// Chance on hit: Slows enemy's movement by 60% and causes them to bleed for 150 damage over 30 sec.
@@ -998,13 +1002,8 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=18310/fiendish-machete
-	core.NewItemEffect(FiendishMachete, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeElemental {
-			character.PseudoStats.MobTypeAttackPower += 36
-		}
-	})
+	// Equip: +36 Attack Power when fighting Elementals.
+	core.NewMobTypeAttackPowerEffect(FiendishMachete, []proto.MobType{proto.MobType_MobTypeElemental}, 36)
 
 	// https://www.wowhead.com/classic/item=870/fiery-war-axe
 	itemhelpers.CreateWeaponProcSpell(FieryWarAxe, "Fiery War Axe", 1.0, func(character *core.Character) *core.Spell {
@@ -1803,13 +1802,7 @@ func init() {
 	itemhelpers.CreateWeaponCoHProcDamage(PendulumOfDoom, "Pendulum of Doom", 0.5, 10373, core.SpellSchoolPhysical, 250, 100, 0, core.DefenseTypeMelee)
 
 	// https://www.wowhead.com/classic/item=12709/pips-skinner
-	core.NewItemEffect(PipsSkinner, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeBeast {
-			character.PseudoStats.MobTypeAttackPower += 45
-		}
-	})
+	core.NewMobTypeAttackPowerEffect(PipsSkinner, []proto.MobType{proto.MobType_MobTypeBeast}, 45)
 
 	// https://www.wowhead.com/classic/item=18816/perditions-blade
 	// Chance on hit: Blasts a target for 40 to 56 Fire damage.
@@ -1877,7 +1870,7 @@ func init() {
 			BonusCoefficient: 1,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				damage := 5.0 + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+				damage := 5.0 + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target))
 				for _, aoeTarget := range sim.Encounter.TargetUnits {
 					spell.CalcAndDealDamage(sim, aoeTarget, damage, spell.OutcomeMeleeSpecialHitAndCrit)
 				}

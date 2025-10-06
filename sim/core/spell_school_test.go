@@ -283,14 +283,37 @@ func Test_MultiSchoolResistanceArmor(t *testing.T) {
 
 func Test_MultiSchoolSpellPower(t *testing.T) {
 	caster := &Unit{
-		Type:        PlayerUnit,
-		Level:       60,
+		Type:         PlayerUnit,
+		Level:        60,
+		stats:        stats.Stats{},
+		PseudoStats:  stats.NewPseudoStats(),
+		AttackTables: make([]map[proto.CastType]*AttackTable, 1),
+	}
+
+	target := &Unit{
+		Type:        EnemyUnit,
+		Level:       63,
 		stats:       stats.Stats{},
 		PseudoStats: stats.NewPseudoStats(),
+		UnitIndex:   0,
 	}
 
 	spell := &Spell{
-		Unit: caster,
+		Unit:     caster,
+		CastType: proto.CastType_CastTypeMainHand,
+	}
+
+	caster.AttackTables[target.UnitIndex] = make(map[proto.CastType]*AttackTable, 1)
+	caster.AttackTables[target.UnitIndex][spell.CastType] = &AttackTable{
+		Attacker: caster,
+		Defender: target,
+		Weapon:   &Item{},
+
+		CritMultiplier: 1,
+
+		DamageDealtMultiplier:  1,
+		DamageTakenMultiplier:  1,
+		HealingDealtMultiplier: 1,
 	}
 
 	for schoolIndex1 := stats.SchoolIndexArcane; schoolIndex1 < stats.SchoolLen; schoolIndex1++ {
@@ -357,7 +380,7 @@ func Test_MultiSchoolSpellPower(t *testing.T) {
 					return
 				}
 
-				power := spell.GetBonusDamage()
+				power := spell.GetBonusDamage(target)
 				if power != highestValue {
 					t.Errorf("Expected %f to be highest power value found, but got %f for school %d!", highestValue, power, schoolMask)
 					return

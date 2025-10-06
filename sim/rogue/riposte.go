@@ -40,7 +40,7 @@ func (rogue *Rogue) applyRiposte() {
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 			riposteReady.Deactivate(sim)
 
-			damage := rogue.MHWeaponDamage(sim, spell.MeleeAttackPower())
+			damage := rogue.MHWeaponDamage(sim, spell.MeleeAttackPower(target))
 			spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 		},
 	})

@@ -150,20 +150,65 @@ func NewSimpleStatDefensiveTrinketEffect(itemID int32, bonus stats.Stats, durati
 	}, nil)
 }
 
-// TODO: These should ideally be done at the AttackTable level
+// Apply a +X Attack Power when fighting Mob Type effect
+// These effects seem to always apply to both melee and ranged attack power in-game
+// Apply Aura: Mod Melee Attack Power vs Creature (Mob Type)
+// Apply Aura: Mod Ranged Attack Power vs Creature (Mob Type)
 func NewMobTypeAttackPowerEffect(itemID int32, mobTypes []proto.MobType, bonus float64) {
 	NewItemEffect(itemID, func(agent Agent) {
 		character := agent.GetCharacter()
-		if slices.Contains(mobTypes, character.CurrentTarget.MobType) {
-			character.PseudoStats.MobTypeAttackPower += bonus
-		}
+
+		matchingTargets := FilterSlice(
+			character.Env.Encounter.TargetUnits,
+			func(unit *Unit) bool { return slices.Contains(mobTypes, unit.MobType) },
+		)
+
+		MakePermanent(character.GetOrRegisterAura(Aura{
+			Label: fmt.Sprintf("Mob type Attack Power Bonus - %s (%d)", mobTypes, itemID),
+			OnGain: func(aura *Aura, sim *Simulation) {
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken += bonus
+					}
+				}
+			},
+			OnExpire: func(aura *Aura, sim *Simulation) {
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken -= bonus
+					}
+				}
+			},
+		}))
 	})
 }
+
+// Apply a +X Spell Damage when fighting Mob Type effect
 func NewMobTypeSpellPowerEffect(itemID int32, mobTypes []proto.MobType, bonus float64) {
 	NewItemEffect(itemID, func(agent Agent) {
 		character := agent.GetCharacter()
-		if slices.Contains(mobTypes, character.CurrentTarget.MobType) {
-			character.PseudoStats.MobTypeSpellPower += bonus
-		}
+
+		matchingTargets := FilterSlice(
+			character.Env.Encounter.TargetUnits,
+			func(unit *Unit) bool { return slices.Contains(mobTypes, unit.MobType) },
+		)
+
+		MakePermanent(character.GetOrRegisterAura(Aura{
+			Label: fmt.Sprintf("Mob type Spell Damage Bonus - %s (%d)", mobTypes, itemID),
+			OnGain: func(aura *Aura, sim *Simulation) {
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusSpellDamageTaken += bonus
+					}
+				}
+			},
+			OnExpire: func(aura *Aura, sim *Simulation) {
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusSpellDamageTaken -= bonus
+					}
+				}
+			},
+		}))
 	})
 }
