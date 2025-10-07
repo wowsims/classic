@@ -106,15 +106,17 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				stats.SpellCrit:  1 * SpellCritRatingPerCritChance,
 			})
 		case proto.WeaponImbue_BlessedWizardOil:
-			for _, target := range character.Env.Encounter.TargetUnits {
-				if target.MobType != proto.MobType_MobTypeUndead {
-					continue
-				}
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
 
-				for _, at := range character.AttackTables[target.UnitIndex] {
-					at.BonusSpellDamageTaken += 60
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusSpellDamageTaken += 60
+					}
 				}
-			}
+			})
 
 		// Mana Oils
 		case proto.WeaponImbue_MinorManaOil:
@@ -158,15 +160,17 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				character.AddBonusRangedCritRating(-2.0)
 			}
 		case proto.WeaponImbue_ConsecratedSharpeningStone:
-			for _, target := range character.Env.Encounter.TargetUnits {
-				if target.MobType != proto.MobType_MobTypeUndead {
-					continue
-				}
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
 
-				for _, at := range character.AttackTables[target.UnitIndex] {
-					at.BonusAttackPowerTaken += 100
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken += 100
+					}
 				}
-			}
+			})
 
 		// Weightstones
 		case proto.WeaponImbue_SolidWeightstone:
