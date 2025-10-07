@@ -807,12 +807,16 @@ func HuntersMarkAura(target *Unit, points int32) *Aura {
 		Priority: bonus,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
 			for _, unit := range sim.Environment.Raid.AllUnits {
-				unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged].BonusAttackPowerTaken += bonus
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken += bonus
+				}
 			}
 		},
 		OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
 			for _, unit := range sim.Environment.Raid.AllUnits {
-				unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged].BonusAttackPowerTaken -= bonus
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken -= bonus
+				}
 			}
 		},
 	})
