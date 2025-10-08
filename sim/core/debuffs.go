@@ -833,12 +833,16 @@ func ExposeWeaknessAura(target *Unit) *Aura {
 		Duration: time.Second * 7,
 		OnGain: func(aura *Aura, sim *Simulation) {
 			for _, unit := range sim.Environment.Raid.AllUnits {
-				unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged].BonusAttackPowerTaken += bonus
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken += bonus
+				}
 			}
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
 			for _, unit := range sim.Environment.Raid.AllUnits {
-				unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged].BonusAttackPowerTaken -= bonus
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken -= bonus
+				}
 			}
 		},
 	})
