@@ -57,7 +57,7 @@ func (rogue *Rogue) registerGarrote() {
 			NumberOfTicks: 6,
 			TickLength:    time.Second * 3,
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				damage := baseDamage + dot.Spell.MeleeAttackPower()*0.03
+				damage := baseDamage + dot.Spell.MeleeAttackPower(target)*0.03
 				dot.Snapshot(target, damage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {

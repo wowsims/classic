@@ -42,7 +42,7 @@ func (warrior *Warrior) registerSweepingStrikesCD() {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			damage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+			damage := spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target))
 			spell.CalcAndDealDamage(sim, target, damage, spell.OutcomeMeleeSpecialCritOnly)
 		},
 	})

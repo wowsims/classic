@@ -24,6 +24,7 @@ func applyConsumeEffects(agent Agent) {
 	applyPhysicalBuffConsumes(character, consumes)
 	applySpellBuffConsumes(character, consumes)
 	applyZanzaBuffConsumes(character, consumes)
+	applyHitConsumableConsumes(character, consumes)
 	applyMiscConsumes(character, consumes.MiscConsumes)
 
 	registerPotionCD(agent, consumes)
@@ -105,9 +106,17 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				stats.SpellCrit:  1 * SpellCritRatingPerCritChance,
 			})
 		case proto.WeaponImbue_BlessedWizardOil:
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.MobTypeSpellPower += 60
-			}
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusSpellDamageTaken += 60
+					}
+				}
+			})
 
 		// Mana Oils
 		case proto.WeaponImbue_MinorManaOil:
@@ -151,9 +160,17 @@ func addImbueStats(character *Character, imbue proto.WeaponImbue, isMh bool, sha
 				character.AddBonusRangedCritRating(-2.0)
 			}
 		case proto.WeaponImbue_ConsecratedSharpeningStone:
-			if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-				character.PseudoStats.MobTypeAttackPower += 100
-			}
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken += 100
+					}
+				}
+			})
 
 		// Weightstones
 		case proto.WeaponImbue_SolidWeightstone:
@@ -614,6 +631,31 @@ func applyZanzaBuffConsumes(character *Character, consumes *proto.Consumes) {
 	case proto.ZanzaBuff_LungJuiceCocktail:
 		character.AddStats(stats.Stats{
 			stats.Stamina: 25,
+		})
+	case proto.ZanzaBuff_DarnassusGiftCollection:
+		character.AddStats(stats.Stats{
+			stats.Agility: 30,
+		})
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////
+//                             Hit Consumables
+///////////////////////////////////////////////////////////////////////////
+
+func applyHitConsumableConsumes(character *Character, consumes *proto.Consumes) {
+	if consumes.HitConsumable == proto.HitConsumable_HitConsumableUnknown {
+		return
+	}
+
+	switch consumes.HitConsumable {
+	case proto.HitConsumable_FireToastedBun:
+		character.AddStats(stats.Stats{
+			stats.MeleeHit: 2 * MeleeHitRatingPerHitChance,
+		})
+	case proto.HitConsumable_DarkDesire:
+		character.AddStats(stats.Stats{
+			stats.MeleeHit: 2 * MeleeHitRatingPerHitChance,
 		})
 	}
 }

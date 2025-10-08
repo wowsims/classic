@@ -464,6 +464,13 @@ enum ZanzaBuff {
 	CerebralCortexCompound = 6;
 	GizzardGum = 7;
 	LungJuiceCocktail = 8;
+	DarnassusGiftCollection = 9;
+}
+
+enum HitConsumable {
+	HitConsumableUnknown = 0;
+	FireToastedBun = 1;
+	DarkDesire = 2;
 }
 
 message MiscConsumes {
@@ -679,6 +686,7 @@ message Consumes {
 	int32 pet_attack_power_consumable = 25;
 	PetMiscConsumes pet_misc_consumes = 27;
 	SapperExplosive sapper_explosive = 28;
+	HitConsumable hit_consumable = 29;
 }
 
 // NextIndex: 26

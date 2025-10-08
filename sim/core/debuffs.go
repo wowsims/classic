@@ -806,10 +806,18 @@ func HuntersMarkAura(target *Unit, points int32) *Aura {
 	aura.NewExclusiveEffect("HuntersMark", true, ExclusiveEffect{
 		Priority: bonus,
 		OnGain: func(ee *ExclusiveEffect, sim *Simulation) {
-			ee.Aura.Unit.PseudoStats.BonusRangedAttackPowerTaken += bonus
+			for _, unit := range sim.Environment.Raid.AllUnits {
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken += bonus
+				}
+			}
 		},
 		OnExpire: func(ee *ExclusiveEffect, sim *Simulation) {
-			ee.Aura.Unit.PseudoStats.BonusRangedAttackPowerTaken -= bonus
+			for _, unit := range sim.Environment.Raid.AllUnits {
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken -= bonus
+				}
+			}
 		},
 	})
 
@@ -824,10 +832,18 @@ func ExposeWeaknessAura(target *Unit) *Aura {
 		Label:    "Expose Weakness",
 		Duration: time.Second * 7,
 		OnGain: func(aura *Aura, sim *Simulation) {
-			target.PseudoStats.BonusRangedAttackPowerTaken += bonus
+			for _, unit := range sim.Environment.Raid.AllUnits {
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken += bonus
+				}
+			}
 		},
 		OnExpire: func(aura *Aura, sim *Simulation) {
-			target.PseudoStats.BonusRangedAttackPowerTaken -= bonus
+			for _, unit := range sim.Environment.Raid.AllUnits {
+				if rangedAttackTable := unit.AttackTables[target.UnitIndex][proto.CastType_CastTypeRanged]; rangedAttackTable != nil {
+					rangedAttackTable.BonusAttackPowerTaken -= bonus
+				}
+			}
 		},
 	})
 

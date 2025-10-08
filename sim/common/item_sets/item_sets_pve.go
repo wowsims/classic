@@ -2,8 +2,10 @@ package item_sets
 
 import (
 	"time"
+
 	"github.com/wowsims/classic/sim/common/guardians"
 	"github.com/wowsims/classic/sim/core"
+	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
 
@@ -348,6 +350,102 @@ var ItemSetZanzilsConcentration = core.NewItemSet(core.ItemSet{
 				stats.SpellPower: 6,
 				stats.SpellHit:   1 * core.SpellHitRatingPerHitChance,
 				stats.MeleeHit:   1 * core.MeleeHitRatingPerHitChance,
+			})
+		},
+	},
+})
+
+var ItemSetRegaliaOfUndeadCleansing = core.NewItemSet(core.ItemSet{
+	Name: "Regalia of Undead Cleansing",
+	Bonuses: map[int32]core.ApplyEffect{
+		// Increases your damage against undead by 2%.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
+		},
+	},
+})
+
+var ItemSetUndeadSlayersArmor = core.NewItemSet(core.ItemSet{
+	Name: "Undead Slayer's Armor",
+	Bonuses: map[int32]core.ApplyEffect{
+		// Increases your damage against undead by 2%.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
+		},
+	},
+})
+
+var ItemSetGarbOfTheUndeadSlayer = core.NewItemSet(core.ItemSet{
+	Name: "Garb of the Undead Slayer",
+	Bonuses: map[int32]core.ApplyEffect{
+		// Increases your damage against undead by 2%.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
+			})
+		},
+	},
+})
+
+var ItemSetBattlegearOfUndeadSlaying = core.NewItemSet(core.ItemSet{
+	Name: "Battlegear of Undead Slaying",
+	Bonuses: map[int32]core.ApplyEffect{
+		// Increases your damage against undead by 2%.
+		3: func(agent core.Agent) {
+			character := agent.GetCharacter()
+			delta := 1.02
+
+			character.Env.RegisterPostFinalizeEffect(func() {
+				for _, target := range character.Env.Encounter.TargetUnits {
+					if target.MobType != proto.MobType_MobTypeUndead {
+						continue
+					}
+
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.DamageDealtMultiplier *= delta
+						at.CritMultiplier *= delta
+					}
+				}
 			})
 		},
 	},

@@ -32,7 +32,7 @@ func (rogue *Rogue) registerEviscerate() {
 		25: 6762,
 		40: 8624,
 		50: 11299,
-		60: core.TernaryInt32(core.IncludeAQ, 31016, 11300), 
+		60: core.TernaryInt32(core.IncludeAQ, 31016, 11300),
 	}[rogue.Level]
 
 	rogue.Eviscerate = rogue.RegisterSpell(core.SpellConfig{
@@ -74,7 +74,7 @@ func (rogue *Rogue) registerEviscerate() {
 			flatBaseDamage := flatDamage + comboDamageBonus*float64(comboPoints)
 
 			baseDamage := sim.Roll(flatBaseDamage, flatBaseDamage+damageVariance) +
-				0.03*float64(comboPoints)*spell.MeleeAttackPower()
+				0.03*float64(comboPoints)*spell.MeleeAttackPower(target)
 
 			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMeleeSpecialHitAndCrit)
 

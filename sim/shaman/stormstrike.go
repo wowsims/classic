@@ -40,7 +40,7 @@ func (shaman *Shaman) registerStormstrikeSpell() {
 		ThreatMultiplier: 1,
 
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			baseDamage := shaman.MHWeaponDamage(sim, spell.MeleeAttackPower())
+			baseDamage := shaman.MHWeaponDamage(sim, spell.MeleeAttackPower(target))
 			result := spell.CalcAndDealDamage(sim, target, baseDamage, spell.OutcomeMeleeWeaponSpecialHitAndCrit)
 
 			if result.Landed() {

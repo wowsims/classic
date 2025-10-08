@@ -82,79 +82,91 @@ const (
 	TheCruelHandOfTimmy       = 13401
 	RunebladeOfBaronRivendare = 13505
 	// HeadmastersCharge      = 13937
-	GravestoneWarAxe         = 13983
-	Darrowspike              = 13984
-	Frightalon               = 14024
-	BonechillHammer          = 14487
-	EbonHiltOfMarduk         = 14576
-	FrightskullShaft         = 14531
-	BarovianFamilySword      = 14541
-	CloudkeeperLegplates     = 14554
-	AlcorsSunrazor           = 14555
-	HameyasSlayer            = 15814
-	JoonhosMercy             = 17054
-	DrillborerDisk           = 17066
-	Deathbringer             = 17068
-	GutgoreRipper            = 17071
-	Shadowstrike             = 17074
-	ViskagTheBloodletter     = 17075
-	BonereaversEdge          = 17076
-	BlazefuryMedallion       = 17111
-	EmpyreanDemolisher       = 17112
-	SulfurasHandOfRagnaros   = 17182
-	SulfuronHammer           = 17193
-	Thunderstrike            = 17223
-	ThrashBlade              = 17705
-	SatyrsLash               = 17752
-	MarkOfTheChosen          = 17774
-	BladeOfEternalDarkness   = 17780
-	ForceReactiveDisk        = 18168
-	EskhandarsLeftClaw       = 18202
-	EskhandarsRightClaw      = 18203
-	FiendishMachete          = 18310
-	RazorGauntlets           = 18326
-	QuelSerrar               = 18348
-	BaronCharrsSceptre       = 18671
-	TalismanOfEphemeralPower = 18820
-	EssenceOfThePureFlame    = 18815
-	PerditionsBlade          = 18816
-	Thunderfury              = 19019
-	GlacialBlade             = 19099
-	ElectrifiedDagger        = 19100
-	Nightfall                = 19169
-	EbonHand                 = 19170
-	DarkmoonCardHeroism      = 19287
-	DarkmoonCardBlueDragon   = 19288
-	DarkmoonCardMaelstrom    = 19289
-	TheLobotomizer           = 19324
-	TheUntamedBlade          = 19334
-	DrakeTalonCleaver        = 19353
-	RuneOfTheDawn            = 19812
-	HalberdOfSmiting         = 19874
-	ZulianSlicer             = 19901
-	JekliksCrusher           = 19918
-	TigulesHarpoon           = 19946
-	NatPaglesBrokenReel      = 19947
-	ZandalariHeroBadge       = 19948
-	ZandalariHeroMedallion   = 19949
-	ZandalariHeroCharm       = 19950
-	GrileksGrinder           = 19961
-	GrileksCarver            = 19962
-	PitchforkOfMadness       = 19963
-	EmeraldDragonfang        = 20578
-	Earthstrike              = 21180
-	WrathOfCenarius          = 21190
-	EyeOfMoam                = 21473
-	ScarabBrooch             = 21625
-	BadgeOfTheSwarmguard     = 21670
-	KalimdorsRevenge         = 21679
-	DraconicInfusedEmblem    = 22268
-	HeartOfWyrmthalak        = 22321
-	TalismanOfAscendance     = 22678
-	MarkOfTheChampionPhys    = 23206
-	MarkOfTheChampionSpell   = 23207
-	MisplacedServoArm        = 23221
-	JomGabbar                = 23570
+	GravestoneWarAxe           = 13983
+	Darrowspike                = 13984
+	Frightalon                 = 14024
+	BonechillHammer            = 14487
+	EbonHiltOfMarduk           = 14576
+	FrightskullShaft           = 14531
+	BarovianFamilySword        = 14541
+	CloudkeeperLegplates       = 14554
+	AlcorsSunrazor             = 14555
+	HameyasSlayer              = 15814
+	JoonhosMercy               = 17054
+	DrillborerDisk             = 17066
+	Deathbringer               = 17068
+	GutgoreRipper              = 17071
+	Shadowstrike               = 17074
+	ViskagTheBloodletter       = 17075
+	BonereaversEdge            = 17076
+	BlazefuryMedallion         = 17111
+	EmpyreanDemolisher         = 17112
+	SulfurasHandOfRagnaros     = 17182
+	SulfuronHammer             = 17193
+	Thunderstrike              = 17223
+	ThrashBlade                = 17705
+	SatyrsLash                 = 17752
+	MarkOfTheChosen            = 17774
+	BladeOfEternalDarkness     = 17780
+	ForceReactiveDisk          = 18168
+	EskhandarsLeftClaw         = 18202
+	EskhandarsRightClaw        = 18203
+	FiendishMachete            = 18310
+	RazorGauntlets             = 18326
+	QuelSerrar                 = 18348
+	BaronCharrsSceptre         = 18671
+	TalismanOfEphemeralPower   = 18820
+	EssenceOfThePureFlame      = 18815
+	PerditionsBlade            = 18816
+	Thunderfury                = 19019
+	GlacialBlade               = 19099
+	ElectrifiedDagger          = 19100
+	Nightfall                  = 19169
+	EbonHand                   = 19170
+	DarkmoonCardHeroism        = 19287
+	DarkmoonCardBlueDragon     = 19288
+	DarkmoonCardMaelstrom      = 19289
+	TheLobotomizer             = 19324
+	TheUntamedBlade            = 19334
+	DrakeTalonCleaver          = 19353
+	RuneOfTheDawn              = 19812
+	HalberdOfSmiting           = 19874
+	ZulianSlicer               = 19901
+	JekliksCrusher             = 19918
+	TigulesHarpoon             = 19946
+	NatPaglesBrokenReel        = 19947
+	ZandalariHeroBadge         = 19948
+	ZandalariHeroMedallion     = 19949
+	ZandalariHeroCharm         = 19950
+	GrileksGrinder             = 19961
+	GrileksCarver              = 19962
+	PitchforkOfMadness         = 19963
+	EmeraldDragonfang          = 20578
+	Earthstrike                = 21180
+	WrathOfCenarius            = 21190
+	EyeOfMoam                  = 21473
+	ScarabBrooch               = 21625
+	BadgeOfTheSwarmguard       = 21670
+	KalimdorsRevenge           = 21679
+	DraconicInfusedEmblem      = 22268
+	HeartOfWyrmthalak          = 22321
+	TalismanOfAscendance       = 22678
+	GauntletsOfUndeadSlaying   = 23078
+	HandwrapsOfUndeadSlaying   = 23081
+	HandguardsOfUndeadSlaying  = 23082
+	GlovesOfUndeadCleansing    = 23084
+	RobeOfUndeadCleansing      = 23085
+	BreastplateOfUndeadSlaying = 23087
+	ChestguardOfUndeadSlaying  = 23088
+	TunicOfUndeadSlaying       = 23089
+	BracersOfUndeadSlaying     = 23090
+	BracersOfUndeadCleansing   = 23091
+	WristguardsOfUndeadSlaying = 23092
+	WristwrapsOfUndeadSlaying  = 23093
+	MarkOfTheChampionPhys      = 23206
+	MarkOfTheChampionSpell     = 23207
+	MisplacedServoArm          = 23221
+	JomGabbar                  = 23570
 )
 
 func init() {
@@ -221,18 +233,27 @@ func init() {
 	// Chance on hit: Increases Attack Power against Undead by 200 for 10 sec.
 	// 1 PPM from Armaments Discord
 	itemhelpers.CreateWeaponProcAura(ArgentAvenger, "Argent Avenger", 1.0, func(character *core.Character) *core.Aura {
+		matchingTargets := core.FilterSlice(
+			character.Env.Encounter.TargetUnits,
+			func(unit *core.Unit) bool { return unit.MobType == proto.MobType_MobTypeUndead },
+		)
+
 		return character.GetOrRegisterAura(core.Aura{
 			ActionID: core.ActionID{SpellID: 17352},
 			Label:    "Argent Avenger",
 			Duration: time.Second * 10,
 			OnGain: func(aura *core.Aura, sim *core.Simulation) {
-				if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-					character.PseudoStats.MobTypeAttackPower += 200
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken += 200
+					}
 				}
 			},
 			OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-				if character.CurrentTarget.MobType == proto.MobType_MobTypeUndead {
-					character.PseudoStats.MobTypeAttackPower -= 200
+				for _, target := range matchingTargets {
+					for _, at := range character.AttackTables[target.UnitIndex] {
+						at.BonusAttackPowerTaken -= 200
+					}
 				}
 			},
 		})
@@ -881,13 +902,8 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=10696/enchanted-azsharite-felbane-sword
-	core.NewItemEffect(EnchantedAzshariteSword, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeElemental {
-			character.PseudoStats.MobTypeAttackPower += 33
-		}
-	})
+	// Equip: +33 Attack Power when fighting Demons.
+	core.NewMobTypeAttackPowerEffect(EnchantedAzshariteSword, []proto.MobType{proto.MobType_MobTypeDemon}, 33)
 
 	// https://www.wowhead.com/classic/item=18202/eskhandars-left-claw
 	// Chance on hit: Slows enemy's movement by 60% and causes them to bleed for 150 damage over 30 sec.
@@ -986,13 +1002,8 @@ func init() {
 	})
 
 	// https://www.wowhead.com/classic/item=18310/fiendish-machete
-	core.NewItemEffect(FiendishMachete, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeElemental {
-			character.PseudoStats.MobTypeAttackPower += 36
-		}
-	})
+	// Equip: +36 Attack Power when fighting Elementals.
+	core.NewMobTypeAttackPowerEffect(FiendishMachete, []proto.MobType{proto.MobType_MobTypeElemental}, 36)
 
 	// https://www.wowhead.com/classic/item=870/fiery-war-axe
 	itemhelpers.CreateWeaponProcSpell(FieryWarAxe, "Fiery War Axe", 1.0, func(character *core.Character) *core.Spell {
@@ -1791,13 +1802,7 @@ func init() {
 	itemhelpers.CreateWeaponCoHProcDamage(PendulumOfDoom, "Pendulum of Doom", 0.5, 10373, core.SpellSchoolPhysical, 250, 100, 0, core.DefenseTypeMelee)
 
 	// https://www.wowhead.com/classic/item=12709/pips-skinner
-	core.NewItemEffect(PipsSkinner, func(agent core.Agent) {
-		character := agent.GetCharacter()
-
-		if character.CurrentTarget.MobType == proto.MobType_MobTypeBeast {
-			character.PseudoStats.MobTypeAttackPower += 45
-		}
-	})
+	core.NewMobTypeAttackPowerEffect(PipsSkinner, []proto.MobType{proto.MobType_MobTypeBeast}, 45)
 
 	// https://www.wowhead.com/classic/item=18816/perditions-blade
 	// Chance on hit: Blasts a target for 40 to 56 Fire damage.
@@ -1865,7 +1870,7 @@ func init() {
 			BonusCoefficient: 1,
 
 			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				damage := 5.0 + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower())
+				damage := 5.0 + spell.Unit.MHNormalizedWeaponDamage(sim, spell.MeleeAttackPower(target))
 				for _, aoeTarget := range sim.Encounter.TargetUnits {
 					spell.CalcAndDealDamage(sim, aoeTarget, damage, spell.OutcomeMeleeSpecialHitAndCrit)
 				}
@@ -3151,6 +3156,54 @@ func init() {
 		})
 	})
 
+	// https://www.wowhead.com/classic/item=23078/gauntlets-of-undead-slaying
+	// +60 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(GauntletsOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 60)
+
+	// https://www.wowhead.com/classic/item=23081/handwraps-of-undead-slaying
+	// +60 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(HandwrapsOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 60)
+
+	// https://www.wowhead.com/classic/item=23082/handguards-of-undead-slaying
+	// +60 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(HandguardsOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 60)
+
+	// https://www.wowhead.com/classic/item=23084/gloves-of-undead-cleansing
+	// Increases damage done to Undead by magical spells and effects by up to 35.
+	core.NewMobTypeSpellPowerEffect(GlovesOfUndeadCleansing, []proto.MobType{proto.MobType_MobTypeUndead}, 35)
+
+	// https://www.wowhead.com/classic/item=23085/robe-of-undead-cleansing
+	// Increases damage done to Undead by magical spells and effects by up to 48.
+	core.NewMobTypeSpellPowerEffect(RobeOfUndeadCleansing, []proto.MobType{proto.MobType_MobTypeUndead}, 48)
+
+	// https://www.wowhead.com/classic/item=23087/breastplate-of-undead-slaying
+	// +81 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(BreastplateOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 81)
+
+	// https://www.wowhead.com/classic/item=23088/chestguard-of-undead-slaying
+	// +81 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(ChestguardOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 81)
+
+	// https://www.wowhead.com/classic/item=23089/tunic-of-undead-slaying
+	// +81 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(TunicOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 81)
+
+	// https://www.wowhead.com/classic/item=23090/bracers-of-undead-slaying
+	// +45 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(BracersOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 45)
+
+	// https://www.wowhead.com/classic/item=23091/bracers-of-undead-cleansing
+	// Increases damage done to Undead by magical spells and effects by up to 26.
+	core.NewMobTypeSpellPowerEffect(BracersOfUndeadCleansing, []proto.MobType{proto.MobType_MobTypeUndead}, 26)
+
+	// https://www.wowhead.com/classic/item=23092/wristguards-of-undead-slaying
+	// +45 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(WristguardsOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 45)
+
+	// https://www.wowhead.com/classic/item=23093/wristwraps-of-undead-slaying
+	// +45 Attack Power when fighting Undead.
+	core.NewMobTypeAttackPowerEffect(WristwrapsOfUndeadSlaying, []proto.MobType{proto.MobType_MobTypeUndead}, 45)
+
 	// https://www.wowhead.com/classic/item=18820/talisman-of-ephemeral-power
 	// Use: Increases damage and healing done by magical spells and effects by up to 175 for 15 sec. (1 Min, 30 Sec Cooldown)
 	core.NewSimpleStatOffensiveTrinketEffect(TalismanOfEphemeralPower, stats.Stats{stats.SpellPower: 175}, time.Second*15, time.Second*90)
@@ -3514,8 +3567,8 @@ func init() {
 		character := agent.GetCharacter()
 
 		procAura := character.RegisterAura(core.Aura{
-			Label: "Insight of the Qiraji",
-			ActionID: core.ActionID{SpellID: 26481},
+			Label:     "Insight of the Qiraji",
+			ActionID:  core.ActionID{SpellID: 26481},
 			Duration:  core.NeverExpires,
 			MaxStacks: 6,
 			OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks int32, newStacks int32) {
@@ -3524,16 +3577,16 @@ func init() {
 		})
 
 		auraLabel := "Badge of the Swarmguard"
-		actionID := core.ActionID{SpellID: 26480}
+		actionID := core.ActionID{ItemID: BadgeOfTheSwarmguard}
 		trinketAura := core.MakeProcTriggerAura(&character.Unit, core.ProcTrigger{
-			Name: auraLabel,
-			ActionID: actionID,
-			Duration: time.Second * 30,
-			Callback: core.CallbackOnSpellHitDealt,
-			Outcome: core.OutcomeLanded,
-			ProcMask: core.ProcMaskMeleeOrRanged,
+			Name:              auraLabel,
+			ActionID:          actionID,
+			Duration:          time.Second * 30,
+			Callback:          core.CallbackOnSpellHitDealt,
+			Outcome:           core.OutcomeLanded,
+			ProcMask:          core.ProcMaskMeleeOrRanged,
 			SpellFlagsExclude: core.SpellFlagSuppressEquipProcs,
-			PPM: 10.0,
+			PPM:               10.0,
 			Handler: func(sim *core.Simulation, _ *core.Spell, _ *core.SpellResult) {
 				procAura.Activate(sim)
 				procAura.AddStack(sim)
