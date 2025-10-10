@@ -131,22 +131,20 @@ func (spell *Spell) PhysicalCritCheck(sim *Simulation, attackTable *AttackTable)
 
 // The combined bonus damage (aka spell power) for this spell's school(s) **including** mob type specific spell power.
 func (spell *Spell) GetBonusDamage(target *Unit) float64 {
-	return spell.GetSchoolDamage() +
-		spell.Unit.AttackTables[target.Index][spell.CastType].BonusSpellDamageTaken
+	return spell.GetSchoolDamage(target)
 }
 
 // The combined bonus damage (aka spell power) for this spell's school(s) **excluding** mob type specific spell power.
-func (spell *Spell) GetSchoolDamage() float64 {
+func (spell *Spell) GetSchoolDamage(target *Unit) float64 {
 	var schoolBonusDamage float64
+	highestSchoolIndex := spell.SchoolIndex
 
 	switch spell.SchoolIndex {
 	case stats.SchoolIndexNone:
 		return 0
 	case stats.SchoolIndexPhysical:
 		// PseudoStats.BonusDamage is physical "spell power", just return that here.
-		// TODO: Do "MobTypeSpellPower" effects for physical exist? E.g. something like "Do x extra weapon damage against y type"?
-		// If yes then it needs to be handled here and for the multi school case below.
-		return spell.Unit.PseudoStats.BonusPhysicalDamage
+		return spell.BonusDamage + spell.Unit.PseudoStats.BonusPhysicalDamage
 	case stats.SchoolIndexArcane:
 		schoolBonusDamage = spell.Unit.GetStat(stats.ArcanePower)
 	case stats.SchoolIndexFire:
@@ -177,15 +175,21 @@ func (spell *Spell) GetSchoolDamage() float64 {
 			}
 
 			if power > schoolBonusDamage {
+				highestSchoolIndex = baseSchoolIndex
 				schoolBonusDamage = power
 			}
 		}
 	}
 
-	return spell.BonusDamage +
-		schoolBonusDamage +
-		spell.Unit.GetStat(stats.SpellPower) +
-		spell.Unit.GetStat(stats.SpellDamage)
+	if highestSchoolIndex == stats.SchoolIndexPhysical {
+		return spell.BonusDamage + schoolBonusDamage
+	} else {
+		return spell.BonusDamage +
+			schoolBonusDamage +
+			spell.Unit.GetStat(stats.SpellPower) +
+			spell.Unit.GetStat(stats.SpellDamage) +
+			spell.Unit.AttackTables[target.Index][spell.CastType].BonusSpellDamageTaken
+	}
 }
 
 func (spell *Spell) SpellHitChance(target *Unit) float64 {

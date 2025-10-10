@@ -9,7 +9,7 @@ export enum Phase {
 	Phase6,
 }
 
-export const CURRENT_PHASE = Phase.Phase4;
+export const CURRENT_PHASE = Phase.Phase6;
 
 // Github pages serves our site under the /classic directory
 export const REPO_NAME = 'classic';
