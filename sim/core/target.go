@@ -3,6 +3,7 @@ package core
 import (
 	"strconv"
 	"time"
+
 	"github.com/wowsims/classic/sim/core/proto"
 	"github.com/wowsims/classic/sim/core/stats"
 )
@@ -264,7 +265,7 @@ type AttackTable struct {
 	BaseParryChance     float64
 	BaseGlanceChance    float64
 	BaseCritChance      float64
-	BaseCrushChance		float64
+	BaseCrushChance     float64
 
 	GlanceMultiplierMin  float64
 	GlanceMultiplierMax  float64
@@ -278,6 +279,9 @@ type AttackTable struct {
 	DamageDealtMultiplier  float64 // attacker buff, applied in applyAttackerModifiers()
 	DamageTakenMultiplier  float64 // defender debuff, applied in applyTargetModifiers()
 	HealingDealtMultiplier float64
+
+	BonusAttackPowerTaken float64 // For effects like mob type attack power bonuses.
+	BonusSpellDamageTaken float64 // For effects like mob type spell damage bonuses.
 
 	// This is for "Apply Aura: Mod Damage Done By Caster" effects.
 	// If set, the damage taken multiplier is multiplied by the callbacks result.
@@ -360,7 +364,7 @@ func NewAttackTable(attacker *Unit, defender *Unit, weapon *Item) *AttackTable {
 		} else {
 			table.BaseBlockChance = 0
 		}
-		
+
 		table.BaseCrushChance = UnitLevelFloat64(attacker.Level-defender.Level, 0.0, 0.0, 0.0, 0.15)
 		table.BaseMissChance = 0.05 + levelDelta
 		table.BaseDodgeChance = levelDelta // base dodge applied with class base stats

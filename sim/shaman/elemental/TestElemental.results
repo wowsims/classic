@@ -543,7 +543,7 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: -0.35865
+  weights: -0.38185
   weights: 0
   weights: 0.71195
   weights: 0
@@ -553,7 +553,7 @@ stat_weights_results: {
   weights: 0.65983
   weights: 0
   weights: 0
-  weights: 9.52138
+  weights: 9.47772
   weights: 6.05155
   weights: 0
   weights: 0
@@ -1394,71 +1394,71 @@ dps_results: {
 dps_results: {
  key: "TestElemental-Phase6-AllItems-Champion'sEarthshaker"
  value: {
-  dps: 695.68707
-  tps: 657.22231
+  dps: 699.69045
+  tps: 661.22569
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-Champion'sStormcaller"
  value: {
-  dps: 705.08068
-  tps: 665.68662
+  dps: 709.12419
+  tps: 669.73012
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-GiftoftheGatheringStorm"
  value: {
-  dps: 795.47178
-  tps: 750.33516
+  dps: 798.33769
+  tps: 753.20108
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-Stormcaller'sGarb"
  value: {
-  dps: 831.0716
-  tps: 784.17815
+  dps: 833.67109
+  tps: 786.77764
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-TheEarthfury"
  value: {
-  dps: 652.14582
-  tps: 615.23685
+  dps: 654.02206
+  tps: 617.11309
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-TheEarthshatterer"
  value: {
-  dps: 629.35099
-  tps: 593.89411
+  dps: 629.7204
+  tps: 594.26352
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-TheFiveThunders"
  value: {
-  dps: 697.8153
-  tps: 660.26617
+  dps: 700.57486
+  tps: 663.02572
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-TheTenStorms"
  value: {
-  dps: 713.13749
-  tps: 675.51439
+  dps: 715.59893
+  tps: 677.97582
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-AllItems-Warlord'sEarthshaker"
  value: {
-  dps: 740.86856
-  tps: 698.84153
+  dps: 743.68459
+  tps: 701.65755
  }
 }
 dps_results: {
  key: "TestElemental-Phase6-Average-Default"
  value: {
-  dps: 903.5537
-  tps: 850.97053
+  dps: 906.53526
+  tps: 853.95209
  }
 }
 dps_results: {
@@ -1548,7 +1548,7 @@ dps_results: {
 dps_results: {
  key: "TestElemental-Phase6-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 903.87467
-  tps: 850.15307
+  dps: 906.14785
+  tps: 852.42625
  }
 }

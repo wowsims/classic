@@ -51,7 +51,7 @@ func (rogue *Rogue) registerRupture() {
 			TickLength:    time.Second * 2,
 
 			OnSnapshot: func(sim *core.Simulation, target *core.Unit, dot *core.Dot, isRollover bool) {
-				dot.Snapshot(target, rogue.RuptureDamage(rogue.ComboPoints()), isRollover)
+				dot.Snapshot(target, rogue.RuptureDamage(target, rogue.ComboPoints()), isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				dot.CalcAndDealPeriodicSnapshotDamage(sim, target, dot.OutcomeTick)
@@ -76,7 +76,7 @@ func (rogue *Rogue) registerRupture() {
 	rogue.Finishers = append(rogue.Finishers, rogue.Rupture)
 }
 
-func (rogue *Rogue) RuptureDamage(comboPoints int32) float64 {
+func (rogue *Rogue) RuptureDamage(target *core.Unit, comboPoints int32) float64 {
 	baseTickDamage := map[int32]float64{
 		25: 8,
 		40: 18,
@@ -92,7 +92,7 @@ func (rogue *Rogue) RuptureDamage(comboPoints int32) float64 {
 	}[rogue.Level]
 
 	return baseTickDamage + comboTickDamage*float64(comboPoints) +
-		[]float64{0, 0.04 / 4, 0.10 / 5, 0.18 / 6, 0.21 / 7, 0.24 / 8}[comboPoints]*rogue.Rupture.MeleeAttackPower()
+		[]float64{0, 0.04 / 4, 0.10 / 5, 0.18 / 6, 0.21 / 7, 0.24 / 8}[comboPoints]*rogue.Rupture.MeleeAttackPower(target)
 }
 
 func (rogue *Rogue) RuptureTicks(comboPoints int32) int32 {

@@ -15,6 +15,7 @@ import {
 	Food,
 	FrostPowerBuff,
 	HealthElixir,
+	HitConsumable,
 	ItemSlot,
 	ManaRegenElixir,
 	Potions,
@@ -503,6 +504,10 @@ export const GizzardGum: ConsumableInputConfig<ZanzaBuff> = {
 	actionId: () => ActionId.fromItemId(8424),
 	value: ZanzaBuff.GizzardGum,
 };
+export const DarnassusGiftCollection: ConsumableInputConfig<ZanzaBuff> = {
+	actionId: () => ActionId.fromItemId(22133),
+	value: ZanzaBuff.DarnassusGiftCollection,
+};
 
 // Zanza Potions
 export const SpiritOfZanza: ConsumableInputConfig<ZanzaBuff> = {
@@ -517,8 +522,24 @@ export const ZANZA_BUFF_CONSUMES_CONFIG: ConsumableStatOption<ZanzaBuff>[] = [
 	{ config: LungJuiceCocktail, stats: [Stat.StatStamina] },
 	{ config: CerebralCortexCompound, stats: [Stat.StatIntellect] },
 	{ config: GizzardGum, stats: [Stat.StatSpirit] },
+	{ config: DarnassusGiftCollection, stats: [Stat.StatAgility] },
 ];
 export const makeZanzaBuffConsumesInput = makeConsumeInputFactory({ consumesFieldName: 'zanzaBuff' });
+
+// Hit Consumables
+export const FireToastedBun: ConsumableInputConfig<HitConsumable> = {
+	actionId: () => ActionId.fromItemId(23327),
+	value: HitConsumable.FireToastedBun,
+};
+export const DarkDesire: ConsumableInputConfig<HitConsumable> = {
+	actionId: () => ActionId.fromItemId(22237),
+	value: HitConsumable.DarkDesire,
+};
+export const HIT_CONSUMABLE_CONFIG: ConsumableStatOption<HitConsumable>[] = [
+	{ config: FireToastedBun, stats: [Stat.StatMeleeHit] },
+	{ config: DarkDesire, stats: [Stat.StatMeleeHit] },
+];
+export const makeHitConsumableInput = makeConsumeInputFactory({ consumesFieldName: 'hitConsumable' });
 
 export const JujuFlurry = makeBooleanMiscConsumeInput({
 	actionId: () => ActionId.fromItemId(12450),

@@ -105,7 +105,7 @@ func (druid *Druid) newRipSpellConfig(ripRank RipRankInfo) core.SpellConfig {
 				cpScaling := core.TernaryFloat64(cp == 5, 4, cp)
 				baseDamage := ripRank.dmgTickBase + ripRank.dmgTickPerCombo*cp
 				// AP scaling is 6% per combo point from 1 to 4, and 24% again for 5
-				tickDamage := baseDamage + 0.01*cpScaling*dot.Spell.MeleeAttackPower()
+				tickDamage := baseDamage + 0.01*cpScaling*dot.Spell.MeleeAttackPower(target)
 				dot.Snapshot(target, tickDamage, isRollover)
 			},
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
