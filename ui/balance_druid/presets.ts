@@ -54,7 +54,7 @@ export const DefaultGear = GearP5BIS;
 ///////////////////////////////////////////////////////////////////////////
 
 // export const APLP1Balance = PresetUtils.makePresetAPLRotation('Balance', P1APL);
-export const DefaultBalance = PresetUtils.makePresetAPLRotation('DefaultBalance', Balance);
+export const DefaultBalance = PresetUtils.makePresetAPLRotation('Default Balance', Balance);
 export const APLPresets = {
 	[Phase.Phase1]: [DefaultBalance],
 };
