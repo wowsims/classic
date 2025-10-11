@@ -29,7 +29,6 @@ import {
 	WeaponImbue,
 	ZanzaBuff,
 } from '../../proto/common';
-import { FeralDruid } from '../../proto/druid';
 import { ActionId } from '../../proto_utils/action_id';
 import { isBluntWeaponType, isSharpWeaponType, isWeapon } from '../../proto_utils/utils';
 import { EventID, TypedEvent } from '../../typed_event';

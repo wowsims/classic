@@ -132,6 +132,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombatSinisterStrike-Phase5-AllItems-EmblemsofVeiledShadows"
+ value: {
+  dps: 1041.12127
+  tps: 739.1961
+ }
+}
+dps_results: {
  key: "TestCombatSinisterStrike-Phase5-AllItems-FieldMarshal'sVestments"
  value: {
   dps: 1071.95348

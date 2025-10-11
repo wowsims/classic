@@ -132,6 +132,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombatDaggers-Phase5-AllItems-EmblemsofVeiledShadows"
+ value: {
+  dps: 1040.64523
+  tps: 738.85811
+ }
+}
+dps_results: {
  key: "TestCombatDaggers-Phase5-AllItems-FieldMarshal'sVestments"
  value: {
   dps: 1061.22945

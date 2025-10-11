@@ -166,6 +166,22 @@ var ItemSetMadcapsOutfit = core.NewItemSet(core.ItemSet{
 //                            Phase 4 Item Sets - AQ
 ///////////////////////////////////////////////////////////////////////////
 
+// https://www.wowhead.com/classic/item-set=498/emblems-of-veiled-shadows
+var ItemSetEmblemsOfVeiledShadows = core.NewItemSet(core.ItemSet{
+	Name: "Emblems of Veiled Shadows",
+	Bonuses: map[int32]core.ApplyEffect{
+		3: func(agent core.Agent) {
+			rogue := agent.(RogueAgent).GetRogue()
+			rogue.RegisterAura(core.Aura{
+				Label: "Emblems of Veiled Shadows 3pc",
+				OnInit: func(aura *core.Aura, sim *core.Simulation) {
+					rogue.SliceAndDice.Cost.FlatModifier -= 10
+				},
+			})
+		},
+	},
+})
+
 // https://www.wowhead.com/classic/item-set=512/darkmantle-armor
 var ItemSetDarkmantleArmor = core.NewItemSet(core.ItemSet{
 	Name: "Darkmantle Armor",
@@ -217,23 +233,23 @@ var ItemSetDeathdealersEmbrace = core.NewItemSet(core.ItemSet{
 	Bonuses: map[int32]core.ApplyEffect{
 		// Reduces the cooldown of your Evasion ability by -1 min.
 		3: func(agent core.Agent) {
-			c := agent.(RogueAgent).GetRogue()
-			c.RegisterAura(core.Aura{
+			rogue := agent.(RogueAgent).GetRogue()
+			rogue.RegisterAura(core.Aura{
 				Label: "Deathdealer Evasion Bonus",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
-					if c.Evasion != nil {
-						c.Evasion.CD.Duration -= time.Second * 60
+					if rogue.Evasion != nil {
+						rogue.Evasion.CD.Duration -= time.Second * 60
 					}
 				},
 			})
 		},
 		// 15% increased damage to your Eviscerate ability.
 		5: func(agent core.Agent) {
-			c := agent.(RogueAgent).GetRogue()
-			c.RegisterAura(core.Aura{
+			rogue := agent.(RogueAgent).GetRogue()
+			rogue.RegisterAura(core.Aura{
 				Label: "Deathdealer Eviscerate Bonus",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
-					c.Eviscerate.DamageMultiplier *= 1.15
+					rogue.Eviscerate.DamageMultiplierAdditive += 0.15
 				},
 			})
 		},
