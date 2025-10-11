@@ -25,7 +25,7 @@ export const raidSimStatus: SimStatus = {
 // This list controls which links are shown in the top-left dropdown menu.
 export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	[Spec.SpecBalanceDruid]: {
-		phase: Phase.Phase1,
+		phase: Phase.Phase5,
 		status: LaunchStatus.Beta,
 	},
 	[Spec.SpecFeralDruid]: {
