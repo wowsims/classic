@@ -20,10 +20,13 @@ import {
 } from '../core/proto/common.js';
 import { BalanceDruid_Options as BalanceDruidOptions } from '../core/proto/druid.js';
 import { SavedTalents } from '../core/proto/ui.js';
-import P1APL from './apls/p1.apl.json';
+import Balance from './apls/balance.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1BISGear from './gear_sets/p1.bis.gear.json';
-
+import P2BISGear from './gear_sets/p2.bis.gear.json';
+import P3BISGear from './gear_sets/p3.bis.gear.json';
+import P4BISGear from './gear_sets/p4.bis.gear.json';
+import P5BISGear from './gear_sets/p5.bis.gear.json';
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
@@ -34,21 +37,26 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 
 export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
 export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearP2BIS = PresetUtils.makePresetGear('P2 BiS', P2BISGear);
+export const GearP3BIS = PresetUtils.makePresetGear('P3 BiS', P3BISGear);
+export const GearP4BIS = PresetUtils.makePresetGear('P4 BiS', P4BISGear);
+export const GearP5BIS = PresetUtils.makePresetGear('P5 BiS', P5BISGear);
+
 
 export const GearPresets = {
-	[Phase.Phase1]: [GearP0BIS, GearP1BIS],
+	[Phase.Phase5]: [GearP0BIS, GearP1BIS, GearP2BIS, GearP3BIS, GearP4BIS, GearP5BIS],
 };
 
-export const DefaultGear = GearP0BIS;
+export const DefaultGear = GearP5BIS;
 
 ///////////////////////////////////////////////////////////////////////////
 //                                 APL Presets
 ///////////////////////////////////////////////////////////////////////////
 
-export const APLP1Balance = PresetUtils.makePresetAPLRotation('Balance', P1APL);
-
+// export const APLP1Balance = PresetUtils.makePresetAPLRotation('Balance', P1APL);
+export const DefaultBalance = PresetUtils.makePresetAPLRotation('Default Balance', Balance);
 export const APLPresets = {
-	[Phase.Phase1]: [APLP1Balance],
+	[Phase.Phase1]: [DefaultBalance],
 };
 
 export const DefaultAPL = APLPresets[Phase.Phase1][0];
@@ -115,6 +123,6 @@ export const DefaultDebuffs = Debuffs.create({
 
 export const OtherDefaults = {
 	distanceFromTarget: 15,
-	profession1: Profession.Enchanting,
-	profession2: Profession.Alchemy,
+	profession1: Profession.Engineering,
+	profession2: Profession.Tailoring,
 };
