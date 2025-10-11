@@ -242,6 +242,22 @@ export class ActionId {
 		const baseName = tooltipData['name'];
 		let name = baseName;
 		switch (baseName) {
+			case 'Master Demonologist':
+				switch(this.tag) {
+					case 1:
+						name = `${name} (Imp)`;
+						break;
+					case 2:
+						name = `${name} (Voidwalker)`;
+						break;
+					case 3:
+						name = `${name} (Succubus)`;
+						break;
+					case 4:
+						name = `${name} (Felhunter)`;
+						break;
+				}
+				break;
 			case 'Berserking':
 				if (this.tag !== 0) name = `${name} (${this.tag * 5}%)`;
 				break;

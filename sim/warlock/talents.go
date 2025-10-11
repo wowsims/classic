@@ -378,6 +378,19 @@ func (warlock *Warlock) applyMasterDemonologist() {
 	warlock.Felhunter.ApplyOnPetDisable(func(sim *core.Simulation, isSacrifice bool) {
 		felhunterAura.Deactivate(sim)
 	})
+
+	for _, pet := range warlock.BasePets {
+		pet.ApplyOnPetEnable(func(sim *core.Simulation) {
+			warlock.MasterDemonologistAura.Activate(sim)
+		})
+
+		pet.ApplyOnPetDisable(func(sim *core.Simulation, isSacrifice bool) {
+			if warlock.MasterDemonologistAura != nil {
+				warlock.MasterDemonologistAura.Deactivate(sim)
+				warlock.MasterDemonologistAura = nil
+			}
+		})
+	}
 }
 
 func (warlock *Warlock) applySoulLink() {
