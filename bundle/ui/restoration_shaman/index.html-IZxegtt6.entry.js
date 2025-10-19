@@ -1,0 +1,1 @@
+import"../../index-CsPe537V.chunk.js";import{S as s,T as e}from"../../detailed_results-DSaXnow5.chunk.js";import{S as n,P as t}from"../../preset_utils-DXTzGh-E.chunk.js";import{R as o}from"../../sim-C1iaRmp8.chunk.js";const r=new n,a=new t(s.SpecRestorationShaman,r);r.raid.setPlayer(e.nextEventID(),0,a),new o(document.body,a);
