@@ -44,7 +44,7 @@ func (mage *Mage) registerEvocationCD() {
 			},
 		},
 
-		Dot: core.DotConfig{
+		Hot: core.DotConfig{
 			SelfOnly: true,
 			Aura: core.Aura{
 				Label: "Evocation",
@@ -57,6 +57,7 @@ func (mage *Mage) registerEvocationCD() {
 			},
 			NumberOfTicks: maxTicks,
 			TickLength:    tickLength,
+			OnTick:        func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {},
 		},
 
 		ApplyEffects: func(sim *core.Simulation, _ *core.Unit, spell *core.Spell) {

@@ -3,7 +3,7 @@ package mage
 import (
 	"slices"
 	"time"
-	
+
 	"github.com/wowsims/classic/sim/core"
 	"github.com/wowsims/classic/sim/core/stats"
 )
@@ -32,10 +32,10 @@ var ItemSetArcanistRegalia = core.NewItemSet(core.ItemSet{
 				Label:    "Subtlety",
 				ActionID: core.ActionID{SpellID: 23545},
 				Duration: core.NeverExpires,
-				OnReset: func(aura *core.Aura, sim *core.Simulation){
+				OnReset: func(aura *core.Aura, sim *core.Simulation) {
 					mage.PseudoStats.ThreatMultiplier /= 1.15
 				},
-			})			
+			})
 		},
 	},
 })
@@ -76,7 +76,7 @@ var ItemSetNetherwindRegalia = core.NewItemSet(core.ItemSet{
 		8: func(agent core.Agent) {
 			mage := agent.(MageAgent).GetMage()
 			actionID := core.ActionID{SpellID: 22008}
-		
+
 			affectedSpells := []*core.Spell{}
 			netherwindFocusAura := mage.RegisterAura(core.Aura{
 				Label:    "Netherwind Focus",
@@ -84,7 +84,7 @@ var ItemSetNetherwindRegalia = core.NewItemSet(core.ItemSet{
 				Duration: time.Second * 10,
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
 					for spellIdx := range mage.Spellbook {
-						if spell := mage.Spellbook[spellIdx]; (spell.DefaultCast.CastTime > 0 && spell.DefaultCast.CastTime <= 10*time.Second) {
+						if spell := mage.Spellbook[spellIdx]; spell.DefaultCast.CastTime > 0 && spell.DefaultCast.CastTime <= 10*time.Second {
 							affectedSpells = append(affectedSpells, spell)
 						}
 					}
@@ -103,13 +103,13 @@ var ItemSetNetherwindRegalia = core.NewItemSet(core.ItemSet{
 					if !slices.Contains(affectedSpells, spell) {
 						return
 					}
-					if (spell.CurCast.CastTime > 0) { //Returns if you are midcast when your aura procs from landing to prevent instant consumption
+					if spell.CurCast.CastTime > 0 { //Returns if you are midcast when your aura procs from landing to prevent instant consumption
 						return
 					}
 					aura.Deactivate(sim)
 				},
 			})
-			
+
 			mage.RegisterAura(core.Aura{
 				Label:    "Netherwind Focus - Proc Aura",
 				Duration: core.NeverExpires,
@@ -117,7 +117,7 @@ var ItemSetNetherwindRegalia = core.NewItemSet(core.ItemSet{
 					aura.Activate(sim)
 				},
 				OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-					if (spell.SpellCode == SpellCode_MageArcaneMissiles || spell.SpellCode == SpellCode_MageFireball || spell.SpellCode == SpellCode_MageFrostbolt) {
+					if spell.SpellCode == SpellCode_MageArcaneMissiles || spell.SpellCode == SpellCode_MageFireball || spell.SpellCode == SpellCode_MageFrostbolt {
 						if sim.Proc(0.10, "Netherwind Focus Proc") {
 							netherwindFocusAura.Activate(sim)
 						}
@@ -127,6 +127,7 @@ var ItemSetNetherwindRegalia = core.NewItemSet(core.ItemSet{
 		},
 	},
 })
+
 ///////////////////////////////////////////////////////////////////////////
 //                            Phase 4 Item Sets - ZG and AB
 ///////////////////////////////////////////////////////////////////////////
@@ -158,7 +159,7 @@ var ItemSetIllusionistsAttire = core.NewItemSet(core.ItemSet{
 						}
 					}
 				},
-			})			
+			})
 		},
 	},
 })
@@ -166,7 +167,6 @@ var ItemSetIllusionistsAttire = core.NewItemSet(core.ItemSet{
 ///////////////////////////////////////////////////////////////////////////
 //                            Phase 5 Item Sets - AQ
 ///////////////////////////////////////////////////////////////////////////
-
 
 var ItemSetSorcerersRegalia = core.NewItemSet(core.ItemSet{
 	Name: "Sorcerer's Regalia",
@@ -178,7 +178,7 @@ var ItemSetSorcerersRegalia = core.NewItemSet(core.ItemSet{
 		},
 		// Your spellcasts have a 6% chance to energize you for 300 mana.
 		4: func(agent core.Agent) {
-		// No implementation in sim
+			// No implementation in sim
 		},
 		// Increases damage and healing done by magical spells and effects by up to 23.
 		6: func(agent core.Agent) {
@@ -198,7 +198,7 @@ var ItemSetEnigmaVestments = core.NewItemSet(core.ItemSet{
 	Bonuses: map[int32]core.ApplyEffect{
 		// Your Blizzard spell has a 30% chance to be uninterruptible.
 		3: func(agent core.Agent) {
-		// No implementation in sim
+			// No implementation in sim
 		},
 		// Grants +5% increased spell hit chance for 20 sec when one of your spells is resisted.
 		5: func(agent core.Agent) {
@@ -206,16 +206,16 @@ var ItemSetEnigmaVestments = core.NewItemSet(core.ItemSet{
 			actionID := core.ActionID{SpellID: 26129}
 
 			enigmasAnswerAura := mage.RegisterAura(core.Aura{
-				Label:    "Enigma's Answer",
-				ActionID: actionID,
-				Duration: time.Second * 20,
+				Label:     "Enigma's Answer",
+				ActionID:  actionID,
+				Duration:  time.Second * 20,
 				MaxStacks: 4,
 				OnStacksChange: func(aura *core.Aura, sim *core.Simulation, oldStacks, newStacks int32) {
-					mage.AddStatDynamic(sim, stats.SpellHit, float64(-5 * oldStacks))
-					mage.AddStatDynamic(sim, stats.SpellHit, float64(5 * newStacks))
+					mage.AddStatDynamic(sim, stats.SpellHit, float64(-5*oldStacks))
+					mage.AddStatDynamic(sim, stats.SpellHit, float64(5*newStacks))
 				},
 			})
-			
+
 			// Wowhead suggests this does not work on all spell (imp scorch and arcane missiles).  Would need testing to confirm.
 			mage.RegisterAura(core.Aura{
 				Label:    "Enigma Resist Bonus",
@@ -224,7 +224,7 @@ var ItemSetEnigmaVestments = core.NewItemSet(core.ItemSet{
 					aura.Activate(sim)
 				},
 				OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-					if result.Outcome.Matches(core.OutcomeMiss) && spell.ProcMask.Matches(core.ProcMaskDirect) {					
+					if result.Outcome.Matches(core.OutcomeMiss) && spell.ProcMask.Matches(core.ProcMaskDirect) {
 						enigmasAnswerAura.Activate(sim)
 						enigmasAnswerAura.AddStack(sim)
 					}
@@ -245,7 +245,7 @@ var ItemSetFrostfireRegalia = core.NewItemSet(core.ItemSet{
 		2: func(agent core.Agent) {
 			mage := agent.(MageAgent).GetMage()
 			mage.RegisterAura(core.Aura{
-				Label: "Evocation",
+				Label: "Evocation (Frostfire Regalia)",
 				OnInit: func(aura *core.Aura, sim *core.Simulation) {
 					if mage.Evocation != nil {
 						mage.Evocation.CD.Duration -= time.Second * 60
@@ -322,7 +322,7 @@ var ItemSetFrostfireRegalia = core.NewItemSet(core.ItemSet{
 					mage.AddStatDynamic(sim, stats.ArcaneResistance, -35)
 				},
 			})
-			
+
 			// Wowhead suggests this does not work on all spell (imp scorch and arcane missiles).  Would need testing to confirm.
 			mage.RegisterAura(core.Aura{
 				Label:    "Adaptive Warding",
@@ -435,8 +435,8 @@ var ItemSetFrostfireRegalia = core.NewItemSet(core.ItemSet{
 				OnReset: func(aura *core.Aura, sim *core.Simulation) {
 					aura.Activate(sim)
 				},
-				OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult){
-					if sim.Proc(0.15, "Not There") && result.Landed() && spell.ProcMask.Matches(core.ProcMaskDirect)  {
+				OnSpellHitDealt: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
+					if sim.Proc(0.15, "Not There") && result.Landed() && spell.ProcMask.Matches(core.ProcMaskDirect) {
 						notThereAura.Activate(sim)
 					}
 				},
