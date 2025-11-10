@@ -1,5 +1,5 @@
 import { Player } from '../player';
-import { MiscConsumes, PetMiscConsumes, Spec } from '../proto/common';
+import { MiscConsumes, PartyBuffs, PetMiscConsumes, Spec } from '../proto/common';
 import { Consumes, Debuffs, Faction, IndividualBuffs, RaidBuffs } from '../proto/common.js';
 import { ActionId } from '../proto_utils/action_id.js';
 import { Raid } from '../raid';
@@ -248,14 +248,25 @@ export function makeMultistateRaidBuffInput<SpecType extends Spec>(
 		config.reverse,
 	);
 }
-// function makeMultistatePartyBuffInput(actionId: ActionId, numStates: number, fieldName: keyof PartyBuffs): InputHelpers.TypedIconPickerConfig<Player<SpecType>, number> {
-// 	return InputHelpers.makeMultistateIconInput<any, PartyBuffs, Party>({
-// 		getModObject: (player: Player<SpecType>) => player.getParty()!,
-// 		getValue: (party: Party) => party.getBuffs(),
-// 		setValue: (eventID: EventID, party: Party, newVal: PartyBuffs) => party.setBuffs(eventID, newVal),
-// 		changeEmitter: (party: Party) => party.buffsChangeEmitter,
-// 	}, actionId, numStates, fieldName);
-// }
+export function makeMultistatePartyBuffInput<SpecType extends Spec>(
+	config: MultiStateInputConfig<PartyBuffs, Player<SpecType>>,
+): InputHelpers.TypedIconPickerConfig<Player<SpecType>, number> {
+	return InputHelpers.makeMultistateIconInput<any, PartyBuffs, Player<SpecType>>(
+		{
+			getModObject: (player: Player<SpecType>) => player,
+			showWhen: (player: Player<SpecType>) => !config.faction || config.faction == player.getFaction(),
+			getValue: (player: Player<SpecType>) => player.getParty()!.getBuffs(),
+			setValue: (eventID: EventID, player: Player<SpecType>, newVal: PartyBuffs) => player.getParty()!.setBuffs(eventID, newVal),
+			changeEmitter: (player: Player<SpecType>) =>
+				TypedEvent.onAny([player.getParty()!.buffsChangeEmitter, player.raceChangeEmitter]),
+		},
+		config.actionId,
+		config.numStates,
+		config.fieldName,
+		config.multiplier,
+		config.reverse,
+	);
+}
 export function makeMultistateIndividualBuffInput<SpecType extends Spec>(
 	config: MultiStateInputConfig<IndividualBuffs, Player<SpecType>>,
 ): InputHelpers.TypedIconPickerConfig<Player<SpecType>, number> {

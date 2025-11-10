@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"math"
 	"time"
 
@@ -419,24 +420,29 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	registerManaTideTotemCD(agent, partyBuffs.ManaTideTotems)
 	registerInnervateCD(agent, individualBuffs.Innervates)
 
-	if raidBuffs.AtieshMage {
-		AtieshSpellCritEffect(&character.Unit)
-	}
-	if raidBuffs.AtieshWarlock {
-		AtieshSpellPowerEffect(&character.Unit)
-	}
-	if raidBuffs.AtieshDruid {
-		AtieshHealingEffect(&character.Unit)
-	}
-	if raidBuffs.AtieshDruid {
+	if partyBuffs.AtieshMage > 0 {
+		for idx := int32(1); idx <= partyBuffs.AtieshMage; idx++ {
+			AtieshSpellCritEffect(&character.Unit, idx)
+		}
 	}
 
-	character.AddStats(stats.Stats{
-		stats.SpellCrit: 2 * SpellCritRatingPerCritChance * float64(partyBuffs.AtieshMage),
-	})
-	character.AddStats(stats.Stats{
-		stats.SpellPower: 33 * float64(partyBuffs.AtieshWarlock),
-	})
+	if partyBuffs.AtieshWarlock > 0 {
+		for idx := int32(1); idx <= partyBuffs.AtieshWarlock; idx++ {
+			AtieshSpellPowerEffect(&character.Unit, idx)
+		}
+	}
+
+	if partyBuffs.AtieshPriest > 0 {
+		for idx := int32(1); idx <= partyBuffs.AtieshPriest; idx++ {
+			AtieshHealingEffect(&character.Unit, idx)
+		}
+	}
+
+	if partyBuffs.AtieshDruid > 0 {
+		for idx := int32(1); idx <= partyBuffs.AtieshDruid; idx++ {
+			AtieshMp5Effect(&character.Unit, idx)
+		}
+	}
 }
 
 // Applies buffs to pets.
@@ -1815,8 +1821,8 @@ func ApplySaygesFortunes(character *Character, fortune proto.SaygesFortune) {
 }
 
 // Equip: Restore 11 mana per 5 seconds to all party members within 30 yards by 2%.
-func AtieshMp5Effect(unit *Unit) *Aura {
-	label := "Atiesh Greatstaff of the Guardian (MP5)"
+func AtieshMp5Effect(unit *Unit, idx int32) *Aura {
+	label := fmt.Sprintf("Atiesh Greatstaff of the Guardian (MP5) %d", idx)
 
 	if unit.HasAura(label) {
 		return unit.GetAura(label)
@@ -1827,15 +1833,15 @@ func AtieshMp5Effect(unit *Unit) *Aura {
 	}
 
 	return MakePermanent(unit.RegisterAura(Aura{
-		ActionID:   ActionID{SpellID: 28145},
+		ActionID:   ActionID{SpellID: 28145}.WithTag(idx),
 		Label:      label,
 		BuildPhase: CharacterBuildPhaseBuffs,
 	}).AttachStatsBuff(stats))
 }
 
 // Equip: Increases healing done by up to 62 and damage done by up to 19 for all magical spells and effects of all party members within 30.
-func AtieshHealingEffect(unit *Unit) *Aura {
-	label := "Atiesh Greatstaff of the Guardian (Healing)"
+func AtieshHealingEffect(unit *Unit, idx int32) *Aura {
+	label := fmt.Sprintf("Atiesh Greatstaff of the Guardian (Healing) %d", idx)
 
 	if unit.HasAura(label) {
 		return unit.GetAura(label)
@@ -1846,15 +1852,15 @@ func AtieshHealingEffect(unit *Unit) *Aura {
 	}
 
 	return MakePermanent(unit.RegisterAura(Aura{
-		ActionID:   ActionID{SpellID: 28144},
+		ActionID:   ActionID{SpellID: 28144}.WithTag(idx),
 		Label:      label,
 		BuildPhase: CharacterBuildPhaseBuffs,
 	}).AttachStatsBuff(stats))
 }
 
 // Equip: Increases the spell critical chance of all party members within 30 yards by 2%.
-func AtieshSpellCritEffect(unit *Unit) *Aura {
-	label := "Atiesh Greatstaff of the Guardian (Spell Crit)"
+func AtieshSpellCritEffect(unit *Unit, idx int32) *Aura {
+	label := fmt.Sprintf("Atiesh Greatstaff of the Guardian (Mage) %d", idx)
 
 	if unit.HasAura(label) {
 		return unit.GetAura(label)
@@ -1863,15 +1869,15 @@ func AtieshSpellCritEffect(unit *Unit) *Aura {
 	stats := stats.Stats{stats.SpellCrit: 2 * SpellCritRatingPerCritChance}
 
 	return MakePermanent(unit.RegisterAura(Aura{
-		ActionID:   ActionID{SpellID: 28142},
+		ActionID:   ActionID{SpellID: 28142}.WithTag(idx),
 		Label:      label,
 		BuildPhase: CharacterBuildPhaseBuffs,
 	}).AttachBuildPhaseStatsBuff(stats))
 }
 
 // Equip: Increases damage and healing done by magical spells and effects of all party members within 30 yards by up to 33.
-func AtieshSpellPowerEffect(unit *Unit) *Aura {
-	label := "Atiesh Greatstaff of the Guardian (Spell Power)"
+func AtieshSpellPowerEffect(unit *Unit, idx int32) *Aura {
+	label := fmt.Sprintf("Atiesh Greatstaff of the Guardian (Warlock) %d", idx)
 
 	if unit.HasAura(label) {
 		return unit.GetAura(label)
@@ -1880,7 +1886,7 @@ func AtieshSpellPowerEffect(unit *Unit) *Aura {
 	stats := stats.Stats{stats.SpellPower: 33}
 
 	return MakePermanent(unit.RegisterAura(Aura{
-		ActionID:   ActionID{SpellID: 28143},
+		ActionID:   ActionID{SpellID: 28143}.WithTag(idx),
 		Label:      label,
 		BuildPhase: CharacterBuildPhaseBuffs,
 	}).AttachBuildPhaseStatsBuff(stats))

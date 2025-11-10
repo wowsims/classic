@@ -6,6 +6,7 @@ import {
 	makeBooleanRaidBuffInput,
 	makeEnumIndividualBuffInput,
 	makeMultistateIndividualBuffInput,
+	makeMultistatePartyBuffInput,
 	makeMultistateRaidBuffInput,
 	makeTristateDebuffInput,
 	makeTristateIndividualBuffInput,
@@ -248,21 +249,25 @@ export const MeleeCritBuff = withLabel(
 export const SpellCritBuff = withLabel(makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24907), fieldName: 'moonkinAura' }), 'Moonkin Aura');
 
 // Misc Buffs
-export const AtieshMageBuff = makeBooleanRaidBuffInput({
+export const AtieshMageBuff = makeMultistatePartyBuffInput({
 	actionId: () => ActionId.fromSpellId(28142),
 	fieldName: 'atieshMage',
+	numStates: 5,
 });
-export const AtieshWarlockBuff = makeBooleanRaidBuffInput({
+export const AtieshWarlockBuff = makeMultistatePartyBuffInput({
 	actionId: () => ActionId.fromSpellId(28143),
 	fieldName: 'atieshWarlock',
+	numStates: 5,
 });
-export const AtieshPriestBuff = makeBooleanRaidBuffInput({
+export const AtieshPriestBuff = makeMultistatePartyBuffInput({
 	actionId: () => ActionId.fromSpellId(28144),
 	fieldName: 'atieshPriest',
+	numStates: 5,
 });
-export const AtieshDruidBuff = makeBooleanRaidBuffInput({
+export const AtieshDruidBuff = makeMultistatePartyBuffInput({
 	actionId: () => ActionId.fromSpellId(28145),
 	fieldName: 'atieshDruid',
+	numStates: 5,
 });
 
 export const RetributionAura = makeTristateRaidBuffInput({

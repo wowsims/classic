@@ -557,8 +557,11 @@ enum SaygesFortune {
 }
 
 // Buffs that affect the entire raid.
-// NextIndex: 36
+// NextIndex: 40
 message RaidBuffs {
+	reserved 36, 37, 38, 39;
+	reserved "atiesh_druid", "atiesh_mage", "atiesh_priest", "atiesh_warlock";
+
 	// +Stats
 	TristateEffect gift_of_the_wild = 1;
 
@@ -618,11 +621,6 @@ message RaidBuffs {
 	TristateEffect retribution_aura = 25;
 	bool sanctity_aura = 33;
 	int32 battle_squawk = 34;
-
-	bool atiesh_mage = 36;
-	bool atiesh_warlock = 37;
-	bool atiesh_priest = 38;
-	bool atiesh_druid = 39;
 }
 
 // Buffs that affect a single party.
@@ -630,6 +628,8 @@ message PartyBuffs {
 	// Item Buffs
 	int32 atiesh_mage = 1;
 	int32 atiesh_warlock = 2;
+	int32 atiesh_druid = 4;
+	int32 atiesh_priest = 5;
 
 	// Group buffs
 	int32 mana_tide_totems = 3;

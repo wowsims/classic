@@ -349,6 +349,22 @@ export class ActionId {
 					name += ' (Bounce)';
 				}
 				break;
+			case 'Power of the Guardian':
+				switch (this.spellId) {
+				case 28142:
+					name = `${name} (Mage)`;
+					break;
+				case 28143:
+					name = `${name} (Warlock)`;
+					break;
+				case 28144:
+					name = `${name} (Priest)`;
+					break;
+				case 28145:
+					name = `${name} (Druid)`;
+					break;
+				}
+				break;
 			default:
 				if (this.tag) {
 					name += ' (??)';
