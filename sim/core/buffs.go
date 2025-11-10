@@ -419,6 +419,18 @@ func applyBuffEffects(agent Agent, playerFaction proto.Faction, raidBuffs *proto
 	registerManaTideTotemCD(agent, partyBuffs.ManaTideTotems)
 	registerInnervateCD(agent, individualBuffs.Innervates)
 
+	if raidBuffs.AtieshMage {
+		AtieshSpellCritEffect(&character.Unit)
+	}
+	if raidBuffs.AtieshWarlock {
+		AtieshSpellPowerEffect(&character.Unit)
+	}
+	if raidBuffs.AtieshDruid {
+		AtieshHealingEffect(&character.Unit)
+	}
+	if raidBuffs.AtieshDruid {
+	}
+
 	character.AddStats(stats.Stats{
 		stats.SpellCrit: 2 * SpellCritRatingPerCritChance * float64(partyBuffs.AtieshMage),
 	})
@@ -1800,4 +1812,76 @@ func ApplySaygesFortunes(character *Character, fortune proto.SaygesFortune) {
 	}))
 
 	makeExclusiveBuff(aura, config)
+}
+
+// Equip: Restore 11 mana per 5 seconds to all party members within 30 yards by 2%.
+func AtieshMp5Effect(unit *Unit) *Aura {
+	label := "Atiesh Greatstaff of the Guardian (MP5)"
+
+	if unit.HasAura(label) {
+		return unit.GetAura(label)
+	}
+
+	stats := stats.Stats{
+		stats.MP5: 11,
+	}
+
+	return MakePermanent(unit.RegisterAura(Aura{
+		ActionID:   ActionID{SpellID: 28145},
+		Label:      label,
+		BuildPhase: CharacterBuildPhaseBuffs,
+	}).AttachStatsBuff(stats))
+}
+
+// Equip: Increases healing done by up to 62 and damage done by up to 19 for all magical spells and effects of all party members within 30.
+func AtieshHealingEffect(unit *Unit) *Aura {
+	label := "Atiesh Greatstaff of the Guardian (Healing)"
+
+	if unit.HasAura(label) {
+		return unit.GetAura(label)
+	}
+
+	stats := stats.Stats{
+		stats.HealingPower: 62,
+	}
+
+	return MakePermanent(unit.RegisterAura(Aura{
+		ActionID:   ActionID{SpellID: 28144},
+		Label:      label,
+		BuildPhase: CharacterBuildPhaseBuffs,
+	}).AttachStatsBuff(stats))
+}
+
+// Equip: Increases the spell critical chance of all party members within 30 yards by 2%.
+func AtieshSpellCritEffect(unit *Unit) *Aura {
+	label := "Atiesh Greatstaff of the Guardian (Spell Crit)"
+
+	if unit.HasAura(label) {
+		return unit.GetAura(label)
+	}
+
+	stats := stats.Stats{stats.SpellCrit: 2 * SpellCritRatingPerCritChance}
+
+	return MakePermanent(unit.RegisterAura(Aura{
+		ActionID:   ActionID{SpellID: 28142},
+		Label:      label,
+		BuildPhase: CharacterBuildPhaseBuffs,
+	}).AttachBuildPhaseStatsBuff(stats))
+}
+
+// Equip: Increases damage and healing done by magical spells and effects of all party members within 30 yards by up to 33.
+func AtieshSpellPowerEffect(unit *Unit) *Aura {
+	label := "Atiesh Greatstaff of the Guardian (Spell Power)"
+
+	if unit.HasAura(label) {
+		return unit.GetAura(label)
+	}
+
+	stats := stats.Stats{stats.SpellPower: 33}
+
+	return MakePermanent(unit.RegisterAura(Aura{
+		ActionID:   ActionID{SpellID: 28143},
+		Label:      label,
+		BuildPhase: CharacterBuildPhaseBuffs,
+	}).AttachBuildPhaseStatsBuff(stats))
 }

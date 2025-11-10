@@ -10,6 +10,10 @@ import (
 )
 
 const (
+	AtieshGreatstaffMage            = 22589
+	AtieshGreatstaffWarlock         = 22630
+	AtieshGreatstaffPriest          = 22631
+	AtieshGreatstaffDruid           = 22632
 	CorruptedAshbringer             = 22691
 	KissOfTheSpider                 = 22954
 	GlyphOfDeflection               = 23040
@@ -22,6 +26,26 @@ const (
 
 func init() {
 	core.AddEffectsToTest = false
+
+	// https://www.wowhead.com/classic/item=22632/atiesh-greatstaff-of-the-guardian
+	core.NewItemEffect(AtieshGreatstaffDruid, func(agent core.Agent) {
+		core.AtieshMp5Effect(&agent.GetCharacter().Unit)
+	})
+
+	// https://www.wowhead.com/classic/item=22589/atiesh-greatstaff-of-the-guardian
+	core.NewItemEffect(AtieshGreatstaffMage, func(agent core.Agent) {
+		core.AtieshSpellCritEffect(&agent.GetCharacter().Unit)
+	})
+
+	// https://www.wowhead.com/classic/item=22631/atiesh-greatstaff-of-the-guardian
+	core.NewItemEffect(AtieshGreatstaffPriest, func(agent core.Agent) {
+		core.AtieshHealingEffect(&agent.GetCharacter().Unit)
+	})
+
+	// https://www.wowhead.com/classic/item=22630/atiesh-greatstaff-of-the-guardian
+	core.NewItemEffect(AtieshGreatstaffWarlock, func(agent core.Agent) {
+		core.AtieshSpellPowerEffect(&agent.GetCharacter().Unit)
+	})
 
 	// https://www.wowhead.com/classic/item=22691/corrupted-ashbringer
 	// Chance on hit: Steals 185 to 215 life from target enemy.

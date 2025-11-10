@@ -618,6 +618,11 @@ message RaidBuffs {
 	TristateEffect retribution_aura = 25;
 	bool sanctity_aura = 33;
 	int32 battle_squawk = 34;
+
+	bool atiesh_mage = 36;
+	bool atiesh_warlock = 37;
+	bool atiesh_priest = 38;
+	bool atiesh_druid = 39;
 }
 
 // Buffs that affect a single party.

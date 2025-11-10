@@ -248,6 +248,23 @@ export const MeleeCritBuff = withLabel(
 export const SpellCritBuff = withLabel(makeBooleanRaidBuffInput({ actionId: () => ActionId.fromSpellId(24907), fieldName: 'moonkinAura' }), 'Moonkin Aura');
 
 // Misc Buffs
+export const AtieshMageBuff = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(28142),
+	fieldName: 'atieshMage',
+});
+export const AtieshWarlockBuff = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(28143),
+	fieldName: 'atieshWarlock',
+});
+export const AtieshPriestBuff = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(28144),
+	fieldName: 'atieshPriest',
+});
+export const AtieshDruidBuff = makeBooleanRaidBuffInput({
+	actionId: () => ActionId.fromSpellId(28145),
+	fieldName: 'atieshDruid',
+});
+
 export const RetributionAura = makeTristateRaidBuffInput({
 	actionId: () => ActionId.fromSpellId(10301),
 	impId: ActionId.fromSpellId(20092),
@@ -648,6 +665,26 @@ export const RAID_BUFFS_CONFIG = [
 ] as PickerStatOptions[];
 
 export const MISC_BUFFS_CONFIG = [
+	{
+		config: AtieshMageBuff,
+		picker: IconPicker,
+		stats: [Stat.StatSpellCrit],
+	},
+	{
+		config: AtieshWarlockBuff,
+		picker: IconPicker,
+		stats: [Stat.StatSpellPower, Stat.StatSpellDamage],
+	},
+	{
+		config: AtieshPriestBuff,
+		picker: IconPicker,
+		stats: [Stat.StatHealingPower],
+	},
+	{
+		config: AtieshDruidBuff,
+		picker: IconPicker,
+		stats: [Stat.StatMP5],
+	},
 	{
 		config: Thorns,
 		picker: IconPicker,
