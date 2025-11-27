@@ -69,6 +69,7 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecMage, {
 			[Stat.StatSpellHaste]: 6.85,
 			[Stat.StatMP5]: 0.11,
 			[Stat.StatFireResistance]: 0.5,
+			[Stat.StatFrostResistance]: 0.5,
 		}),
 		// Default consumes settings.
 		consumes: Presets.DefaultConsumes,
