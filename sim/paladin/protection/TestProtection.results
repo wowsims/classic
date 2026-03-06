@@ -104,6 +104,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestProtection-Phase4-AllItems-BattlegearofEternalJustice"
+ value: {
+  dps: 384.5815
+  tps: 510.39161
+ }
+}
+dps_results: {
  key: "TestProtection-Phase4-AllItems-FieldMarshal'sAegis"
  value: {
   dps: 377.19605

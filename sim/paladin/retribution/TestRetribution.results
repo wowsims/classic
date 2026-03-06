@@ -50,12 +50,12 @@ character_stats_results: {
 stat_weights_results: {
  key: "TestRetribution-Phase5-StatWeights-Default"
  value: {
-  weights: 0.33166
-  weights: 0.18377
+  weights: 0.33199
+  weights: 0.16862
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.2413
+  weights: 0.25981
   weights: 0
   weights: 0
   weights: 0
@@ -63,13 +63,13 @@ stat_weights_results: {
   weights: 0
   weights: 0
   weights: 0
-  weights: 0.78943
-  weights: 0.16822
+  weights: 0.70516
+  weights: 0.23988
   weights: 0
   weights: 0
-  weights: 0.11918
-  weights: 2.8357
-  weights: 2.67284
+  weights: 0.11929
+  weights: 2.96126
+  weights: 2.67511
   weights: 0
   weights: 0
   weights: 0
@@ -99,64 +99,71 @@ stat_weights_results: {
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-Avenger'sBattlegear"
  value: {
-  dps: 402.34936
-  tps: 427.57677
+  dps: 416.8195
+  tps: 442.43533
+ }
+}
+dps_results: {
+ key: "TestRetribution-Phase5-AllItems-BattlegearofEternalJustice"
+ value: {
+  dps: 391.2016
+  tps: 402.80001
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-FieldMarshal'sAegis"
  value: {
-  dps: 394.77296
-  tps: 420.30521
+  dps: 410.34555
+  tps: 436.35963
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-Freethinker'sArmor"
  value: {
-  dps: 320.10045
-  tps: 344.3937
+  dps: 333.52015
+  tps: 358.6099
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-JudgementArmor"
  value: {
-  dps: 399.85618
-  tps: 425.85551
+  dps: 414.87838
+  tps: 441.1383
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-LawbringerArmor"
  value: {
-  dps: 334.99133
-  tps: 360.69074
+  dps: 347.88463
+  tps: 373.88396
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-LieutenantCommander'sRedoubt"
  value: {
-  dps: 363.99549
-  tps: 388.41657
+  dps: 378.85138
+  tps: 403.91163
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-RedemptionArmor"
  value: {
-  dps: 322.42266
-  tps: 349.59216
+  dps: 329.49158
+  tps: 356.13255
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-AllItems-SanctifiedOrb-20512"
  value: {
-  dps: 291.80675
-  tps: 315.75091
+  dps: 303.77576
+  tps: 328.43285
  }
 }
 dps_results: {
  key: "TestRetribution-Phase5-Average-Default"
  value: {
-  dps: 292.10631
-  tps: 316.03209
+  dps: 303.6155
+  tps: 328.21358
  }
 }
 dps_results: {
@@ -246,7 +253,7 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-Phase5-SwitchInFrontOfTarget-Default"
  value: {
-  dps: 253.47379
-  tps: 276.27729
+  dps: 262.86678
+  tps: 286.16195
  }
 }

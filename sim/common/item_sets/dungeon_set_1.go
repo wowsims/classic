@@ -152,7 +152,7 @@ var ItemSetLightforgeArmor = core.NewItemSet(core.ItemSet{
 			c := agent.GetCharacter()
 			actionID := core.ActionID{SpellID: 27498}
 
-			procAura := c.NewTemporaryStatsAura("Crusader's Wrath", core.ActionID{SpellID: 27498}, stats.Stats{stats.SpellPower: 95}, time.Second*10)
+			procAura := c.NewTemporaryStatsAura("Crusader's Wrath", actionID, stats.Stats{stats.SpellPower: 95}, time.Second*10)
 			handler := func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
 				procAura.Activate(sim)
 			}
@@ -162,8 +162,8 @@ var ItemSetLightforgeArmor = core.NewItemSet(core.ItemSet{
 				Name:       "Item - Crusader's Wrath Proc - Lightforge Armor",
 				Callback:   core.CallbackOnSpellHitDealt,
 				Outcome:    core.OutcomeLanded,
-				ProcMask:   core.ProcMaskMeleeWhiteHit,
-				ProcChance: 0.06, //Unsure if this is the classic or SoD proc rate.
+				ProcMask:   core.ProcMaskMelee, // Unsure if this is melee or all attacks but most on proc effects like enchants trigger off white or seal hits,
+				PPM:        3, //6% is the sod proc rate, best data I could find online says 3 ppm
 				Handler:    handler,
 			})
 		},
