@@ -162,7 +162,7 @@ var ItemSetLightforgeArmor = core.NewItemSet(core.ItemSet{
 				Name:       "Item - Crusader's Wrath Proc - Lightforge Armor",
 				Callback:   core.CallbackOnSpellHitDealt,
 				Outcome:    core.OutcomeLanded,
-				ProcMask:   core.ProcMaskMelee, // Unsure if this is melee or all attacks but most on proc effects like enchants trigger off white or seal hits,
+				ProcMask:   core.ProcMaskMeleeWhiteHit,
 				PPM:        3, //6% is the sod proc rate, best data I could find online says 3 ppm
 				Handler:    handler,
 			})
