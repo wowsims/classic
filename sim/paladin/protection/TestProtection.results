@@ -107,7 +107,7 @@ dps_results: {
  key: "TestProtection-Phase4-AllItems-BattlegearofEternalJustice"
  value: {
   dps: 384.5815
-  tps: 510.39161
+  tps: 510.46096
  }
 }
 dps_results: {

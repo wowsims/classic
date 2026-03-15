@@ -116,18 +116,13 @@ var ItemSetBattlegearOfEternalJustice = core.NewItemSet(core.ItemSet{
 
 			manaMetrics := paladin.NewManaMetrics(core.ActionID{SpellID: 0})
 
-			spellCodes := []int32{
-				SpellCode_PaladinJudgementOfCommand,
-				SpellCode_PaladinJudgementOfRighteousness,
-			}
-
-			paladin.RegisterAura(core.Aura{
-				Label: "Battlegear of Eternal Justice 3 pc",
-				OnCastComplete: func(aura *core.Aura, sim *core.Simulation, spell *core.Spell) {
-					if slices.Contains(spellCodes, spell.SpellCode) {
-						if sim.Proc(0.20, "Battlegear of Eternal Justice 3 pc") {
-							paladin.AddMana(sim, 100, manaMetrics)
-						}
+			core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+				Name:       "Battlegear of Eternal Justice 3 pc",
+				Callback:   core.CallbackOnCastComplete,
+				ProcChance: 0.20,
+				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+					if spell.SpellCode.Matches(SpellCode_PaladinJudgementOfCommand|SpellCode_PaladinJudgementOfRighteousness) {
+						paladin.AddMana(sim, 100, manaMetrics)
 					}
 				},
 			})
