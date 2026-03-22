@@ -121,7 +121,7 @@ var ItemSetBattlegearOfEternalJustice = core.NewItemSet(core.ItemSet{
 				Callback:   core.CallbackOnCastComplete,
 				ProcChance: 0.20,
 				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
-					if spell.SpellCode.Matches(SpellCode_PaladinJudgementOfCommand|SpellCode_PaladinJudgementOfRighteousness) {
+					if spell.SpellCode == SpellCode_PaladinJudgementOfCommand || spell.SpellCode == SpellCode_PaladinJudgementOfRighteousness {
 						paladin.AddMana(sim, 100, manaMetrics)
 					}
 				},
