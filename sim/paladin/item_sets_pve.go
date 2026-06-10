@@ -11,7 +11,7 @@ import (
 //                            Classic Phase 1 Item Sets - Molten Core
 ///////////////////////////////////////////////////////////////////////////
 
-var ItemSetVestmentsOfProphecy = core.NewItemSet(core.ItemSet{
+var ItemSetLawbringerArmor = core.NewItemSet(core.ItemSet{
 	Name: "Lawbringer Armor",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Increases the chance of triggering a Judgement of Light heal by 10%.
@@ -36,7 +36,7 @@ var ItemSetVestmentsOfProphecy = core.NewItemSet(core.ItemSet{
 //                            Classic Phase 3 Item Sets - BWL
 ///////////////////////////////////////////////////////////////////////////
 
-var ItemSetSoulforgeArmor = core.NewItemSet(core.ItemSet{
+var ItemSetJudgementArmor = core.NewItemSet(core.ItemSet{
 	Name: "Judgement Armor",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Increases the radius of a Paladin's auras by 10.
@@ -69,7 +69,7 @@ var ItemSetSoulforgeArmor = core.NewItemSet(core.ItemSet{
 //                            Classic Phase 4 Item Sets - ZG and AB
 ///////////////////////////////////////////////////////////////////////////
 
-var ItemSetConfessorsRaiment = core.NewItemSet(core.ItemSet{
+var ItemSetFreethinkersArmor = core.NewItemSet(core.ItemSet{
 	Name: "Freethinker's Armor",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Restores 4 mana per 5 sec.
@@ -92,7 +92,7 @@ var ItemSetConfessorsRaiment = core.NewItemSet(core.ItemSet{
 //                            Classic Phase 5 Item Sets - AQ
 ///////////////////////////////////////////////////////////////////////////
 
-var ItemSetGarmentsOfTheOracle = core.NewItemSet(core.ItemSet{
+var ItemSetAvengersBattlegear = core.NewItemSet(core.ItemSet{
 	Name: "Avenger's Battlegear",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Increases the duration of your Judgements by 20%.
@@ -107,11 +107,34 @@ var ItemSetGarmentsOfTheOracle = core.NewItemSet(core.ItemSet{
 	},
 })
 
+var ItemSetBattlegearOfEternalJustice = core.NewItemSet(core.ItemSet{
+	Name: "Battlegear of Eternal Justice",
+	Bonuses: map[int32]core.ApplyEffect{
+		// 20% chance to regain 100 mana when you cast a Judgement.
+		3: func(agent core.Agent) {
+			paladin := agent.(PaladinAgent).GetPaladin()
+
+			manaMetrics := paladin.NewManaMetrics(core.ActionID{SpellID: 0})
+
+			core.MakeProcTriggerAura(&paladin.Unit, core.ProcTrigger{
+				Name:       "Battlegear of Eternal Justice 3 pc",
+				Callback:   core.CallbackOnCastComplete,
+				ProcChance: 0.20,
+				Handler: func(sim *core.Simulation, spell *core.Spell, _ *core.SpellResult) {
+					if spell.SpellCode == SpellCode_PaladinJudgementOfCommand || spell.SpellCode == SpellCode_PaladinJudgementOfRighteousness {
+						paladin.AddMana(sim, 100, manaMetrics)
+					}
+				},
+			})
+		},
+	},
+})
+
 ///////////////////////////////////////////////////////////////////////////
 //                            Classic Phase 6 Item Sets - Naxx
 ///////////////////////////////////////////////////////////////////////////
 
-var ItemSetVestmentsOfFaith = core.NewItemSet(core.ItemSet{
+var ItemSetRedemptionArmor = core.NewItemSet(core.ItemSet{
 	Name: "Redemption Armor",
 	Bonuses: map[int32]core.ApplyEffect{
 		// Increases the amount healed by your Judgement of Light by 20.

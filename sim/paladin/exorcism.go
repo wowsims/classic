@@ -17,12 +17,12 @@ func (paladin *Paladin) registerExorcism() {
 		maxDamage  float64
 		scale      float64
 	}{
-		{level: 20, spellID: 415068, manaCost: 85, scaleLevel: 25, minDamage: 84, maxDamage: 96, scale: 1.2},
-		{level: 28, spellID: 415069, manaCost: 135, scaleLevel: 33, minDamage: 152, maxDamage: 172, scale: 1.6},
-		{level: 36, spellID: 415070, manaCost: 180, scaleLevel: 41, minDamage: 217, maxDamage: 245, scale: 2.0},
-		{level: 44, spellID: 415071, manaCost: 235, scaleLevel: 49, minDamage: 304, maxDamage: 342, scale: 2.4},
-		{level: 52, spellID: 415072, manaCost: 285, scaleLevel: 57, minDamage: 393, maxDamage: 439, scale: 2.8},
-		{level: 60, spellID: 415073, manaCost: 345, scaleLevel: 60, minDamage: 505, maxDamage: 563, scale: 3.2},
+		{level: 20, spellID: 879, manaCost: 85, scaleLevel: 25, minDamage: 84, maxDamage: 96, scale: 1.2},
+		{level: 28, spellID: 5614, manaCost: 135, scaleLevel: 33, minDamage: 152, maxDamage: 172, scale: 1.6},
+		{level: 36, spellID: 5615, manaCost: 180, scaleLevel: 41, minDamage: 217, maxDamage: 245, scale: 2.0},
+		{level: 44, spellID: 10312, manaCost: 235, scaleLevel: 49, minDamage: 304, maxDamage: 342, scale: 2.4},
+		{level: 52, spellID: 10313, manaCost: 285, scaleLevel: 57, minDamage: 393, maxDamage: 439, scale: 2.8},
+		{level: 60, spellID: 10314, manaCost: 345, scaleLevel: 60, minDamage: 505, maxDamage: 563, scale: 3.2},
 	}
 
 	for i, rank := range ranks {
@@ -64,15 +64,12 @@ func (paladin *Paladin) registerExorcism() {
 
 			BonusCoefficient: 0.429,
 
-			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-				bonusCrit := 0.0
-				if target.MobType == proto.MobType_MobTypeDemon || target.MobType == proto.MobType_MobTypeUndead {
-					bonusCrit += 100 * core.CritRatingPerCritChance
-				}
+			ExtraCastCondition: func(sim *core.Simulation, target *core.Unit) bool { 
+				return target.MobType == proto.MobType_MobTypeDemon || target.MobType == proto.MobType_MobTypeUndead
+			},
 
-				spell.BonusCritRating += bonusCrit
+			ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
 				spell.CalcAndDealDamage(sim, target, sim.Roll(minDamage, maxDamage), spell.OutcomeMagicHitAndCrit)
-				spell.BonusCritRating -= bonusCrit
 			},
 		})
 

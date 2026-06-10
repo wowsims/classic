@@ -117,7 +117,6 @@ func (paladin *Paladin) Initialize() {
 	paladin.registerDivineFavor()
 	paladin.registerHammerOfWrath()
 	paladin.registerHolyWrath()
-	paladin.registerAvengingWrath()
 	paladin.registerHolyShield()
 	paladin.registerBlessingOfSanctuary()
 	paladin.registerLayOnHands()

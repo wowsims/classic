@@ -53,10 +53,6 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 			value: PaladinSeal.Command,
 			showWhen: (player: Player<Spec.SpecProtectionPaladin>) => player.getTalents().sealOfCommand,
 		},
-		{
-			actionId: () => ActionId.fromSpellId(407798),
-			value: PaladinSeal.Martyrdom,
-		},
 	],
 	changeEmitter: (player: Player<Spec.SpecProtectionPaladin>) =>
 		TypedEvent.onAny([player.gearChangeEmitter, player.talentsChangeEmitter, player.specOptionsChangeEmitter]),

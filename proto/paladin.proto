@@ -80,15 +80,12 @@ enum PaladinSeal {
 	NoSeal = 0;
 	Righteousness = 1;
 	Command = 2;
-	Martyrdom = 3;
 }
 
 message PaladinOptions {
 	PaladinSeal primarySeal = 1;
 	PaladinAura aura = 2;
-	bool IsUsingDivineStormStopAttack = 4;
 	bool IsUsingJudgementStopAttack = 5;
-	bool IsUsingCrusaderStrikeStopAttack = 6;
 
     bool righteousFury = 8;
     Blessings personalBlessing = 9;

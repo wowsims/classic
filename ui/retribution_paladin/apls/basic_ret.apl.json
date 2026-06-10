@@ -1,0 +1,12 @@
+{
+  "type": "TypeAPL",
+  "prepullActions": [
+    {"action":{"castPaladinPrimarySeal":{}},"doAtValue":{"const":{"val":"-1.5s"}}}
+  ],
+  "priorityList": [
+    {"action":{"condition":{"spellCanCast":{"spellId":{"spellId":20271}}},"castSpell":{"spellId":{"spellId":20271}}}},
+    {"action":{"condition":{"cmp":{"op":"OpLe","lhs":{"currentSealRemainingTime":{}},"rhs":{"const":{"val":"1"}}}},"castPaladinPrimarySeal":{}}},
+    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"autoTimeToNext":{"autoType":"Melee"}},"rhs":{"const":{"val":"0.4s"}}}},{"auraIsActive":{"auraId":{"spellId":20293,"rank":8}}}]}},"castSpell":{"spellId":{"spellId":20375,"rank":1}}}},
+    {"action":{"condition":{"and":{"vals":[{"cmp":{"op":"OpLt","lhs":{"autoTimeToNext":{"autoType":"Melee"}},"rhs":{"const":{"val":"0.4s"}}}},{"auraIsActive":{"auraId":{"spellId":20375,"rank":1}}}]}},"castSpell":{"spellId":{"spellId":20293,"rank":8}}}}
+  ]
+}

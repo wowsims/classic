@@ -36,26 +36,10 @@ export const PrimarySealSelection = InputHelpers.makeSpecOptionsEnumIconInput<Sp
 			value: PaladinSeal.Command,
 			showWhen: (player: Player<Spec.SpecRetributionPaladin>) => player.getTalents().sealOfCommand,
 		},
-		{
-			actionId: () => ActionId.fromSpellId(407798),
-			value: PaladinSeal.Martyrdom,
-		},
 	],
 	// changeEmitter: (player: Player<Spec.SpecRetributionPaladin>) => player.changeEmitter,
 	changeEmitter: (player: Player<Spec.SpecRetributionPaladin>) =>
 		TypedEvent.onAny([player.gearChangeEmitter, player.talentsChangeEmitter, player.specOptionsChangeEmitter]),
-});
-
-export const CrusaderStrikeStopAttack = InputHelpers.makeSpecOptionsBooleanInput<Spec.SpecRetributionPaladin>({
-	fieldName: 'isUsingCrusaderStrikeStopAttack',
-	label: 'Using Crusader Strike StopAttack Macro',
-	labelTooltip: 'Allows saving of extra attacks',
-});
-
-export const DivineStormStopAttack = InputHelpers.makeSpecOptionsBooleanInput<Spec.SpecRetributionPaladin>({
-	fieldName: 'isUsingDivineStormStopAttack',
-	label: 'Using Divine Storm StopAttack Macro',
-	labelTooltip: 'Allows saving of extra attacks',
 });
 
 export const JudgementStopAttack = InputHelpers.makeSpecOptionsBooleanInput<Spec.SpecRetributionPaladin>({

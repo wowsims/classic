@@ -21,10 +21,10 @@ func TestProtection(t *testing.T) {
 
 			Talents:     Phase4ProtTalents,
 			GearSet:     core.GetGearSet("../../../ui/protection_paladin/gear_sets", "blank"),
-			Rotation:    core.GetAplRotation("../../../ui/protection_paladin/apls", "p4prot"),
+			Rotation:    core.GetAplRotation("../../../ui/protection_paladin/apls", "basic_prot"),
 			Buffs:       core.FullBuffs,
 			Consumes:    Phase4Consumes,
-			SpecOptions: core.SpecOptionsCombo{Label: "P4 Prot", SpecOptions: PlayerOptionsSealofMartyrdom},
+			SpecOptions: core.SpecOptionsCombo{Label: "Basic Prot Rotation", SpecOptions: PlayerOptionsSealofRighteousness},
 
 			ItemFilter:      ItemFilters,
 			EPReferenceStat: proto.Stat_StatAttackPower,
@@ -57,12 +57,6 @@ var PlayerOptionsSealofCommand = &proto.Player_ProtectionPaladin{
 	},
 }
 
-var PlayerOptionsSealofMartyrdom = &proto.Player_ProtectionPaladin{
-	ProtectionPaladin: &proto.ProtectionPaladin{
-		Options: optionsSealOfMartyrdom,
-	},
-}
-
 var PlayerOptionsSealofRighteousness = &proto.Player_ProtectionPaladin{
 	ProtectionPaladin: &proto.ProtectionPaladin{
 		Options: optionsSealOfRighteousness,
@@ -71,11 +65,6 @@ var PlayerOptionsSealofRighteousness = &proto.Player_ProtectionPaladin{
 
 var optionsSealOfCommand = &proto.PaladinOptions{
 	PrimarySeal:   proto.PaladinSeal_Command,
-	RighteousFury: true,
-}
-
-var optionsSealOfMartyrdom = &proto.PaladinOptions{
-	PrimarySeal:   proto.PaladinSeal_Martyrdom,
 	RighteousFury: true,
 }
 
