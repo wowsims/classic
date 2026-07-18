@@ -54,6 +54,49 @@ func TestWarlockDSRuin(t *testing.T) {
 	}))
 }
 
+func TestLifeTapAssumedHealing(t *testing.T) {
+	runWithHPS := func(hps float64) *proto.RaidSimResult {
+		warlockOptions := *DefaultDestroWarlock.Warlock.Options
+		warlockOptions.AssumedLifeTapHps = hps
+		player := core.WithSpec(&proto.Player{
+			Class:         proto.Class_ClassWarlock,
+			Race:          proto.Race_RaceOrc,
+			Equipment:     core.GetGearSet("../../../ui/warlock/gear_sets", "mc").GearSet,
+			TalentsString: TalentsSMRuin,
+			Rotation:      core.GetAplRotation("../../../ui/warlock/apls", "rotation").Rotation,
+		}, &proto.Player_Warlock{Warlock: &proto.Warlock{Options: &warlockOptions}})
+
+		result := core.RunRaidSim(&proto.RaidSimRequest{
+			Raid:       core.SinglePlayerRaidProto(player, nil, nil, nil),
+			Encounter:  core.MakeSingleTargetEncounter(0),
+			SimOptions: &proto.SimOptions{Iterations: 1, IsTest: true, RandomSeed: 1},
+		})
+		if result.Error != nil {
+			t.Fatalf("simulation failed: %s", result.Error.Message)
+		}
+		return result
+	}
+
+	withoutHealing := runWithHPS(0)
+	withHealing := runWithHPS(20000)
+	withoutHealingDPS := withoutHealing.RaidMetrics.Parties[0].Players[0].Dps.Avg
+	withHealingDPS := withHealing.RaidMetrics.Parties[0].Players[0].Dps.Avg
+	if withHealingDPS <= withoutHealingDPS {
+		t.Fatalf("assumed healing did not improve DPS: without healing %.1f, with healing %.1f", withoutHealingDPS, withHealingDPS)
+	}
+
+	for _, resource := range withHealing.RaidMetrics.Parties[0].Players[0].Resources {
+		if resource.Type == proto.ResourceType_ResourceTypeHealth &&
+			resource.Id.GetOtherId() == proto.OtherAction_OtherActionHealingModel &&
+			resource.ActualGain > 0 {
+			t.Logf("DPS without healing %.1f, with healing %.1f; restored %.1f health", withoutHealingDPS, withHealingDPS, resource.ActualGain)
+			return
+		}
+	}
+
+	t.Fatal("assumed healing produced no effective health gain")
+}
+
 var TalentsSMRuin = "5502203112201105--52500051020001"
 var TalentsDSRuin = "25002-2050300152201-52500051020001"
 

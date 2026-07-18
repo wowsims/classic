@@ -103,6 +103,7 @@ message WarlockOptions {
 	bool pet_pool_mana = 5;
 	bool pet_passive = 6;
 	bool ignore_life_tap_damage = 7;
+	double assumed_life_tap_hps = 8;
 }
 
 message Warlock {

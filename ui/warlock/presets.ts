@@ -90,6 +90,7 @@ export const DefaultOptions = WarlockOptions.create({
 	armor: Armor.DemonArmor,
 	summon: Summon.Succubus,
 	weaponImbue: WarlockWeaponImbue.NoWeaponImbue,
+	assumedLifeTapHps: 50,
 });
 
 export const DefaultConsumes = Consumes.create({

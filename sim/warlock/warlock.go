@@ -105,6 +105,7 @@ func (warlock *Warlock) Initialize() {
 	warlock.registerImmolateSpell()
 	warlock.registerShadowBoltSpell()
 	warlock.registerLifeTapSpell()
+	warlock.registerLifeTapHealingModel()
 	warlock.registerSoulFireSpell()
 	warlock.registerShadowBurnSpell()
 	// warlock.registerSeedSpell()

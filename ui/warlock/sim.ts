@@ -5,6 +5,7 @@ import * as OtherInputs from '../core/components/other_inputs.js';
 import { BooleanPicker } from '../core/components/boolean_picker.js';
 import { ContentBlock } from '../core/components/content_block.js';
 import { IndividualSimUI, registerSpecConfig } from '../core/individual_sim_ui.js';
+import { NumberPicker } from '../core/components/number_picker.js';
 import { Player } from '../core/player.js';
 import { Class, Faction, ItemSlot, PartyBuffs, PseudoStat, Race, Spec, Stat } from '../core/proto/common.js';
 import { Stats } from '../core/proto_utils/stats.js';
@@ -19,6 +20,10 @@ const LifeTapSection = (parentElem: HTMLElement, simUI: IndividualSimUI<Spec.Spe
 	new BooleanPicker(contentBlock.bodyElement, simUI.player, {
 		...WarlockInputs.IgnoreLifeTapDamageInput(),
 		reverse: true,
+		inline: true,
+	});
+	new NumberPicker(contentBlock.bodyElement, simUI.player, {
+		...WarlockInputs.AssumedHealingPerSecondInput(),
 		inline: true,
 	});
 
