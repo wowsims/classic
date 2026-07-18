@@ -49,7 +49,9 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 			result := spell.CalcDamage(sim, spell.Unit, baseDamage, spell.OutcomeAlwaysHit)
 			restore := result.Damage
 
-			warlock.RemoveHealth(sim, result.Damage)
+			if !warlock.Options.IgnoreLifeTapDamage {
+				warlock.RemoveHealth(sim, result.Damage)
+			}
 			spell.DisposeResult(result)
 
 			warlock.AddMana(sim, restore, manaMetrics)
@@ -60,10 +62,22 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 func (warlock *Warlock) registerLifeTapSpell() {
 	warlock.LifeTap = make([]*core.Spell, 0)
 	for i := 1; i <= LifeTapRanks; i++ {
+		rank := i
 		config := warlock.getLifeTapBaseConfig(i)
 
 		if config.RequiredLevel <= int(warlock.Level) {
-			warlock.LifeTap = append(warlock.LifeTap, warlock.GetOrRegisterSpell(config))
+			lifeTap := warlock.GetOrRegisterSpell(config)
+			lifeTap.ExtraCastCondition = func(sim *core.Simulation, _ *core.Unit) bool {
+				if warlock.Options.IgnoreLifeTapDamage {
+					return true
+				}
+
+				result := lifeTap.CalcDamage(sim, lifeTap.Unit, LifeTapBaseDamage[rank], lifeTap.OutcomeAlwaysHit)
+				hasEnoughHealth := warlock.CurrentHealth() > result.Damage
+				lifeTap.DisposeResult(result)
+				return hasEnoughHealth
+			}
+			warlock.LifeTap = append(warlock.LifeTap, lifeTap)
 		}
 	}
 }

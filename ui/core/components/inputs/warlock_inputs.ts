@@ -90,3 +90,11 @@ export const PetPassiveInput = <SpecType extends WarlockSpecs>() =>
 		showWhen: player => player.getSpecOptions().summon != Summon.NoSummon,
 		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
 	});
+
+export const IgnoreLifeTapDamageInput = <SpecType extends WarlockSpecs>() =>
+	InputHelpers.makeSpecOptionsBooleanInput<SpecType>({
+		fieldName: 'ignoreLifeTapDamage',
+		label: 'Ignore Life Tap Damage',
+		labelTooltip: "Life Tap restores mana without reducing the Warlock's health.",
+		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
+	});

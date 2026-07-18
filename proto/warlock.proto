@@ -102,6 +102,7 @@ message WarlockOptions {
 	MaxFireboltRank max_firebolt_rank = 4;
 	bool pet_pool_mana = 5;
 	bool pet_passive = 6;
+	bool ignore_life_tap_damage = 7;
 }
 
 message Warlock {
