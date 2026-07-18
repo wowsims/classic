@@ -49,9 +49,8 @@ func (warlock *Warlock) getLifeTapBaseConfig(rank int) core.SpellConfig {
 			result := spell.CalcDamage(sim, spell.Unit, baseDamage, spell.OutcomeAlwaysHit)
 			restore := result.Damage
 
-			if warlock.IsTanking() {
-				spell.DealDamage(sim, result)
-			}
+			warlock.RemoveHealth(sim, result.Damage)
+			spell.DisposeResult(result)
 
 			warlock.AddMana(sim, restore, manaMetrics)
 		},
