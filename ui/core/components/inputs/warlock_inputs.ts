@@ -81,3 +81,12 @@ export const PetPoolManaInput = <SpecType extends WarlockSpecs>() =>
 		labelTooltip: 'Should Pet keep trying to cast on every mana regen instead of waiting for mana',
 		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
 	});
+
+export const PetPassiveInput = <SpecType extends WarlockSpecs>() =>
+	InputHelpers.makeSpecOptionsBooleanInput<SpecType>({
+		fieldName: 'petPassive',
+		label: 'Passive Pet',
+		labelTooltip: 'Keep the selected pet summoned without attacking or casting abilities.',
+		showWhen: player => player.getSpecOptions().summon != Summon.NoSummon,
+		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
+	});

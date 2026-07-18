@@ -101,6 +101,7 @@ message WarlockOptions {
 	WeaponImbue weapon_imbue = 3;
 	MaxFireboltRank max_firebolt_rank = 4;
 	bool pet_pool_mana = 5;
+	bool pet_passive = 6;
 }
 
 message Warlock {
