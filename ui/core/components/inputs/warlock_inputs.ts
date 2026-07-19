@@ -104,9 +104,8 @@ export const AssumedHealingPerSecondInput = <SpecType extends WarlockSpecs>(): I
 	type: 'number',
 	label: 'Assumed Healing per Second',
 	labelTooltip:
-		'Average incoming healing per second. The default 50 HPS is a conservative estimate of healing available for Life Tap after incidental damage and overhealing. Healing has an average cadence of 3 seconds with 1 second of variation.',
+		'Average incoming healing per second. The default 50 HPS is a conservative estimate of healing available for Life Tap after incidental damage and overhealing. Negative values model net incoming damage. Healing has an average cadence of 3 seconds with 1 second of variation.',
 	float: true,
-	positive: true,
 	changedEvent: player => player.specOptionsChangeEmitter,
 	getValue: player => player.getSpecOptions().assumedLifeTapHps,
 	setValue: (eventID, player, newValue) => {

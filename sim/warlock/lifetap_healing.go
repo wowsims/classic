@@ -14,7 +14,7 @@ const (
 
 func (warlock *Warlock) registerLifeTapHealingModel() {
 	hps := warlock.Options.AssumedLifeTapHps
-	if hps == 0 || warlock.IsTanking() {
+	if hps == 0 || warlock.Options.IgnoreLifeTapDamage || warlock.IsTanking() {
 		return
 	}
 
@@ -40,13 +40,18 @@ func (warlock *Warlock) registerLifeTapHealingModel() {
 		pa := &core.PendingAction{NextActionAt: sim.CurrentTime + timeToNextHeal}
 
 		pa.OnAction = func(sim *core.Simulation) {
-			totalHeal := hps * timeToNextHeal.Seconds() * warlock.PseudoStats.HealingTakenMultiplier
-			warlock.GainHealth(sim, totalHeal, healthMetrics)
+			healthDelta := hps * timeToNextHeal.Seconds()
+			if healthDelta >= 0 {
+				totalHeal := healthDelta * warlock.PseudoStats.HealingTakenMultiplier
+				warlock.GainHealth(sim, totalHeal, healthMetrics)
 
-			result := healingModelSpell.NewResult(&warlock.Unit)
-			result.Damage = totalHeal
-			warlock.OnHealTaken(sim, healingModelSpell, result)
-			healingModelSpell.DisposeResult(result)
+				result := healingModelSpell.NewResult(&warlock.Unit)
+				result.Damage = totalHeal
+				warlock.OnHealTaken(sim, healingModelSpell, result)
+				healingModelSpell.DisposeResult(result)
+			} else {
+				warlock.RemoveHealth(sim, -healthDelta)
+			}
 
 			timeToNextHeal = rollHealingCadence(sim)
 			pa.NextActionAt = sim.CurrentTime + timeToNextHeal

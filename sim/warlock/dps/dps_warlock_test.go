@@ -79,10 +79,15 @@ func TestLifeTapAssumedHealing(t *testing.T) {
 
 	withoutHealing := runWithHPS(0)
 	withHealing := runWithHPS(20000)
+	withNegativeHealing := runWithHPS(-20000)
 	withoutHealingDPS := withoutHealing.RaidMetrics.Parties[0].Players[0].Dps.Avg
 	withHealingDPS := withHealing.RaidMetrics.Parties[0].Players[0].Dps.Avg
+	withNegativeHealingDPS := withNegativeHealing.RaidMetrics.Parties[0].Players[0].Dps.Avg
 	if withHealingDPS <= withoutHealingDPS {
 		t.Fatalf("assumed healing did not improve DPS: without healing %.1f, with healing %.1f", withoutHealingDPS, withHealingDPS)
+	}
+	if withNegativeHealingDPS > withoutHealingDPS {
+		t.Fatalf("negative assumed healing improved DPS: without healing %.1f, with negative healing %.1f", withoutHealingDPS, withNegativeHealingDPS)
 	}
 
 	for _, resource := range withHealing.RaidMetrics.Parties[0].Players[0].Resources {
