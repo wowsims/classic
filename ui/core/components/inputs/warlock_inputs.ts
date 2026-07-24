@@ -81,3 +81,37 @@ export const PetPoolManaInput = <SpecType extends WarlockSpecs>() =>
 		labelTooltip: 'Should Pet keep trying to cast on every mana regen instead of waiting for mana',
 		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
 	});
+
+export const PetPassiveInput = <SpecType extends WarlockSpecs>() =>
+	InputHelpers.makeSpecOptionsBooleanInput<SpecType>({
+		fieldName: 'petPassive',
+		label: 'Passive Pet',
+		labelTooltip: 'Keep the selected pet summoned without attacking or casting abilities.',
+		showWhen: player => player.getSpecOptions().summon != Summon.NoSummon,
+		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
+	});
+
+export const IgnoreLifeTapDamageInput = <SpecType extends WarlockSpecs>() =>
+	InputHelpers.makeSpecOptionsBooleanInput<SpecType>({
+		fieldName: 'ignoreLifeTapDamage',
+		label: 'Ignore Life Tap Damage',
+		labelTooltip: "Life Tap restores mana without reducing the Warlock's health.",
+		changeEmitter: (player: Player<SpecType>) => player.changeEmitter,
+	});
+
+export const AssumedHealingPerSecondInput = <SpecType extends WarlockSpecs>(): InputHelpers.TypedNumberPickerConfig<Player<SpecType>> => ({
+	id: 'life-tap-assumed-healing-per-second',
+	type: 'number',
+	label: 'Assumed Healing per Second',
+	labelTooltip:
+		'Average incoming healing per second. The default 50 HPS is a conservative estimate of healing available for Life Tap after incidental damage and overhealing. Negative values model net incoming damage. Healing has an average cadence of 3 seconds with 1 second of variation.',
+	float: true,
+	changedEvent: player => player.specOptionsChangeEmitter,
+	getValue: player => player.getSpecOptions().assumedLifeTapHps,
+	setValue: (eventID, player, newValue) => {
+		const options = player.getSpecOptions();
+		options.assumedLifeTapHps = newValue;
+		player.setSpecOptions(eventID, options);
+	},
+	enableWhen: player => !player.getSpecOptions().ignoreLifeTapDamage,
+});

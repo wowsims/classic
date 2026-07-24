@@ -109,6 +109,10 @@ func (warlock *Warlock) makePet(cfg PetConfig, enabledOnStart bool) *WarlockPet 
 		wp.AddStatDependency(stats.Intellect, stats.SpellCrit, core.CritPerIntAtLevel[proto.Class_ClassWarrior]*core.SpellCritRatingPerCritChance)
 
 		// Imps generally don't melee
+		if warlock.Options.PetPassive {
+			cfg.AutoAttacks.AutoSwingMelee = false
+			cfg.AutoAttacks.AutoSwingRanged = false
+		}
 		wp.EnableAutoAttacks(wp, cfg.AutoAttacks)
 		wp.AutoAttacks.MHConfig().DamageMultiplier *= 1.0 + 0.04*float64(warlock.Talents.UnholyPower)
 	}
@@ -157,7 +161,7 @@ func (wp *WarlockPet) ApplyOnPetDisable(newOnPetDisable OnPetDisable) {
 }
 
 func (wp *WarlockPet) ExecuteCustomRotation(sim *core.Simulation) {
-	if !wp.IsEnabled() || wp.primaryAbility == nil {
+	if !wp.IsEnabled() || wp.owner.Options.PetPassive || wp.primaryAbility == nil {
 		return
 	}
 

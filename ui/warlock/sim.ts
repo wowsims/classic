@@ -2,12 +2,33 @@ import * as BuffDebuffInputs from '../core/components/inputs/buffs_debuffs';
 import * as ConsumablesInputs from '../core/components/inputs/consumables.js';
 import * as WarlockInputs from '../core/components/inputs/warlock_inputs';
 import * as OtherInputs from '../core/components/other_inputs.js';
+import { BooleanPicker } from '../core/components/boolean_picker.js';
+import { ContentBlock } from '../core/components/content_block.js';
 import { IndividualSimUI, registerSpecConfig } from '../core/individual_sim_ui.js';
+import { NumberPicker } from '../core/components/number_picker.js';
 import { Player } from '../core/player.js';
 import { Class, Faction, ItemSlot, PartyBuffs, PseudoStat, Race, Spec, Stat } from '../core/proto/common.js';
 import { Stats } from '../core/proto_utils/stats.js';
 import { getSpecIcon } from '../core/proto_utils/utils.js';
 import * as Presets from './presets.js';
+
+const LifeTapSection = (parentElem: HTMLElement, simUI: IndividualSimUI<Spec.SpecWarlock>) => {
+	const contentBlock = new ContentBlock(parentElem, 'life-tap-settings', {
+		header: { title: 'Life Tap' },
+	});
+
+	new BooleanPicker(contentBlock.bodyElement, simUI.player, {
+		...WarlockInputs.IgnoreLifeTapDamageInput(),
+		reverse: true,
+		inline: true,
+	});
+	new NumberPicker(contentBlock.bodyElement, simUI.player, {
+		...WarlockInputs.AssumedHealingPerSecondInput(),
+		inline: true,
+	});
+
+	return contentBlock;
+};
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 	cssClass: 'warlock-sim-ui',
@@ -116,8 +137,9 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecWarlock, {
 	petConsumeInputs: [ConsumablesInputs.PetAttackPowerConsumable, ConsumablesInputs.PetAgilityConsumable, ConsumablesInputs.PetStrengthConsumable],
 	// Inputs to include in the 'Other' section on the settings tab.
 	otherInputs: {
-		inputs: [WarlockInputs.PetPoolManaInput(), OtherInputs.DistanceFromTarget, OtherInputs.ChannelClipDelay],
+		inputs: [WarlockInputs.PetPassiveInput(), WarlockInputs.PetPoolManaInput(), OtherInputs.DistanceFromTarget, OtherInputs.ChannelClipDelay],
 	},
+	customSections: [LifeTapSection],
 	itemSwapConfig: {
 		itemSlots: [ItemSlot.ItemSlotMainHand, ItemSlot.ItemSlotOffHand, ItemSlot.ItemSlotRanged],
 	},

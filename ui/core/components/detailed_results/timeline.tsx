@@ -530,7 +530,8 @@ export class Timeline extends ResultComponent {
 			const playerPets = new Map<string, UnitMetrics>();
 			player.pets.forEach(petsLog => {
 				const petCastsByAbility = this.getSortedCastsByAbility(petsLog);
-				if (petCastsByAbility.length > 0) {
+				const hasResourceLogs = orderedResourceTypes.some(resourceType => petsLog.groupedResourceLogs[resourceType].length > 0);
+				if (petCastsByAbility.length > 0 || hasResourceLogs) {
 					// Because mulle pets can have the same name and we parse cast logs
 					// by pet name each individual pet ends up with all the casts of pets
 					// with the same name. Because of this we can just grab the first pet
