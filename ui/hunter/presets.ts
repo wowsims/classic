@@ -35,6 +35,11 @@ import { SavedTalents } from '../core/proto/ui.js';
 import P1APL from './apls/p1.apl.json';
 import P0BISGear from './gear_sets/p0.bis.gear.json';
 import P1BISGear from './gear_sets/p1.bis.gear.json';
+import P2BISGear from './gear_sets/p2.bis.gear.json';
+import P3BISGear from './gear_sets/p3.bis.gear.json';
+import P4BISGear from './gear_sets/p4.bis.gear.json';
+import P5BISGear from './gear_sets/p5.bis.gear.json';
+import P6BISGear from './gear_sets/p6.bis.gear.json';
 
 // Preset options for this spec.
 // Eventually we will import these values for the raid sim too, so its good to
@@ -45,9 +50,19 @@ import P1BISGear from './gear_sets/p1.bis.gear.json';
 
 export const GearP0BIS = PresetUtils.makePresetGear('Pre-BiS', P0BISGear);
 export const GearP1BIS = PresetUtils.makePresetGear('P1 BiS', P1BISGear);
+export const GearP2BIS = PresetUtils.makePresetGear('P2 BiS', P2BISGear);
+export const GearP3BIS = PresetUtils.makePresetGear('P3 BiS', P3BISGear);
+export const GearP4BIS = PresetUtils.makePresetGear('P4 BiS', P4BISGear);
+export const GearP5BIS = PresetUtils.makePresetGear('P5 BiS', P5BISGear);
+export const GearP6BIS = PresetUtils.makePresetGear('P6 BiS', P6BISGear);
 
 export const GearPresets = {
 	[Phase.Phase1]: [GearP0BIS, GearP1BIS],
+	[Phase.Phase2]: [GearP2BIS],
+	[Phase.Phase3]: [GearP3BIS],
+	[Phase.Phase4]: [GearP4BIS],
+	[Phase.Phase5]: [GearP5BIS],
+	[Phase.Phase6]: [GearP6BIS],
 };
 
 export const DefaultGear = GearP0BIS;
